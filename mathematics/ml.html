@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-07 日 22:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yydcnjjw" />
+<link rel="stylesheet" href="https://yydcnjjw.github.io/style/style.css" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3ee54df">1. <span class="done DONE">DONE</span> Feature Engineering</a>
+<ul>
+<li><a href="#orgda324e5">1.1. Numeric Features</a>
+<ul>
+<li><a href="#orgaf8d3d5">1.1.1. Binarization</a></li>
+<li><a href="#org13e20d4">1.1.2. Numeric Transforms</a></li>
+<li><a href="#org6f832ab">1.1.3. Feature Scaling or Normalization</a></li>
+</ul>
+</li>
+<li><a href="#org64dcc9a">1.2. Text Data</a></li>
+<li><a href="#org7b3d96f">1.3. Categorical Variables</a>
+<ul>
+<li><a href="#orgbaea7ee">1.3.1. Encoding</a></li>
+<li><a href="#org9dd8b89">1.3.2. Feature hashing</a></li>
+<li><a href="#org3b979f3">1.3.3. Bin-counting</a></li>
+</ul>
+</li>
+<li><a href="#orge3dc141">1.4. Feature Selection</a></li>
+<li><a href="#org5f82f69">1.5. Feature Crosses</a></li>
+</ul>
+</li>
+<li><a href="#orgf565c22">2. Model Evaluation</a>
+<ul>
+<li><a href="#orge270712">2.1. Evaluation Function</a>
+<ul>
+<li><a href="#orgee704bf">2.1.1. Hold-out</a></li>
+<li><a href="#org3fb6df1">2.1.2. k</a></li>
+<li><a href="#org23af426">2.1.3. bootstrapping</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8686381">3. Code</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3ee54df" class="outline-2">
+<h2 id="org3ee54df"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Feature Engineering</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-02-03 日 20:22]</span></span></li>
+</ul>
+<p>
+<a href="https://learning.oreilly.com/library/view/feature-engineering-for/9781491953235/">Feature Engineering for Machine Learning</a>
+</p>
+</div>
+
+<div id="outline-container-orgda324e5" class="outline-3">
+<h3 id="orgda324e5"><span class="section-number-3">1.1</span> Numeric Features</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-orgaf8d3d5" class="outline-4">
+<h4 id="orgaf8d3d5"><span class="section-number-4">1.1.1</span> Binarization</h4>
+</div>
+<div id="outline-container-org13e20d4" class="outline-4">
+<h4 id="org13e20d4"><span class="section-number-4">1.1.2</span> Numeric Transforms</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+<b>Problem:</b>
+</p>
+
+<p>
+Raw counts that span several orders of magnitude are problematic for many models.
+</p>
+<ul class="org-ul">
+<li>In a linear model, the same linear coefficient would have to work for all possible values of the counts.</li>
+<li>Large counts could also wreak havoc in unsupervised learning methods such as <i>k-means</i> clustering, which uses <i>Euclidean</i> distance as a similarity function to measure the similarity between data points.</li>
+<li>A large count in one element of the data vector would outweight the similarity in all other elements, which could throw off the entire similarity measurement.</li>
+</ul>
+
+<p>
+<b>Solution:</b>
+</p>
+
+<p>
+Transform numeric ​​into similar orders of magnitude, It group the counts into bins, and get rid of the actual count values. Quantization maps a continuous number to a discrete one. <b>We can think of the discretized numbers as an ordered sequence of bins that represent measure of intensity.</b>
+</p>
+
+<ul class="org-ul">
+<li>Quantization or Binning
+<ul class="org-ul">
+<li>fixed-width binning(fixed-width)
+<b>Note</b>: If there are large gaps in the counts, then there will be many empty bins with no data.</li>
+<li>quantile binning(adaptive)</li>
+</ul></li>
+<li><p>
+Log Transform
+<a id="orgbfe484c"></a>
+</p>
+\begin{equation}
+  y=\log_{a}(x)
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span class="org-variable-name">x</span> = np.arange(<span class="org-highlight-numbers-number">0</span>.<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">10</span>, <span class="org-highlight-numbers-number">0</span>.<span class="org-highlight-numbers-number">1</span>)
+<span class="org-variable-name">y</span> = np.exp(x)
+plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">1</span>)
+plt.plot(x, y)
+
+<span class="org-variable-name">y</span> = np.log(y)
+plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">2</span>)
+plt.plot(x, y)
+<span class="org-keyword">pass</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="image/Log_Transform.png" alt="Log_Transform.png" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6f832ab" class="outline-4">
+<h4 id="org6f832ab"><span class="section-number-4">1.1.3</span> Feature Scaling or Normalization</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+Feature scaling changes the scale of the feature.
+</p>
+
+<dl class="org-dl">
+<dt>Min-Max scaling</dt><dd><p>
+squeezes all feature values to be within the range of \([0,1]\)
+<a id="org1091c43"></a>
+</p>
+\begin{equation}
+  \tilde{x}=\frac{x-\min(x)}{\max(x)-\min(x)}
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span class="org-keyword">def</span> <span class="org-function-name">min_max_scaling</span>(x):
+    <span class="org-keyword">return</span> (x - np.<span class="org-builtin">min</span>(x)) / np.<span class="org-builtin">max</span>(x) - np.<span class="org-builtin">min</span>(x)
+
+<span class="org-variable-name">x</span> = np.log10(np.arange(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">1000</span>))
+<span class="org-variable-name">y</span> = min_max_scaling(x)
+
+plt.plot(y)
+<span class="org-keyword">pass</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="image/min_max_scaling.png" alt="min_max_scaling.png" />
+</p>
+</div></dd>
+<dt>Standardization(Variance Scaling)</dt><dd><p>
+scale feature to that has a mean of 0 and a variance of 1
+<a id="org2d3f749"></a>
+</p>
+\begin{equation}
+  \tilde{x}=\frac{x-mean(x)}{\sqrt{var(x)}}
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span class="org-keyword">def</span> <span class="org-function-name">standardization</span>(x):
+    <span class="org-keyword">return</span> (x - np.mean(x)) / np.std(x)
+
+<span class="org-variable-name">x</span> = np.random.normal(loc=<span class="org-highlight-numbers-number">10</span>.<span class="org-highlight-numbers-number">0</span>, scale=<span class="org-highlight-numbers-number">100</span>.<span class="org-highlight-numbers-number">0</span>, size=(<span class="org-highlight-numbers-number">10000</span>, <span class="org-highlight-numbers-number">2</span>))
+<span class="org-variable-name">y</span> = standardization(x)
+plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">1</span>)
+plt.title(<span class="org-string">'mean=%.3f, std=%.3f'</span> % (np.mean(x), np.std(x)))
+plt.hist2d(x[:, <span class="org-highlight-numbers-number">0</span>], x[:, <span class="org-highlight-numbers-number">1</span>], bins=<span class="org-highlight-numbers-number">100</span>)
+plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">2</span>)
+plt.title(<span class="org-string">'mean=%.3f, std=%.3f'</span> % (np.mean(y), np.std(y)))
+plt.hist2d(y[:, <span class="org-highlight-numbers-number">0</span>], y[:, <span class="org-highlight-numbers-number">1</span>], bins=<span class="org-highlight-numbers-number">100</span>)
+<span class="org-keyword">pass</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="image/standardization.png" alt="standardization.png" />
+</p>
+</div>
+
+<blockquote>
+<p>
+Don't "center" sparse data!
+</p>
+</blockquote></dd>
+<dt>\(l^{2}\) Normalization</dt><dd><p>
+normalize(divides) the original feature value by what's known as the \(l^{2}\) norm(<i>Euclidean</i> norm).
+</p>
+\begin{align}
+  &\tilde{x}=\frac{x}{ \left\Vert x \right\Vert _{2} }\\
+  &\left\Vert x \right\Vert _{2}=\sqrt{x_{1}^{2}+x_{2}^{2}+\cdots+x_{m}^{2}}
+\end{align}</dd>
+</dl>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span class="org-keyword">def</span> <span class="org-function-name">l2_normalization</span>(x):
+    <span class="org-keyword">return</span> x / np.sqrt(np.<span class="org-builtin">sum</span>(<span class="org-builtin">pow</span>(x, <span class="org-highlight-numbers-number">2</span>)))
+
+<span class="org-variable-name">x</span> = np.random.normal(loc=<span class="org-highlight-numbers-number">10</span>.<span class="org-highlight-numbers-number">0</span>, scale=<span class="org-highlight-numbers-number">100</span>.<span class="org-highlight-numbers-number">0</span>, size=(<span class="org-highlight-numbers-number">100</span>, <span class="org-highlight-numbers-number">2</span>))
+<span class="org-variable-name">y</span> = l2_normalization(x)
+
+plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">1</span>)
+plt.hist2d(x[:, <span class="org-highlight-numbers-number">0</span>], x[:, <span class="org-highlight-numbers-number">1</span>], bins=<span class="org-highlight-numbers-number">100</span>)
+plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">2</span>)
+plt.hist2d(y[:, <span class="org-highlight-numbers-number">0</span>], y[:, <span class="org-highlight-numbers-number">1</span>], bins=<span class="org-highlight-numbers-number">100</span>)
+plt.tight_layout()
+<span class="org-keyword">pass</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="image/l2_normalization.png" alt="l2_normalization.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org64dcc9a" class="outline-3">
+<h3 id="org64dcc9a"><span class="section-number-3">1.2</span> Text Data</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Bag-of-Words
+Bag-of-n-Grams
+Tf-Idf
+</p>
+</div>
+</div>
+<div id="outline-container-org7b3d96f" class="outline-3">
+<h3 id="org7b3d96f"><span class="section-number-3">1.3</span> Categorical Variables</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgbaea7ee" class="outline-4">
+<h4 id="orgbaea7ee"><span class="section-number-4">1.3.1</span> Encoding</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+<b>Approach</b>
+</p>
+<ul class="org-ul">
+<li><p>
+One-Hot Encoding
+</p>
+<div class="org-src-container">
+<pre class="src src-ipython"><span class="org-keyword">from</span> sklearn.preprocessing <span class="org-keyword">import</span> OneHotEncoder
+<span class="org-keyword">import</span> pandas <span class="org-keyword">as</span> pd
+
+<span class="org-variable-name">df</span> = pd.DataFrame([[<span class="org-string">'a'</span>], [<span class="org-string">'b'</span>], [<span class="org-string">'c'</span>]])
+<span class="org-variable-name">one_hot</span> = pd.get_dummies(df)
+one_hot
+</pre>
+</div>
+
+<pre class="example">
+0_a  0_b  0_c
+0    1    0    0
+1    0    1    0
+2    0    0    1
+</pre></li>
+<li><p>
+Dummy Coding
+</p>
+<div class="org-src-container">
+<pre class="src src-ipython"><span class="org-variable-name">dummy_df</span> = pd.get_dummies(df, drop_first=<span class="org-constant">True</span>)
+dummy_df
+</pre>
+</div>
+
+<pre class="example">
+0_b  0_c
+0    0    0
+1    1    0
+2    0    1
+</pre></li>
+<li>Effect Coding</li>
+</ul>
+
+<p>
+<b>Space requirement</b>: \(O(n)\) using the sparse vector format, where \(n\) is the number of data points.
+</p>
+
+<p>
+<b>Computation requirement</b>: \(O(nk)\) under a linear model, where \(k\) is the number of categories.
+</p>
+
+<p>
+<b>Pros</b>
+</p>
+<ul class="org-ul">
+<li>Easiest to implement</li>
+<li>Potentially most accurate</li>
+<li>Feasible for online learning</li>
+</ul>
+
+<p>
+<b>Cons</b>
+</p>
+<ul class="org-ul">
+<li>Computationally inefficient</li>
+<li>Does not adapt to growing categories</li>
+<li>Not feasible for anything other than linear models</li>
+<li>Requires large-scale distributed optimization with truly large datasets</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9dd8b89" class="outline-4">
+<h4 id="org9dd8b89"><span class="section-number-4">1.3.2</span> Feature hashing</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<div class="org-src-container">
+<pre class="src src-ipython"><span class="org-comment-delimiter"># </span><span class="org-comment">m represent fixed word size</span>
+<span class="org-keyword">def</span> <span class="org-function-name">hash_features</span>(word_list, m):
+    <span class="org-variable-name">output</span> = [<span class="org-highlight-numbers-number">0</span>] * m
+    <span class="org-keyword">for</span> word <span class="org-keyword">in</span> word_list:
+        <span class="org-variable-name">index</span> = <span class="org-builtin">hash</span>(word) % m
+        <span class="org-variable-name">output</span>[index] += <span class="org-highlight-numbers-number">1</span>
+    <span class="org-keyword">return</span> output
+
+
+<span class="org-variable-name">word_list</span> = [<span class="org-string">'a'</span>, <span class="org-string">'b'</span>, <span class="org-string">'c'</span>, <span class="org-string">'d'</span>, <span class="org-string">'e'</span>, <span class="org-string">'a'</span>, <span class="org-string">'b'</span>]
+hash_features(word_list, <span class="org-highlight-numbers-number">5</span>)
+</pre>
+</div>
+
+<pre class="example">
+[2, 2, 2, 1, 0]
+
+</pre>
+
+<p>
+<b>Space requirement</b>: \(O(n)\) using the sparse matrix format, where \(n\) is the number of data points.
+</p>
+
+<p>
+<b>Computation requirement</b>: \(O(nm)\) under a linear or kernel model, where \(m\) is the number of hash bins.
+</p>
+
+<p>
+<b>Pros</b>
+</p>
+<ul class="org-ul">
+<li>Easy to implement</li>
+<li>Makes model training cheaper</li>
+<li>Easily adaptable to new categories</li>
+<li>Easily handles rare categories</li>
+<li>Feasible for online learing</li>
+</ul>
+
+<p>
+<b>Cons</b>
+</p>
+<ul class="org-ul">
+<li>Only suitable for linear or kernelized models</li>
+<li>Hashed features not interpretable</li>
+<li>Mixed reports of accuracy</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3b979f3" class="outline-4">
+<h4 id="org3b979f3"><span class="section-number-4">1.3.3</span> Bin-counting</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+<b>Space requirement</b>: \(O(n+k)\) for small, dense representation of each data point, plus the count statistics that must be kept for each category.
+</p>
+
+<p>
+<b>Computation requirement</b>: \(O(n)\) for linear models; also usable for nonlinear models such as trees
+</p>
+
+<p>
+<b>Pros</b>
+</p>
+<ul class="org-ul">
+<li>Smallest computational burden at training time</li>
+<li>Enables tree-based models</li>
+<li>Relatively easy to adapt to new categories</li>
+<li>Handles rare categories with back-off or count-min sketch</li>
+<li>Interpretable</li>
+</ul>
+
+<p>
+<b>Cons</b>
+</p>
+<ul class="org-ul">
+<li>Requires historical data</li>
+<li>Delayed updates required, not completely suitable for online learning</li>
+<li>Higher potential for leakage</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge3dc141" class="outline-3">
+<h3 id="orge3dc141"><span class="section-number-3">1.4</span> Feature Selection</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Feature selection techniques prune away nonuseful features in order to reduce the complexity of the resulting model.
+</p>
+
+<p>
+Feature selection techniques fail into three classes:
+</p>
+<dl class="org-dl">
+<dt>Filtering</dt><dd>prepossess features to remove ones that are unlikely to be useful for the model</dd>
+<dt>Wrapper methods</dt><dd>These techniques are expensive, but they allow you to try out subsets of features, which means you won't accidentally prune away features that are uninformative by themselves but useful when taken in combination.</dd>
+<dt>Embedded methods</dt><dd>These methods perform feature selection as part of the model training process.</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org5f82f69" class="outline-3">
+<h3 id="org5f82f69"><span class="section-number-3">1.5</span> Feature Crosses</h3>
+</div>
+</div>
+
+<div id="outline-container-orgf565c22" class="outline-2">
+<h2 id="orgf565c22"><span class="section-number-2">2</span> Model Evaluation</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orge270712" class="outline-3">
+<h3 id="orge270712"><span class="section-number-3">2.1</span> Evaluation Function</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgee704bf" class="outline-4">
+<h4 id="orgee704bf"><span class="section-number-4">2.1.1</span> Hold-out</h4>
+</div>
+<div id="outline-container-org3fb6df1" class="outline-4">
+<h4 id="org3fb6df1"><span class="section-number-4">2.1.2</span> k</h4>
+</div>
+<div id="outline-container-org23af426" class="outline-4">
+<h4 id="org23af426"><span class="section-number-4">2.1.3</span> bootstrapping</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org8686381" class="outline-2">
+<h2 id="org8686381"><span class="section-number-2">3</span> Code</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-ipython" id="orgdd42058">%matplotlib inline
+
+<span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-ipython" id="org4ee85f6"><span class="org-variable-name">plt.rcParams</span>[<span class="org-string">'figure.facecolor'</span>] = <span class="org-string">'white'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-ipython" id="org02c5920">
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org4eed1ea">(venv-workon <span class="org-string">"python3"</span>)
+(<span class="org-keyword">setq-local</span> my/org-babel-src-list
+      '(<span class="org-string">"import_package"</span>
+        <span class="org-string">"matplotlib_configure"</span>
+        <span class="org-string">"tool_function"</span>))
+
+(<span class="org-keyword">dolist</span> (list my/org-babel-src-list)
+  (org-babel-goto-named-src-block list)
+  (org-babel-execute-src-block))
+(outline-hide-sublevels <span class="org-highlight-numbers-number">1</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: yydcnjjw</p>
+<p class="date">Created: 2019-04-07 日 22:30</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-07 日 22:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yydcnjjw" />
+<link rel="stylesheet" href="https://yydcnjjw.github.io/style/style.css" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org62b0590">1. RB tree</a></li>
+<li><a href="#org59728d7">2. Skip List</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org62b0590" class="outline-2">
+<h2 id="org62b0590"><span class="section-number-2">1</span> RB tree</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://zh.wikipedia.org/zh-hans/%E7%BA%A2%E9%BB%91%E6%A0%91">rb tree</a>
+<code>A red-black tree</code> is a kind of self-balancing binary search tree in computer science.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Time complexity in big O notation</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Algorithm</td>
+<td class="org-left">Average</td>
+<td class="org-left">Worst case</td>
+</tr>
+
+<tr>
+<td class="org-left">Space</td>
+<td class="org-left">O(n)</td>
+<td class="org-left">O(n)</td>
+</tr>
+
+<tr>
+<td class="org-left">Search</td>
+<td class="org-left">O(log n)</td>
+<td class="org-left">O(log n)</td>
+</tr>
+
+<tr>
+<td class="org-left">Insert</td>
+<td class="org-left">O(log n)</td>
+<td class="org-left">O(log n)</td>
+</tr>
+
+<tr>
+<td class="org-left">Delete</td>
+<td class="org-left">O(log n)</td>
+<td class="org-left">O(log n)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+In addition to the requirements imposed on a binary search tree the following must be satisfied by a red-black tree.
+</p>
+<ul class="org-ul">
+<li>Each node is either red or black.</li>
+<li>The root is black. This rule is sometimes omitted. Since the root can always be changed from read to black, but not necessarily vice versa, this rule has little effect on analysis.</li>
+<li>All leaves (NIL) are black.</li>
+<li>If a node is red, the both its children are black.</li>
+<li>Every path from a given node to any of its descendant NIL nodes contains the same number of black nodes.</li>
+</ul>
+
+<p>
+<b>These constraints enforce a critical property of read-black trees: the path from the root to the farthest leaf is no more than twice as long as the path from the root to the nearest leaf.</b>
+The shortest possible path has all black nodes, and the longest possible path alterantes between red and black nodes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#define</span> <span class="org-variable-name">BLACK</span> <span class="org-highlight-numbers-number">1</span>
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">RED</span> <span class="org-highlight-numbers-number">0</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+<span class="org-keyword">class</span> <span class="org-type">Bst</span> {
+  <span class="org-keyword">public</span>:
+    <span class="org-function-name">Bst</span>() {
+        NIL = <span class="org-keyword">new</span> <span class="org-type">Node</span>();
+        NIL-&gt;color = BLACK;
+        root_ = <span class="org-constant">NULL</span>;
+    }
+    ~<span class="org-function-name">Bst</span>() {
+        <span class="org-keyword">if</span> (root_) {
+            DeleteTree(root_);
+        }
+        <span class="org-keyword">delete</span> NIL;
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">inorder</span>() {
+        <span class="org-keyword">if</span> (root_ == <span class="org-constant">NULL</span>)
+            <span class="org-keyword">return</span>;
+        inorder(root_);
+        cout &lt;&lt; endl;
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">insert</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+        <span class="org-keyword">if</span> (root_ == <span class="org-constant">NULL</span>) {
+            root_ = <span class="org-keyword">new</span> <span class="org-type">Node</span>();
+            root_-&gt;color = BLACK;
+            root_-&gt;leftTree = root_-&gt;rightTree = NIL;
+            root_-&gt;value = x;
+        } <span class="org-keyword">else</span> {
+            insert(root_, x);
+        }
+    }
+
+    <span class="org-type">bool</span> <span class="org-function-name">delete_value</span>(<span class="org-type">int</span> <span class="org-variable-name">data</span>) { <span class="org-keyword">return</span> delete_child(root_, data); }
+
+  <span class="org-keyword">private</span>:
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span> {
+        <span class="org-type">int</span> <span class="org-variable-name">value</span>;
+        <span class="org-type">bool</span> <span class="org-variable-name">color</span>;
+        <span class="org-type">Node</span> *<span class="org-variable-name">leftTree</span>, *<span class="org-variable-name">rightTree</span>, *<span class="org-variable-name">parent</span>;
+        <span class="org-function-name">Node</span>()
+            : value(<span class="org-highlight-numbers-number">0</span>), color(RED), leftTree(<span class="org-constant">nullptr</span>), rightTree(<span class="org-constant">nullptr</span>),
+              parent(<span class="org-constant">nullptr</span>) {}
+        <span class="org-type">Node</span> *<span class="org-function-name">grandparent</span>() {
+            <span class="org-keyword">if</span> (parent == <span class="org-constant">nullptr</span>) {
+                <span class="org-keyword">return</span> <span class="org-constant">nullptr</span>;
+            }
+            <span class="org-keyword">return</span> parent-&gt;parent;
+        }
+
+        <span class="org-type">Node</span> *<span class="org-function-name">uncle</span>() {
+            <span class="org-keyword">if</span> (grandparent() == <span class="org-constant">nullptr</span>) {
+                <span class="org-keyword">return</span> <span class="org-constant">nullptr</span>;
+            }
+            <span class="org-keyword">if</span> (parent == grandparent()-&gt;rightTree)
+                <span class="org-keyword">return</span> grandparent()-&gt;leftTree;
+            <span class="org-keyword">else</span>
+                <span class="org-keyword">return</span> grandparent()-&gt;rightTree;
+        }
+        <span class="org-type">Node</span> *<span class="org-function-name">sibling</span>() {
+            <span class="org-keyword">if</span> (parent-&gt;leftTree == <span class="org-keyword">this</span>)
+                <span class="org-keyword">return</span> parent-&gt;rightTree;
+            <span class="org-keyword">else</span>
+                <span class="org-keyword">return</span> parent-&gt;leftTree;
+        }
+    };
+
+    <span class="org-type">void</span> <span class="org-function-name">rotate_right</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>) {
+        <span class="org-type">Node</span> *<span class="org-variable-name">gp</span> = p-&gt;grandparent();
+        <span class="org-type">Node</span> *<span class="org-variable-name">fa</span> = p-&gt;parent;
+        <span class="org-type">Node</span> *<span class="org-variable-name">y</span> = p-&gt;rightTree;
+
+        fa-&gt;leftTree = y;
+        <span class="org-keyword">if</span> (y != NIL)
+            y-&gt;parent = fa;
+        p-&gt;rightTree = fa;
+        fa-&gt;parent = p;
+
+        <span class="org-keyword">if</span> (root_ == fa)
+            root_ = p;
+        p-&gt;parent = gp;
+        <span class="org-keyword">if</span> (gp != <span class="org-constant">NULL</span>) {
+            <span class="org-keyword">if</span> (gp-&gt;leftTree == fa)
+                gp-&gt;leftTree = p;
+            <span class="org-keyword">else</span>
+                gp-&gt;rightTree = p;
+        }
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">rotate_left</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>) {
+        <span class="org-type">Node</span> *<span class="org-variable-name">gp</span> = p-&gt;grandparent();
+        <span class="org-type">Node</span> *<span class="org-variable-name">fa</span> = p-&gt;parent;
+        <span class="org-type">Node</span> *<span class="org-variable-name">y</span> = p-&gt;leftTree;
+
+        fa-&gt;rightTree = y;
+        <span class="org-keyword">if</span> (y != NIL)
+            y-&gt;parent = fa;
+        p-&gt;leftTree = fa;
+        fa-&gt;parent = p;
+
+        <span class="org-keyword">if</span> (root_ == fa)
+            root_ = p;
+        p-&gt;parent = gp;
+
+        <span class="org-keyword">if</span> (gp != <span class="org-constant">NULL</span>) {
+            <span class="org-keyword">if</span> (gp-&gt;leftTree == fa)
+                gp-&gt;leftTree = p;
+            <span class="org-keyword">else</span>
+                gp-&gt;rightTree = p;
+        }
+    }
+    <span class="org-type">void</span> <span class="org-function-name">inorder</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>) {
+        <span class="org-keyword">if</span> (p == NIL)
+            <span class="org-keyword">return</span>;
+        <span class="org-keyword">if</span> (p-&gt;leftTree)
+            inorder(p-&gt;leftTree);
+        cout &lt;&lt; p-&gt;value &lt;&lt; <span class="org-string">" "</span>;
+        <span class="org-keyword">if</span> (p-&gt;rightTree)
+            inorder(p-&gt;rightTree);
+    }
+
+    <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-function-name">outputColor</span>(<span class="org-type">bool</span> <span class="org-variable-name">color</span>) { <span class="org-keyword">return</span> color ? <span class="org-string">"BLACK"</span> : <span class="org-string">"RED"</span>; }
+
+    <span class="org-type">Node</span> *<span class="org-function-name">getSmallestChild</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>) {
+        <span class="org-keyword">if</span> (p-&gt;leftTree == NIL)
+            <span class="org-keyword">return</span> p;
+        <span class="org-keyword">return</span> getSmallestChild(p-&gt;leftTree);
+    }
+
+    <span class="org-type">bool</span> <span class="org-function-name">delete_child</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>, <span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+        <span class="org-keyword">if</span> (p-&gt;value &gt; data) {
+            <span class="org-keyword">if</span> (p-&gt;leftTree == NIL) {
+                <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+            }
+            <span class="org-keyword">return</span> delete_child(p-&gt;leftTree, data);
+        } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (p-&gt;value &lt; data) {
+            <span class="org-keyword">if</span> (p-&gt;rightTree == NIL) {
+                <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+            }
+            <span class="org-keyword">return</span> delete_child(p-&gt;rightTree, data);
+        } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (p-&gt;value == data) {
+            <span class="org-keyword">if</span> (p-&gt;rightTree == NIL) {
+                delete_one_child(p);
+                <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+            }
+            <span class="org-type">Node</span> *<span class="org-variable-name">smallest</span> = getSmallestChild(p-&gt;rightTree);
+            swap(p-&gt;value, smallest-&gt;value);
+            delete_one_child(smallest);
+            <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+        } <span class="org-keyword">else</span> {
+            <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+        }
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">delete_one_child</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>) {
+        <span class="org-type">Node</span> *<span class="org-variable-name">child</span> = p-&gt;leftTree == NIL ? p-&gt;rightTree : p-&gt;leftTree;
+        <span class="org-keyword">if</span> (p-&gt;parent == <span class="org-constant">NULL</span> &amp;&amp; p-&gt;leftTree == NIL &amp;&amp; p-&gt;rightTree == NIL) {
+            <span class="org-comment-delimiter">// </span><span class="org-comment">only root</span>
+            <span class="org-comment-delimiter">// </span><span class="org-comment">delete root</span>
+            p = <span class="org-constant">NULL</span>;
+            root_ = p;
+            <span class="org-keyword">return</span>;
+        }
+        <span class="org-keyword">if</span> (p-&gt;parent == <span class="org-constant">NULL</span>) {
+            <span class="org-comment-delimiter">// </span><span class="org-comment">only root and right node</span>
+            <span class="org-comment-delimiter">// </span><span class="org-comment">delete root</span>
+            <span class="org-keyword">delete</span> p;
+            child-&gt;parent = <span class="org-constant">NULL</span>;
+            root_ = child;
+            root_-&gt;color = BLACK;
+            <span class="org-keyword">return</span>;
+        }
+        <span class="org-keyword">if</span> (p-&gt;parent-&gt;leftTree == p) {
+            p-&gt;parent-&gt;leftTree = child;
+        } <span class="org-keyword">else</span> {
+            p-&gt;parent-&gt;rightTree = child;
+        }
+        child-&gt;parent = p-&gt;parent;
+        <span class="org-keyword">if</span> (p-&gt;color == BLACK) {
+            <span class="org-keyword">if</span> (child-&gt;color == RED) {
+                child-&gt;color = BLACK;
+            } <span class="org-keyword">else</span>
+                delete_case(child);
+        }
+        <span class="org-keyword">delete</span> p;
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">delete_case</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>) {
+        <span class="org-keyword">if</span> (p-&gt;parent == <span class="org-constant">NULL</span>) {
+            p-&gt;color = BLACK;
+            <span class="org-keyword">return</span>;
+        }
+        <span class="org-keyword">if</span> (p-&gt;sibling()-&gt;color == RED) {
+            <span class="org-comment-delimiter">// </span><span class="org-comment">sibling is red</span>
+            p-&gt;parent-&gt;color = RED;
+            p-&gt;sibling()-&gt;color = BLACK;
+            <span class="org-keyword">if</span> (p == p-&gt;parent-&gt;leftTree)
+                rotate_left(p-&gt;sibling());
+            <span class="org-keyword">else</span>
+                rotate_right(p-&gt;sibling());
+        }
+        <span class="org-keyword">if</span> (p-&gt;parent-&gt;color == BLACK &amp;&amp; p-&gt;sibling()-&gt;color == BLACK &amp;&amp;
+            p-&gt;sibling()-&gt;leftTree-&gt;color == BLACK &amp;&amp;
+            p-&gt;sibling()-&gt;rightTree-&gt;color == BLACK) {
+            <span class="org-comment-delimiter">// </span><span class="org-comment">N's parent, sibling, sibling's child is black</span>
+            p-&gt;sibling()-&gt;color = RED;
+            delete_case(p-&gt;parent);
+        } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (p-&gt;parent-&gt;color == RED &amp;&amp; p-&gt;sibling()-&gt;color == BLACK &amp;&amp;
+                   p-&gt;sibling()-&gt;leftTree-&gt;color == BLACK &amp;&amp;
+                   p-&gt;sibling()-&gt;rightTree-&gt;color == BLACK) {
+            <span class="org-comment-delimiter">// </span><span class="org-comment">sibling and sibling's child is black, but parent is red</span>
+            p-&gt;sibling()-&gt;color = RED;
+            p-&gt;parent-&gt;color = BLACK;
+        } <span class="org-keyword">else</span> {
+            <span class="org-keyword">if</span> (p-&gt;sibling()-&gt;color == BLACK) {
+                <span class="org-keyword">if</span> (p == p-&gt;parent-&gt;leftTree &amp;&amp;
+                    p-&gt;sibling()-&gt;leftTree-&gt;color == RED &amp;&amp;
+                    p-&gt;sibling()-&gt;rightTree-&gt;color == BLACK) {
+                    <span class="org-comment-delimiter">// </span><span class="org-comment">sibling is black, sibling's left child is red</span>
+                    <span class="org-comment-delimiter">// </span><span class="org-comment">sibling' right child is black</span>
+                    p-&gt;sibling()-&gt;color = RED;
+                    p-&gt;sibling()-&gt;leftTree-&gt;color = BLACK;
+                    rotate_right(p-&gt;sibling()-&gt;leftTree);
+                } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (p == p-&gt;parent-&gt;rightTree &amp;&amp;
+                           p-&gt;sibling()-&gt;leftTree-&gt;color == BLACK &amp;&amp;
+                           p-&gt;sibling()-&gt;rightTree-&gt;color == RED) {
+                    <span class="org-comment-delimiter">// </span><span class="org-comment">sibling is black, sibling's left child is black</span>
+                    <span class="org-comment-delimiter">// </span><span class="org-comment">sibling' right child is red</span>
+                    p-&gt;sibling()-&gt;color = RED;
+                    p-&gt;sibling()-&gt;rightTree-&gt;color = BLACK;
+                    rotate_left(p-&gt;sibling()-&gt;rightTree);
+                }
+            }
+            p-&gt;sibling()-&gt;color = p-&gt;parent-&gt;color;
+            p-&gt;parent-&gt;color = BLACK;
+            <span class="org-keyword">if</span> (p == p-&gt;parent-&gt;leftTree) {
+                p-&gt;sibling()-&gt;rightTree-&gt;color = BLACK;
+                rotate_left(p-&gt;sibling());
+            } <span class="org-keyword">else</span> {
+                p-&gt;sibling()-&gt;leftTree-&gt;color = BLACK;
+                rotate_right(p-&gt;sibling());
+            }
+        }
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">insert</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>, <span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+        <span class="org-keyword">if</span> (p-&gt;value &gt;= data) {
+            <span class="org-keyword">if</span> (p-&gt;leftTree != NIL)
+                insert(p-&gt;leftTree, data);
+            <span class="org-keyword">else</span> {
+                <span class="org-type">Node</span> *<span class="org-variable-name">tmp</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>();
+                tmp-&gt;value = data;
+                tmp-&gt;leftTree = tmp-&gt;rightTree = NIL;
+                tmp-&gt;parent = p;
+                p-&gt;leftTree = tmp;
+                insert_case(tmp);
+            }
+        } <span class="org-keyword">else</span> {
+            <span class="org-keyword">if</span> (p-&gt;rightTree != NIL)
+                insert(p-&gt;rightTree, data);
+            <span class="org-keyword">else</span> {
+                <span class="org-type">Node</span> *<span class="org-variable-name">tmp</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>();
+                tmp-&gt;value = data;
+                tmp-&gt;leftTree = tmp-&gt;rightTree = NIL;
+                tmp-&gt;parent = p;
+                p-&gt;rightTree = tmp;
+                insert_case(tmp);
+            }
+        }
+    }
+    <span class="org-type">void</span> <span class="org-function-name">insert_case</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>) {
+        <span class="org-keyword">if</span> (p-&gt;parent == <span class="org-constant">NULL</span>) {
+            <span class="org-comment-delimiter">// </span><span class="org-comment">N is root</span>
+            root_ = p;
+            p-&gt;color = BLACK;
+            <span class="org-keyword">return</span>;
+        }
+        <span class="org-keyword">if</span> (p-&gt;parent-&gt;color == RED) {
+            <span class="org-keyword">if</span> (p-&gt;uncle()-&gt;color == RED) {
+                <span class="org-comment-delimiter">// </span><span class="org-comment">N's parent and uncle is red</span>
+                p-&gt;parent-&gt;color = p-&gt;uncle()-&gt;color = BLACK;
+                p-&gt;grandparent()-&gt;color = RED;
+                insert_case(p-&gt;grandparent());
+            } <span class="org-keyword">else</span> {
+                <span class="org-comment-delimiter">// </span><span class="org-comment">N's parent is red, uncle is black</span>
+                <span class="org-keyword">if</span> (p-&gt;parent-&gt;rightTree == p &amp;&amp;
+                    p-&gt;grandparent()-&gt;leftTree == p-&gt;parent) {
+                    rotate_left(p);
+                    rotate_right(p);
+                    p-&gt;color = BLACK;
+                    p-&gt;leftTree-&gt;color = p-&gt;rightTree-&gt;color = RED;
+                } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (p-&gt;parent-&gt;leftTree == p &amp;&amp;
+                           p-&gt;grandparent()-&gt;rightTree == p-&gt;parent) {
+                    rotate_right(p);
+                    rotate_left(p);
+                    p-&gt;color = BLACK;
+                    p-&gt;leftTree-&gt;color = p-&gt;rightTree-&gt;color = RED;
+                } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (p-&gt;parent-&gt;leftTree == p &amp;&amp;
+                           p-&gt;grandparent()-&gt;leftTree == p-&gt;parent) {
+                    p-&gt;parent-&gt;color = BLACK;
+                    p-&gt;grandparent()-&gt;color = RED;
+                    rotate_right(p-&gt;parent);
+                } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (p-&gt;parent-&gt;rightTree == p &amp;&amp;
+                           p-&gt;grandparent()-&gt;rightTree == p-&gt;parent) {
+                    p-&gt;parent-&gt;color = BLACK;
+                    p-&gt;grandparent()-&gt;color = RED;
+                    rotate_left(p-&gt;parent);
+                }
+            }
+            <span class="org-comment-delimiter">// </span><span class="org-comment">else p-&gt;parent-&gt;color == BLACK</span>
+            <span class="org-comment-delimiter">// </span><span class="org-comment">N's parent is black</span>
+            <span class="org-comment-delimiter">// </span><span class="org-comment">Nothing to do</span>
+        }
+    }
+    <span class="org-type">void</span> <span class="org-function-name">DeleteTree</span>(<span class="org-type">Node</span> *<span class="org-variable-name">p</span>) {
+        <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>p || p == NIL) {
+            <span class="org-keyword">return</span>;
+        }
+        DeleteTree(p-&gt;leftTree);
+        DeleteTree(p-&gt;rightTree);
+        <span class="org-keyword">delete</span> p;
+    }
+
+    <span class="org-type">Node</span> *<span class="org-variable-name">root_</span>, *<span class="org-variable-name">NIL</span>;
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+    <span class="org-type">Bst</span> <span class="org-variable-name">bst</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">len</span> = <span class="org-highlight-numbers-number">10</span>;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; len; i++) {
+        bst.insert(i);
+    }
+    cout &lt;&lt; <span class="org-string">"Bst:"</span> &lt;&lt; endl;
+    bst.inorder();
+    <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org59728d7" class="outline-2">
+<h2 id="org59728d7"><span class="section-number-2">2</span> Skip List</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="https://en.wikipedia.org/wiki/Skip_list">wiki skip list</a>
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Time complexity in big O notation</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Algorithm</td>
+<td class="org-left">Average</td>
+<td class="org-left">Worst case</td>
+</tr>
+
+<tr>
+<td class="org-left">Space</td>
+<td class="org-left">O(n)</td>
+<td class="org-left">O(n log n)</td>
+</tr>
+
+<tr>
+<td class="org-left">Search</td>
+<td class="org-left">O(log n)</td>
+<td class="org-left">O(n)</td>
+</tr>
+
+<tr>
+<td class="org-left">Insert</td>
+<td class="org-left">O(log n)</td>
+<td class="org-left">O(n)</td>
+</tr>
+
+<tr>
+<td class="org-left">Delete</td>
+<td class="org-left">O(log n)</td>
+<td class="org-left">O(n)</td>
+</tr>
+</tbody>
+</table>
+
+<ol class="org-ol">
+<li>Skip list consist of multiple level layer.</li>
+<li>Each level layer of skip list is an ordinary ordered linked list.</li>
+<li>Bottom layer of skip list includes all elements.</li>
+<li>Each higher layer acts as an "express lane" for the list below(subset).</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdlib.h&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">MAX_LEVEL</span> <span class="org-highlight-numbers-number">10</span>
+
+<span class="org-keyword">typedef</span> <span class="org-keyword">struct</span> <span class="org-type">Node</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">key</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">value</span>;
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span>* <span class="org-variable-name">next</span>[<span class="org-highlight-numbers-number">1</span>];
+} <span class="org-type">Node</span>;
+
+<span class="org-keyword">typedef</span> <span class="org-keyword">struct</span> <span class="org-type">SkipList</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">level</span>;
+    <span class="org-type">Node</span> *<span class="org-variable-name">head</span>;
+} <span class="org-type">SkipList</span>;
+
+
+<span class="org-type">Node</span> *<span class="org-function-name">newNode</span>(<span class="org-type">int</span> <span class="org-variable-name">key</span>, <span class="org-type">int</span> <span class="org-variable-name">value</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">node</span> = (<span class="org-type">Node</span> *) malloc(<span class="org-keyword">sizeof</span>(Node) + (MAX_LEVEL - <span class="org-highlight-numbers-number">1</span>) * <span class="org-keyword">sizeof</span>(<span class="org-type">Node</span> *));
+    node-&gt;key = key;
+    node-&gt;value = value;
+    <span class="org-keyword">return</span> node;
+}
+
+<span class="org-type">SkipList</span> *<span class="org-function-name">createSkipList</span>() {
+    <span class="org-type">SkipList</span> *<span class="org-variable-name">sl</span> = (<span class="org-type">SkipList</span>*) malloc(<span class="org-keyword">sizeof</span>(SkipList));
+    sl-&gt;level = <span class="org-highlight-numbers-number">0</span>;
+    sl-&gt;head = newNode(<span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; MAX_LEVEL; i++) {
+        sl-&gt;head-&gt;next[i] = <span class="org-constant">NULL</span>;
+    }
+    <span class="org-keyword">return</span> sl;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">randomLevel</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">k</span> = <span class="org-highlight-numbers-number">1</span>;
+    <span class="org-keyword">while</span> (rand() % <span class="org-highlight-numbers-number">2</span>) {
+        k++;
+    }
+    k = (k &lt; MAX_LEVEL) ? k : MAX_LEVEL;
+    <span class="org-keyword">return</span> k;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">search</span>(<span class="org-type">SkipList</span> *<span class="org-variable-name">sl</span>, <span class="org-type">int</span> <span class="org-variable-name">key</span>, <span class="org-type">int</span> *<span class="org-variable-name">value</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">p</span>, *<span class="org-variable-name">q</span> = <span class="org-constant">NULL</span>;
+    p = sl-&gt;head;
+    <span class="org-type">int</span> <span class="org-variable-name">k</span> = sl-&gt;level;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = k - <span class="org-highlight-numbers-number">1</span>; i &gt;= <span class="org-highlight-numbers-number">0</span>; --i) {
+        <span class="org-keyword">while</span> ((q = p-&gt;next[i]) &amp;&amp; (q-&gt;key &lt;= key)) {
+          <span class="org-keyword">if</span> (q-&gt;key == key) {
+              *value = q-&gt;value;
+              <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+          }
+          p = q;
+      }
+    }
+    <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">1</span>;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">insert</span>(<span class="org-type">SkipList</span> *<span class="org-variable-name">sl</span>, <span class="org-type">int</span> <span class="org-variable-name">key</span>, <span class="org-type">int</span> <span class="org-variable-name">value</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">update</span>[MAX_LEVEL];
+    <span class="org-type">Node</span> *<span class="org-variable-name">p</span>, *<span class="org-variable-name">q</span> = <span class="org-constant">NULL</span>;
+
+    p = sl-&gt;head;
+    <span class="org-type">int</span> <span class="org-variable-name">k</span> = sl-&gt;level;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = k - <span class="org-highlight-numbers-number">1</span>; i &gt;= <span class="org-highlight-numbers-number">0</span>; i--) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">find location that is waiting insertion at each floor</span>
+        <span class="org-keyword">while</span> ((q = p-&gt;next[i]) &amp;&amp; (q-&gt;key &lt; key)) {
+            p = q;
+        }
+        update[i] = p;
+    }
+    <span class="org-keyword">if</span> (q &amp;&amp; p-&gt;key == key) {
+        <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">1</span>;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">update skip list level by randomizer</span>
+    k = randomLevel();
+    <span class="org-keyword">if</span> (k &gt; sl-&gt;level) {
+      <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = sl-&gt;level; i &lt; k; i++) {
+          update[i] = sl-&gt;head;
+      }
+      sl-&gt;level = k;
+    }
+    q = newNode(key, value);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; k; i++) {
+        q-&gt;next[i] = update[i]-&gt;next[i];
+        update[i]-&gt;next[i] = q;
+    }
+    <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">delete</span> (<span class="org-type">SkipList</span> *<span class="org-variable-name">sl</span>, <span class="org-type">int</span> <span class="org-variable-name">key</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">update</span>[MAX_LEVEL];
+    <span class="org-type">Node</span> *<span class="org-variable-name">p</span>, *<span class="org-variable-name">q</span> = <span class="org-constant">NULL</span>;
+    p = sl-&gt;head;
+    <span class="org-type">int</span> <span class="org-variable-name">k</span> = sl-&gt;level;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = k - <span class="org-highlight-numbers-number">1</span>; i &gt;= <span class="org-highlight-numbers-number">0</span>; --i) {
+      <span class="org-keyword">while</span> ((q = p-&gt;next[i]) &amp;&amp; (q-&gt;key &lt; key)) {
+          p = q;
+      }
+      update[i] = p;
+    }
+    <span class="org-keyword">if</span> (q &amp;&amp; q-&gt;key == key) {
+      <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; sl-&gt;level; i++) {
+        <span class="org-keyword">if</span> (update[i]-&gt;next[i] == q) {
+            update[i]-&gt;next[i] = q-&gt;next[i];
+        }
+      }
+      free(q);
+      <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = sl-&gt;level - <span class="org-highlight-numbers-number">1</span>; i &gt;= <span class="org-highlight-numbers-number">0</span>; --i) {
+        <span class="org-keyword">if</span> (sl-&gt;head-&gt;next == <span class="org-constant">NULL</span>) {
+            sl-&gt;level--;
+        }
+      }
+      <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+    }
+    <span class="org-keyword">else</span>
+        <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">1</span>;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">printSpikList</span>(<span class="org-type">SkipList</span> *<span class="org-variable-name">sl</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">p</span>, *<span class="org-variable-name">q</span>;
+    p = q = <span class="org-constant">NULL</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">k</span> = sl-&gt;level;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = k - <span class="org-highlight-numbers-number">1</span>; i &gt;= <span class="org-highlight-numbers-number">0</span>; --i) {
+        p = sl-&gt;head;
+        printf(<span class="org-string">"%d"</span>, p-&gt;value);
+        <span class="org-keyword">while</span> ((q = p-&gt;next[i])) {
+            <span class="org-type">int</span> <span class="org-variable-name">offset</span> = q-&gt;key - p-&gt;key;
+            <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; offset * <span class="org-highlight-numbers-number">2</span> - <span class="org-highlight-numbers-number">1</span>; i++) {
+                printf(<span class="org-string">" -&gt; "</span>);
+                <span class="org-comment-delimiter">/* </span><span class="org-comment">if (i &lt; offset - 1) </span><span class="org-comment-delimiter">*/</span>
+                <span class="org-comment-delimiter">/*     </span><span class="org-comment">printf(" "); </span><span class="org-comment-delimiter">*/</span>
+            }
+            printf(<span class="org-string">"%d"</span>, q-&gt;value);
+            p = q;
+        }
+        printf(<span class="org-string">"\n"</span>);
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+    <span class="org-type">SkipList</span> *<span class="org-variable-name">sl</span> = createSkipList();
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">1</span>; i &lt; <span class="org-highlight-numbers-number">10</span>; i++) {
+        insert(sl, i, <span class="org-type">i</span> * <span class="org-highlight-numbers-number">2</span>);
+    }
+    printSpikList(sl);
+    <span class="org-type">int</span> <span class="org-variable-name">value</span> = <span class="org-highlight-numbers-number">0</span>;
+
+    printf(<span class="org-string">"delete key=4\n"</span>);
+    <span class="org-type">int</span> <span class="org-variable-name">ret</span> = delete(sl, <span class="org-highlight-numbers-number">4</span>);
+    <span class="org-keyword">if</span> (ret) {
+        printf(<span class="org-string">"delete success\n"</span>);
+    }
+    printSpikList(sl);
+    <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: yydcnjjw</p>
+<p class="date">Created: 2019-04-07 日 22:30</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

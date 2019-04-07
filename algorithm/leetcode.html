@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-07 日 22:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yydcnjjw" />
+<link rel="stylesheet" href="https://yydcnjjw.github.io/style/style.css" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8d50be9">1. algorithms</a>
+<ul>
+<li><a href="#org6aa0911">1.1. Two Sum</a></li>
+<li><a href="#org8eb3628">1.2. 两数相加</a></li>
+<li><a href="#orge910ca6">1.3. 无重复字串的最长子串</a></li>
+<li><a href="#org04e980a">1.4. 两个排序数组的中位数</a></li>
+<li><a href="#org92bbf38">1.5. 最长回文子串</a></li>
+<li><a href="#org301f0fa">1.6. Z 字形变换</a></li>
+<li><a href="#org7e00d6b">1.7. 反转整数</a></li>
+<li><a href="#org4a73e31">1.8. 字符串转整数(atoi)</a></li>
+<li><a href="#orgca2734b">1.9. 回文数</a></li>
+<li><a href="#org470091e">1.10. 正则表达式匹配</a></li>
+<li><a href="#orgfd4e7b8">1.11. container-with-most-water</a></li>
+<li><a href="#org3d2d59f">1.12. integer_to_roman</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8d50be9" class="outline-2">
+<h2 id="org8d50be9"><span class="section-number-2">1</span> algorithms</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6aa0911" class="outline-3">
+<h3 id="org6aa0911"><span class="section-number-3">1.1</span> Two Sum</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
+你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。
+</p>
+
+<pre class="example">
+给定 nums = [2, 7, 11, 15], target = 9
+
+因为 nums[0] + nums[1] = 2 + 7 = 9
+所以返回 [0, 1]
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;unordered_map&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-function-name">twoSum</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&amp; <span class="org-variable-name">nums</span>, <span class="org-type">int</span> <span class="org-variable-name">target</span>) {
+    <span class="org-type">unordered_map</span>&lt;<span class="org-type">int</span>, <span class="org-type">int</span>&gt; <span class="org-variable-name">m</span>;
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">result</span>;
+    <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i&lt;nums.size(); i++){
+      <span class="org-comment-delimiter">// </span><span class="org-comment">&#25214;&#19981;&#21040;&#31532;&#20108;&#20010;</span>
+      <span class="org-keyword">if</span> (m.find(<span class="org-type">nums</span>[i]) == m.end() ) { 
+        <span class="org-comment-delimiter">// </span><span class="org-comment">&#23384;&#20648;&#31532;&#19968;&#20010;&#20540;&#20316;&#20026;&#31532;&#20108;&#20010;&#30340;&#38190;</span>
+        m[target - nums[i]] = i; 
+      }<span class="org-keyword">else</span> { 
+        <span class="org-comment-delimiter">// </span><span class="org-comment">&#25214;&#21040;&#31532;&#20108;&#20010;</span>
+        result.push_back(<span class="org-type">m</span>[nums[i]]);
+        result.push_back(i);
+        <span class="org-keyword">break</span>;
+      }
+    }
+    <span class="org-keyword">return</span> result;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">nums_array</span>[] = {<span class="org-highlight-numbers-number">11</span>, <span class="org-highlight-numbers-number">7</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">15</span>};
+  <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">nums</span>(nums_array, nums_array + <span class="org-highlight-numbers-number">4</span>);
+  <span class="org-type">int</span> <span class="org-variable-name">target</span> = <span class="org-highlight-numbers-number">9</span>;
+  <span class="org-type">Solution</span> <span class="org-variable-name">solution</span>;
+  <span class="org-keyword">auto</span> <span class="org-variable-name">result</span> =   solution.twoSum(nums, target);
+  <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; result.size(); ++i) {
+    cout &lt;&lt; result[i] &lt;&lt; <span class="org-string">" "</span>;
+  }
+  <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8eb3628" class="outline-3">
+<h3 id="org8eb3628"><span class="section-number-3">1.2</span> 两数相加</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。
+你可以假设除了数字 0 之外，这两个数字都不会以零开头。
+</p>
+
+<pre class="example">
+输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+输出：7 -&gt; 0 -&gt; 8
+原因：342 + 465 = 807
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">struct</span> <span class="org-type">ListNode</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">val</span>;
+  <span class="org-type">ListNode</span> *<span class="org-variable-name">next</span>;
+  <span class="org-function-name">ListNode</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) : val(x), next(<span class="org-constant">NULL</span>) {}
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">ListNode</span> *<span class="org-function-name">addTwoNumbers</span>(<span class="org-type">ListNode</span> *<span class="org-variable-name">l1</span>, <span class="org-type">ListNode</span> *<span class="org-variable-name">l2</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">x</span> = <span class="org-highlight-numbers-number">0</span>, <span class="org-variable-name">y</span> = <span class="org-highlight-numbers-number">0</span>, <span class="org-variable-name">carry</span> = <span class="org-highlight-numbers-number">0</span>, <span class="org-variable-name">sum</span> = <span class="org-highlight-numbers-number">0</span>;
+    <span class="org-type">ListNode</span> *<span class="org-variable-name">h</span> = <span class="org-constant">NULL</span>, **<span class="org-variable-name">t</span> = &amp;h;
+
+    <span class="org-keyword">while</span> (l1 != <span class="org-constant">NULL</span> || l2 != <span class="org-constant">NULL</span>) {
+      x = getValueAndMoveNext(l1);
+      y = getValueAndMoveNext(l2);
+
+      sum = carry + x + y;
+
+      <span class="org-type">ListNode</span> *<span class="org-variable-name">node</span> = <span class="org-keyword">new</span> <span class="org-type">ListNode</span>(sum % <span class="org-highlight-numbers-number">10</span>);
+      *t = node;
+      t = (&amp;node-&gt;next);
+
+      carry = sum / <span class="org-highlight-numbers-number">10</span>;
+    }
+
+    <span class="org-keyword">if</span> (carry &gt; <span class="org-highlight-numbers-number">0</span>) {
+      <span class="org-type">ListNode</span> *<span class="org-variable-name">node</span> = <span class="org-keyword">new</span> <span class="org-type">ListNode</span>(carry % <span class="org-highlight-numbers-number">10</span>);
+      *t = node;
+    }
+
+    <span class="org-keyword">return</span> h;
+  }
+
+<span class="org-keyword">private</span>:
+  <span class="org-type">int</span> <span class="org-function-name">getValueAndMoveNext</span>(<span class="org-type">ListNode</span> *&amp;<span class="org-variable-name">l</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">x</span> = <span class="org-highlight-numbers-number">0</span>;
+    <span class="org-keyword">if</span> (l != <span class="org-constant">NULL</span>) {
+      x = l-&gt;val;
+      l = l-&gt;next;
+    }
+    <span class="org-keyword">return</span> x;
+  }
+};
+
+<span class="org-type">ListNode</span> *<span class="org-function-name">createList</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">len</span>) {
+  <span class="org-keyword">if</span> (len == <span class="org-highlight-numbers-number">0</span>) {
+    <span class="org-keyword">return</span> <span class="org-constant">nullptr</span>;
+  }
+
+  <span class="org-type">ListNode</span> *<span class="org-variable-name">list</span> = <span class="org-keyword">new</span> <span class="org-type">ListNode</span>(arr[<span class="org-highlight-numbers-number">0</span>]);
+  <span class="org-type">ListNode</span> *<span class="org-variable-name">temp</span> = list;
+
+  <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">1</span>; i &lt; len; ++i) {
+    temp-&gt;next = <span class="org-keyword">new</span> <span class="org-type">ListNode</span>(arr[i]);
+    temp = temp-&gt;next;
+  }
+  <span class="org-keyword">return</span> list;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+  <span class="org-type">int</span> <span class="org-variable-name">arr1</span>[] = {<span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">4</span>, <span class="org-highlight-numbers-number">3</span>};
+  <span class="org-type">ListNode</span> *<span class="org-variable-name">l1</span> = createList(arr1, <span class="org-highlight-numbers-number">3</span>);
+  <span class="org-type">int</span> <span class="org-variable-name">arr2</span>[] = {<span class="org-highlight-numbers-number">5</span>, <span class="org-highlight-numbers-number">6</span>, <span class="org-highlight-numbers-number">4</span>};
+  <span class="org-type">ListNode</span> *<span class="org-variable-name">l2</span> = createList(arr2, <span class="org-highlight-numbers-number">3</span>);
+  <span class="org-type">Solution</span> <span class="org-variable-name">solution</span>;
+  <span class="org-type">ListNode</span> *<span class="org-variable-name">l</span> = solution.addTwoNumbers(l1, l2);
+
+  <span class="org-keyword">while</span> (l) {
+    cout &lt;&lt; l-&gt;val &lt;&lt; <span class="org-string">" "</span>;
+    l = l-&gt;next;
+  }
+  <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge910ca6" class="outline-3">
+<h3 id="orge910ca6"><span class="section-number-3">1.3</span> 无重复字串的最长子串</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+给定一个字符串，找出不含有重复字符的最长子串的长度。
+</p>
+
+<p>
+使用 map 存储字符串的索引
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;string&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;map&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+<span class="org-keyword">public</span>:
+    <span class="org-type">int</span> <span class="org-function-name">lengthOfLongestSubstring</span>(<span class="org-type">string</span> <span class="org-variable-name">s</span>) {
+      <span class="org-type">map</span>&lt;<span class="org-type">char</span>, <span class="org-type">int</span>&gt; <span class="org-variable-name">m</span>;
+      <span class="org-type">int</span> <span class="org-variable-name">nextRepeatPos</span>= -<span class="org-highlight-numbers-number">1</span>;
+      <span class="org-type">int</span> <span class="org-variable-name">maxLen</span> = <span class="org-highlight-numbers-number">0</span>;
+      <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; s.size(); ++i) {
+        <span class="org-keyword">if</span> (m.find(<span class="org-type">s</span>[i]) != m.end() &amp;&amp; nextRepeatPos &lt; m[s[i]]) {
+          nextRepeatPos = m[s[i]];
+        }
+        <span class="org-keyword">if</span> (i - nextRepeatPos &gt; maxLen) {
+          maxLen = i - nextRepeatPos;
+        }
+        m[s[i]] = i;
+      }
+      <span class="org-keyword">return</span> maxLen;
+    }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+  <span class="org-type">Solution</span> <span class="org-variable-name">solution</span>;
+  cout &lt;&lt; solution.lengthOfLongestSubstring(string(<span class="org-string">"abba"</span>)) &lt;&lt; endl;
+  <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org04e980a" class="outline-3">
+<h3 id="org04e980a"><span class="section-number-3">1.4</span> 两个排序数组的中位数</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+给定两个大小为 m 和 n 的有序数组 nums1 和 nums2 。
+请找出这两个有序数组的中位数。要求算法的时间复杂度为 O(log (m+n)) 。
+你可以假设 nums1 和 nums2 不同时为空。
+</p>
+
+<pre class="example">
+// example
+nums1 = [1, 3]
+nums2 = [2]
+
+中位数是 2.0
+
+// example
+nums1 = [1, 2]
+nums2 = [3, 4]
+
+中位数是 (2 + 3)/2 = 2.5
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">double</span> <span class="org-function-name">findMedianSortedArrays</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">nums1</span>, <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">nums2</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">m</span> = nums1.size();
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = nums2.size();
+    <span class="org-keyword">if</span> (m &gt; n) { <span class="org-comment-delimiter">// </span><span class="org-comment">to ensure m &lt;= n</span>
+      swap(nums1, nums2);
+      swap(m, n);
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">iMin</span> = <span class="org-highlight-numbers-number">0</span>, <span class="org-variable-name">iMax</span> = m, <span class="org-variable-name">halfLen</span> = (m + n + <span class="org-highlight-numbers-number">1</span>) / <span class="org-highlight-numbers-number">2</span>;
+    <span class="org-keyword">while</span> (iMin &lt;= iMax) {
+      <span class="org-type">int</span> <span class="org-variable-name">leftHalf</span> = (iMin + iMax) / <span class="org-highlight-numbers-number">2</span>;
+      <span class="org-type">int</span> <span class="org-variable-name">rightHalf</span> = halfLen - leftHalf;
+
+      <span class="org-keyword">if</span> (<span class="org-type">leftHalf</span> &lt; iMax &amp;&amp; nums2[rightHalf - <span class="org-highlight-numbers-number">1</span>] &gt; <span class="org-variable-name">nums1</span>[leftHalf]) {
+        iMin = leftHalf + <span class="org-highlight-numbers-number">1</span>;
+      } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (leftHalf &gt; iMin &amp;&amp; nums1[leftHalf - <span class="org-highlight-numbers-number">1</span>] &gt; nums2[rightHalf]) {
+        iMax = leftHalf - <span class="org-highlight-numbers-number">1</span>;
+      } <span class="org-keyword">else</span> {
+        <span class="org-type">int</span> <span class="org-variable-name">maxLeft</span> = <span class="org-highlight-numbers-number">0</span>;
+        <span class="org-keyword">if</span> (leftHalf == <span class="org-highlight-numbers-number">0</span>) maxLeft = nums2[rightHalf - <span class="org-highlight-numbers-number">1</span>];
+        <span class="org-keyword">else</span> <span class="org-keyword">if</span> (rightHalf == <span class="org-highlight-numbers-number">0</span>) maxLeft = nums1[leftHalf - <span class="org-highlight-numbers-number">1</span>];
+        <span class="org-keyword">else</span> maxLeft = max(<span class="org-type">nums1</span>[leftHalf - <span class="org-highlight-numbers-number">1</span>], <span class="org-type">nums2</span>[rightHalf - <span class="org-highlight-numbers-number">1</span>]);
+        <span class="org-keyword">if</span> ((m + n) % <span class="org-highlight-numbers-number">2</span> == <span class="org-highlight-numbers-number">1</span>) <span class="org-keyword">return</span> maxLeft;
+
+        <span class="org-type">int</span> <span class="org-variable-name">minRight</span> = <span class="org-highlight-numbers-number">0</span>;
+        <span class="org-keyword">if</span> (leftHalf == m) minRight = nums2[rightHalf];
+        <span class="org-keyword">else</span> <span class="org-keyword">if</span> (rightHalf == n) minRight = nums1[leftHalf];
+        <span class="org-keyword">else</span> minRight = min(<span class="org-type">nums2</span>[rightHalf], <span class="org-type">nums1</span>[leftHalf]);
+        <span class="org-keyword">return</span> (maxLeft + minRight) / <span class="org-highlight-numbers-number">2.0</span>;
+      }
+    }
+    <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0.0</span>;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+  <span class="org-type">Solution</span> <span class="org-variable-name">solution</span>;
+  <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">nums1</span> = {<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">3</span>};
+  <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">nums2</span> = {<span class="org-highlight-numbers-number">2</span>};
+  cout &lt;&lt; solution.findMedianSortedArrays(nums1, nums2) &lt;&lt; endl;
+  <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org92bbf38" class="outline-3">
+<h3 id="org92bbf38"><span class="section-number-3">1.5</span> 最长回文子串</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。
+</p>
+
+<pre class="example">
+example 1
+输入: "babad"
+输出: "bab"
+注意: "aba"也是一个有效答案。
+example 2
+输入: "cbbd"
+输出: "bb"
+</pre>
+
+<p>
+<a href="https://articles.leetcode.com/longest-palindromic-substring-part-ii/">Manacher algorithms</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+<span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">string</span> <span class="org-function-name">longestPalindrome</span>(<span class="org-type">string</span> <span class="org-variable-name">s</span>) {
+    <span class="org-type">string</span> <span class="org-variable-name">T</span> = preProcess(s);
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = T.length();
+    <span class="org-type">int</span> *<span class="org-variable-name">p</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[n];
+    <span class="org-type">int</span> <span class="org-variable-name">C</span> = <span class="org-highlight-numbers-number">0</span>, <span class="org-variable-name">R</span> = <span class="org-highlight-numbers-number">0</span>;
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; n - <span class="org-highlight-numbers-number">1</span>; ++i) {
+      <span class="org-type">int</span> <span class="org-variable-name">i_mirror</span> = <span class="org-highlight-numbers-number">2</span> * C - i;
+      p[i] = (R &gt; i) ? min(R - i, <span class="org-type">p</span>[i_mirror]) : <span class="org-highlight-numbers-number">0</span>;
+      <span class="org-keyword">while</span> (T[i + <span class="org-highlight-numbers-number">1</span> + p[i]] == T[i - <span class="org-highlight-numbers-number">1</span> - p[i]]) {
+        p[i]++;
+      }
+
+      <span class="org-keyword">if</span> (i + p[i] &gt; R) {
+        C = i;
+        R = i + p[i];
+      }
+    }
+    <span class="org-type">int</span> <span class="org-variable-name">maxLen</span> = <span class="org-highlight-numbers-number">0</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">centerIndex</span> = <span class="org-highlight-numbers-number">0</span>;
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">1</span>; i &lt; n - <span class="org-highlight-numbers-number">1</span>; i++) {
+      <span class="org-keyword">if</span> (p[i] &gt; maxLen) {
+        maxLen = p[i];
+        centerIndex = i;
+      }
+    }
+    <span class="org-keyword">delete</span>[] p;
+
+    <span class="org-keyword">return</span> s.substr((centerIndex - <span class="org-highlight-numbers-number">1</span> - maxLen) / <span class="org-highlight-numbers-number">2</span>, maxLen);
+  }
+
+<span class="org-keyword">private</span>:
+  <span class="org-type">string</span> <span class="org-function-name">preProcess</span>(<span class="org-type">string</span> <span class="org-variable-name">s</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = s.length();
+    <span class="org-keyword">if</span> (n == <span class="org-highlight-numbers-number">0</span>)
+      <span class="org-keyword">return</span> <span class="org-string">"^$"</span>;
+    <span class="org-type">string</span> <span class="org-variable-name">ret</span> = <span class="org-string">"^"</span>;
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; n; ++i) {
+      ret += <span class="org-string">"#"</span> + s.substr(i, <span class="org-highlight-numbers-number">1</span>);
+    }
+    ret += <span class="org-string">"#$"</span>;
+    <span class="org-keyword">return</span> ret;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+  <span class="org-type">Solution</span> <span class="org-variable-name">solution</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">str</span>(<span class="org-string">"babad"</span>);
+  cout &lt;&lt; solution.longestPalindrome(str) &lt;&lt; endl;
+  <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org301f0fa" class="outline-3">
+<h3 id="org301f0fa"><span class="section-number-3">1.6</span> Z 字形变换</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+将字符串 "PAYPALISHIRING" 以Z字形排列成给定的行数：
+</p>
+
+<pre class="example">
+P   A   H   N
+A P L S I I G
+Y   I   R
+</pre>
+
+<p>
+之后从左往右，逐行读取字符："PAHNAPLSIIGYIR"
+实现一个将字符串进行指定行数变换的函数:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-type">string</span> <span class="org-function-name">convert</span>(<span class="org-type">string</span> <span class="org-variable-name">s</span>, <span class="org-type">int</span> <span class="org-variable-name">numRows</span>);
+</pre>
+</div>
+
+<pre class="example">
+example 1
+输入: s = "PAYPALISHIRING", numRows = 3
+输出: "PAHNAPLSIIGYIR"
+
+example 2
+输入: s = "PAYPALISHIRING", numRows = 4
+输出: "PINALSIGYAHRPI"
+解释:
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;string&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+<span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">string</span> <span class="org-function-name">convert</span>(<span class="org-type">string</span> <span class="org-variable-name">s</span>, <span class="org-type">int</span> <span class="org-variable-name">numRows</span>) {
+    <span class="org-keyword">if</span> (numRows == <span class="org-highlight-numbers-number">1</span>) <span class="org-keyword">return</span> s;
+
+    <span class="org-type">int</span> <span class="org-variable-name">strLen</span> = s.size();
+    <span class="org-type">string</span> <span class="org-variable-name">value</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">cycleLen</span> = numRows + (numRows - <span class="org-highlight-numbers-number">2</span>);
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; numRows; ++i) {
+      <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">j</span> = <span class="org-highlight-numbers-number">0</span>; j + i &lt; strLen; j += cycleLen) {
+        value += s[j + i];
+        <span class="org-keyword">if</span> (i !=<span class="org-highlight-numbers-number">0</span> &amp;&amp; i != numRows - <span class="org-highlight-numbers-number">1</span> &amp;&amp; j + cycleLen - i &lt; strLen)
+          value += s[j + cycleLen - i];
+      }
+    }
+    <span class="org-keyword">return</span> value;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+  <span class="org-type">Solution</span> <span class="org-variable-name">solution</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">str</span>(<span class="org-string">"PAYPALISHIRING"</span>);
+  cout &lt;&lt; solution.convert(str, <span class="org-highlight-numbers-number">4</span>) &lt;&lt; endl;
+  <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7e00d6b" class="outline-3">
+<h3 id="org7e00d6b"><span class="section-number-3">1.7</span> 反转整数</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+给定一个 32 位有符号整数，将整数中的数字进行反转。
+</p>
+
+<pre class="example">
+示例   1     2    3
+输入: 123  -123  120
+输出: 321  -321  21
+</pre>
+
+<p>
+假设我们的环境只能存储 32 位有符号整数，其数值范围是 \([−2^{31}, 2^{31}-1]\) 。根据这个假设，如果反转后的整数溢出，则返回 0。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">INT_MAX</span> <span class="org-highlight-numbers-number">2147483647</span>
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">INT_MIN</span> (-INT_MAX - <span class="org-highlight-numbers-number">1</span>)
+<span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">int</span> <span class="org-function-name">reverse</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">y</span> = <span class="org-highlight-numbers-number">0</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">n</span>;
+    <span class="org-keyword">while</span>(x != <span class="org-highlight-numbers-number">0</span>) {
+      n = x % <span class="org-highlight-numbers-number">10</span>;
+      <span class="org-keyword">if</span> (y &gt; INT_MAX / <span class="org-highlight-numbers-number">10</span> || y &lt; INT_MIN / <span class="org-highlight-numbers-number">10</span>) {
+        <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+      }
+      y = y * <span class="org-highlight-numbers-number">10</span> + n;
+      x /= <span class="org-highlight-numbers-number">10</span>;
+    }
+    <span class="org-keyword">return</span> y;
+  }
+};
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+  <span class="org-type">Solution</span> <span class="org-variable-name">solution</span>;
+  cout &lt;&lt; solution.reverse(<span class="org-highlight-numbers-number">1534236469</span>) &lt;&lt; endl;
+  <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4a73e31" class="outline-3">
+<h3 id="org4a73e31"><span class="section-number-3">1.8</span> 字符串转整数(atoi)</h3>
+<div class="outline-text-3" id="text-1-8">
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;ctype.h&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdlib.h&gt;</span>
+
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">INT_MIN</span> (-<span class="org-highlight-numbers-number">2147483647</span> - <span class="org-highlight-numbers-number">1</span>)
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">INT_MAX</span> <span class="org-highlight-numbers-number">2147483647</span>
+
+<span class="org-type">int</span> <span class="org-function-name">atoi</span>(<span class="org-keyword">const</span> <span class="org-type">char</span> *<span class="org-variable-name">str</span>) {
+  <span class="org-keyword">if</span> (str == <span class="org-constant">NULL</span> || *str == <span class="org-string">'\0'</span>) {
+    <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+  }
+  <span class="org-type">int</span> <span class="org-variable-name">ret</span> = <span class="org-highlight-numbers-number">0</span>;
+  <span class="org-keyword">for</span> (; isspace(*str); str++)
+    ;
+  <span class="org-type">bool</span> <span class="org-variable-name">neg</span> = <span class="org-constant">false</span>;
+  <span class="org-keyword">if</span> (*str == <span class="org-string">'-'</span> || *str == <span class="org-string">'+'</span>) {
+    neg = (*str == <span class="org-string">'-'</span>);
+    str++;
+  }
+  <span class="org-keyword">for</span> (; isdigit(*str); str++) {
+    <span class="org-type">int</span> <span class="org-variable-name">digit</span> = (*str - <span class="org-string">'0'</span>);
+    <span class="org-keyword">if</span> (neg) {
+      <span class="org-keyword">if</span> (-ret &lt; (INT_MIN + digit) / <span class="org-highlight-numbers-number">10</span>) {
+        <span class="org-keyword">return</span> INT_MIN;
+      }
+    } <span class="org-keyword">else</span> {
+      <span class="org-keyword">if</span> (ret &gt; (INT_MAX - digit) / <span class="org-highlight-numbers-number">10</span>) {
+        <span class="org-keyword">return</span> INT_MAX;
+      }
+    }
+    ret = <span class="org-highlight-numbers-number">10</span> * ret + digit;
+  }
+  <span class="org-keyword">return</span> neg ? -ret : ret;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgca2734b" class="outline-3">
+<h3 id="orgca2734b"><span class="section-number-3">1.9</span> 回文数</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+判断一个整数是否是回文数。回文数是指正序 (从左向右) 和倒序 (从右向左) 读都是一样的整数。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-type">bool</span> <span class="org-function-name">isPalindrome</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+  <span class="org-keyword">if</span> (x &lt; <span class="org-highlight-numbers-number">0</span> || (x % <span class="org-highlight-numbers-number">10</span> == <span class="org-highlight-numbers-number">0</span> &amp;&amp; x != <span class="org-highlight-numbers-number">0</span>)) {
+    <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+  }
+  <span class="org-type">int</span> <span class="org-variable-name">revertedNumber</span>;
+  <span class="org-keyword">while</span> (x &gt; revertedNumber) {
+    revertedNumber = revertedNumber * <span class="org-highlight-numbers-number">10</span> + x % <span class="org-highlight-numbers-number">10</span>;
+    x /= <span class="org-highlight-numbers-number">10</span>;
+  }
+  <span class="org-keyword">return</span> x == revertedNumber || x == revertedNumber / <span class="org-highlight-numbers-number">10</span>;
+}
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+  <span class="org-constant">std</span>::cout &lt;&lt; isPalindrome(<span class="org-highlight-numbers-number">12321</span>) &lt;&lt; <span class="org-string">'\n'</span>;
+  <span class="org-keyword">return</span> <span class="org-highlight-numbers-number">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org470091e" class="outline-3">
+<h3 id="org470091e"><span class="section-number-3">1.10</span> 正则表达式匹配</h3>
+</div>
+<div id="outline-container-orgfd4e7b8" class="outline-3">
+<h3 id="orgfd4e7b8"><span class="section-number-3">1.11</span> container-with-most-water</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+Given n non-negative integers a1, a2, &#x2026;, an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+</p>
+
+<p>
+Note: You may not slant the container and n is at least 2.
+<img src="image/algorithms/screenshot_2018-09-11_20-43-42.png" alt="screenshot_2018-09-11_20-43-42.png" />
+</p>
+
+<pre class="example">
+Input: [1,8,6,2,5,4,8,3,7]
+Output: 49
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-type">int</span> <span class="org-function-name">maxArea</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">height</span>) {
+  <span class="org-type">int</span> <span class="org-variable-name">maxArea</span> = <span class="org-highlight-numbers-number">0</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">left</span> = <span class="org-highlight-numbers-number">0</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">right</span> = height.size() - <span class="org-highlight-numbers-number">1</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">area</span>;
+  <span class="org-keyword">while</span> (left &lt; right) {
+    area = (right - left) *
+           (height[left] &lt; height[right] ? height[left] : height[right]);
+    maxArea = area &gt; maxArea ? area : maxArea;
+    <span class="org-keyword">if</span> (height[left] &lt; height[right]) {
+      <span class="org-keyword">do</span> {
+        left++;
+      } <span class="org-keyword">while</span> (left &lt; right &amp;&amp; height[left - <span class="org-highlight-numbers-number">1</span>] &gt;= height[left]);
+    } <span class="org-keyword">else</span> {
+      <span class="org-keyword">do</span> {
+        right--;
+      } <span class="org-keyword">while</span> (left &lt; right &amp;&amp; height[right + <span class="org-highlight-numbers-number">1</span>] &gt;= height[right]);
+    }
+  }
+  <span class="org-keyword">return</span> maxArea;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3d2d59f" class="outline-3">
+<h3 id="org3d2d59f"><span class="section-number-3">1.12</span> <a href="https://leetcode-cn.com/problems/integer-to-roman/description/">integer_to_roman</a></h3>
+<div class="outline-text-3" id="text-1-12">
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;string&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+<span class="org-type">string</span> <span class="org-function-name">intToRoman</span>(<span class="org-type">int</span> <span class="org-variable-name">num</span>) {
+  <span class="org-type">string</span> <span class="org-variable-name">symbol</span>[] = {<span class="org-string">"M"</span>,  <span class="org-string">"CM"</span>, <span class="org-string">"D"</span>,  <span class="org-string">"CD"</span>, <span class="org-string">"C"</span>,  <span class="org-string">"XC"</span>, <span class="org-string">"L"</span>,
+                     <span class="org-string">"XL"</span>, <span class="org-string">"X"</span>,  <span class="org-string">"IX"</span>, <span class="org-string">"V"</span>,  <span class="org-string">"IV"</span>, <span class="org-string">"I"</span>};
+  <span class="org-type">int</span> <span class="org-variable-name">value</span>[] = {<span class="org-highlight-numbers-number">1000</span>, <span class="org-highlight-numbers-number">900</span>, <span class="org-highlight-numbers-number">500</span>, <span class="org-highlight-numbers-number">400</span>, <span class="org-highlight-numbers-number">100</span>, <span class="org-highlight-numbers-number">90</span>, <span class="org-highlight-numbers-number">50</span>, <span class="org-highlight-numbers-number">40</span>, <span class="org-highlight-numbers-number">10</span>, <span class="org-highlight-numbers-number">9</span>, <span class="org-highlight-numbers-number">5</span>, <span class="org-highlight-numbers-number">4</span>, <span class="org-highlight-numbers-number">1</span>};
+  <span class="org-type">string</span> <span class="org-variable-name">result</span>;
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; num != <span class="org-highlight-numbers-number">0</span>; i++) {
+    <span class="org-keyword">while</span> (num &gt;= value[i]) {
+      num -= value[i];
+      result += symbol[i];
+    }
+  }
+  <span class="org-keyword">return</span> result;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span>[]) {
+  cout &lt;&lt; intToRoman(<span class="org-highlight-numbers-number">2259</span>) &lt;&lt; endl;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: yydcnjjw</p>
+<p class="date">Created: 2019-04-07 日 22:30</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

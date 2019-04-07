@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-07 日 22:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yydcnjjw" />
+<link rel="stylesheet" href="https://yydcnjjw.github.io/style/style.css" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7de7c8b">1. intel</a>
+<ul>
+<li><a href="#orgd9960b0">1.1. 分页</a>
+<ul>
+<li><a href="#orgbb0e965">1.1.1. <span class="todo TODO">TODO</span> execute-disable</a></li>
+<li><a href="#org3fd1aa1">1.1.2. <span class="todo TODO">TODO</span> PCIDs</a></li>
+<li><a href="#org9871b72">1.1.3. <span class="todo TODO">TODO</span> protection keys</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7de7c8b" class="outline-2">
+<h2 id="org7de7c8b"><span class="section-number-2">1</span> intel</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgd9960b0" class="outline-3">
+<h3 id="orgd9960b0"><span class="section-number-3">1.1</span> 分页</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+intel 有四种分页模式
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> 不同分页模式的属性</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">paging</th>
+<th scope="col" class="org-right">CR0</th>
+<th scope="col" class="org-right">CR4</th>
+<th scope="col" class="org-right">IA32_EFER</th>
+<th scope="col" class="org-right">CR4</th>
+<th scope="col" class="org-right">Lin-Addr</th>
+<th scope="col" class="org-left">Phys-Addr</th>
+<th scope="col" class="org-left">Page Sizes</th>
+<th scope="col" class="org-left">Supports</th>
+<th scope="col" class="org-left">Supports PCIDs and</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">mode</th>
+<th scope="col" class="org-right">PG</th>
+<th scope="col" class="org-right">PAE</th>
+<th scope="col" class="org-right">LME</th>
+<th scope="col" class="org-right">LA57</th>
+<th scope="col" class="org-right">Width</th>
+<th scope="col" class="org-left">Width</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Execute-Disable</th>
+<th scope="col" class="org-left">protection keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">None</td>
+<td class="org-right">0</td>
+<td class="org-right">N/A</td>
+<td class="org-right">N/A</td>
+<td class="org-right">N/A</td>
+<td class="org-right">32</td>
+<td class="org-left">32</td>
+<td class="org-left">N/A</td>
+<td class="org-left">No</td>
+<td class="org-left">No</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">32-bit</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">32</td>
+<td class="org-left">Up to 40</td>
+<td class="org-left">4KB/4MB</td>
+<td class="org-left">No</td>
+<td class="org-left">No</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">PAE</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">32</td>
+<td class="org-left">Up to 52</td>
+<td class="org-left">4KB/2MB</td>
+<td class="org-left">Yes</td>
+<td class="org-left">No</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">4-level</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">48</td>
+<td class="org-left">Up to 52</td>
+<td class="org-left">4KB/2MB/1GB</td>
+<td class="org-left">Yes</td>
+<td class="org-left">Yes</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">5-level</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">57</td>
+<td class="org-left">Up to 52</td>
+<td class="org-left">4KB/2MB/1GB/512GB</td>
+<td class="org-left">Yes</td>
+<td class="org-left">Yes</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> 不同分页模式的结构</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">paging structure</th>
+<th scope="col" class="org-left">entry</th>
+<th scope="col" class="org-left">paging mode</th>
+<th scope="col" class="org-left">Phys-Addr</th>
+<th scope="col" class="org-right">Bits Selecting</th>
+<th scope="col" class="org-left">Page Mapping</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">name</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">of structure</th>
+<th scope="col" class="org-right">Entry</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">PML5 table</td>
+<td class="org-left">PML5E</td>
+<td class="org-left">32-bit,PAE,4-level</td>
+<td class="org-left">N/A</td>
+<td class="org-right">N/A</td>
+<td class="org-left">N/A</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">5-level</td>
+<td class="org-left">CR3</td>
+<td class="org-right">56:48</td>
+<td class="org-left">N/A(PS must be 0)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">32-bit,PAE</td>
+<td class="org-left">N/A</td>
+<td class="org-right">N/A</td>
+<td class="org-left">N/A</td>
+</tr>
+
+<tr>
+<td class="org-left">PML 4 table</td>
+<td class="org-left">PML4E</td>
+<td class="org-left">4-level</td>
+<td class="org-left">CR3</td>
+<td class="org-right">47:39</td>
+<td class="org-left">N/A(PS must be 0)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">5-level</td>
+<td class="org-left">PML5E</td>
+<td class="org-right">47:39</td>
+<td class="org-left">512GByte page if PS=1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Page-directory-pointer</td>
+<td class="org-left">PDPTE</td>
+<td class="org-left">32-bit</td>
+<td class="org-left">N/A</td>
+<td class="org-right">N/A</td>
+<td class="org-left">N/A</td>
+</tr>
+
+<tr>
+<td class="org-left">table</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">PAE</td>
+<td class="org-left">CR3</td>
+<td class="org-right">31:30</td>
+<td class="org-left">N/A(PS must be 0)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">4-level,5-level</td>
+<td class="org-left">PML4E</td>
+<td class="org-right">38:30</td>
+<td class="org-left">1-GByte page if PS=1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Page directory</td>
+<td class="org-left">PDE</td>
+<td class="org-left">32-bit</td>
+<td class="org-left">CR3</td>
+<td class="org-right">31:22</td>
+<td class="org-left">4-MByte page if PS=1</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">PAE,4-level,5-level</td>
+<td class="org-left">PDPTE</td>
+<td class="org-right">29:21</td>
+<td class="org-left">2-MByte page if PS=1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Page table</td>
+<td class="org-left">PTE</td>
+<td class="org-left">32-bit</td>
+<td class="org-left">PDE</td>
+<td class="org-right">21:12</td>
+<td class="org-left">4-KByte page</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">PAE,4-level,5-level</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">20:12</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-orgbb0e965" class="outline-4">
+<h4 id="orgbb0e965"><span class="section-number-4">1.1.1</span> <span class="todo TODO">TODO</span> execute-disable</h4>
+</div>
+<div id="outline-container-org3fd1aa1" class="outline-4">
+<h4 id="org3fd1aa1"><span class="section-number-4">1.1.2</span> <span class="todo TODO">TODO</span> PCIDs</h4>
+</div>
+<div id="outline-container-org9871b72" class="outline-4">
+<h4 id="org9871b72"><span class="section-number-4">1.1.3</span> <span class="todo TODO">TODO</span> protection keys</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: yydcnjjw</p>
+<p class="date">Created: 2019-04-07 日 22:31</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

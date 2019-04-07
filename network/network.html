@@ -1,0 +1,2323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-07 日 22:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yydcnjjw" />
+<link rel="stylesheet" href="https://yydcnjjw.github.io/style/style.css" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2193c47">1. Security</a>
+<ul>
+<li><a href="#orgb77beb5">1.1. Data Link Layer</a>
+<ul>
+<li><a href="#org5e50185">1.1.1. DHCP-snooping</a></li>
+<li><a href="#orgbb0b4b8">1.1.2. PVLAN(Private VLAN)</a></li>
+<li><a href="#orgffe3f20">1.1.3. DAI</a></li>
+<li><a href="#orgb255763">1.1.4. IP source Guard</a></li>
+<li><a href="#org897021e">1.1.5. ACL+route-map(策略工具)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb7d01f7">2. experiment</a>
+<ul>
+<li><a href="#orga099d66">2.1. CA-L2L-VPN</a></li>
+<li><a href="#org3f25606">2.2. RRI &amp; DPD</a></li>
+<li><a href="#org5d1870d">2.3. L2L-redundancy</a></li>
+<li><a href="#orgebedb90">2.4. VPDN-PPTP</a></li>
+<li><a href="#org0ad13d8">2.5. VPDN-pppoe</a></li>
+<li><a href="#orgab63e4c">2.6. VPDN-L2TP</a></li>
+<li><a href="#org8b3daa6">2.7. EZVPN</a></li>
+<li><a href="#org5193d5e">2.8. DMVPN</a></li>
+<li><a href="#orgece49eb">2.9. EZVPN-SOFTWARE</a></li>
+<li><a href="#org7919363">2.10. uRPF</a></li>
+<li><a href="#orgb2b79f1">2.11. CoPP</a></li>
+<li><a href="#org0b4d9e2">2.12. Basic-Zone-Policy</a></li>
+<li><a href="#orgeba6043">2.13. Basic-Zone-Policy2</a></li>
+<li><a href="#org286b793">2.14. Basic-Zone-Policy3</a></li>
+<li><a href="#org3378060">2.15. CBAC</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2193c47" class="outline-2">
+<h2 id="org2193c47"><span class="section-number-2">1</span> Security</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgb77beb5" class="outline-3">
+<h3 id="orgb77beb5"><span class="section-number-3">1.1</span> Data Link Layer</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org5e50185" class="outline-4">
+<h4 id="org5e50185"><span class="section-number-4">1.1.1</span> DHCP-snooping</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+作用: 抵御DHCP地址池耗尽的攻击(保护合法的 DHCP 服务器)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbb0b4b8" class="outline-4">
+<h4 id="orgbb0b4b8"><span class="section-number-4">1.1.2</span> PVLAN(Private VLAN)</h4>
+</div>
+<div id="outline-container-orgffe3f20" class="outline-4">
+<h4 id="orgffe3f20"><span class="section-number-4">1.1.3</span> DAI</h4>
+</div>
+<div id="outline-container-orgb255763" class="outline-4">
+<h4 id="orgb255763"><span class="section-number-4">1.1.4</span> IP source Guard</h4>
+</div>
+<div id="outline-container-org897021e" class="outline-4">
+<h4 id="org897021e"><span class="section-number-4">1.1.5</span> ACL+route-map(策略工具)</h4>
+<div class="outline-text-4" id="text-1-1-5">
+</div>
+<ol class="org-ol">
+<li><a id="org7d6359b"></a>ACL<br />
+<div class="outline-text-5" id="text-1-1-5-1">
+<p>
+作用: 标记流量或者路由条目(为策略实施做准备)
+</p>
+
+<p>
+特点:
+</p>
+<ul class="org-ul">
+<li>一系列的运行和拒绝条目的集合</li>
+<li>从上至下依次匹配</li>
+<li>一旦匹配将不再往下执行</li>
+<li>任何ACL最后都有一条默认隐含的拒绝条目!
+<b>强烈建议的配置: <code>access-list 1 deny any log</code></b></li>
+<li>自身发起的流量将不接受 ACL 的控制, 解决方案(PBR, policy-base routing)</li>
+</ul>
+
+<p>
+种类:
+</p>
+<ul class="org-ul">
+<li>IPv4</li>
+<li>IPv6</li>
+<li>2层(MAC-ACL)</li>
+</ul>
+
+<p>
+表示方式:
+</p>
+<ul class="org-ul">
+<li>标准: 只匹配(检查)源(靠近目的位置调用)
+<ul class="org-ul">
+<li>数字: 1-99</li>
+<li>命名: 符合命名字符串的要求</li>
+</ul></li>
+<li>扩展: 可以匹配源目IP、源目接口以及协议(靠近源的位置调用)
+<ul class="org-ul">
+<li>数字: 100-199</li>
+<li>命名: 符合命名字符串的要求</li>
+</ul></li>
+</ul>
+
+<p>
+调用规则: 在接口下 IN/OUT 方向皆可调用 ACL(根据网络具体环境)
+<b>严重提醒：相同的方向、相同接口只能调用一个相同类型的ACL</b>
+</p>
+</div>
+</li>
+
+<li><a id="orgecaa79c"></a>route-map<br />
+<div class="outline-text-5" id="text-1-1-5-2">
+<p>
+概述: Route maps are similar to a scripting language for these reasons:
+</p>
+<ul class="org-ul">
+<li>They work like a more sophisticated access list
+<ul class="org-ul">
+<li>They offer top-down processing</li>
+<li>Once there is a match, leave the route map</li>
+</ul></li>
+<li>Lines are sequence-numbered for easier editing
+<ul class="org-ul">
+<li>Insertion of lines</li>
+<li>Deletion of lines</li>
+</ul></li>
+<li>Route maps are named rather than numbered for easier documentation</li>
+<li>Match criteria and set criteria can be used, similar to the "if, then" logic in a scripting language</li>
+</ul>
+
+<p>
+作用: The common uses of route maps are as follows:
+</p>
+<ul class="org-ul">
+<li>Redistribution route filtering: a more sophisticated alternative to distribute lists</li>
+<li>Policy-based routeing: the ability to determine routing policy based on criteria other than the destination network</li>
+<li>BGP policy implementation: the primary tool for defining BGP routing policies</li>
+</ul>
+
+<p>
+规则:
+</p>
+<pre class="example">
+|----------------------------|
+| route-map my_bgp permit 10 |
+| match ip address x y z     |
+|                  ----&gt;     |
+|                Logical OR  |
+|----------------------------|
+
+|--------------------------------|
+|       route-map my_bgp deny 20 |
+|          |                     |
+| Logical  |  match ...a         |
+|   AND    |  match ...b         |
+|          v  match ...c         |
+|--------------------------------|
+</pre>
+
+<p>
+注: 和 ACL 类似, 默认有 deny 语句
+</p>
+<pre class="example">
+route-map xx per 10
+route-map xx per 20
+route-map xx deny 30---default
+</pre>
+<p>
+如果是一个空 map(match any/set nothing)
+</p>
+</div>
+</li>
+
+<li><a id="org8e87f7d"></a>Prefix-list(前缀列表)<br />
+<div class="outline-text-5" id="text-1-1-5-3">
+<p>
+作用: <b>只能</b> 标记路由条目
+</p>
+
+<p>
+特点:
+</p>
+<ul class="org-ul">
+<li>只能匹配路由</li>
+<li>前缀列表既可以匹配网络号，也可以匹配掩码</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb7d01f7" class="outline-2">
+<h2 id="orgb7d01f7"><span class="section-number-2">2</span> experiment</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orga099d66" class="outline-3">
+<h3 id="orga099d66"><span class="section-number-3">2.1</span> CA-L2L-VPN</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-10-25_15-26-03.png" alt="screenshot_2018-10-25_15-26-03.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Topology</p>
+</div>
+
+<p>
+需求:
+</p>
+<ul class="org-ul">
+<li>证书认证的 L2L-VPN</li>
+<li>client 在线申请</li>
+<li>client2 离线申请</li>
+</ul>
+
+<p>
+配置:
+</p>
+<ol class="org-ol">
+<li>接口配置
+<ul class="org-ul">
+<li><p>
+CA:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 10.1.1.10 255.255.255.0
+</pre></li>
+<li><p>
+client:
+</p>
+<pre class="example">
+interface Loopback1
+ ip address 1.1.1.1 255.255.255.0
+interface Ethernet0/0
+ ip address 10.1.1.1 255.255.255.0
+</pre></li>
+<li><p>
+client2:
+</p>
+<pre class="example">
+interface Loopback1
+ ip address 2.2.2.2 255.255.255.0
+interface Ethernet0/0
+ ip address 10.1.1.2 255.255.255.0
+</pre></li>
+</ul></li>
+<li>配置 NTP 服务器
+<ul class="org-ul">
+<li><p>
+CA:
+</p>
+<pre class="example">
+!
+clock timezone UTC +8
+!
+ntp authentication-key 1 md5 cisco
+ntp authenticate
+ntp trusted-key 1
+ntp master
+</pre></li>
+<li><p>
+client:
+</p>
+<pre class="example">
+!
+clock timezone UTC +8
+!
+ntp authentication-key 1 md5 cisco
+ntp authenticate
+ntp trusted-key 1
+ntp server 10.1.1.10 key 1
+</pre>
+<p>
+状态:
+</p>
+<pre class="example">
+client#show ntp status
+Clock is synchronized, stratum 9, reference is 10.1.1.10      
+nominal freq is 250.0000 Hz, actual freq is 250.0000 Hz, precision is 2**10
+ntp uptime is 8200 (1/100 of seconds), resolution is 4000
+reference time is DF7BDE4D.31EB85A8 (14:16:45.195 UTC Thu Oct 25 2018)
+clock offset is 0.0000 msec, root delay is 2.00 msec
+root dispersion is 7941.77 msec, peer dispersion is 7938.47 msec
+loopfilter state is 'CTRL' (Normal Controlled Loop), drift is 0.000000000 s/s
+system poll interval is 64, last update was 1 sec ago.
+</pre></li>
+<li><p>
+client2:
+</p>
+<pre class="example">
+!
+clock timezone UTC +8
+!
+ntp authentication-key 1 md5 cisco
+ntp authenticate
+ntp trusted-key 1
+ntp server 10.1.1.10 key 1
+</pre>
+<p>
+状态:
+</p>
+<pre class="example">
+client2#show ntp status
+Clock is synchronized, stratum 9, reference is 10.1.1.10      
+nominal freq is 250.0000 Hz, actual freq is 250.0000 Hz, precision is 2**10
+ntp uptime is 19000 (1/100 of seconds), resolution is 4000
+reference time is DF7BDF2F.78106398 (14:20:31.469 UTC Thu Oct 25 2018)
+clock offset is 0.0000 msec, root delay is 2.00 msec
+root dispersion is 68.84 msec, peer dispersion is 64.87 msec
+loopfilter state is 'CTRL' (Normal Controlled Loop), drift is 0.000000000 s/s
+system poll interval is 64, last update was 44 sec ago.
+</pre></li>
+</ul></li>
+<li><p>
+架设证书服务器(CA)
+</p>
+<pre class="example">
+!
+ip http server
+!
+ip domain name cumt.edu
+!
+crypto pki server CA
+ issuer-name cn=CA.cumt.edu, o=cumt, ou=xuhai, l=xuzhou
+ lifetime certificate 180
+ lifetime ca-certificate 365
+ no shutdown
+</pre>
+<p>
+状态:
+</p>
+<pre class="example">
+CA Certificate
+  Status: Available
+  Certificate Serial Number (hex): 01
+  Certificate Usage: Signature
+  Issuer: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Subject: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Validity Date: 
+    start date: 14:21:06 UTC Oct 25 2018
+    end   date: 14:21:06 UTC Oct 25 2019
+  Associated Trustpoints: CA 
+</pre></li>
+<li>在线申请证书(client)
+<ul class="org-ul">
+<li><p>
+配置信任点:
+</p>
+<pre class="example">
+crypto pki trustpoint client
+ enrollment url http://10.1.1.10:80
+ subject-name cn=client.cumt.edu, o=cumt, ou=xuhai.client, l=xuzhou
+ revocation-check crl
+</pre></li>
+<li><p>
+认证证书服务器
+</p>
+<pre class="example">
+client(config)#crypto pki authenticate client
+Certificate has the following attributes:
+       Fingerprint MD5: 0D02F0B1 AA0928C3 A9A02440 0D976E67 
+      Fingerprint SHA1: C4E724FD B6664E5B 45351364 D665C8C2 5CEBA4C1 
+
+% Do you accept this certificate? [yes/no]: yes
+Trustpoint CA certificate accepted.
+</pre></li>
+<li><p>
+申请个人证书
+</p>
+<pre class="example">
+client(config)#crypto pki enroll client
+%
+% Start certificate enrollment .. 
+% Create a challenge password. You will need to verbally provide this
+   password to the CA Administrator in order to revoke your certificate.
+   For security reasons your password will not be saved in the configuration.
+   Please make a note of it.
+
+Password: 
+Re-enter password: 
+% The subject name in the certificate will include: cn=client.cumt.edu, o=cumt, ou=xuhai.client, l=xuzhou
+% The subject name in the certificate will include: client.cumt.edu
+% Include the router serial number in the subject name? [yes/no]: yes
+% The serial number in the certificate will be: 67108912
+% Include an IP address in the subject name? [no]: no
+Request certificate from CA? [yes/no]: yes
+% Certificate request sent to Certificate Authority
+% The 'show crypto pki certificate verbose client' commandwill show the fingerprint.
+</pre></li>
+<li><p>
+CA 下发个人证书
+</p>
+<pre class="example">
+crypto pki server CA grant all
+</pre></li>
+<li><p>
+client 查看证书
+</p>
+<pre class="example">
+Oct 25 06:30:32.576: %PKI-6-CERTRET: Certificate received from Certificate Authority
+
+client(config)#do sho crypto pki certificates 
+CA Certificate
+  Status: Available
+  Certificate Serial Number (hex): 01
+  Certificate Usage: Signature
+  Issuer: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Subject: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Validity Date: 
+    start date: 14:21:06 UTC Oct 25 2018
+    end   date: 14:21:06 UTC Oct 25 2019
+  Associated Trustpoints: client 
+
+
+Certificate
+  Subject:
+    Name: client.cumt.edu
+    Serial Number: 67108912
+   Status: Pending
+   Key Usage: General Purpose
+   Certificate Request Fingerprint MD5: B437E97F B378CB30 254E849B 59ED5910 
+   Certificate Request Fingerprint SHA1: 89314932 E4D30B0D 13E427C5 8A8DA19B 7F14FF4D 
+   Associated Trustpoint: client 
+</pre></li>
+</ul></li>
+<li>离线申请证书(client2)
+<ul class="org-ul">
+<li><p>
+配置信任点
+</p>
+<pre class="example">
+crypto pki trustpoint client2
+ enrollment terminal
+ subject-name cn=client2.cumt.edu, o=cumt, ou=xuhai.client2, l=xuzhou
+ revocation-check none
+</pre></li>
+<li>认证证书服务器
+<ul class="org-ul">
+<li><p>
+CA 导出根证书
+</p>
+<pre class="example">
+CA(config)#crypto pki export CA pem terminal 
+% The specified trustpoint is not enrolled (CA).
+% Only export the CA certificate in PEM format.
+% CA certificate:
+-----BEGIN CERTIFICATE-----
+MIICZTCCAc6gAwIBAgIBATANBgkqhkiG9w0BAQQFADBGMQ8wDQYDVQQHEwZ4dXpo
+b3UxDjAMBgNVBAsTBXh1aGFpMQ0wCwYDVQQKEwRjdW10MRQwEgYDVQQDEwtDQS5j
+dW10LmVkdTAeFw0xODEwMjUwNjIxMDZaFw0xOTEwMjUwNjIxMDZaMEYxDzANBgNV
+BAcTBnh1emhvdTEOMAwGA1UECxMFeHVoYWkxDTALBgNVBAoTBGN1bXQxFDASBgNV
+BAMTC0NBLmN1bXQuZWR1MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCwOr7J
+FwBiGLrx6idmID0wr3zjSI2wrkTOlCnlRKxLvg6nMvngmrhj+BOr3FvHP1Cpijpp
+nG0mBtfsyNPysb/dhblhFk/d7jRgEuT7EFo4E0wBEQniSlxElF4x3gfTZcnD3Fx6
+wpqkAjTYBzSCvxc5zJNcuZVDhM/Y155Xx/KG+QIDAQABo2MwYTAPBgNVHRMBAf8E
+BTADAQH/MA4GA1UdDwEB/wQEAwIBhjAfBgNVHSMEGDAWgBTIk8/sCQqlCeOPCGq2
+9A44vr2+VjAdBgNVHQ4EFgQUyJPP7AkKpQnjjwhqtvQOOL69vlYwDQYJKoZIhvcN
+AQEEBQADgYEAN9tvZlERtKlRQ+XjtZpI2jix/sO0muiigq4Y8AN/U+GJzRGdBn8z
+0jX835QmP+Yymw9SM/qb1SiPshqEYxIg5YmL9UDoupzpMkM+UJPDAWk7/4HE3L/p
+i9O/JIMWdeaNGBMco9B4toiX4BdAsHae4Nf0LGI+iPfTLNkHc2zBm20=
+-----END CERTIFICATE-----
+</pre></li>
+<li><p>
+客户端认证证书服务器
+</p>
+<pre class="example">
+client2(config)#crypto pki authenticate client2
+
+Enter the base 64 encoded CA certificate.
+End with a blank line or the word "quit" on a line by itself
+
+-----BEGIN CERTIFICATE-----
+MIICZTCCAc6gAwIBAgIBATANBgkqhkiG9w0BAQQFADBGMQ8wDQYDVQQHEwZ4dXpo
+b3UxDjAMBgNVBAsTBXh1aGFpMQ0wCwYDVQQKEwRjdW10MRQwEgYDVQQDEwtDQS5j
+dW10LmVkdTAeFw0xODEwMjUwNjIxMDZaFw0xOTEwMjUwNjIxMDZaMEYxDzANBgNV
+BAcTBnh1emhvdTEOMAwGA1UECxMFeHVoYWkxDTALBgNVBAoTBGN1bXQxFDASBgNV
+BAMTC0NBLmN1bXQuZWR1MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCwOr7J
+FwBiGLrx6idmID0wr3zjSI2wrkTOlCnlRKxLvg6nMvngmrhj+BOr3FvHP1Cpijpp
+nG0mBtfsyNPysb/dhblhFk/d7jRgEuT7EFo4E0wBEQniSlxElF4x3gfTZcnD3Fx6
+wpqkAjTYBzSCvxc5zJNcuZVDhM/Y155Xx/KG+QIDAQABo2MwYTAPBgNVHRMBAf8E
+BTADAQH/MA4GA1UdDwEB/wQEAwIBhjAfBgNVHSMEGDAWgBTIk8/sCQqlCeOPCGq2
+9A44vr2+VjAdBgNVHQ4EFgQUyJPP7AkKpQnjjwhqtvQOOL69vlYwDQYJKoZIhvcN
+AQEEBQADgYEAN9tvZlERtKlRQ+XjtZpI2jix/sO0muiigq4Y8AN/U+GJzRGdBn8z
+0jX835QmP+Yymw9SM/qb1SiPshqEYxIg5YmL9UDoupzpMkM+UJPDAWk7/4HE3L/p
+i9O/JIMWdeaNGBMco9B4toiX4BdAsHae4Nf0LGI+iPfTLNkHc2zBm20=
+-----END CERTIFICATE-----
+
+Certificate has the following attributes:
+       Fingerprint MD5: 0D02F0B1 AA0928C3 A9A02440 0D976E67 
+      Fingerprint SHA1: C4E724FD B6664E5B 45351364 D665C8C2 5CEBA4C1 
+
+% Do you accept this certificate? [yes/no]: yes
+Trustpoint CA certificate accepted.
+% Certificate successfully imported
+</pre></li>
+<li><p>
+查看根证书
+</p>
+<pre class="example">
+client2(config)#do sho cry pki cer
+CA Certificate
+  Status: Available
+  Certificate Serial Number (hex): 01
+  Certificate Usage: Signature
+  Issuer: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Subject: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Validity Date: 
+    start date: 14:21:06 UTC Oct 25 2018
+    end   date: 14:21:06 UTC Oct 25 2019
+  Associated Trustpoints: client2
+</pre></li>
+</ul></li>
+<li>申请个人证书
+<ul class="org-ul">
+<li><p>
+client2 导出个人信息
+</p>
+<pre class="example">
+client2(config)#crypto pki enroll client2
+% Start certificate enrollment .. 
+
+% The subject name in the certificate will include: cn=client2.cumt.edu, o=cumt, ou=xuhai.client2, l=xuzhou
+% The subject name in the certificate will include: client2
+% Include the router serial number in the subject name? [yes/no]: 
+% Please answer 'yes' or 'no'.
+% Include the router serial number in the subject name? [yes/no]: yes
+% The serial number in the certificate will be: 67108896
+% Include an IP address in the subject name? [no]: no
+Display Certificate Request to terminal? [yes/no]: yes
+Certificate Request follows:
+
+MIIBWDCCAQICAQAwfDEPMA0GA1UEBxMGeHV6aG91MRYwFAYDVQQLEw14dWhhaS5j
+bGllbnQyMQ0wCwYDVQQKEwRjdW10MRkwFwYDVQQDExBjbGllbnQyLmN1bXQuZWR1
+MScwDwYDVQQFEwg2NzEwODg5NjAUBgkqhkiG9w0BCQIWB2NsaWVudDIwXDANBgkq
+hkiG9w0BAQEFAANLADBIAkEAtYyHVkLFcKDhK+Y1lWgNvdtlcwI5edCIT7YfW2jk
+tpw8F75kVUlEncVgX6Xz6z2oM0e3KrNMyNUd8/uYEoF6qQIDAQABoCEwHwYJKoZI
+hvcNAQkOMRIwEDAOBgNVHQ8BAf8EBAMCBaAwDQYJKoZIhvcNAQEFBQADQQBu8wxU
+lPFkIO2Qp6cYd5L0SIJTy3uSAPOo5Q5cg4pKEn9czqnJ/I1OrYEeT2DBiLcDMAKQ
+/5UEDUdClr+Lw0cw
+</pre></li>
+<li><p>
+CA 加载 client2 个人信息
+</p>
+<pre class="example">
+CA#crypto pki server CA request pkcs10 terminal
+PKCS10 request in base64 or pem
+
+% Enter Base64 encoded or PEM formatted PKCS10 enrollment request.
+% End with a blank line or "quit" on a line by itself.
+MIIBWDCCAQICAQAwfDEPMA0GA1UEBxMGeHV6aG91MRYwFAYDVQQLEw14dWhhaS5j
+bGllbnQyMQ0wCwYDVQQKEwRjdW10MRkwFwYDVQQDExBjbGllbnQyLmN1bXQuZWR1
+MScwDwYDVQQFEwg2NzEwODg5NjAUBgkqhkiG9w0BCQIWB2NsaWVudDIwXDANBgkq
+hkiG9w0BAQEFAANLADBIAkEAtYyHVkLFcKDhK+Y1lWgNvdtlcwI5edCIT7YfW2jk
+tpw8F75kVUlEncVgX6Xz6z2oM0e3KrNMyNUd8/uYEoF6qQIDAQABoCEwHwYJKoZI
+hvcNAQkOMRIwEDAOBgNVHQ8BAf8EBAMCBaAwDQYJKoZIhvcNAQEFBQADQQBu8wxU
+lPFkIO2Qp6cYd5L0SIJTy3uSAPOo5Q5cg4pKEn9czqnJ/I1OrYEeT2DBiLcDMAKQ
+/5UEDUdClr+Lw0cw
+
+% Enrollment request pending, reqId=2
+</pre></li>
+<li><p>
+CA 下发证书
+</p>
+<pre class="example">
+CA#crypto pki server CA grant all
+% Granted certificate:
+MIICRjCCAa+gAwIBAgIBAzANBgkqhkiG9w0BAQQFADBGMQ8wDQYDVQQHEwZ4dXpo
+b3UxDjAMBgNVBAsTBXh1aGFpMQ0wCwYDVQQKEwRjdW10MRQwEgYDVQQDEwtDQS5j
+dW10LmVkdTAeFw0xODEwMjUwNjQyNDVaFw0xOTA0MjMwNjQyNDVaMHwxDzANBgNV
+BAcTBnh1emhvdTEWMBQGA1UECxMNeHVoYWkuY2xpZW50MjENMAsGA1UEChMEY3Vt
+dDEZMBcGA1UEAxMQY2xpZW50Mi5jdW10LmVkdTEnMA8GA1UEBRMINjcxMDg4OTYw
+FAYJKoZIhvcNAQkCFgdjbGllbnQyMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALWM
+h1ZCxXCg4SvmNZVoDb3bZXMCOXnQiE+2H1to5LacPBe+ZFVJRJ3FYF+l8+s9qDNH
+tyqzTMjVHfP7mBKBeqkCAwEAAaNSMFAwDgYDVR0PAQH/BAQDAgWgMB8GA1UdIwQY
+MBaAFMiTz+wJCqUJ448Iarb0Dji+vb5WMB0GA1UdDgQWBBSt3TJpNmnEm6yCtn88
+2hUVU148JjANBgkqhkiG9w0BAQQFAAOBgQB4FspC1vFjWf+uK2uEel/Jkn74L4q+
+Til9x/TnFdtGHUPg/are6lib2kMUBl2SbJ1h8xhd5XILHHtyOQs4AC8MCDwxm/1d
+KYLOF+T1K/tdqJ1YfxU6jCgzbwYK0RoElqjxN1x3VhmP4lf9jPb/FuYoh0NoGMi3
+4uu1U5Mn7FWIyQ==
+</pre></li>
+<li><p>
+client2 导入个人证书
+</p>
+<pre class="example">
+client2(config)#crypto pki import client2 certificate 
+
+Enter the base 64 encoded certificate.
+End with a blank line or the word "quit" on a line by itself
+
+MIICRjCCAa+gAwIBAgIBAzANBgkqhkiG9w0BAQQFADBGMQ8wDQYDVQQHEwZ4dXpo
+b3UxDjAMBgNVBAsTBXh1aGFpMQ0wCwYDVQQKEwRjdW10MRQwEgYDVQQDEwtDQS5j
+dW10LmVkdTAeFw0xODEwMjUwNjQyNDVaFw0xOTA0MjMwNjQyNDVaMHwxDzANBgNV
+BAcTBnh1emhvdTEWMBQGA1UECxMNeHVoYWkuY2xpZW50MjENMAsGA1UEChMEY3Vt
+dDEZMBcGA1UEAxMQY2xpZW50Mi5jdW10LmVkdTEnMA8GA1UEBRMINjcxMDg4OTYw
+FAYJKoZIhvcNAQkCFgdjbGllbnQyMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALWM
+h1ZCxXCg4SvmNZVoDb3bZXMCOXnQiE+2H1to5LacPBe+ZFVJRJ3FYF+l8+s9qDNH
+tyqzTMjVHfP7mBKBeqkCAwEAAaNSMFAwDgYDVR0PAQH/BAQDAgWgMB8GA1UdIwQY
+MBaAFMiTz+wJCqUJ448Iarb0Dji+vb5WMB0GA1UdDgQWBBSt3TJpNmnEm6yCtn88
+2hUVU148JjANBgkqhkiG9w0BAQQFAAOBgQB4FspC1vFjWf+uK2uEel/Jkn74L4q+
+Til9x/TnFdtGHUPg/are6lib2kMUBl2SbJ1h8xhd5XILHHtyOQs4AC8MCDwxm/1d
+KYLOF+T1K/tdqJ1YfxU6jCgzbwYK0RoElqjxN1x3VhmP4lf9jPb/FuYoh0NoGMi3
+4uu1U5Mn7FWIyQ==
+
+% Router Certificate successfully imported
+</pre></li>
+<li><p>
+client2 查看证书
+</p>
+<pre class="example">
+client2#show crypto pki certificates 
+Certificate
+  Status: Available
+  Certificate Serial Number (hex): 03
+  Certificate Usage: General Purpose
+  Issuer: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Subject:
+    Name: client2
+    Serial Number: 67108896
+    serialNumber=67108896+hostname=client2
+    cn=client2.cumt.edu
+    o=cumt
+    ou=xuhai.client2
+    l=xuzhou
+  Validity Date: 
+    start date: 14:42:45 UTC Oct 25 2018
+    end   date: 14:42:45 UTC Apr 23 2019
+  Associated Trustpoints: client2 
+
+CA Certificate
+  Status: Available
+  Certificate Serial Number (hex): 01
+  Certificate Usage: Signature
+  Issuer: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Subject: 
+    cn=CA.cumt.edu
+    o=cumt
+    ou=xuhai
+    l=xuzhou
+  Validity Date: 
+    start date: 14:21:06 UTC Oct 25 2018
+    end   date: 14:21:06 UTC Oct 25 2019
+  Associated Trustpoints: client
+</pre></li>
+</ul></li>
+</ul></li>
+<li>配置证书认证的 L2L-VPN
+<ul class="org-ul">
+<li><p>
+client
+</p>
+<pre class="example">
+crypto pki certificate map client.map 10
+ subject-name co o = cumt
+crypto isakmp policy 10
+crypto isakmp profile isaprof
+   ca trust-point client
+   match certificate client.map
+crypto ipsec transform-set cisco esp-des esp-md5-hmac
+crypto map cisco 10 ipsec-isakmp 
+ set peer 10.1.1.2
+ set transform-set cisco 
+ set isakmp-profile isaprof
+ match address vpn
+ crypto map cisco
+!
+ip access-list extended vpn
+ permit ip 1.1.1.0 0.0.0.255 2.2.2.0 0.0.0.255
+!
+interface Ethernet0/0
+ ip address 10.1.1.1 255.255.255.0
+ crypto map cisco
+</pre></li>
+<li><p>
+client2
+</p>
+<pre class="example">
+crypto pki certificate map client2.map 10
+ subject-name co cn = client.cumt.edu
+crypto isakmp policy 10
+crypto isakmp profile isaprof
+   ca trust-point client2
+   match certificate client2.map
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+crypto map cisco 10 ipsec-isakmp 
+ set peer 10.1.1.1
+ set transform-set cisco 
+ set isakmp-profile isaprof
+ match address vpn
+ crypto map cisco
+!
+ip access-list extended vpn
+ permit ip 2.2.2.0 0.0.0.255 1.1.1.0 0.0.0.255
+!
+interface Ethernet0/0
+ ip address 10.1.1.2 255.255.255.0
+ crypto map cisco
+
+</pre></li>
+<li>测试连通性:
+<img src="image/experiment/screenshot_2018-10-25_15-24-11.png" alt="screenshot_2018-10-25_15-24-11.png" /></li>
+<li>查看加解密:
+<img src="image/experiment/screenshot_2018-10-25_15-25-38.png" alt="screenshot_2018-10-25_15-25-38.png" /></li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org3f25606" class="outline-3">
+<h3 id="org3f25606"><span class="section-number-3">2.2</span> RRI &amp; DPD</h3>
+<div class="outline-text-3" id="text-2-2">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-10-26_09-14-30.png" alt="screenshot_2018-10-26_09-14-30.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Topology</p>
+</div>
+
+<p>
+configure:
+</p>
+<ul class="org-ul">
+<li><p>
+branch:
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+crypto isakmp key cisco address 202.100.1.1    
+crypto isakmp key cisco address 61.128.1.2     
+crypto isakmp keepalive 10 periodic
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+!
+crypto map cisco 10 ipsec-isakmp 
+ set peer 202.100.1.1 default
+ set peer 61.128.1.2
+ set security-association idle-time 60
+ set transform-set cisco 
+ match address vpn
+!
+interface Loopback1
+ ip address 1.1.1.1 255.255.255.0
+!
+interface Ethernet0/0
+ ip address 11.1.1.1 255.255.255.0
+ crypto map cisco
+!
+router ospf 110
+ network 1.1.1.0 0.0.0.255 area 0
+ network 11.1.1.0 0.0.0.255 area 0
+!
+ip route 0.0.0.0 0.0.0.0 11.1.1.10
+!
+ip access-list extended vpn
+ permit ip 1.1.1.0 0.0.0.255 5.5.5.0 0.0.0.255
+</pre></li>
+<li><p>
+active:
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+crypto isakmp key cisco address 11.1.1.1       
+crypto isakmp keepalive 10 periodic
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+!
+crypto map cisco 10 ipsec-isakmp 
+ set peer 11.1.1.1
+ set transform-set cisco 
+ set reverse-route tag 10
+ match address vpn
+ reverse-route
+!
+interface Ethernet0/0
+ ip address 202.100.1.1 255.255.255.0
+ crypto map cisco
+!
+interface Ethernet0/1
+ ip address 10.1.1.1 255.255.255.0
+!
+router ospf 110
+ redistribute static subnets route-map RRI
+ network 10.1.1.0 0.0.0.255 area 0
+!
+ip route 0.0.0.0 0.0.0.0 202.100.1.10
+!
+ip access-list extended vpn
+ permit ip 5.5.5.0 0.0.0.255 1.1.1.0 0.0.0.255
+!
+route-map RRI permit 10
+ match tag 10
+!
+</pre></li>
+<li><p>
+standby:
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+crypto isakmp key cisco address 11.1.1.1       
+crypto isakmp keepalive 10 periodic
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+!
+crypto map cisco 10 ipsec-isakmp 
+ set peer 11.1.1.1
+ set transform-set cisco 
+ set reverse-route tag 20
+ match address vpn
+ reverse-route
+!
+interface Ethernet0/0
+ ip address 61.128.1.2 255.255.255.0
+ crypto map cisco
+!
+interface Ethernet0/1
+ ip address 10.1.1.2 255.255.255.0
+!
+router ospf 110
+ redistribute static subnets route-map RRI
+ network 10.1.1.0 0.0.0.255 area 0
+!
+ip route 0.0.0.0 0.0.0.0 61.128.1.10
+!
+ip access-list extended vpn
+ permit ip 5.5.5.0 0.0.0.255 1.1.1.0 0.0.0.255
+!
+route-map RRI permit 10
+ match tag 20
+</pre></li>
+<li><p>
+server:
+</p>
+<pre class="example">
+!
+interface Loopback1
+ ip address 5.5.5.5 255.255.255.0
+!
+interface Ethernet0/0
+ ip address 10.1.1.100 255.255.255.0
+!
+router ospf 110
+ network 5.5.5.0 0.0.0.255 area 0
+ network 10.1.1.0 0.0.0.255 area 0
+!
+</pre></li>
+</ul>
+
+<p>
+Test redundancy:
+<img src="image/experiment/screenshot_2018-10-26_09-32-48.png" alt="screenshot_2018-10-26_09-32-48.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5d1870d" class="outline-3">
+<h3 id="org5d1870d"><span class="section-number-3">2.3</span> L2L-redundancy</h3>
+<div class="outline-text-3" id="text-2-3">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-10-26_09-36-17.png" alt="screenshot_2018-10-26_09-36-17.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Topology</p>
+</div>
+
+<p>
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+Route:
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+crypto isakmp key cisco address 202.1.1.100    
+crypto isakmp keepalive 10 periodic
+!
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+!
+crypto map cisco 10 ipsec-isakmp 
+ set peer 202.1.1.100
+ set transform-set cisco 
+ match address vpn
+!
+interface Loopback1
+ ip address 1.1.1.1 255.255.255.0
+!
+interface Ethernet0/0
+ ip address 192.168.1.100 255.255.255.0
+ crypto map cisco
+!
+ip route 0.0.0.0 0.0.0.0 192.168.1.10
+!
+ip access-list extended vpn
+ permit ip 1.1.1.0 0.0.0.255 2.2.2.0 0.0.0.255
+!
+</pre></li>
+<li><p>
+active:
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+crypto isakmp key cisco address 192.168.1.100  
+crypto isakmp keepalive 10 periodic
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+!
+crypto map cisco 10 ipsec-isakmp 
+ set peer 192.168.1.100
+ set transform-set cisco 
+ set reverse-route tag 100
+ match address vpn
+ reverse-route static
+!
+interface Ethernet0/0
+ ip address 202.1.1.1 255.255.255.0
+ standby 1 ip 202.1.1.100
+ standby 1 priority 110
+ standby 1 preempt
+ standby 1 name vpn
+ crypto map cisco redundancy vpn 
+!
+interface Ethernet0/1
+ ip address 10.1.1.1 255.255.255.0
+!
+router ospf 110
+ redistribute static subnets route-map vpn
+ network 10.1.1.0 0.0.0.255 area 0
+!
+ip route 0.0.0.0 0.0.0.0 202.1.1.10
+!
+ip access-list extended vpn
+ permit ip 2.2.2.0 0.0.0.255 1.1.1.0 0.0.0.255
+!
+route-map vpn permit 10
+ match tag 100
+!
+</pre></li>
+<li><p>
+standby:
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+crypto isakmp key cisco address 192.168.1.100  
+crypto isakmp keepalive 10 periodic
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+!
+crypto map cisco 10 ipsec-isakmp 
+ set peer 192.168.1.100
+ set transform-set cisco 
+ set reverse-route tag 100
+ match address vpn
+ reverse-route static
+!
+interface Ethernet0/0
+ ip address 202.1.1.2 255.255.255.0
+ standby 1 ip 202.1.1.100
+ standby 1 name vpn
+ crypto map cisco redundancy vpn 
+!
+interface Ethernet0/1
+ ip address 10.1.1.2 255.255.255.0
+!
+router ospf 110
+ redistribute static subnets route-map vpn
+ network 10.1.1.0 0.0.0.255 area 0
+!
+ip route 0.0.0.0 0.0.0.0 202.1.1.10
+!
+ip access-list extended vpn
+ permit ip 2.2.2.0 0.0.0.255 1.1.1.0 0.0.0.255
+!
+route-map vpn permit 10
+ match tag 100
+!
+</pre></li>
+</ul>
+
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-10-26_09-39-19.png" alt="screenshot_2018-10-26_09-39-19.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Test redundancy</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgebedb90" class="outline-3">
+<h3 id="orgebedb90"><span class="section-number-3">2.4</span> VPDN-PPTP</h3>
+<div class="outline-text-3" id="text-2-4">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-08_15-48-47.png" alt="screenshot_2018-11-08_15-48-47.png" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Topology</p>
+</div>
+
+<p>
+configure:
+</p>
+<ul class="org-ul">
+<li><p>
+R1:
+</p>
+<pre class="example">
+vpdn enable
+!
+vpdn-group 1
+ ! Default PPTP VPDN group
+ accept-dialin
+  protocol pptp
+  virtual-template 1
+!
+username pptp password 0 cisco
+!
+interface Loopback1
+ ip address 10.1.1.1 255.255.255.0
+!
+interface Ethernet0/0
+ ip address 172.16.196.111 255.255.255.0
+!
+!
+interface Virtual-Template1
+ ip unnumbered Loopback1
+ peer default ip address pool ippool
+ ppp authentication chap
+!
+ip local pool ippool 111.1.1.100 111.1.1.200
+!
+</pre></li>
+<li><p>
+PC: use <code>pptp-linux</code>
+</p>
+<pre class="example">
+root@eve-ng:~# cat /etc/ppp/peers/my_tunnel
+# written by pptpsetup
+pty "pptp 172.16.196.111 --nolaunchpppd"
+lock
+noauth
+nobsdcomp
+nodeflate
+name pptp
+remotename my_tunnel
+ipparam my_tunnel
+# require-mppe-128
+
+root@eve-ng:/etc/ppp/peers# cat /etc/ppp/chap-secrets 
+# Secrets for authentication using CHAP
+# client        server  secret                  IP addresses
+# added by pptpsetup for my_tunnel
+pptp my_tunnel "cisco" *
+</pre></li>
+</ul>
+
+<p>
+Test:
+<img src="image/experiment/screenshot_2018-11-08_15-54-19.png" alt="screenshot_2018-11-08_15-54-19.png" />
+</p>
+
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-08_15-54-42.png" alt="screenshot_2018-11-08_15-54-42.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0ad13d8" class="outline-3">
+<h3 id="org0ad13d8"><span class="section-number-3">2.5</span> VPDN-pppoe</h3>
+<div class="outline-text-3" id="text-2-5">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-08_15-48-47.png" alt="screenshot_2018-11-08_15-48-47.png" />
+</p>
+<p><span class="figure-number">Figure 7: </span>Topology</p>
+</div>
+
+<p>
+configure:
+</p>
+<ul class="org-ul">
+<li><p>
+R1:
+</p>
+<pre class="example">
+vpdn enable
+!
+username pppoe password 0 cisco
+!
+bba-group pppoe global
+ virtual-template 1
+!
+interface Loopback0
+ ip address 10.1.1.1 255.255.255.0
+!
+interface Virtual-Template1
+ ip unnumbered Loopback0
+ peer default ip address pool ippool
+ ppp authentication pap
+!
+ip local pool ippool 202.100.2.100 202.100.2.200
+!
+</pre></li>
+<li><p>
+PC:
+</p>
+<pre class="example">
+root@eve-ng:/etc/ppp/peers# cat /etc/ppp/peers/dsl-provider 
+# Minimalistic default options file for DSL/PPPoE connections
+
+noipdefault
+defaultroute
+replacedefaultroute
+hide-password
+#lcp-echo-interval 30
+#lcp-echo-failure 4
+noauth
+persist
+#mtu 1492
+#persist
+#maxfail 0
+#holdoff 20
+plugin rp-pppoe.so
+nic-pnet1
+user "pppoe"
+usepeerdns
+
+root@eve-ng:/etc/ppp/peers# cat /etc/ppp/chap-secrets 
+# Secrets for authentication using CHAP
+# client        server  secret                  IP addresses
+# added by pptpsetup for my_tunnel
+"pppoe" * "cisco"
+</pre></li>
+</ul>
+
+<p>
+Test:
+<img src="image/experiment/screenshot_2018-11-08_19-00-10.png" alt="screenshot_2018-11-08_19-00-10.png" />
+<img src="image/experiment/screenshot_2018-11-08_19-02-23.png" alt="screenshot_2018-11-08_19-02-23.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgab63e4c" class="outline-3">
+<h3 id="orgab63e4c"><span class="section-number-3">2.6</span> VPDN-L2TP</h3>
+<div class="outline-text-3" id="text-2-6">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-08_15-48-47.png" alt="screenshot_2018-11-08_15-48-47.png" />
+</p>
+<p><span class="figure-number">Figure 8: </span>Topology</p>
+</div>
+
+<p>
+configure:
+</p>
+<ul class="org-ul">
+<li><p>
+R1:
+</p>
+<pre class="example">
+vpdn enable
+!         
+vpdn-group 1
+ ! Default L2TP VPDN group
+ accept-dialin
+  protocol l2tp
+  virtual-template 1
+ no l2tp tunnel authentication
+!
+username cisco password 0 cisco
+!
+interface Loopback0
+ ip address 10.1.1.1 255.255.255.0
+!         
+interface FastEthernet0/0
+ ip address 172.16.196.111 255.255.255.0
+!
+interface Virtual-Template1
+ ip unnumbered Loopback0
+ peer default ip address pool test
+ ppp authentication ms-chap
+!
+ip local pool test 10.1.1.2 10.1.1.100
+</pre></li>
+<li>PC:
+<img src="image/experiment/08FF94D2@2C321F0B.5322E45B_2018-11-08_19-53-36.jpg" alt="08FF94D2@2C321F0B.5322E45B_2018-11-08_19-53-36.jpg" />  
+<img src="image/experiment/040F99D3@988E3661.6222E45B_2018-11-08_19-53-58.jpg" alt="040F99D3@988E3661.6222E45B_2018-11-08_19-53-58.jpg" /></li>
+</ul>
+
+<p>
+Test:
+<img src="image/experiment/unnamed_2018-11-08_19-54-34.png" alt="unnamed_2018-11-08_19-54-34.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org8b3daa6" class="outline-3">
+<h3 id="org8b3daa6"><span class="section-number-3">2.7</span> EZVPN</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+<img src="image/experiment/screenshot_2018-11-14_20-17-37.png" alt="screenshot_2018-11-14_20-17-37.png" />
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+EZ.IN:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 10.1.1.100 255.255.255.0
+!
+ip route 0.0.0.0 0.0.0.0 10.1.1.1
+</pre></li>
+<li><p>
+EZ.C:
+</p>
+<pre class="example">
+!
+crypto ipsec client ezvpn cisco
+ connect manual
+ group ipsecgroup key cisco
+ mode client
+ peer 202.100.2.1
+ xauth userid mode interactive
+!
+interface Loopback0
+ ip address 123.1.1.101 255.255.255.255
+!
+interface Ethernet0/0
+ ip address 10.1.1.1 255.255.255.0
+ crypto ipsec client ezvpn cisco inside
+!
+interface Ethernet0/1
+ ip address 202.100.1.1 255.255.255.0
+ crypto ipsec client ezvpn cisco
+!
+ip route 0.0.0.0 0.0.0.0 202.100.1.100
+</pre></li>
+<li><p>
+INTERNET:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 202.100.2.100 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 202.100.1.100 255.255.255.0
+</pre></li>
+<li><p>
+GW:
+</p>
+<pre class="example">
+aaa new-model
+!
+aaa authentication login noacs line none
+aaa authentication login remote local
+aaa authorization network remote local
+!
+username remote password 0 cisco
+!
+crypto isakmp policy 10
+ encr 3des
+ hash md5 
+ authentication pre-share
+ group 2
+!
+crypto isakmp client configuration group ipsecgroup
+ key cisco
+ pool ippool
+ acl 101(tunnel split)
+crypto isakmp profile cisco
+   match identity group ipsecgroup
+   client authentication list remote
+   isakmp authorization list remote
+   client configuration address respond
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+ mode tunnel
+!
+crypto dynamic-map cisco 10
+ set transform-set cisco 
+ set isakmp-profile cisco
+ reverse-route
+!
+crypto map cisco 10 ipsec-isakmp dynamic cisco 
+!
+interface Ethernet0/0
+ ip address 202.100.2.1 255.255.255.0
+ crypto map cisco
+!
+interface Ethernet0/1
+ ip address 192.168.1.1 255.255.255.0
+!
+ip local pool ippool 123.1.1.100 123.1.1.200
+!
+ip route 0.0.0.0 0.0.0.0 202.100.2.100
+!
+access-list 101 permit ip 192.168.1.0 0.0.0.255 any
+!
+</pre></li>
+<li><p>
+GW.IN:
+</p>
+<pre class="example">
+!
+interface Ethernet0/1
+ ip address 192.168.1.100 255.255.255.0
+!
+ip route 0.0.0.0 0.0.0.0 192.168.1.1
+</pre></li>
+</ul>
+<p>
+Test:
+</p>
+<ul class="org-ul">
+<li><p>
+connect vpn
+</p>
+
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-14_21-37-07.png" alt="screenshot_2018-11-14_21-37-07.png" />
+</p>
+</div></li>
+<li><p>
+check connect status
+</p>
+
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-14_20-44-47.png" alt="screenshot_2018-11-14_20-44-47.png" />
+</p>
+</div></li>
+<li><p>
+check pat
+</p>
+
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-14_20-45-08.png" alt="screenshot_2018-11-14_20-45-08.png" />
+</p>
+</div></li>
+<li><p>
+ping(tunnel split)
+</p>
+
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-14_20-45-47.png" alt="screenshot_2018-11-14_20-45-47.png" />
+</p>
+</div></li>
+<li><p>
+ping
+</p>
+
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-14_21-36-35.png" alt="screenshot_2018-11-14_21-36-35.png" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5193d5e" class="outline-3">
+<h3 id="org5193d5e"><span class="section-number-3">2.8</span> DMVPN</h3>
+<div class="outline-text-3" id="text-2-8">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-15_14-25-04.png" alt="screenshot_2018-11-15_14-25-04.png" />
+</p>
+<p><span class="figure-number">Figure 14: </span>Topology</p>
+</div>
+
+<p>
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+center:
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ authentication pre-share
+crypto isakmp key cisco address 0.0.0.0        
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+ mode transport
+!
+crypto ipsec profile ipsecprof
+ set transform-set cisco 
+!
+interface Loopback0
+ ip address 192.168.100.1 255.255.255.0
+!
+interface Tunnel0
+ ip address 172.16.1.100 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ no ip next-hop-self eigrp 100
+ no ip split-horizon eigrp 100
+ ip nhrp authentication cisco
+ ip nhrp map multicast dynamic
+ ip nhrp network-id 10
+ tunnel source Ethernet0/0
+ tunnel mode gre multipoint
+ tunnel key 12345
+ tunnel protection ipsec profile ipsecprof
+!
+interface Ethernet0/0
+ ip address 202.100.1.100 255.255.255.0
+!
+router eigrp 100
+ network 172.16.1.0 0.0.0.255
+ network 192.168.100.0
+!
+</pre></li>
+<li><p>
+branch1
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ authentication pre-share
+crypto isakmp key cisco address 0.0.0.0        
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+ mode transport
+!
+crypto ipsec profile ipsecprof
+ set transform-set cisco 
+!
+interface Loopback0
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Tunnel0
+ ip address 172.16.1.1 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication cisco
+ ip nhrp map 172.16.1.100 202.100.1.100
+ ip nhrp map multicast 202.100.1.100
+ ip nhrp network-id 10
+ ip nhrp nhs 172.16.1.100
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel key 12345
+ tunnel protection ipsec profile ipsecprof
+!
+interface Ethernet0/1
+ ip address 202.100.1.1 255.255.255.0
+!
+router eigrp 100
+ network 172.16.1.0 0.0.0.255
+ network 192.168.1.0
+!
+</pre></li>
+<li><p>
+branch2
+</p>
+<pre class="example">
+!
+crypto isakmp policy 10
+ authentication pre-share
+crypto isakmp key cisco address 0.0.0.0        
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+ mode transport
+!
+crypto ipsec profile ipsecprof
+ set transform-set cisco 
+!
+interface Loopback0
+ ip address 192.168.2.1 255.255.255.0
+!
+interface Tunnel0
+ ip address 172.16.1.2 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication cisco
+ ip nhrp map 172.16.1.100 202.100.1.100
+ ip nhrp map multicast 202.100.1.100
+ ip nhrp network-id 10
+ ip nhrp nhs 172.16.1.100
+ tunnel source Ethernet0/2
+ tunnel mode gre multipoint
+ tunnel key 12345
+ tunnel protection ipsec profile ipsecprof
+!
+interface Ethernet0/2
+ ip address 202.100.1.2 255.255.255.0
+!
+router eigrp 100
+ network 172.16.1.0 0.0.0.255
+ network 192.168.2.0
+!
+</pre></li>
+</ul>
+
+<p>
+Test:
+<img src="image/experiment/screenshot_2018-11-15_14-21-17.png" alt="screenshot_2018-11-15_14-21-17.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgece49eb" class="outline-3">
+<h3 id="orgece49eb"><span class="section-number-3">2.9</span> EZVPN-SOFTWARE</h3>
+<div class="outline-text-3" id="text-2-9">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-15_14-49-12.png" alt="screenshot_2018-11-15_14-49-12.png" />
+</p>
+<p><span class="figure-number">Figure 15: </span>Topology</p>
+</div>
+
+<p>
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+internet:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 202.100.2.100 255.255.255.0
+interface Ethernet0/1
+ ip address 172.16.196.100 255.255.255.
+</pre></li>
+<li><p>
+GW:
+</p>
+<pre class="example">
+!
+aaa new-model
+!
+aaa authentication login noacs line none
+aaa authentication login remote local
+aaa authorization network remote local 
+!
+username remote password 0 cisco
+!
+crypto isakmp policy 10
+ encr 3des
+ hash md5 
+ authentication pre-share
+ group 2
+!
+crypto isakmp client configuration group ipsecgroup
+ key cisco
+ pool ippool
+crypto isakmp profile cisco
+   match identity group ipsecgroup
+   client authentication list remote
+   isakmp authorization list remote
+   client configuration address respond
+!
+crypto ipsec transform-set cisco esp-des esp-md5-hmac 
+ mode tunnel
+!
+crypto dynamic-map cisco 10
+ set transform-set cisco 
+ set isakmp-profile cisco
+ reverse-route
+!
+crypto map cisco 10 ipsec-isakmp dynamic cisco 
+!
+interface Ethernet0/0
+ ip address 202.100.2.1 255.255.255.0
+ crypto map cisco
+!
+interface Ethernet0/1
+ ip address 192.168.1.1 255.255.255.0
+!
+ip local pool ippool 123.1.1.100 123.1.1.200
+!
+ip route 0.0.0.0 0.0.0.0 202.100.2.100
+!
+access-list 101 permit ip 192.168.1.0 0.0.0.255 any
+!
+line con 0
+ login authentication noacs
+line aux 0
+ login authentication noacs
+!
+
+</pre></li>
+<li><p>
+R5:
+</p>
+<pre class="example">
+!
+interface Ethernet0/1
+ ip address 192.168.1.100 255.255.255.0
+!
+ip route 0.0.0.0 0.0.0.0 192.168.1.1
+</pre></li>
+<li><p>
+Client:
+</p>
+<pre class="example">
+IPSec gateway 202.100.2.1
+IPSec ID ipsecgroup
+IPSec secret cisco
+Xauth username remote
+Xauth password cisco
+</pre></li>
+</ul>
+<p>
+Test:
+<img src="image/experiment/screenshot_2018-11-15_14-54-38.png" alt="screenshot_2018-11-15_14-54-38.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org7919363" class="outline-3">
+<h3 id="org7919363"><span class="section-number-3">2.10</span> uRPF</h3>
+<div class="outline-text-3" id="text-2-10">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-21_19-49-37.png" alt="screenshot_2018-11-21_19-49-37.png" />
+</p>
+<p><span class="figure-number">Figure 16: </span>Topology</p>
+</div>
+
+<p>
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+Out:
+</p>
+<pre class="example">
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+interface Ethernet0/0
+ ip address 202.100.1.1 255.255.255.0
+</pre></li>
+<li><p>
+FW:
+</p>
+<pre class="example">
+ip verify drop-rate compute window 60
+ip verify drop-rate compute interval 45
+ip verify drop-rate notify hold-down 40
+!
+interface Ethernet0/0
+ ip address 202.100.1.10 255.255.255.0
+ ip verify unicast source reachable-via rx allow-default allow-self-ping 100
+!
+interface Ethernet0/1
+ ip address 10.1.1.10 255.255.255.0
+ ip verify unicast source reachable-via any 101
+ ip verify unicast notification threshold 100
+ snmp trap ip verify drop-rate
+!
+access-list 100 permit ip host 1.1.1.1 any
+access-list 100 deny   ip any any log-input
+access-list 101 deny   ip any any log-input
+</pre></li>
+<li><p>
+IN:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 10.1.1.1 255.255.255.0
+</pre></li>
+</ul>
+
+<p>
+Test:
+<img src="image/experiment/screenshot_2018-11-21_19-52-57.png" alt="screenshot_2018-11-21_19-52-57.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb2b79f1" class="outline-3">
+<h3 id="orgb2b79f1"><span class="section-number-3">2.11</span> CoPP</h3>
+<div class="outline-text-3" id="text-2-11">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-21_19-57-44.png" alt="screenshot_2018-11-21_19-57-44.png" />
+</p>
+<p><span class="figure-number">Figure 17: </span>Topology</p>
+</div>
+
+<p>
+Configure: network control
+</p>
+<ul class="org-ul">
+<li><p>
+Out:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 202.100.1.1 255.255.255.0
+</pre></li>
+<li><p>
+FW:
+</p>
+<pre class="example">
+!
+interface Ethernet0/0
+ ip address 202.100.1.10 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 10.1.1.10 255.255.255.0
+!
+ip access-list extended control.telnet.ssh
+ deny   tcp 202.100.1.0 0.0.0.255 any eq telnet
+ deny   tcp 202.100.1.0 0.0.0.255 any eq 22
+ permit tcp any any eq telnet
+ permit tcp any any eq 22
+!
+control-plane
+ service-policy input CUMT.CoPP
+!
+line vty 0 4
+ password cisco
+ login
+ transport input telnet
+</pre></li>
+<li><p>
+IN:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 10.1.1.1 255.255.255.0
+</pre></li>
+</ul>
+
+<p>
+Test(network control):
+<img src="image/experiment/screenshot_2018-11-21_20-07-13.png" alt="screenshot_2018-11-21_20-07-13.png" />
+<img src="image/experiment/screenshot_2018-11-21_20-07-27.png" alt="screenshot_2018-11-21_20-07-27.png" />
+</p>
+
+<p>
+Configure: flow control
+FW:
+</p>
+<pre class="example">
+class-map match-all control.ICMP
+ match access-group name control.ICMP
+!
+ip access-list extended control.ICMP
+ permit icmp any any
+!
+olicy-map CUMT.CoPP
+ class control.ICMP
+  police rate 1 pps burst 1 packets
+</pre>
+
+<p>
+Test(flow control):
+<img src="image/experiment/screenshot_2018-11-21_20-10-33.png" alt="screenshot_2018-11-21_20-10-33.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org0b4d9e2" class="outline-3">
+<h3 id="org0b4d9e2"><span class="section-number-3">2.12</span> Basic-Zone-Policy</h3>
+<div class="outline-text-3" id="text-2-12">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-21_20-27-32.png" alt="screenshot_2018-11-21_20-27-32.png" />
+</p>
+<p><span class="figure-number">Figure 18: </span>Topology</p>
+</div>
+
+<p>
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+Out:
+</p>
+<pre class="example">
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 202.100.1.1 255.255.255.0
+!
+ip route 0.0.0.0 0.0.0.0 202.100.1.10
+</pre></li>
+<li><p>
+ZBF:
+</p>
+<pre class="example">
+!
+ip cef
+!
+class-map type inspect match-all Out-to-In.telnet.class
+ match access-group name Out-to-In.telnet.traffic
+class-map type inspect match-any In-to-Out.protocol
+ match protocol udp
+ match protocol tcp
+ match protocol ftp
+ match protocol dns
+class-map type inspect match-all In-to-Out.ICMP
+ match protocol icmp
+!
+policy-map type inspect In-to-Out.policy
+ class type inspect In-to-Out.protocol
+  inspect 
+ class type inspect In-to-Out.ICMP
+  inspect 
+  police rate 8000 burst 1000
+ class class-default
+  drop log
+policy-map type inspect Out-to-In.policy
+ class type inspect Out-to-In.telnet.class
+  inspect 
+ class class-default
+  drop log
+!
+zone security Inside
+zone security Outside
+zone-pair security Inside-to-Outside source Inside destination Outside
+ service-policy type inspect In-to-Out.policy
+zone-pair security Outside-to-Inside source Outside destination Inside
+ service-policy type inspect Out-to-In.policy
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 202.100.1.10 255.255.255.0
+ zone-member security Outside
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 10.1.1.10 255.255.255.0
+ zone-member security Inside
+!
+interface Ethernet0/2
+ no shutdown
+ ip address 172.16.1.10 255.255.255.0
+!
+ip access-list extended Out-to-In.telnet.traffic
+ permit tcp host 202.100.1.1 host 10.1.1.1 eq telnet
+
+
+</pre></li>
+<li><p>
+In_R1:
+</p>
+<pre class="example">
+interface Ethernet0/1
+ no shutdown
+ ip address 10.1.1.1 255.255.255.0
+!
+ip route 0.0.0.0 0.0.0.0 10.1.1.10
+!
+line vty 0 4
+ password cisco
+ login
+ transport input telnet
+!
+</pre></li>
+<li><p>
+In_R2
+</p>
+<pre class="example">
+!
+interface Ethernet0/2
+ no shutdown
+ ip address 172.16.1.1 255.255.255.0
+!
+ip route 0.0.0.0 0.0.0.0 172.16.1.10
+!
+</pre></li>
+</ul>
+
+<p>
+Test:
+</p>
+<ul class="org-ul">
+<li>test1:</li>
+</ul>
+<p>
+<img src="image/experiment/screenshot_2018-11-21_20-28-39.png" alt="screenshot_2018-11-21_20-28-39.png" />
+<img src="image/experiment/screenshot_2018-11-21_20-28-11.png" alt="screenshot_2018-11-21_20-28-11.png" />
+</p>
+<ul class="org-ul">
+<li>test2:</li>
+</ul>
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-21_20-29-48.png" alt="screenshot_2018-11-21_20-29-48.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>test3:</li>
+</ul>
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-21_20-30-38.png" alt="screenshot_2018-11-21_20-30-38.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeba6043" class="outline-3">
+<h3 id="orgeba6043"><span class="section-number-3">2.13</span> Basic-Zone-Policy2</h3>
+<div class="outline-text-3" id="text-2-13">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-21_21-18-29.png" alt="screenshot_2018-11-21_21-18-29.png" />
+</p>
+<p><span class="figure-number">Figure 21: </span>Topology</p>
+</div>
+
+<p>
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+Out:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 202.100.1.1 255.255.255.0
+ip route 0.0.0.0 0.0.0.0 202.100.1.10
+</pre></li>
+<li><p>
+ZBF:
+</p>
+<pre class="example">
+!
+class-map type inspect match-all Intrazone.class
+ match access-group name Intrazone.traffic
+!
+policy-map type inspect Intrazone.policy
+ class type inspect Intrazone.class
+  inspect 
+ class class-default
+  drop log
+!
+zone security Inside
+zone-pair security Intrazone source Inside destination Inside
+ service-policy type inspect Intrazone.policy
+!
+interface Ethernet0/0
+ ip address 202.100.1.10 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 10.1.1.10 255.255.255.0
+ zone-member security Inside
+!
+interface Ethernet0/2
+ ip address 172.16.1.10 255.255.255.0
+ zone-member security Inside
+!
+ip access-list extended Intrazone.traffic
+ permit tcp host 172.16.1.1 host 10.1.1.1 eq telnet
+ permit tcp host 10.1.1.1 host 172.16.1.1 eq 22
+!
+</pre></li>
+<li><p>
+In_R1:
+</p>
+<pre class="example">
+interface Ethernet0/1
+ ip address 10.1.1.1 255.255.255.0
+ip route 0.0.0.0 0.0.0.0 10.1.1.10
+</pre></li>
+<li><p>
+In_R2:
+</p>
+<pre class="example">
+interface Ethernet0/2
+ ip address 172.16.1.1 255.255.255.0
+ip route 0.0.0.0 0.0.0.0 172.16.1.10
+</pre></li>
+</ul>
+
+<p>
+Test:
+</p>
+<ul class="org-ul">
+<li>telnet:
+<img src="image/experiment/screenshot_2018-11-21_21-23-09.png" alt="screenshot_2018-11-21_21-23-09.png" />
+<img src="image/experiment/screenshot_2018-11-21_21-23-33.png" alt="screenshot_2018-11-21_21-23-33.png" /></li>
+<li>ssh:
+<img src="image/experiment/screenshot_2018-11-21_21-45-43.png" alt="screenshot_2018-11-21_21-45-43.png" />
+<img src="image/experiment/screenshot_2018-11-21_21-44-37.png" alt="screenshot_2018-11-21_21-44-37.png" /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org286b793" class="outline-3">
+<h3 id="org286b793"><span class="section-number-3">2.14</span> Basic-Zone-Policy3</h3>
+<div class="outline-text-3" id="text-2-14">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-21_21-18-29.png" alt="screenshot_2018-11-21_21-18-29.png" />
+</p>
+<p><span class="figure-number">Figure 22: </span>Topology</p>
+</div>
+
+<p>
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+Out:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 202.100.1.1 255.255.255.0
+ip route 0.0.0.0 0.0.0.0 202.100.1.10
+</pre></li>
+<li><p>
+ZBF:
+</p>
+<pre class="example">
+!
+class-map type inspect match-all Self-to-Outside.class
+ match access-group name Self-to-Outside
+class-map type inspect match-all Self-to-Inside.class
+ match access-group name Self-to-Inside
+class-map type inspect match-all Inside-to-Self.class
+ match access-group name Inside-to-Self
+!
+policy-map type inspect Self-to-Inside.policy
+ class type inspect Self-to-Inside.class
+  inspect 
+ class class-default
+  drop log
+policy-map type inspect Outside-to-Self.policy
+ class class-default
+  drop log
+policy-map type inspect Self-to-Outside.policy
+ class type inspect Self-to-Outside.class
+  inspect 
+ class class-default
+  drop log
+policy-map type inspect Inside-to-Self.policy
+ class type inspect Inside-to-Self.class
+  inspect 
+ class class-default
+  drop log
+!
+zone security Outside
+zone security Inside
+zone-pair security Self-Outside source self destination Outside
+ service-policy type inspect Self-to-Outside.policy
+zone-pair security Self-Inside source self destination Inside
+ service-policy type inspect Self-to-Inside.policy
+zone-pair security Inside-Self source Inside destination self
+ service-policy type inspect Inside-to-Self.policy
+zone-pair security Outside-Self source Outside destination self
+ service-policy type inspect Outside-to-Self.policy
+! 
+interface Ethernet0/0
+ ip address 202.100.1.10 255.255.255.0
+ zone-member security Outside
+!
+interface Ethernet0/1
+ ip address 10.1.1.10 255.255.255.0
+ zone-member security Inside
+!
+interface Ethernet0/2
+ ip address 172.16.1.10 255.255.255.0
+!
+ip access-list extended Inside-to-Self
+ permit tcp host 10.1.1.1 host 10.1.1.10 eq 22
+ip access-list extended Self-to-Inside
+ permit tcp host 10.1.1.10 host 10.1.1.1 eq telnet
+ip access-list extended Self-to-Outside
+ permit icmp host 202.100.1.10 host 202.100.1.1 echo
+!
+</pre></li>
+<li><p>
+In_R2:
+</p>
+<pre class="example">
+interface Ethernet0/2
+ ip address 172.16.1.1 255.255.255.0
+ip route 0.0.0.0 0.0.0.0 172.16.1.10
+</pre></li>
+<li><p>
+In_R1:
+</p>
+<pre class="example">
+interface Ethernet0/1
+  ip address 10.1.1.1 255.255.255.0
+ip route 0.0.0.0 0.0.0.0 10.1.1.10
+</pre></li>
+</ul>
+
+<p>
+Test:
+ping:
+<img src="image/experiment/screenshot_2018-11-21_23-07-35.png" alt="screenshot_2018-11-21_23-07-35.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org3378060" class="outline-3">
+<h3 id="org3378060"><span class="section-number-3">2.15</span> CBAC</h3>
+<div class="outline-text-3" id="text-2-15">
+
+<div class="figure">
+<p><img src="image/experiment/screenshot_2018-11-22_10-23-08.png" alt="screenshot_2018-11-22_10-23-08.png" />
+</p>
+<p><span class="figure-number">Figure 23: </span>Topology</p>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Demand one:
+Configure:
+</p>
+<ul class="org-ul">
+<li><p>
+Inside:
+</p>
+<pre class="example">
+interface Ethernet0/0
+ ip address 10.1.1.100 255.255.255.0
+ip route 0.0.0.0 0.0.0.0 10.1.1.10
+</pre></li>
+<li><p>
+IOS FW:
+</p>
+<pre class="example">
+!
+ip inspect name FW.Outbound icmp
+ip inspect name FW.Outbound tcp
+ip inspect name FW.Outbound udp
+!
+interface Ethernet0/0
+ ip address 10.1.1.10 255.255.255.0
+ ip access-group Outbound.traffic in
+!
+interface Ethernet0/1
+ ip address 202.100.1.10 255.255.255.0
+ ip access-group Inbound.traffic in
+ ip inspect FW.Outbound out
+!
+ip access-list extended Inbound.traffic
+ deny   ip any any
+ip access-list extended Outbound.traffic
+ permit tcp 10.1.1.0 0.0.0.255 any
+ permit icmp 10.1.1.0 0.0.0.255 any
+ permit udp 10.1.1.0 0.0.0.255 any
+!
+</pre></li>
+<li><p>
+Outside:
+</p>
+<pre class="example">
+interface Ethernet0/1
+ ip address 202.100.1.100 255.255.255.0
+ip route 0.0.0.0 0.0.0.0 202.100.1.10
+</pre></li>
+</ul>
+
+<p>
+Test:
+<img src="image/experiment/screenshot_2018-11-22_10-26-18.png" alt="screenshot_2018-11-22_10-26-18.png" />
+<img src="image/experiment/screenshot_2018-11-22_10-26-45.png" alt="screenshot_2018-11-22_10-26-45.png" />
+</p></li>
+<li><p>
+Demand two:
+Configure:
+IOS FW
+</p>
+<pre class="example">
+ip access-list extended Inbound.traffic
+ permit tcp 202.100.1.0 0.0.0.255 host 10.1.1.100 eq www
+ deny ip any any
+!
+ip inspect name FW.Inbound http
+interface Ethernet0/1
+ ip inspect FW.Inbound in
+</pre>
+
+<p>
+Test:
+<img src="image/experiment/screenshot_2018-11-22_10-35-22.png" alt="screenshot_2018-11-22_10-35-22.png" />
+<img src="image/experiment/screenshot_2018-11-22_10-35-42.png" alt="screenshot_2018-11-22_10-35-42.png" />
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: yydcnjjw</p>
+<p class="date">Created: 2019-04-07 日 22:30</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

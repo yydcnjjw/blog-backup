@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-07 日 22:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yydcnjjw" />
+<link rel="stylesheet" href="https://yydcnjjw.github.io/style/style.css" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc4425f8">1. CNN</a>
+<ul>
+<li><a href="#lecun-98">1.1. <span class="done DONE">DONE</span> 1998 - Gradient-Based Learning Applied to Document Recognition</a></li>
+<li><a href="#NIPS2012_4824">1.2. <span class="done DONE">DONE</span> 2012 - ImageNet Classification with Deep Convolutional Neural Networks</a>
+<ul>
+<li><a href="#org1025738">1.2.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#lin13_networ_networ">1.3. <span class="todo TODO">TODO</span> 2013 - Network in Network</a>
+<ul>
+<li><a href="#orgd7b2b84">1.3.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#zeiler13_visual_under_convol_networ">1.4. <span class="done DONE">DONE</span> 2013 - Visualizing and Understanding Convolutional Networks</a>
+<ul>
+<li><a href="#org61df6af">1.4.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#sermanet13_overf">1.5. <span class="todo TODO">TODO</span> 2013 - Overfeat: Integrated Recognition, Localization and Detection Using Convolutional Networks</a></li>
+<li><a href="#simonyan14_very_deep_convol_networ_large">1.6. <span class="done DONE">DONE</span> 2014 - Very Deep Convolutional Networks for Large-Scale Image Recognition</a>
+<ul>
+<li><a href="#orgd72fe78">1.6.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#szegedy14_going_deeper_with_convol">1.7. <span class="done DONE">DONE</span> 2014 - Going Deeper With Convolutions</a>
+<ul>
+<li><a href="#org66cfd29">1.7.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#he15_deep_resid_learn_image_recog">1.8. <span class="done DONE">DONE</span> 2015 - Deep Residual Learning for Image Recognition</a>
+<ul>
+<li><a href="#orgf919102">1.8.1. Method: residual learning framework</a></li>
+</ul>
+</li>
+<li><a href="#chollet16_xcept">1.9. <span class="todo TODO">TODO</span> 2016 - Xception: Deep Learning With Depthwise Separable Convolutions</a></li>
+</ul>
+</li>
+<li><a href="#org50bebf3">2. Human Pose Estimation</a>
+<ul>
+<li><a href="#cao16_realt_multi_person_pose_estim">2.1. <span class="done DONE">DONE</span> 2016 - Realtime Multi-Person 2d Pose Estimation Using Part Affinity Fields</a>
+<ul>
+<li><a href="#orgf1f4237">2.1.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#chen17_cascad_pyram_networ_multi_person_pose_estim">2.2. <span class="todo TODO">TODO</span> 2017 - Cascaded Pyramid Network for Multi-Person Pose Estimation</a>
+<ul>
+<li><a href="#orgcdf50ca">2.2.1. Method:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb150837">3. Object Detection</a>
+<ul>
+<li><a href="#girshick13_rich_featur_hierar_accur_objec">3.1. <span class="done DONE">DONE</span> 2013 - Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation</a>
+<ul>
+<li><a href="#org0b0a704">3.1.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#girshick15_fast_r_cnn">3.2. <span class="done DONE">DONE</span> 2015 - Fast R-Cnn</a>
+<ul>
+<li><a href="#orgdcc11ea">3.2.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#ren15_faster_r_cnn">3.3. <span class="done DONE">DONE</span> 2015 - Faster R-Cnn: Towards Real-Time Object Detection With Region Proposal Networks</a>
+<ul>
+<li><a href="#org7775d81">3.3.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#lin16_featur_pyram_networ_objec_detec">3.4. <span class="todo TODO">TODO</span> 2016 - Feature Pyramid Networks for Object Detection</a>
+<ul>
+<li><a href="#org5fe7f35">3.4.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#he17_mask_r_cnn">3.5. <span class="todo TODO">TODO</span> 2017 - Mask R-Cnn</a>
+<ul>
+<li><a href="#orgbd3ade7">3.5.1. Method:</a></li>
+</ul>
+</li>
+<li><a href="#zhao18_objec_detec_with_deep_learn">3.6. <span class="todo TODO">TODO</span> 2018 - Object Detection With Deep Learning: a Review</a></li>
+</ul>
+</li>
+<li><a href="#orgbccca46">4. Natural Language Processing</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc4425f8" class="outline-2">
+<h2 id="orgc4425f8"><span class="section-number-2">1</span> CNN</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://img-blog.csdn.net/20170506083359490?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcWlhbnFpbmcxMzU3OQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">cnn structure history evolution</a>
+<img src="image/CNN/screenshot-2019-01-05-20-11-33.png" alt="screenshot-2019-01-05-20-11-33.png" />
+</p>
+</div>
+
+<div id="outline-container-orgd07c3de" class="outline-3">
+<h3 id="lecun-98"><a id="orgd07c3de"></a><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> 1998 - Gradient-Based Learning Applied to Document Recognition</h3>
+<div class="outline-text-3" id="text-lecun-98">
+<p>
+<a class='org-ref-reference' href="#lecun-98">lecun-98</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4e9f6a5" class="outline-3">
+<h3 id="NIPS2012_4824"><a id="org4e9f6a5"></a><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> 2012 - ImageNet Classification with Deep Convolutional Neural Networks</h3>
+<div class="outline-text-3" id="text-NIPS2012_4824">
+<p>
+<a class='org-ref-reference' href="#NIPS2012_4824">NIPS2012_4824</a>
+<b>AlexNet</b>
+</p>
+<ul class="org-ul">
+<li>Summary:
+In the paper, the group discussed the architecture of the network(which was called AlexNet). They used relatively simple layout, compared to modern architectures. The network was made up of 5 conv layers, max-pooling layers, dropout layers, and 3 fully connected layers. The network they designed was used for classification with 1000 possible categories.</li>
+<li>Problem: For classification with 1000 possible categories.</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date: Trained the network on ImageNet data, which contained over 15 million annotated images from a total of over 22000 categories.</li>
+<li>Model:
+<img src="image/CNN/screenshot-2018-09-02-15-14-34.png" alt="screenshot-2018-09-02-15-14-34.png" /></li>
+<li><p>
+Results:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Model</th>
+<th scope="col" class="org-right">Top-1</th>
+<th scope="col" class="org-right">Top-5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Spares coding</td>
+<td class="org-right">47.1%</td>
+<td class="org-right">28.2%</td>
+</tr>
+
+<tr>
+<td class="org-left">SIFT+FVs</td>
+<td class="org-right">45.7%</td>
+<td class="org-right">25.7%</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>AlexNet</b></td>
+<td class="org-right"><b>37.5%</b></td>
+<td class="org-right"><b>17.0%</b></td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org1025738" class="outline-4">
+<h4 id="org1025738"><span class="section-number-4">1.2.1</span> Method:</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li>Used ReLU for the nonlinearity functions(found to decrease training time as ReLUs are several times faster than the conventional tanh function).</li>
+<li>Used data augmentation techniques that consisted of image translations, horizontal reflections, and patch extractions.</li>
+<li>Implemented dropout layers in order to combat the problem of over fitting to the training data.</li>
+<li>Trained the model using batch stochastic gradient descent, with specific values for momentum are weight decay.</li>
+<li>Trained on two GTX 580 GPus for five to six days.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org5571626" class="outline-3">
+<h3 id="lin13_networ_networ"><a id="org5571626"></a><span class="section-number-3">1.3</span> <span class="todo TODO">TODO</span> 2013 - Network in Network</h3>
+<div class="outline-text-3" id="text-lin13_networ_networ">
+<p>
+<a class='org-ref-reference' href="#lin13_networ_networ">lin13_networ_networ</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary: The paper</li>
+<li>Problem:</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date:</li>
+<li>Model:</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgd7b2b84" class="outline-4">
+<h4 id="orgd7b2b84"><span class="section-number-4">1.3.1</span> Method:</h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgdcf00d2"></a>MLP Convolutional Layers<br /></li>
+
+<li><a id="orgf2b600b"></a>Global Average Pooling<br /></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgcb28e14" class="outline-3">
+<h3 id="zeiler13_visual_under_convol_networ"><a id="orgcb28e14"></a><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> 2013 - Visualizing and Understanding Convolutional Networks</h3>
+<div class="outline-text-3" id="text-zeiler13_visual_under_convol_networ">
+<p>
+<a class='org-ref-reference' href="#zeiler13_visual_under_convol_networ">zeiler13_visual_under_convol_networ</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary: The paper are details of a slightly modified AlexNet model and <b>a very interesting way of visualizing feature maps</b>.</li>
+<li>Problem: ILSVRC 2013</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date: ImageNet</li>
+<li>Model:
+<img src="image/CNN/screenshot-2018-09-02-15-45-19.png" alt="screenshot-2018-09-02-15-45-19.png" /></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org61df6af" class="outline-4">
+<h4 id="org61df6af"><span class="section-number-4">1.4.1</span> Method:</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<ul class="org-ul">
+<li>Very similar architecture to AlexNet, except for a few minor modifications.</li>
+<li>AlexNet trained on 15 million images, while ZF Net trained on only 1.3 million images.</li>
+<li>Instead of using 11x11 sized filters in the first layer(which is what AlexNet implemented), ZF Net used filters of size 7x7 and a decreased stride value. The reasoning behind this modification is that a smaller filter size in the first conv layer helps retain a lot of original pixel information in the input volume. A filtering of size 11x11 proved to be skipping a lot of relevant information, especially as this is the first conv layer.</li>
+<li>As the network grows, we also see a rise in the number of filters used.</li>
+<li>Trained on a GTX 580 GPU for <b>twelve days</b>.</li>
+<li>Developed a visualization technique named Deconvolutional Network, which helps to examine different feature activations and their relation to the input space. Called "deconvnet" because it maps features to pixels(the opposite of what a Convolutional layer does).</li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="org459f005"></a>DeConvNet<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgdb83e67" class="outline-3">
+<h3 id="sermanet13_overf"><a id="orgdb83e67"></a><span class="section-number-3">1.5</span> <span class="todo TODO">TODO</span> 2013 - Overfeat: Integrated Recognition, Localization and Detection Using Convolutional Networks</h3>
+<div class="outline-text-3" id="text-sermanet13_overf">
+<p>
+<a class='org-ref-reference' href="#sermanet13_overf">sermanet13_overf</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb7ac57e" class="outline-3">
+<h3 id="simonyan14_very_deep_convol_networ_large"><a id="orgb7ac57e"></a><span class="section-number-3">1.6</span> <span class="done DONE">DONE</span> 2014 - Very Deep Convolutional Networks for Large-Scale Image Recognition</h3>
+<div class="outline-text-3" id="text-simonyan14_very_deep_convol_networ_large">
+<p>
+<a class='org-ref-reference' href="#simonyan14_very_deep_convol_networ_large">simonyan14_very_deep_convol_networ_large</a>
+</p>
+<ul class="org-ul">
+<li>Summary: 
+Simplicity and depth. <b>The paper reinforced the notion that convolution neural networks have to have a deep network of layers in order for this hierarchical representation of visual data to work</b>.</li>
+<li>Problem: ILSVRC 2014</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date: ImageNet</li>
+<li>Model: <a href="http://www.robots.ox.ac.uk/~vgg/research/very_deep/">very_deep</a>
+<img src="image/CNN/screenshot-2018-09-03-10-32-37.png" alt="screenshot-2018-09-03-10-32-37.png" /></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgd72fe78" class="outline-4">
+<h4 id="orgd72fe78"><span class="section-number-4">1.6.1</span> Method:</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<ul class="org-ul">
+<li>The use of only 3x3 sized filters is quite different from AlexNet's 11x11 filters in the first layer and ZF Net's 7x7 filters. The author's reasoning is that <b>the combination of two 3x3 conv layers has an effective receptive field of 5x5</b>. This in turn simulates a larger filter while keeping the benefits of smaller filters sizes. One of the benefits is a decrease in the number of parameters. Also, with two conv layers, we're able to use two ReLU layers instead of one.</li>
+<li>3 conv layers back to back have an effective receptive field of 7x7.</li>
+<li>As the spatial size of the input volumes at each layer decrease(result of the conv and pool layers), the depth of the volumes increases due of the increased number of filters as you go down the network.</li>
+<li>Interesting to notice that the number of filters doubles after each maxpool layer. This reinforces the idea of shrinking spatial dimensions, but growing depth.</li>
+<li>Worked well on both image classification and localization tasks. The authors used a form of localization as regression (<a class='org-ref-reference' href="#sermanet13_overf">sermanet13_overf</a>)</li>
+<li>Built model with the Caffe toolbox.</li>
+<li>Used scale jittering as one data augmentation technique during training.</li>
+<li>Used ReLU layers after each conv layer and trained with batch gradient descent.</li>
+<li>Trained on 4 Nvidia Titan Black GPUs for <b>two to three weeks</b>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0689624" class="outline-3">
+<h3 id="szegedy14_going_deeper_with_convol"><a id="org0689624"></a><span class="section-number-3">1.7</span> <span class="done DONE">DONE</span> 2014 - Going Deeper With Convolutions</h3>
+<div class="outline-text-3" id="text-szegedy14_going_deeper_with_convol">
+<p>
+<a class='org-ref-reference' href="#szegedy14_going_deeper_with_convol">szegedy14_going_deeper_with_convol</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary:
+The paper present the architecture of CNN(<a href="#org0a291b5">1.7.1.1</a>). GoogLeNet was one of the first models that introduced the idea that CNN layers didn't always have to be stacked up sequentially. Coming up with the Inception module, the authors showed that a creative structuring of layers can lead to improved performance and computationally efficiency.</li>
+<li>Problem: ILSVRC 2014</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date: ImageNet</li>
+<li>Model:
+<img src="https://adeshpande3.github.io/assets/GoogleNet.gif" alt="GoogleNet.gif" /></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org66cfd29" class="outline-4">
+<h4 id="org66cfd29"><span class="section-number-4">1.7.1</span> Method:</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<ul class="org-ul">
+<li>Used 9 Inception modules in the whole architecture, with over 100 layers in total! Now that is deep&#x2026;</li>
+<li>No use of fully connected layers! They use an average pool instead, to go from a 7x7x1024 volume to a 1x1x1024 volume. This saves a huge number of parameters.</li>
+<li>Uses 12x fewer parameters than AlexNet.</li>
+<li>During testing, multiple crops of the same image were created, fed into the network, and the softmax probabilities were averaged to give us the final solution.</li>
+<li>Utilized concepts from R-CNN for their detection model.</li>
+<li>There are updated versions to the Inception module.</li>
+<li>Trained on "a few high-end GPUs within a week".</li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="org84ae605"></a>Inception module<br />
+<div class="outline-text-5" id="text-1-7-1-1">
+<p>
+<a id="org0a291b5"></a>
+</p>
+
+
+<div class="figure">
+<p><img src="image/CNN/screenshot-2018-09-04-19-28-36.png" alt="screenshot-2018-09-04-19-28-36.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Inception module</p>
+</div>
+
+<p>
+Basically, at each layer of a traditional ConvNet, you have to make choice of whether to have a pooling operation or a conv operation(there is also the choice of filter size). What an Inception module allows you to do is perform all of these operations in parallel. <b>But It would lead to way too many outputs</b>. We would end up with extremely large depth channel for the output volume.
+The way that the authors address this is by <b>adding 1x1 conv operations before the 3x3 and 5x5 layers</b>. The 1x1 convolutions(or network in network layer)provide a method of dimensionality reduction.
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org18b4444" class="outline-3">
+<h3 id="he15_deep_resid_learn_image_recog"><a id="org18b4444"></a><span class="section-number-3">1.8</span> <span class="done DONE">DONE</span> 2015 - Deep Residual Learning for Image Recognition</h3>
+<div class="outline-text-3" id="text-he15_deep_resid_learn_image_recog">
+<p>
+<a class='org-ref-reference' href="#he15_deep_resid_learn_image_recog">he15_deep_resid_learn_image_recog</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary:
+The paper present a <b>residual learning framework</b> to solve <b>degradation problem</b></li>
+<li>Problem: degradation problem
+With the network depth increasing, accuracy gets saturated and then degrades rapidly</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Data: ImageNet</li>
+<li>Model: <a href="https://github.com/KaimingHe/deep-residual-networks">deep-residual-networks</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgf919102" class="outline-4">
+<h4 id="orgf919102"><span class="section-number-4">1.8.1</span> Method: residual learning framework</h4>
+<div class="outline-text-4" id="text-1-8-1">
+</div>
+<ol class="org-ol">
+<li><a id="org04d7ecd"></a><span class="todo TODO">TODO</span> Residual learning<br />
+<div class="outline-text-5" id="text-1-8-1-1">
+<p>
+read paper <a class='org-ref-reference' href="#balduzzi17_shatt_gradien_probl">balduzzi17_shatt_gradien_probl</a>
+</p>
+</div>
+</li>
+
+<li><a id="orgfc4818e"></a>Identity Mapping by Shortcuts<br />
+<div class="outline-text-5" id="text-1-8-1-2">
+<p>
+The paper adopt residual learning to every few stacked layers. A building block is defined as: Here \(x\) and \(y\) are the input and output vectors of the layers considered. The function \(F(x,\{W_{i}\})\) represents the residual mapping to be learned.
+</p>
+
+<p>
+<a id="orgc4bd6bb"></a>
+</p>
+\begin{equation}
+\label{eq:1}
+y = F(x,\{W_{i}\}+x).
+\end{equation}
+
+<p>
+<b>The dimensions of \(x\) and \(F\) must be equal</b>, If this is not the case(e.g., when changing the input/output channels), we can perform a linear projection \(W_{s}\) by the shortcut connections to match the dimensions:
+</p>
+
+<p>
+<a id="orgeb11eb4"></a>
+</p>
+\begin{equation}
+\label{eq:2}
+y=F(x,\{W_{i}\})+W_{s}x
+\end{equation}
+</div>
+</li>
+
+<li><a id="orgca673c3"></a>Residual Network<br />
+<div class="outline-text-5" id="text-1-8-1-3">
+
+<div class="figure">
+<p><img src="image/CNN/screenshot-2018-08-23-16-24-54.png" alt="screenshot-2018-08-23-16-24-54.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Residual network</p>
+</div>
+
+<p>
+the input and output of the dimensions
+</p>
+<ul class="org-ul">
+<li>same: use identity shortcuts (<a href="#orgc4bd6bb">Eqn.(1)</a>)</li>
+<li>increase: consider two options
+<ul class="org-ul">
+<li><b>Identity</b>: The shortcut still performs identity mapping, with extra zero entries padded for increasing dimensions, This option introduces no extra parameter.</li>
+<li><b>projection</b>: The projection shortcut in <a href="#orgeb11eb4">Eqn.(2)</a> is used to match dimensions(done by 1x1 convolutions).</li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org06f511f" class="outline-3">
+<h3 id="chollet16_xcept"><a id="org06f511f"></a><span class="section-number-3">1.9</span> <span class="todo TODO">TODO</span> 2016 - Xception: Deep Learning With Depthwise Separable Convolutions</h3>
+<div class="outline-text-3" id="text-chollet16_xcept">
+<p>
+<a class='org-ref-reference' href="#chollet16_xcept">chollet16_xcept</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org50bebf3" class="outline-2">
+<h2 id="org50bebf3"><span class="section-number-2">2</span> Human Pose Estimation</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orge708177" class="outline-3">
+<h3 id="cao16_realt_multi_person_pose_estim"><a id="orge708177"></a><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> 2016 - Realtime Multi-Person 2d Pose Estimation Using Part Affinity Fields</h3>
+<div class="outline-text-3" id="text-cao16_realt_multi_person_pose_estim">
+<p>
+<a class='org-ref-reference' href="#cao16_realt_multi_person_pose_estim">cao16_realt_multi_person_pose_estim</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary:
+The paper presents an approach to efficiently detect the 2D pose of multiple people in an image. The approach uses a <b>non-parametric representation</b>, which we refer to as <b>Part Affinity Fields(PAFs)</b>, to <b>learn to associate body parts with individuals</b> in the image.</li>
+<li>Problem: Realtime Multi-Person 2d Pose Estimation</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date: COCO &amp; MPI</li>
+<li>Model: <a href="https://github.com/ZheC/Realtime_Multi-Person_Pose_Estimation">Realtime_Multi-Persion_Pose_Estimation</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgf1f4237" class="outline-4">
+<h4 id="orgf1f4237"><span class="section-number-4">2.1.1</span> Method:</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<ul class="org-ul">
+<li><p>
+Confidence Maps for Part Detection
+</p>
+
+<p>
+The paper generate the groundtruth confidence maps from the annotated 2D keypoints. In fact, Using Gaussian filtering for the annotated 2D keypoints.
+</p>
+
+<p>
+In this paper, the key points are obtained by shifting the confidence map by one pixel from four directions and taking the maximum values of the original map and the offset map.
+</p></li>
+<li><p>
+Part Affinity Fields for Part Associate
+</p>
+
+<p>
+A 2D vector encodes the direction that points from one part of the limb to the other.
+</p></li>
+<li><p>
+Multi-Person Parsing using PAFs
+</p>
+
+<p>
+The paper measures the alignment of the predicted PAFs with the candidate limb that would be formed by connecting the detected body parts and take the maximum values of the alignment.
+</p></li>
+<li><p>
+Network arch
+</p>
+
+<div class="figure">
+<p><img src="image/human-pose-estimation/screenshot-2018-08-24-16-51-49.png" alt="screenshot-2018-08-24-16-51-49.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Architecture of the two-branch multi-stage CNN</p>
+</div>
+
+<ul class="org-ul">
+<li>F, that is a set of feature maps, is generated by a convolution network(initialized by the first 10 layers of VGG-19 and fine-tuned)</li>
+<li>Each stage in the first branch predicts confidence maps \(S^{t}\).</li>
+<li>Each stage in the second branch predicts PAFs \(L^{t}\).</li>
+<li><b>The predictions from the two branches, along with the image features, are concatenated for next stage.</b></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc907c6b" class="outline-3">
+<h3 id="chen17_cascad_pyram_networ_multi_person_pose_estim"><a id="orgc907c6b"></a><span class="section-number-3">2.2</span> <span class="todo TODO">TODO</span> 2017 - Cascaded Pyramid Network for Multi-Person Pose Estimation</h3>
+<div class="outline-text-3" id="text-chen17_cascad_pyram_networ_multi_person_pose_estim">
+<p>
+<a class='org-ref-reference' href="#chen17_cascad_pyram_networ_multi_person_pose_estim">chen17_cascad_pyram_networ_multi_person_pose_estim</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary:</li>
+<li>Problem:</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date:</li>
+<li>Model:</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgcdf50ca" class="outline-4">
+<h4 id="orgcdf50ca"><span class="section-number-4">2.2.1</span> Method:</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb150837" class="outline-2">
+<h2 id="orgb150837"><span class="section-number-2">3</span> Object Detection</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org7972a51" class="outline-3">
+<h3 id="girshick13_rich_featur_hierar_accur_objec"><a id="org7972a51"></a><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> 2013 - Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation</h3>
+<div class="outline-text-3" id="text-girshick13_rich_featur_hierar_accur_objec">
+<p>
+<a class='org-ref-reference' href="#girshick13_rich_featur_hierar_accur_objec">girshick13_rich_featur_hierar_accur_objec</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary
+The paper represent the method what is called R-CNN for object detection. The method first propose regions, then extract features, and then classify those regions based on their features. In essence, we have turned object detection into an image classification problem. R-CNN was very intuitive, but very slow.</li>
+<li>Problem: object detection</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date: ILSVRC2013, PASCAL VOC 2010-12</li>
+<li>Model:
+<a href="https://github.com/rbgirshick/rcnn">https://github.com/rbgirshick/rcnn</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org0b0a704" class="outline-4">
+<h4 id="org0b0a704"><span class="section-number-4">3.1.1</span> Method:</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+The paper object detection system consists of three steps:
+</p>
+<ol class="org-ol">
+<li>Scan the input image for possible objects using an algorithm called Selective Search, generating(about 2000 <b>region proposals</b>)</li>
+<li><p>
+Feature extraction: 
+</p>
+
+<p>
+extract a 4096-dimensional feature vector form each region proposal using the Caffe implementation of the CNN.(require <a href="#org06d7d9f">Object proposal transformations</a>)
+</p></li>
+<li>Take the output of each CNN and feed it into a) an SVM to classify the region and b) a linear regressor to tighten the bounding box of the object, if such an object exists</li>
+</ol>
+
+
+<div class="figure">
+<p><img src="image/Object Detection/screenshot-2018-09-12-16-48-31.png" alt="screenshot-2018-09-12-16-48-31.png" />
+</p>
+</div>
+</div>
+
+<ol class="org-ol">
+<li><a id="org73fddd6"></a>Object proposal transformations<br />
+<div class="outline-text-5" id="text-3-1-1-1">
+<p>
+<a id="org06d7d9f"></a>
+<b>TODO</b>
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orge1d47e0" class="outline-3">
+<h3 id="girshick15_fast_r_cnn"><a id="orge1d47e0"></a><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> 2015 - Fast R-Cnn</h3>
+<div class="outline-text-3" id="text-girshick15_fast_r_cnn">
+<p>
+<a class='org-ref-reference' href="#girshick15_fast_r_cnn">girshick15_fast_r_cnn</a>
+</p>
+
+
+<ul class="org-ul">
+<li>Summary:
+Fast R-CNN resembled the original in many ways, but improved on its detection speed through two main augmentations:
+<ul class="org-ul">
+<li>Performing feature extraction over the image before proposing regions, thus only running one CNN over the entire image instead of 2000 CNN's over 2000 overlapping regions</li>
+<li>Replacing the SVM with s softmax layer, thus extending the neural network for predictions instead of creating a new model</li>
+</ul></li>
+<li>Problem: object detection</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Model:
+<a href="https://github.com/rbgirshick/fast-rcnn">https://github.com/rbgirshick/fast-rcnn</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgdcc11ea" class="outline-4">
+<h4 id="orgdcc11ea"><span class="section-number-4">3.2.1</span> Method:</h4>
+<div class="outline-text-4" id="text-3-2-1">
+
+<div class="figure">
+<p><img src="image/Object Detection/screenshot-2018-09-13-15-11-32.png" alt="screenshot-2018-09-13-15-11-32.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge956cf7" class="outline-3">
+<h3 id="ren15_faster_r_cnn"><a id="orge956cf7"></a><span class="section-number-3">3.3</span> <span class="done DONE">DONE</span> 2015 - Faster R-Cnn: Towards Real-Time Object Detection With Region Proposal Networks</h3>
+<div class="outline-text-3" id="text-ren15_faster_r_cnn">
+<p>
+<a class='org-ref-reference' href="#ren15_faster_r_cnn">ren15_faster_r_cnn</a>
+</p>
+<ul class="org-ul">
+<li>Summary: Faster R-CNN = <a href="#orgd3162ff">3.3.1.1</a> + Fast R-CNN</li>
+<li>Problem: Object Detection</li>
+<li>Model:
+<a href="https://github.com/rbgirshick/py-faster-rcnn">https://github.com/rbgirshick/py-faster-rcnn</a></li>
+</ul>
+</div>
+<div id="outline-container-org7775d81" class="outline-4">
+<h4 id="org7775d81"><span class="section-number-4">3.3.1</span> Method:</h4>
+<div class="outline-text-4" id="text-3-3-1">
+</div>
+<ol class="org-ol">
+<li><a id="org0d8e36b"></a>RPN(region proposal network)<br />
+<div class="outline-text-5" id="text-3-3-1-1">
+<p>
+<a id="orgd3162ff"></a>
+</p>
+<ul class="org-ul">
+<li>At the last layer of an initial CNN, a 3x4 sliding window moves across the feature map and maps it to a *lower dimension*(e.g. 256-d for ZF and 512-d for VGG)</li>
+<li>For each sliding-window location, it generates multiple possible regions based on \(k\) fixed-ratio anchor boxes(default bounding boxes, class number)</li>
+<li>Each region proposal consists of:
+<ul class="org-ul">
+<li><code>cls</code> layer: an "<code>objectness</code>" score for that region</li>
+<li><code>reg</code> layer: 4 coordinates representing the bounding box of the region</li>
+</ul></li>
+</ul>
+
+
+<div class="figure">
+<p><img src="image/Object Detection/screenshot-2018-09-17-14-35-46.png" alt="screenshot-2018-09-17-14-35-46.png" />
+</p>
+</div>
+
+<p>
+Once we have our region proposals, we feed them straight into what is essentially a Fast R-CNN. We add a pooling layer, some fully-connected layers, and finally a softmax classification layer and bounding box regressor. In a sense, <b>Faster R-CNN = RPN + Fast R-CNN</b>.
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org9a1c098" class="outline-3">
+<h3 id="lin16_featur_pyram_networ_objec_detec"><a id="org9a1c098"></a><span class="section-number-3">3.4</span> <span class="todo TODO">TODO</span> 2016 - Feature Pyramid Networks for Object Detection</h3>
+<div class="outline-text-3" id="text-lin16_featur_pyram_networ_objec_detec">
+<p>
+<a class='org-ref-reference' href="#lin16_featur_pyram_networ_objec_detec">lin16_featur_pyram_networ_objec_detec</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary:
+The approach is to reuse the pyramidal feature hierarchy computed by a ConvNet as if it were a featured image pyramid.</li>
+<li>Problem:
+Deep learning object detectors have avoided pyramid representations, in part because they are compute and memory intensive.</li>
+</ul>
+</div>
+
+<div id="outline-container-org5fe7f35" class="outline-4">
+<h4 id="org5fe7f35"><span class="section-number-4">3.4.1</span> Method:</h4>
+</div>
+</div>
+<div id="outline-container-org858e9cc" class="outline-3">
+<h3 id="he17_mask_r_cnn"><a id="org858e9cc"></a><span class="section-number-3">3.5</span> <span class="todo TODO">TODO</span> 2017 - Mask R-Cnn</h3>
+<div class="outline-text-3" id="text-he17_mask_r_cnn">
+<p>
+<a class='org-ref-reference' href="#he17_mask_r_cnn">he17_mask_r_cnn</a>
+</p>
+
+<ul class="org-ul">
+<li>Summary:</li>
+<li>Problem:</li>
+<li>Experiment
+<ul class="org-ul">
+<li>Date:</li>
+<li>Model:</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgbd3ade7" class="outline-4">
+<h4 id="orgbd3ade7"><span class="section-number-4">3.5.1</span> Method:</h4>
+</div>
+</div>
+<div id="outline-container-org9170720" class="outline-3">
+<h3 id="zhao18_objec_detec_with_deep_learn"><a id="org9170720"></a><span class="section-number-3">3.6</span> <span class="todo TODO">TODO</span> 2018 - Object Detection With Deep Learning: a Review</h3>
+<div class="outline-text-3" id="text-zhao18_objec_detec_with_deep_learn">
+<p>
+<a class='org-ref-reference' href="#zhao18_objec_detec_with_deep_learn">zhao18_objec_detec_with_deep_learn</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbccca46" class="outline-2">
+<h2 id="orgbccca46"><span class="section-number-2">4</span> Natural Language Processing</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<a href="file:///home/yydcnjjw/resources/mathematics/books/nlp/Speech_and_Language_Processing.pdf">Speech and Language Processing</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org886861a">(venv-workon <span class="org-string">"python3"</span>)
+(<span class="org-keyword">setq-local</span> my/org-babel-src-list '())
+
+(<span class="org-keyword">dolist</span> (list my/org-babel-src-list)
+  (org-babel-goto-named-src-block list)
+  (org-babel-execute-src-block))
+(outline-hide-sublevels <span class="org-highlight-numbers-number">1</span>)
+</pre>
+</div>
+
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="lecun-98">[lecun-98]</a> <a name="lecun-98"></a>"LeCun, Bottou, Bengio, Haffner & ", Gradient-Based Learning Applied to Document  Recognition, <i>"Proceedings of the IEEE"</i>, <b>86(11)</b>, 2278-2324 (1998).</li>
+<li><a id="NIPS2012_4824">[NIPS2012_4824]</a> <a name="NIPS2012_4824"></a>@InCollectionNIPS2012_4824,
+  title =        ImageNet Classification with Deep Convolutional
+                  Neural Networks,
+  author =       Alex Krizhevsky and Sutskever, Ilya and Hinton,
+                  Geoffrey E,
+  booktitle =    Advances in Neural Information Processing Systems
+                  25,
+  editor =       F. Pereira and C. J. C. Burges and L. Bottou and
+                  K. Q. Weinberger,
+  pages =        1097-1105,
+  year =         2012,
+  publisher =    Curran Associates, Inc.,
+  url =
+                  http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf
+</li>
+<li><a id="lin13_networ_networ">[lin13_networ_networ]</a> <a name="lin13_networ_networ"></a>Lin, Chen & Yan, Network in Network, <i>CoRR</i>,  (2013). <a href="http://arxiv.org/abs/1312.4400v3">link</a>.</li>
+<li><a id="zeiler13_visual_under_convol_networ">[zeiler13_visual_under_convol_networ]</a> <a name="zeiler13_visual_under_convol_networ"></a>Zeiler & Fergus, Visualizing and Understanding Convolutional  Networks, <i>CoRR</i>,  (2013). <a href="http://arxiv.org/abs/1311.2901v3">link</a>.</li>
+<li><a id="sermanet13_overf">[sermanet13_overf]</a> <a name="sermanet13_overf"></a>Sermanet, Eigen, Zhang, , Mathieu, Fergus, LeCun & Yann, Overfeat: Integrated Recognition, Localization and  Detection Using Convolutional Networks, <i>CoRR</i>,  (2013). <a href="http://arxiv.org/abs/1312.6229v4">link</a>.</li>
+<li><a id="simonyan14_very_deep_convol_networ_large">[simonyan14_very_deep_convol_networ_large]</a> <a name="simonyan14_very_deep_convol_networ_large"></a>Simonyan & Zisserman, Very Deep Convolutional Networks for Large-Scale  Image Recognition, <i>CoRR</i>,  (2014). <a href="http://arxiv.org/abs/1409.1556v6">link</a>.</li>
+<li><a id="szegedy14_going_deeper_with_convol">[szegedy14_going_deeper_with_convol]</a> <a name="szegedy14_going_deeper_with_convol"></a>Szegedy, Liu, Jia, , Sermanet, Reed, Anguelov, Dragomir, Erhan, Vanhoucke, & Rabinovich, Going Deeper With Convolutions, <i>CoRR</i>,  (2014). <a href="http://arxiv.org/abs/1409.4842v1">link</a>.</li>
+<li><a id="he15_deep_resid_learn_image_recog">[he15_deep_resid_learn_image_recog]</a> <a name="he15_deep_resid_learn_image_recog"></a>He, Zhang, Ren, & Sun, Deep Residual Learning for Image Recognition, <i>CoRR</i>,  (2015). <a href="http://arxiv.org/abs/1512.03385v1">link</a>.</li>
+<li><a id="balduzzi17_shatt_gradien_probl">[balduzzi17_shatt_gradien_probl]</a> <a name="balduzzi17_shatt_gradien_probl"></a>Balduzzi, Frean, Leary, , Lewis, Ma, McWilliams & Brian, The Shattered Gradients Problem: If Resnets Are the  Answer, Then What Is the Question?, <i>CoRR</i>,  (2017). <a href="http://arxiv.org/abs/1702.08591v2">link</a>.</li>
+<li><a id="chollet16_xcept">[chollet16_xcept]</a> <a name="chollet16_xcept"></a>Chollet, Xception: Deep Learning With Depthwise Separable  Convolutions, <i>CoRR</i>,  (2016). <a href="http://arxiv.org/abs/1610.02357v3">link</a>.</li>
+<li><a id="cao16_realt_multi_person_pose_estim">[cao16_realt_multi_person_pose_estim]</a> <a name="cao16_realt_multi_person_pose_estim"></a>Cao, Simon, Wei, & Sheikh, Realtime Multi-Person 2d Pose Estimation Using Part  Affinity Fields, <i>CoRR</i>,  (2016). <a href="http://arxiv.org/abs/1611.08050v2">link</a>.</li>
+<li><a id="chen17_cascad_pyram_networ_multi_person_pose_estim">[chen17_cascad_pyram_networ_multi_person_pose_estim]</a> <a name="chen17_cascad_pyram_networ_multi_person_pose_estim"></a>Chen, Wang, Peng, , Zhang, Yu & Sun, Cascaded Pyramid Network for Multi-Person Pose  Estimation, <i>CoRR</i>,  (2017). <a href="http://arxiv.org/abs/1711.07319v2">link</a>.</li>
+<li><a id="girshick13_rich_featur_hierar_accur_objec">[girshick13_rich_featur_hierar_accur_objec]</a> <a name="girshick13_rich_featur_hierar_accur_objec"></a>Girshick, Donahue, Darrell, & Malik, Rich Feature Hierarchies for Accurate Object  Detection and Semantic Segmentation, <i>CoRR</i>,  (2013). <a href="http://arxiv.org/abs/1311.2524v5">link</a>.</li>
+<li><a id="girshick15_fast_r_cnn">[girshick15_fast_r_cnn]</a> <a name="girshick15_fast_r_cnn"></a>Girshick, Fast R-Cnn, <i>CoRR</i>,  (2015). <a href="http://arxiv.org/abs/1504.08083v2">link</a>.</li>
+<li><a id="ren15_faster_r_cnn">[ren15_faster_r_cnn]</a> <a name="ren15_faster_r_cnn"></a>Ren, He, Girshick, & Sun, Faster R-Cnn: Towards Real-Time Object Detection  With Region Proposal Networks, <i>CoRR</i>,  (2015). <a href="http://arxiv.org/abs/1506.01497v3">link</a>.</li>
+<li><a id="lin16_featur_pyram_networ_objec_detec">[lin16_featur_pyram_networ_objec_detec]</a> <a name="lin16_featur_pyram_networ_objec_detec"></a>Lin, Doll\'ar, Girshick, Ross, He, Hariharan, & Belongie, Feature Pyramid Networks for Object Detection, <i>CoRR</i>,  (2016). <a href="http://arxiv.org/abs/1612.03144v2">link</a>.</li>
+<li><a id="he17_mask_r_cnn">[he17_mask_r_cnn]</a> <a name="he17_mask_r_cnn"></a>He, Gkioxari, Doll\'ar, Piotr & Girshick, Mask R-Cnn, <i>CoRR</i>,  (2017). <a href="http://arxiv.org/abs/1703.06870v3">link</a>.</li>
+<li><a id="zhao18_objec_detec_with_deep_learn">[zhao18_objec_detec_with_deep_learn]</a> <a name="zhao18_objec_detec_with_deep_learn"></a>Zhao, Zheng, Xu, & Wu, Object Detection With Deep Learning: a Review, <i>CoRR</i>,  (2018). <a href="http://arxiv.org/abs/1807.05511v1">link</a>.</li>
+</ul>
+
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: yydcnjjw</p>
+<p class="date">Created: 2019-04-07 日 22:30</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
