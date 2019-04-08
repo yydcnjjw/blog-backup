@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-07 日 22:30 -->
+<!-- 2019-04-08 一 21:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -85,45 +85,45 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3ee54df">1. <span class="done DONE">DONE</span> Feature Engineering</a>
+<li><a href="#orga83198f">1. <span class="done DONE">DONE</span> Feature Engineering</a>
 <ul>
-<li><a href="#orgda324e5">1.1. Numeric Features</a>
+<li><a href="#orga108911">1.1. Numeric Features</a>
 <ul>
-<li><a href="#orgaf8d3d5">1.1.1. Binarization</a></li>
-<li><a href="#org13e20d4">1.1.2. Numeric Transforms</a></li>
-<li><a href="#org6f832ab">1.1.3. Feature Scaling or Normalization</a></li>
+<li><a href="#org9bedf44">1.1.1. Binarization</a></li>
+<li><a href="#org28616a0">1.1.2. Numeric Transforms</a></li>
+<li><a href="#orgfcb501f">1.1.3. Feature Scaling or Normalization</a></li>
 </ul>
 </li>
-<li><a href="#org64dcc9a">1.2. Text Data</a></li>
-<li><a href="#org7b3d96f">1.3. Categorical Variables</a>
+<li><a href="#org6efdb30">1.2. Text Data</a></li>
+<li><a href="#org723bb30">1.3. Categorical Variables</a>
 <ul>
-<li><a href="#orgbaea7ee">1.3.1. Encoding</a></li>
-<li><a href="#org9dd8b89">1.3.2. Feature hashing</a></li>
-<li><a href="#org3b979f3">1.3.3. Bin-counting</a></li>
+<li><a href="#org5293479">1.3.1. Encoding</a></li>
+<li><a href="#org2039ae4">1.3.2. Feature hashing</a></li>
+<li><a href="#org8e71a94">1.3.3. Bin-counting</a></li>
 </ul>
 </li>
-<li><a href="#orge3dc141">1.4. Feature Selection</a></li>
-<li><a href="#org5f82f69">1.5. Feature Crosses</a></li>
+<li><a href="#org8eadcb1">1.4. Feature Selection</a></li>
+<li><a href="#org7a129a5">1.5. Feature Crosses</a></li>
 </ul>
 </li>
-<li><a href="#orgf565c22">2. Model Evaluation</a>
+<li><a href="#orgfd4d843">2. Model Evaluation</a>
 <ul>
-<li><a href="#orge270712">2.1. Evaluation Function</a>
+<li><a href="#org521362e">2.1. Evaluation Function</a>
 <ul>
-<li><a href="#orgee704bf">2.1.1. Hold-out</a></li>
-<li><a href="#org3fb6df1">2.1.2. k</a></li>
-<li><a href="#org23af426">2.1.3. bootstrapping</a></li>
+<li><a href="#orgbf8fca6">2.1.1. Hold-out</a></li>
+<li><a href="#org247cc00">2.1.2. k</a></li>
+<li><a href="#org5bbb35f">2.1.3. bootstrapping</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org8686381">3. Code</a></li>
+<li><a href="#orgd3b2d3a">3. Code</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3ee54df" class="outline-2">
-<h2 id="org3ee54df"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Feature Engineering</h2>
+<div id="outline-container-orga83198f" class="outline-2">
+<h2 id="orga83198f"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Feature Engineering</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-02-03 日 20:22]</span></span></li>
@@ -133,15 +133,15 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgda324e5" class="outline-3">
-<h3 id="orgda324e5"><span class="section-number-3">1.1</span> Numeric Features</h3>
+<div id="outline-container-orga108911" class="outline-3">
+<h3 id="orga108911"><span class="section-number-3">1.1</span> Numeric Features</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-orgaf8d3d5" class="outline-4">
-<h4 id="orgaf8d3d5"><span class="section-number-4">1.1.1</span> Binarization</h4>
+<div id="outline-container-org9bedf44" class="outline-4">
+<h4 id="org9bedf44"><span class="section-number-4">1.1.1</span> Binarization</h4>
 </div>
-<div id="outline-container-org13e20d4" class="outline-4">
-<h4 id="org13e20d4"><span class="section-number-4">1.1.2</span> Numeric Transforms</h4>
+<div id="outline-container-org28616a0" class="outline-4">
+<h4 id="org28616a0"><span class="section-number-4">1.1.2</span> Numeric Transforms</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 <b>Problem:</b>
@@ -173,8 +173,8 @@ Transform numeric ​​into similar orders of magnitude, It group the counts in
 </ul></li>
 <li><p>
 Log Transform
-<a id="orgbfe484c"></a>
 </p>
+
 \begin{equation}
   y=\log_{a}(x)
 \end{equation}
@@ -201,8 +201,8 @@ plt.plot(x, y)
 </div>
 </div>
 
-<div id="outline-container-org6f832ab" class="outline-4">
-<h4 id="org6f832ab"><span class="section-number-4">1.1.3</span> Feature Scaling or Normalization</h4>
+<div id="outline-container-orgfcb501f" class="outline-4">
+<h4 id="orgfcb501f"><span class="section-number-4">1.1.3</span> Feature Scaling or Normalization</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 Feature scaling changes the scale of the feature.
@@ -211,8 +211,8 @@ Feature scaling changes the scale of the feature.
 <dl class="org-dl">
 <dt>Min-Max scaling</dt><dd><p>
 squeezes all feature values to be within the range of \([0,1]\)
-<a id="org1091c43"></a>
 </p>
+
 \begin{equation}
   \tilde{x}=\frac{x-\min(x)}{\max(x)-\min(x)}
 \end{equation}
@@ -236,8 +236,8 @@ plt.plot(y)
 </div></dd>
 <dt>Standardization(Variance Scaling)</dt><dd><p>
 scale feature to that has a mean of 0 and a variance of 1
-<a id="org2d3f749"></a>
 </p>
+
 \begin{equation}
   \tilde{x}=\frac{x-mean(x)}{\sqrt{var(x)}}
 \end{equation}
@@ -272,6 +272,7 @@ Don't "center" sparse data!
 <dt>\(l^{2}\) Normalization</dt><dd><p>
 normalize(divides) the original feature value by what's known as the \(l^{2}\) norm(<i>Euclidean</i> norm).
 </p>
+
 \begin{align}
   &\tilde{x}=\frac{x}{ \left\Vert x \right\Vert _{2} }\\
   &\left\Vert x \right\Vert _{2}=\sqrt{x_{1}^{2}+x_{2}^{2}+\cdots+x_{m}^{2}}
@@ -303,8 +304,8 @@ plt.tight_layout()
 </div>
 </div>
 
-<div id="outline-container-org64dcc9a" class="outline-3">
-<h3 id="org64dcc9a"><span class="section-number-3">1.2</span> Text Data</h3>
+<div id="outline-container-org6efdb30" class="outline-3">
+<h3 id="org6efdb30"><span class="section-number-3">1.2</span> Text Data</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Bag-of-Words
@@ -313,12 +314,12 @@ Tf-Idf
 </p>
 </div>
 </div>
-<div id="outline-container-org7b3d96f" class="outline-3">
-<h3 id="org7b3d96f"><span class="section-number-3">1.3</span> Categorical Variables</h3>
+<div id="outline-container-org723bb30" class="outline-3">
+<h3 id="org723bb30"><span class="section-number-3">1.3</span> Categorical Variables</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-orgbaea7ee" class="outline-4">
-<h4 id="orgbaea7ee"><span class="section-number-4">1.3.1</span> Encoding</h4>
+<div id="outline-container-org5293479" class="outline-4">
+<h4 id="org5293479"><span class="section-number-4">1.3.1</span> Encoding</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 <b>Approach</b>
@@ -390,8 +391,8 @@ dummy_df
 </div>
 </div>
 
-<div id="outline-container-org9dd8b89" class="outline-4">
-<h4 id="org9dd8b89"><span class="section-number-4">1.3.2</span> Feature hashing</h4>
+<div id="outline-container-org2039ae4" class="outline-4">
+<h4 id="org2039ae4"><span class="section-number-4">1.3.2</span> Feature hashing</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <div class="org-src-container">
 <pre class="src src-ipython"><span class="org-comment-delimiter"># </span><span class="org-comment">m represent fixed word size</span>
@@ -409,7 +410,7 @@ hash_features(word_list, <span class="org-highlight-numbers-number">5</span>)
 </div>
 
 <pre class="example">
-[2, 2, 2, 1, 0]
+[3, 0, 0, 1, 3]
 
 </pre>
 
@@ -443,8 +444,8 @@ hash_features(word_list, <span class="org-highlight-numbers-number">5</span>)
 </div>
 </div>
 
-<div id="outline-container-org3b979f3" class="outline-4">
-<h4 id="org3b979f3"><span class="section-number-4">1.3.3</span> Bin-counting</h4>
+<div id="outline-container-org8e71a94" class="outline-4">
+<h4 id="org8e71a94"><span class="section-number-4">1.3.3</span> Bin-counting</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <p>
 <b>Space requirement</b>: \(O(n+k)\) for small, dense representation of each data point, plus the count statistics that must be kept for each category.
@@ -477,8 +478,8 @@ hash_features(word_list, <span class="org-highlight-numbers-number">5</span>)
 </div>
 </div>
 
-<div id="outline-container-orge3dc141" class="outline-3">
-<h3 id="orge3dc141"><span class="section-number-3">1.4</span> Feature Selection</h3>
+<div id="outline-container-org8eadcb1" class="outline-3">
+<h3 id="org8eadcb1"><span class="section-number-3">1.4</span> Feature Selection</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Feature selection techniques prune away nonuseful features in order to reduce the complexity of the resulting model.
@@ -495,35 +496,35 @@ Feature selection techniques fail into three classes:
 </div>
 </div>
 
-<div id="outline-container-org5f82f69" class="outline-3">
-<h3 id="org5f82f69"><span class="section-number-3">1.5</span> Feature Crosses</h3>
+<div id="outline-container-org7a129a5" class="outline-3">
+<h3 id="org7a129a5"><span class="section-number-3">1.5</span> Feature Crosses</h3>
 </div>
 </div>
 
-<div id="outline-container-orgf565c22" class="outline-2">
-<h2 id="orgf565c22"><span class="section-number-2">2</span> Model Evaluation</h2>
+<div id="outline-container-orgfd4d843" class="outline-2">
+<h2 id="orgfd4d843"><span class="section-number-2">2</span> Model Evaluation</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orge270712" class="outline-3">
-<h3 id="orge270712"><span class="section-number-3">2.1</span> Evaluation Function</h3>
+<div id="outline-container-org521362e" class="outline-3">
+<h3 id="org521362e"><span class="section-number-3">2.1</span> Evaluation Function</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-orgee704bf" class="outline-4">
-<h4 id="orgee704bf"><span class="section-number-4">2.1.1</span> Hold-out</h4>
+<div id="outline-container-orgbf8fca6" class="outline-4">
+<h4 id="orgbf8fca6"><span class="section-number-4">2.1.1</span> Hold-out</h4>
 </div>
-<div id="outline-container-org3fb6df1" class="outline-4">
-<h4 id="org3fb6df1"><span class="section-number-4">2.1.2</span> k</h4>
+<div id="outline-container-org247cc00" class="outline-4">
+<h4 id="org247cc00"><span class="section-number-4">2.1.2</span> k</h4>
 </div>
-<div id="outline-container-org23af426" class="outline-4">
-<h4 id="org23af426"><span class="section-number-4">2.1.3</span> bootstrapping</h4>
+<div id="outline-container-org5bbb35f" class="outline-4">
+<h4 id="org5bbb35f"><span class="section-number-4">2.1.3</span> bootstrapping</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-org8686381" class="outline-2">
-<h2 id="org8686381"><span class="section-number-2">3</span> Code</h2>
+<div id="outline-container-orgd3b2d3a" class="outline-2">
+<h2 id="orgd3b2d3a"><span class="section-number-2">3</span> Code</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-ipython" id="orgdd42058">%matplotlib inline
+<pre class="src src-ipython" id="org2900560">%matplotlib inline
 
 <span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
 <span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
@@ -531,17 +532,17 @@ Feature selection techniques fail into three classes:
 </div>
 
 <div class="org-src-container">
-<pre class="src src-ipython" id="org4ee85f6"><span class="org-variable-name">plt.rcParams</span>[<span class="org-string">'figure.facecolor'</span>] = <span class="org-string">'white'</span>
+<pre class="src src-ipython" id="orgd8f4ac7"><span class="org-variable-name">plt.rcParams</span>[<span class="org-string">'figure.facecolor'</span>] = <span class="org-string">'white'</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-ipython" id="org02c5920">
+<pre class="src src-ipython" id="orgeed7fd2">
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org4eed1ea">(venv-workon <span class="org-string">"python3"</span>)
+<pre class="src src-emacs-lisp" id="org21d0393">(venv-workon <span class="org-string">"python3"</span>)
 (<span class="org-keyword">setq-local</span> my/org-babel-src-list
       '(<span class="org-string">"import_package"</span>
         <span class="org-string">"matplotlib_configure"</span>
@@ -558,7 +559,7 @@ Feature selection techniques fail into three classes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-07 日 22:30</p>
+<p class="date">Created: 2019-04-08 一 21:47</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

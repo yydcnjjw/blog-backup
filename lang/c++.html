@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-07 日 22:31 -->
+<!-- 2019-04-08 一 21:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -63,123 +63,123 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge2d4057">1. Effective C++</a>
+<li><a href="#org2b0d39c">1. Effective C++</a>
 <ul>
-<li><a href="#org379dd6e">1.1. 让自己习惯 c++</a>
+<li><a href="#orgfeffca5">1.1. 让自己习惯 c++</a>
 <ul>
-<li><a href="#org04d78aa">1.1.1. 视 c++ 为一个语言联邦</a></li>
-<li><a href="#orge6755a5">1.1.2. 尽量以 <code>const</code>, <code>enum</code>, <code>inline</code> 替换 <code>#define</code></a></li>
-<li><a href="#orgff3754a">1.1.3. 尽可能使用 <code>const</code></a></li>
-<li><a href="#orgcc960dd">1.1.4. 确定对象被使用前已先被初始化</a></li>
+<li><a href="#org351ccf7">1.1.1. 视 c++ 为一个语言联邦</a></li>
+<li><a href="#orga278341">1.1.2. 尽量以 <code>const</code>, <code>enum</code>, <code>inline</code> 替换 <code>#define</code></a></li>
+<li><a href="#org89cb1ff">1.1.3. 尽可能使用 <code>const</code></a></li>
+<li><a href="#org187878c">1.1.4. 确定对象被使用前已先被初始化</a></li>
 </ul>
 </li>
-<li><a href="#org4542ea5">1.2. 构造/析构/赋值运算</a>
+<li><a href="#orgaeb807e">1.2. 构造/析构/赋值运算</a>
 <ul>
-<li><a href="#orga87bf27">1.2.1. 了解 c++ 默默编写并调用哪些函数</a></li>
-<li><a href="#org3eb4051">1.2.2. 若不想使用编译器自动生成的函数，就该明确拒绝</a></li>
-<li><a href="#org64326ea">1.2.3. 为多态基类声明 <code>virtual</code> 析构函数</a></li>
-<li><a href="#org24a6cf4">1.2.4. 别让异常逃离析构函数</a></li>
-<li><a href="#orgf4f0ac0">1.2.5. 绝不在构造和析构过程中调用 <code>virtual</code> 函数</a></li>
-<li><a href="#org1b560c2">1.2.6. 令 <code>operator=</code> 返回一个 <code>reference to *this</code></a></li>
-<li><a href="#org0f01468">1.2.7. 在 <code>operator=</code> 中处理 "自我赋值"</a></li>
-<li><a href="#org8c0aa5d">1.2.8. 复制对象时勿忘其每个成分</a></li>
+<li><a href="#org2d150af">1.2.1. 了解 c++ 默默编写并调用哪些函数</a></li>
+<li><a href="#org107a75b">1.2.2. 若不想使用编译器自动生成的函数，就该明确拒绝</a></li>
+<li><a href="#orgd35149d">1.2.3. 为多态基类声明 <code>virtual</code> 析构函数</a></li>
+<li><a href="#org123fcfb">1.2.4. 别让异常逃离析构函数</a></li>
+<li><a href="#org4a6adf1">1.2.5. 绝不在构造和析构过程中调用 <code>virtual</code> 函数</a></li>
+<li><a href="#orgeb2b3a8">1.2.6. 令 <code>operator=</code> 返回一个 <code>reference to *this</code></a></li>
+<li><a href="#org774430d">1.2.7. 在 <code>operator=</code> 中处理 "自我赋值"</a></li>
+<li><a href="#orga8a7fe0">1.2.8. 复制对象时勿忘其每个成分</a></li>
 </ul>
 </li>
-<li><a href="#org38872f1">1.3. 资源管理</a>
+<li><a href="#org7ee1fc1">1.3. 资源管理</a>
 <ul>
-<li><a href="#orgec45911">1.3.1. 以对象管理资源</a></li>
-<li><a href="#org7fafc9d">1.3.2. 在资源管理类中小心 <code>copy</code> 行为</a></li>
-<li><a href="#orgaecf664">1.3.3. 在资源管理类中提供对原始资源的访问</a></li>
-<li><a href="#org31e66b5">1.3.4. 成对使用 <code>new</code> 和 <code>delete</code> 时要采取相同形式</a></li>
-<li><a href="#org86a2ce0">1.3.5. 以独立语句将 newed 对象置入智能指针</a></li>
+<li><a href="#org504f5fd">1.3.1. 以对象管理资源</a></li>
+<li><a href="#orge582f9a">1.3.2. 在资源管理类中小心 <code>copy</code> 行为</a></li>
+<li><a href="#org8ae42bb">1.3.3. 在资源管理类中提供对原始资源的访问</a></li>
+<li><a href="#orgbb8252b">1.3.4. 成对使用 <code>new</code> 和 <code>delete</code> 时要采取相同形式</a></li>
+<li><a href="#org886a20d">1.3.5. 以独立语句将 newed 对象置入智能指针</a></li>
 </ul>
 </li>
-<li><a href="#orgf38586b">1.4. 设计与声明</a>
+<li><a href="#orgaaeb0e7">1.4. 设计与声明</a>
 <ul>
-<li><a href="#orgeb63160">1.4.1. 让接口容易被正确使用, 不易被误用</a></li>
-<li><a href="#org87b81ee">1.4.2. 设计 class 犹如设计 type</a></li>
-<li><a href="#orgb4b0c41">1.4.3. 宁以 pass-by-reference to const 替换 pass-by-value</a></li>
-<li><a href="#orga601260">1.4.4. 必须返回对象时, 别妄想返回其 reference</a></li>
-<li><a href="#org51559ba">1.4.5. 将成员变量声明为 <code>private</code></a></li>
-<li><a href="#org945035a">1.4.6. 宁以 non-member、non-friend 替换 member 函数</a></li>
-<li><a href="#org48aacc5">1.4.7. 若所有参数皆需类型转换，请为此采用 non-member 函数</a></li>
-<li><a href="#org81c2f52">1.4.8. <span class="todo TODO">TODO</span> 考虑写出一个不抛异常的 swap 函数</a></li>
+<li><a href="#orgfe30ed6">1.4.1. 让接口容易被正确使用, 不易被误用</a></li>
+<li><a href="#orgc8a0f8a">1.4.2. 设计 class 犹如设计 type</a></li>
+<li><a href="#org2387e64">1.4.3. 宁以 pass-by-reference to const 替换 pass-by-value</a></li>
+<li><a href="#org905f462">1.4.4. 必须返回对象时, 别妄想返回其 reference</a></li>
+<li><a href="#org40767a4">1.4.5. 将成员变量声明为 <code>private</code></a></li>
+<li><a href="#org251fea2">1.4.6. 宁以 non-member、non-friend 替换 member 函数</a></li>
+<li><a href="#orgef38034">1.4.7. 若所有参数皆需类型转换，请为此采用 non-member 函数</a></li>
+<li><a href="#org6cfc6ee">1.4.8. <span class="todo TODO">TODO</span> 考虑写出一个不抛异常的 swap 函数</a></li>
 </ul>
 </li>
-<li><a href="#org60c89ab">1.5. 实现</a>
+<li><a href="#orgadf0161">1.5. 实现</a>
 <ul>
-<li><a href="#org15f3e08">1.5.1. 尽可能延后变量定义式的出现时间</a></li>
-<li><a href="#orgb43dfc1">1.5.2. 尽量少做转型动作</a></li>
-<li><a href="#org7360eb4">1.5.3. 避免返回 handles 指向对象内部成分</a></li>
-<li><a href="#orgc8e7984">1.5.4. 为"异常安全"而努力是值得的</a></li>
-<li><a href="#org385bec9">1.5.5. 透彻了解 inlining 的里里外外</a></li>
-<li><a href="#orgfa96039">1.5.6. 将文件间的编译依存关系降至最低</a></li>
+<li><a href="#org42bec99">1.5.1. 尽可能延后变量定义式的出现时间</a></li>
+<li><a href="#orgf4be4a4">1.5.2. 尽量少做转型动作</a></li>
+<li><a href="#orgd4b24ff">1.5.3. 避免返回 handles 指向对象内部成分</a></li>
+<li><a href="#orge01933d">1.5.4. 为"异常安全"而努力是值得的</a></li>
+<li><a href="#org70ac476">1.5.5. 透彻了解 inlining 的里里外外</a></li>
+<li><a href="#orgf6b2528">1.5.6. 将文件间的编译依存关系降至最低</a></li>
 </ul>
 </li>
-<li><a href="#org2a3d876">1.6. 继承与面对对象设计</a>
+<li><a href="#org449b4ea">1.6. 继承与面对对象设计</a>
 <ul>
-<li><a href="#org8771a93">1.6.1. 确定你的 <code>public</code> 继承塑模出 is-a 关系</a></li>
-<li><a href="#orgdca8278">1.6.2. 避免遮掩继承而来的名称</a></li>
-<li><a href="#org926b80a">1.6.3. 区分接口继承和实现继承</a></li>
-<li><a href="#org824c364">1.6.4. 考虑 virtual 函数以外的其他选择</a></li>
-<li><a href="#orgb45f448">1.6.5. 绝不重新定义继承而来的 non-virtual 函数</a></li>
-<li><a href="#org2510be4">1.6.6. 绝不重新定义继承而来的缺省参数值</a></li>
-<li><a href="#orgbf5b1b0">1.6.7. 通过复合(composition)塑模出 has-a 或"根据某物实现出"</a></li>
-<li><a href="#orgb1bfe98">1.6.8. 明智而审慎地使用 <code>private</code> 继承</a></li>
-<li><a href="#org2a55c6f">1.6.9. 明智而审慎地使用多重继承</a></li>
+<li><a href="#org9953691">1.6.1. 确定你的 <code>public</code> 继承塑模出 is-a 关系</a></li>
+<li><a href="#org91b84de">1.6.2. 避免遮掩继承而来的名称</a></li>
+<li><a href="#org3bc2c2a">1.6.3. 区分接口继承和实现继承</a></li>
+<li><a href="#orgceec563">1.6.4. 考虑 virtual 函数以外的其他选择</a></li>
+<li><a href="#org786c040">1.6.5. 绝不重新定义继承而来的 non-virtual 函数</a></li>
+<li><a href="#org500becb">1.6.6. 绝不重新定义继承而来的缺省参数值</a></li>
+<li><a href="#org410cd19">1.6.7. 通过复合(composition)塑模出 has-a 或"根据某物实现出"</a></li>
+<li><a href="#orgca515c8">1.6.8. 明智而审慎地使用 <code>private</code> 继承</a></li>
+<li><a href="#org777e243">1.6.9. 明智而审慎地使用多重继承</a></li>
 </ul>
 </li>
-<li><a href="#org3cc70c3">1.7. 模板与泛型编程</a>
+<li><a href="#org2933691">1.7. 模板与泛型编程</a>
 <ul>
-<li><a href="#org0997a5d">1.7.1. 了解隐式接口和编译期多态</a></li>
-<li><a href="#org6cb9642">1.7.2. 了解 <code>typename</code> 的双重意义</a></li>
-<li><a href="#org31edb07">1.7.3. 学习处理模板化基类内的名称</a></li>
-<li><a href="#org38d0db5">1.7.4. 将与参数无关的代码抽离</a></li>
-<li><a href="#org16c8780">1.7.5. 运用成员函数模板接受所有兼容类型</a></li>
-<li><a href="#org4276651">1.7.6. 需要类型转换时请为模板定义非成员函数</a></li>
-<li><a href="#orgf3498dd">1.7.7. 请使用 traits classes 表现类型信息</a></li>
-<li><a href="#orgfc6abbc">1.7.8. 认识 template 元编程</a></li>
+<li><a href="#orgeb5abc3">1.7.1. 了解隐式接口和编译期多态</a></li>
+<li><a href="#orgc9da91c">1.7.2. 了解 <code>typename</code> 的双重意义</a></li>
+<li><a href="#org07e5938">1.7.3. 学习处理模板化基类内的名称</a></li>
+<li><a href="#orge3a3933">1.7.4. 将与参数无关的代码抽离</a></li>
+<li><a href="#org07d3f7b">1.7.5. 运用成员函数模板接受所有兼容类型</a></li>
+<li><a href="#orgf61903d">1.7.6. 需要类型转换时请为模板定义非成员函数</a></li>
+<li><a href="#orgace5c76">1.7.7. 请使用 traits classes 表现类型信息</a></li>
+<li><a href="#org3f54eea">1.7.8. 认识 template 元编程</a></li>
 </ul>
 </li>
-<li><a href="#org5b1e87b">1.8. 定制 new 和 delete</a>
+<li><a href="#orgbb53134">1.8. 定制 new 和 delete</a>
 <ul>
-<li><a href="#orgca73124">1.8.1. 了解 new-handler 的行为</a></li>
-<li><a href="#org1ce1e52">1.8.2. 了解 new 和 delete 的合理替换时机</a></li>
-<li><a href="#orgcd59431">1.8.3. 编写 new 和 delete 时需固守常规</a></li>
-<li><a href="#org8097daa">1.8.4. 写了 placement new 也要写 placement delete</a></li>
+<li><a href="#org8f0b09d">1.8.1. 了解 new-handler 的行为</a></li>
+<li><a href="#org5cf1d4c">1.8.2. 了解 new 和 delete 的合理替换时机</a></li>
+<li><a href="#orgc46ed46">1.8.3. 编写 new 和 delete 时需固守常规</a></li>
+<li><a href="#org0b46a2b">1.8.4. 写了 placement new 也要写 placement delete</a></li>
 </ul>
 </li>
-<li><a href="#org601cb0e">1.9. 杂项讨论</a>
+<li><a href="#orgf38e699">1.9. 杂项讨论</a>
 <ul>
-<li><a href="#orgaf84d68">1.9.1. 不要轻忽编译器的警告</a></li>
-<li><a href="#orga3fd9ac">1.9.2. 让自己熟悉包括 TR1 在内的标准程序库</a></li>
-<li><a href="#org8684226">1.9.3. 让自己熟悉 Boost</a></li>
+<li><a href="#org0afc225">1.9.1. 不要轻忽编译器的警告</a></li>
+<li><a href="#orgcb74a5f">1.9.2. 让自己熟悉包括 TR1 在内的标准程序库</a></li>
+<li><a href="#org365061e">1.9.3. 让自己熟悉 Boost</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org08730d5">2. std c++</a></li>
-<li><a href="#org1fd5275">3. skill</a>
+<li><a href="#org4fb896f">2. std c++</a></li>
+<li><a href="#org6af5b4d">3. skill</a>
 <ul>
-<li><a href="#orgec75054">3.1. clip to range</a></li>
+<li><a href="#orgde7caac">3.1. clip to range</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge2d4057" class="outline-2">
-<h2 id="orge2d4057"><span class="section-number-2">1</span> Effective C++</h2>
+<div id="outline-container-org2b0d39c" class="outline-2">
+<h2 id="org2b0d39c"><span class="section-number-2">1</span> Effective C++</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org379dd6e" class="outline-3">
-<h3 id="org379dd6e"><span class="section-number-3">1.1</span> 让自己习惯 c++</h3>
+<div id="outline-container-orgfeffca5" class="outline-3">
+<h3 id="orgfeffca5"><span class="section-number-3">1.1</span> 让自己习惯 c++</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org04d78aa" class="outline-4">
-<h4 id="org04d78aa"><span class="section-number-4">1.1.1</span> 视 c++ 为一个语言联邦</h4>
+<div id="outline-container-org351ccf7" class="outline-4">
+<h4 id="org351ccf7"><span class="section-number-4">1.1.1</span> 视 c++ 为一个语言联邦</h4>
 </div>
-<div id="outline-container-orge6755a5" class="outline-4">
-<h4 id="orge6755a5"><span class="section-number-4">1.1.2</span> 尽量以 <code>const</code>, <code>enum</code>, <code>inline</code> 替换 <code>#define</code></h4>
+<div id="outline-container-orga278341" class="outline-4">
+<h4 id="orga278341"><span class="section-number-4">1.1.2</span> 尽量以 <code>const</code>, <code>enum</code>, <code>inline</code> 替换 <code>#define</code></h4>
 <div class="outline-text-4" id="text-1-1-2">
 <ul class="org-ul">
 <li><p>
@@ -216,8 +216,8 @@ class 专属常量，为了将常量的作用域 (scope) 限制于 class 内，�
 </div>
 </div>
 
-<div id="outline-container-orgff3754a" class="outline-4">
-<h4 id="orgff3754a"><span class="section-number-4">1.1.3</span> 尽可能使用 <code>const</code></h4>
+<div id="outline-container-org89cb1ff" class="outline-4">
+<h4 id="org89cb1ff"><span class="section-number-4">1.1.3</span> 尽可能使用 <code>const</code></h4>
 <div class="outline-text-4" id="text-1-1-3">
 <ul class="org-ul">
 <li><code>const</code> 出现在星号左边表示被指物是常量，在星号右边表示指针自身是常量，如果两边都有表示两边都是常量。</li>
@@ -233,8 +233,8 @@ class 专属常量，为了将常量的作用域 (scope) 限制于 class 内，�
 </div>
 </div>
 
-<div id="outline-container-orgcc960dd" class="outline-4">
-<h4 id="orgcc960dd"><span class="section-number-4">1.1.4</span> 确定对象被使用前已先被初始化</h4>
+<div id="outline-container-org187878c" class="outline-4">
+<h4 id="org187878c"><span class="section-number-4">1.1.4</span> 确定对象被使用前已先被初始化</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <ul class="org-ul">
 <li>对内置型对象进行手工初始化，因为 c++ 不保证初始化它们。</li>
@@ -264,12 +264,12 @@ class 专属常量，为了将常量的作用域 (scope) 限制于 class 内，�
 </div>
 </div>
 
-<div id="outline-container-org4542ea5" class="outline-3">
-<h3 id="org4542ea5"><span class="section-number-3">1.2</span> 构造/析构/赋值运算</h3>
+<div id="outline-container-orgaeb807e" class="outline-3">
+<h3 id="orgaeb807e"><span class="section-number-3">1.2</span> 构造/析构/赋值运算</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-orga87bf27" class="outline-4">
-<h4 id="orga87bf27"><span class="section-number-4">1.2.1</span> 了解 c++ 默默编写并调用哪些函数</h4>
+<div id="outline-container-org2d150af" class="outline-4">
+<h4 id="org2d150af"><span class="section-number-4">1.2.1</span> 了解 c++ 默默编写并调用哪些函数</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 编译器可以暗自为 class 创建 default 构建函数、copy 构造函数、copy assignment 操作符，以及构造函数。
@@ -283,8 +283,8 @@ class 专属常量，为了将常量的作用域 (scope) 限制于 class 内，�
 </div>
 </div>
 
-<div id="outline-container-org3eb4051" class="outline-4">
-<h4 id="org3eb4051"><span class="section-number-4">1.2.2</span> 若不想使用编译器自动生成的函数，就该明确拒绝</h4>
+<div id="outline-container-org107a75b" class="outline-4">
+<h4 id="org107a75b"><span class="section-number-4">1.2.2</span> 若不想使用编译器自动生成的函数，就该明确拒绝</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 为了驳回编译器自动提供的机能，可将相应的成员函数声明为 <code>private</code> 并且不予实现。使用像 <code>Uncopyable</code> 这样的 <code>base class</code> 也是一种做法。
@@ -292,8 +292,8 @@ class 专属常量，为了将常量的作用域 (scope) 限制于 class 内，�
 </div>
 </div>
 
-<div id="outline-container-org64326ea" class="outline-4">
-<h4 id="org64326ea"><span class="section-number-4">1.2.3</span> 为多态基类声明 <code>virtual</code> 析构函数</h4>
+<div id="outline-container-orgd35149d" class="outline-4">
+<h4 id="orgd35149d"><span class="section-number-4">1.2.3</span> 为多态基类声明 <code>virtual</code> 析构函数</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <ul class="org-ul">
 <li><p>
@@ -316,8 +316,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org24a6cf4" class="outline-4">
-<h4 id="org24a6cf4"><span class="section-number-4">1.2.4</span> 别让异常逃离析构函数</h4>
+<div id="outline-container-org123fcfb" class="outline-4">
+<h4 id="org123fcfb"><span class="section-number-4">1.2.4</span> 别让异常逃离析构函数</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <ul class="org-ul">
 <li>析构函数绝对不要吐出异常。如果一个被析构函数调用的函数可能抛出异常，析构函数应该捕捉任何异常，然后吞下它们(不传播)或结束程序。</li>
@@ -326,8 +326,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgf4f0ac0" class="outline-4">
-<h4 id="orgf4f0ac0"><span class="section-number-4">1.2.5</span> 绝不在构造和析构过程中调用 <code>virtual</code> 函数</h4>
+<div id="outline-container-org4a6adf1" class="outline-4">
+<h4 id="org4a6adf1"><span class="section-number-4">1.2.5</span> 绝不在构造和析构过程中调用 <code>virtual</code> 函数</h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 在构造和析构期间不要调用 <code>virtual</code> 函数，因为这类调用从不下降至 <code>derived class</code> (比起当前执行构造函数和析构函数的那层)。
@@ -335,11 +335,11 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org1b560c2" class="outline-4">
-<h4 id="org1b560c2"><span class="section-number-4">1.2.6</span> 令 <code>operator=</code> 返回一个 <code>reference to *this</code></h4>
+<div id="outline-container-orgeb2b3a8" class="outline-4">
+<h4 id="orgeb2b3a8"><span class="section-number-4">1.2.6</span> 令 <code>operator=</code> 返回一个 <code>reference to *this</code></h4>
 </div>
-<div id="outline-container-org0f01468" class="outline-4">
-<h4 id="org0f01468"><span class="section-number-4">1.2.7</span> 在 <code>operator=</code> 中处理 "自我赋值"</h4>
+<div id="outline-container-org774430d" class="outline-4">
+<h4 id="org774430d"><span class="section-number-4">1.2.7</span> 在 <code>operator=</code> 中处理 "自我赋值"</h4>
 <div class="outline-text-4" id="text-1-2-7">
 <ul class="org-ul">
 <li>确保当对象自我赋值时 <code>operator=</code> 有良好行为。其中技术包含比较 "来源对象" 和 "目标对象" 的地址、精心周到的语句顺序、以及 <code>copy-and-swap</code> 。</li>
@@ -348,8 +348,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org8c0aa5d" class="outline-4">
-<h4 id="org8c0aa5d"><span class="section-number-4">1.2.8</span> 复制对象时勿忘其每个成分</h4>
+<div id="outline-container-orga8a7fe0" class="outline-4">
+<h4 id="orga8a7fe0"><span class="section-number-4">1.2.8</span> 复制对象时勿忘其每个成分</h4>
 <div class="outline-text-4" id="text-1-2-8">
 <ul class="org-ul">
 <li><code>copying</code> 函数应该确保复制 "对象内的所有成员变量" 及 "所有 <code>base class</code> 成分"。</li>
@@ -358,12 +358,12 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 </div>
-<div id="outline-container-org38872f1" class="outline-3">
-<h3 id="org38872f1"><span class="section-number-3">1.3</span> 资源管理</h3>
+<div id="outline-container-org7ee1fc1" class="outline-3">
+<h3 id="org7ee1fc1"><span class="section-number-3">1.3</span> 资源管理</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-orgec45911" class="outline-4">
-<h4 id="orgec45911"><span class="section-number-4">1.3.1</span> 以对象管理资源</h4>
+<div id="outline-container-org504f5fd" class="outline-4">
+<h4 id="org504f5fd"><span class="section-number-4">1.3.1</span> 以对象管理资源</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
 <li>为了防止资源泄漏, 使用 <code>RAII(Resource Acquisition Is Initialization)</code> 对象, 它们在构造函数中获得资源并在析构函数中释放资源。</li>
@@ -372,8 +372,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org7fafc9d" class="outline-4">
-<h4 id="org7fafc9d"><span class="section-number-4">1.3.2</span> 在资源管理类中小心 <code>copy</code> 行为</h4>
+<div id="outline-container-orge582f9a" class="outline-4">
+<h4 id="orge582f9a"><span class="section-number-4">1.3.2</span> 在资源管理类中小心 <code>copy</code> 行为</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <ul class="org-ul">
 <li>复制 <code>RAII</code> 对象必须一并复制它所管理的资源, 所以资源的 <code>copying</code> 行为决定 <code>RAII</code> 对象的 <code>copying</code> 行为。</li>
@@ -388,8 +388,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgaecf664" class="outline-4">
-<h4 id="orgaecf664"><span class="section-number-4">1.3.3</span> 在资源管理类中提供对原始资源的访问</h4>
+<div id="outline-container-org8ae42bb" class="outline-4">
+<h4 id="org8ae42bb"><span class="section-number-4">1.3.3</span> 在资源管理类中提供对原始资源的访问</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <ul class="org-ul">
 <li>APIs 往往要求访问原始资源 (raw resources), 所以每个 <code>RAII class</code> 应该提供一个 "取得其所管理之资源" 的办法。</li>
@@ -398,8 +398,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org31e66b5" class="outline-4">
-<h4 id="org31e66b5"><span class="section-number-4">1.3.4</span> 成对使用 <code>new</code> 和 <code>delete</code> 时要采取相同形式</h4>
+<div id="outline-container-orgbb8252b" class="outline-4">
+<h4 id="orgbb8252b"><span class="section-number-4">1.3.4</span> 成对使用 <code>new</code> 和 <code>delete</code> 时要采取相同形式</h4>
 <div class="outline-text-4" id="text-1-3-4">
 <p>
 如果在 <code>new</code> 表达式中使用 <code>[]</code> , 必须在相应的 <code>delete</code> 表达式中使用 <code>[]</code> 。如果你在 <code>new</code> 表达式中不使用 <code>[]</code> ，一定不要在相应的 <code>delete</code> 表达式中使用 <code>[]</code>
@@ -407,8 +407,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org86a2ce0" class="outline-4">
-<h4 id="org86a2ce0"><span class="section-number-4">1.3.5</span> 以独立语句将 newed 对象置入智能指针</h4>
+<div id="outline-container-org886a20d" class="outline-4">
+<h4 id="org886a20d"><span class="section-number-4">1.3.5</span> 以独立语句将 newed 对象置入智能指针</h4>
 <div class="outline-text-4" id="text-1-3-5">
 <p>
 以独立语句将 newed 对象存储到智能指针内。如果不这样做，一旦异常抛出，有可能导致难以察觉的资源泄漏。
@@ -417,12 +417,12 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgf38586b" class="outline-3">
-<h3 id="orgf38586b"><span class="section-number-3">1.4</span> 设计与声明</h3>
+<div id="outline-container-orgaaeb0e7" class="outline-3">
+<h3 id="orgaaeb0e7"><span class="section-number-3">1.4</span> 设计与声明</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-orgeb63160" class="outline-4">
-<h4 id="orgeb63160"><span class="section-number-4">1.4.1</span> 让接口容易被正确使用, 不易被误用</h4>
+<div id="outline-container-orgfe30ed6" class="outline-4">
+<h4 id="orgfe30ed6"><span class="section-number-4">1.4.1</span> 让接口容易被正确使用, 不易被误用</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <ul class="org-ul">
 <li>好的接口很容易被正确使用, 不容易被误用。你应该在你的所有接口中努力达成这些性质</li>
@@ -433,8 +433,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org87b81ee" class="outline-4">
-<h4 id="org87b81ee"><span class="section-number-4">1.4.2</span> 设计 class 犹如设计 type</h4>
+<div id="outline-container-orgc8a0f8a" class="outline-4">
+<h4 id="orgc8a0f8a"><span class="section-number-4">1.4.2</span> 设计 class 犹如设计 type</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <ul class="org-ul">
 <li><b>新 type 的对象应该如何被创建和销毁</b>: class 的构造函数和析构函数以及内存分配函数和释放函数。</li>
@@ -453,8 +453,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgb4b0c41" class="outline-4">
-<h4 id="orgb4b0c41"><span class="section-number-4">1.4.3</span> 宁以 pass-by-reference to const 替换 pass-by-value</h4>
+<div id="outline-container-org2387e64" class="outline-4">
+<h4 id="org2387e64"><span class="section-number-4">1.4.3</span> 宁以 pass-by-reference to const 替换 pass-by-value</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <ul class="org-ul">
 <li>尽量以 pass-by-reference-to-const 替换 pass-by-value。前者通常比较高效，并可避免切割问题。</li>
@@ -463,8 +463,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orga601260" class="outline-4">
-<h4 id="orga601260"><span class="section-number-4">1.4.4</span> 必须返回对象时, 别妄想返回其 reference</h4>
+<div id="outline-container-org905f462" class="outline-4">
+<h4 id="org905f462"><span class="section-number-4">1.4.4</span> 必须返回对象时, 别妄想返回其 reference</h4>
 <div class="outline-text-4" id="text-1-4-4">
 <p>
 绝不要返回 pointer 或 reference 指向一个 local stack 对象，或返回 reference 指向一个 heap-allocated, 或返回 pointer 或 reference 指向一个 local static 对象而有可能同时需要多个这样的对象。
@@ -472,8 +472,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org51559ba" class="outline-4">
-<h4 id="org51559ba"><span class="section-number-4">1.4.5</span> 将成员变量声明为 <code>private</code></h4>
+<div id="outline-container-org40767a4" class="outline-4">
+<h4 id="org40767a4"><span class="section-number-4">1.4.5</span> 将成员变量声明为 <code>private</code></h4>
 <div class="outline-text-4" id="text-1-4-5">
 <ul class="org-ul">
 <li>切记将成员变量声明为 <code>private</code> 。这可赋予客户访问数据的一致性、可细微划分访问控制、允诺约束条件获得保证，并提供 class 作者以充分的实现弹性。</li>
@@ -482,8 +482,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org945035a" class="outline-4">
-<h4 id="org945035a"><span class="section-number-4">1.4.6</span> 宁以 non-member、non-friend 替换 member 函数</h4>
+<div id="outline-container-org251fea2" class="outline-4">
+<h4 id="org251fea2"><span class="section-number-4">1.4.6</span> 宁以 non-member、non-friend 替换 member 函数</h4>
 <div class="outline-text-4" id="text-1-4-6">
 <p>
 宁可拿 non-member non-friend 函数替换 member 函数。这样做可以增加封装性、包裹弹性(packaging flexibility)和机能扩充性。
@@ -491,8 +491,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org48aacc5" class="outline-4">
-<h4 id="org48aacc5"><span class="section-number-4">1.4.7</span> 若所有参数皆需类型转换，请为此采用 non-member 函数</h4>
+<div id="outline-container-orgef38034" class="outline-4">
+<h4 id="orgef38034"><span class="section-number-4">1.4.7</span> 若所有参数皆需类型转换，请为此采用 non-member 函数</h4>
 <div class="outline-text-4" id="text-1-4-7">
 <p>
 如果你需要为某个函数的所有参数(包括被 this 指针所指的那个隐喻参数)进行类型转换，那么这个函数必须是个 non-member
@@ -500,17 +500,17 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org81c2f52" class="outline-4">
-<h4 id="org81c2f52"><span class="section-number-4">1.4.8</span> <span class="todo TODO">TODO</span> 考虑写出一个不抛异常的 swap 函数</h4>
+<div id="outline-container-org6cfc6ee" class="outline-4">
+<h4 id="org6cfc6ee"><span class="section-number-4">1.4.8</span> <span class="todo TODO">TODO</span> 考虑写出一个不抛异常的 swap 函数</h4>
 </div>
 </div>
 
-<div id="outline-container-org60c89ab" class="outline-3">
-<h3 id="org60c89ab"><span class="section-number-3">1.5</span> 实现</h3>
+<div id="outline-container-orgadf0161" class="outline-3">
+<h3 id="orgadf0161"><span class="section-number-3">1.5</span> 实现</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-org15f3e08" class="outline-4">
-<h4 id="org15f3e08"><span class="section-number-4">1.5.1</span> 尽可能延后变量定义式的出现时间</h4>
+<div id="outline-container-org42bec99" class="outline-4">
+<h4 id="org42bec99"><span class="section-number-4">1.5.1</span> 尽可能延后变量定义式的出现时间</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 尽可能延后变量定义式的出现。这样做可增加程序的清晰度并改善程序效率。
@@ -518,8 +518,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgb43dfc1" class="outline-4">
-<h4 id="orgb43dfc1"><span class="section-number-4">1.5.2</span> 尽量少做转型动作</h4>
+<div id="outline-container-orgf4be4a4" class="outline-4">
+<h4 id="orgf4be4a4"><span class="section-number-4">1.5.2</span> 尽量少做转型动作</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <ul class="org-ul">
 <li>如果可以，尽量避免转型，特别是在注重效率的代码中避免 <code>dynamic_casts</code> 。如果有个设计需要转型动作，试着发展无需转型的替代设计。</li>
@@ -529,8 +529,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org7360eb4" class="outline-4">
-<h4 id="org7360eb4"><span class="section-number-4">1.5.3</span> 避免返回 handles 指向对象内部成分</h4>
+<div id="outline-container-orgd4b24ff" class="outline-4">
+<h4 id="orgd4b24ff"><span class="section-number-4">1.5.3</span> 避免返回 handles 指向对象内部成分</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <p>
 避免返回 handles(包含 references、指针、迭代器)指向对象内部。遵守这个条款可增加封装性，帮助 <code>const</code> 成员函数的行为像个 <code>const</code> ，并将发生"虚吊号码牌(dangling handles)"的可能性降至最低。
@@ -538,8 +538,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgc8e7984" class="outline-4">
-<h4 id="orgc8e7984"><span class="section-number-4">1.5.4</span> 为"异常安全"而努力是值得的</h4>
+<div id="outline-container-orge01933d" class="outline-4">
+<h4 id="orge01933d"><span class="section-number-4">1.5.4</span> 为"异常安全"而努力是值得的</h4>
 <div class="outline-text-4" id="text-1-5-4">
 <ul class="org-ul">
 <li>异常安全函数(Exception-safe functions)即使发生异常也不会 <b>泄露资源</b> 或 <b>允许任何数据结构败坏</b> 。这样的函数区分为以下三种保证:
@@ -554,8 +554,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org385bec9" class="outline-4">
-<h4 id="org385bec9"><span class="section-number-4">1.5.5</span> 透彻了解 inlining 的里里外外</h4>
+<div id="outline-container-org70ac476" class="outline-4">
+<h4 id="org70ac476"><span class="section-number-4">1.5.5</span> 透彻了解 inlining 的里里外外</h4>
 <div class="outline-text-4" id="text-1-5-5">
 <ul class="org-ul">
 <li>inline 函数的声明方式:
@@ -569,8 +569,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgfa96039" class="outline-4">
-<h4 id="orgfa96039"><span class="section-number-4">1.5.6</span> 将文件间的编译依存关系降至最低</h4>
+<div id="outline-container-orgf6b2528" class="outline-4">
+<h4 id="orgf6b2528"><span class="section-number-4">1.5.6</span> 将文件间的编译依存关系降至最低</h4>
 <div class="outline-text-4" id="text-1-5-6">
 <ul class="org-ul">
 <li>支持"编译依存性最小化"的一般构想是: 相依于声明式，不要相依于定义式。基于此构想的两个手段是 Handle classes 和 Interface classes。</li>
@@ -580,12 +580,12 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org2a3d876" class="outline-3">
-<h3 id="org2a3d876"><span class="section-number-3">1.6</span> 继承与面对对象设计</h3>
+<div id="outline-container-org449b4ea" class="outline-3">
+<h3 id="org449b4ea"><span class="section-number-3">1.6</span> 继承与面对对象设计</h3>
 <div class="outline-text-3" id="text-1-6">
 </div>
-<div id="outline-container-org8771a93" class="outline-4">
-<h4 id="org8771a93"><span class="section-number-4">1.6.1</span> 确定你的 <code>public</code> 继承塑模出 is-a 关系</h4>
+<div id="outline-container-org9953691" class="outline-4">
+<h4 id="org9953691"><span class="section-number-4">1.6.1</span> 确定你的 <code>public</code> 继承塑模出 is-a 关系</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <p>
 "public 继承"意味着 is-a。适用于 base classes 身上的每一件事情一定也适用于 derived classes 身上，因为每一个 derived class 对象也都是一个 base class 对象。
@@ -593,8 +593,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgdca8278" class="outline-4">
-<h4 id="orgdca8278"><span class="section-number-4">1.6.2</span> 避免遮掩继承而来的名称</h4>
+<div id="outline-container-org91b84de" class="outline-4">
+<h4 id="org91b84de"><span class="section-number-4">1.6.2</span> 避免遮掩继承而来的名称</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <ul class="org-ul">
 <li>derived classes 内的名称会遮掩 base classes 内的名称。在 public 继承下从来没有人希望如此。</li>
@@ -603,8 +603,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org926b80a" class="outline-4">
-<h4 id="org926b80a"><span class="section-number-4">1.6.3</span> 区分接口继承和实现继承</h4>
+<div id="outline-container-org3bc2c2a" class="outline-4">
+<h4 id="org3bc2c2a"><span class="section-number-4">1.6.3</span> 区分接口继承和实现继承</h4>
 <div class="outline-text-4" id="text-1-6-3">
 <ul class="org-ul">
 <li>接口继承和实现继承不同。在 public 继承下，derived classes 总是继承 base class 的接口。</li>
@@ -614,8 +614,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </ul>
 </div>
 </div>
-<div id="outline-container-org824c364" class="outline-4">
-<h4 id="org824c364"><span class="section-number-4">1.6.4</span> 考虑 virtual 函数以外的其他选择</h4>
+<div id="outline-container-orgceec563" class="outline-4">
+<h4 id="orgceec563"><span class="section-number-4">1.6.4</span> 考虑 virtual 函数以外的其他选择</h4>
 <div class="outline-text-4" id="text-1-6-4">
 <ul class="org-ul">
 <li>virtual 函数的替代方案:
@@ -631,22 +631,22 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgb45f448" class="outline-4">
-<h4 id="orgb45f448"><span class="section-number-4">1.6.5</span> 绝不重新定义继承而来的 non-virtual 函数</h4>
+<div id="outline-container-org786c040" class="outline-4">
+<h4 id="org786c040"><span class="section-number-4">1.6.5</span> 绝不重新定义继承而来的 non-virtual 函数</h4>
 </div>
-<div id="outline-container-org2510be4" class="outline-4">
-<h4 id="org2510be4"><span class="section-number-4">1.6.6</span> 绝不重新定义继承而来的缺省参数值</h4>
+<div id="outline-container-org500becb" class="outline-4">
+<h4 id="org500becb"><span class="section-number-4">1.6.6</span> 绝不重新定义继承而来的缺省参数值</h4>
 <div class="outline-text-4" id="text-1-6-6">
 <p>
 绝对不要重新定义一个继承而来的缺省参数值，因为缺省参数值都是静态绑定，而 virtual 函数&#x2014;你唯一应该覆写的东西是动态绑定的。
 </p>
 </div>
 </div>
-<div id="outline-container-orgbf5b1b0" class="outline-4">
-<h4 id="orgbf5b1b0"><span class="section-number-4">1.6.7</span> 通过复合(composition)塑模出 has-a 或"根据某物实现出"</h4>
+<div id="outline-container-org410cd19" class="outline-4">
+<h4 id="org410cd19"><span class="section-number-4">1.6.7</span> 通过复合(composition)塑模出 has-a 或"根据某物实现出"</h4>
 </div>
-<div id="outline-container-orgb1bfe98" class="outline-4">
-<h4 id="orgb1bfe98"><span class="section-number-4">1.6.8</span> 明智而审慎地使用 <code>private</code> 继承</h4>
+<div id="outline-container-orgca515c8" class="outline-4">
+<h4 id="orgca515c8"><span class="section-number-4">1.6.8</span> 明智而审慎地使用 <code>private</code> 继承</h4>
 <div class="outline-text-4" id="text-1-6-8">
 <ul class="org-ul">
 <li>private 继承意味 is-implemented-in-terms of(根据某物实现出)。它通常比复合(composition)的级别低。但是当 derived class 需要访问 protected base class 的成员，或需要重新定义继承而来的 virtual 函数时，这么设计是合理的。</li>
@@ -654,8 +654,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </ul>
 </div>
 </div>
-<div id="outline-container-org2a55c6f" class="outline-4">
-<h4 id="org2a55c6f"><span class="section-number-4">1.6.9</span> 明智而审慎地使用多重继承</h4>
+<div id="outline-container-org777e243" class="outline-4">
+<h4 id="org777e243"><span class="section-number-4">1.6.9</span> 明智而审慎地使用多重继承</h4>
 <div class="outline-text-4" id="text-1-6-9">
 <ul class="org-ul">
 <li>多重继承比单一继承复杂。它可能导致新的歧义性，以及对 virtual 继承的需要。</li>
@@ -666,12 +666,12 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org3cc70c3" class="outline-3">
-<h3 id="org3cc70c3"><span class="section-number-3">1.7</span> 模板与泛型编程</h3>
+<div id="outline-container-org2933691" class="outline-3">
+<h3 id="org2933691"><span class="section-number-3">1.7</span> 模板与泛型编程</h3>
 <div class="outline-text-3" id="text-1-7">
 </div>
-<div id="outline-container-org0997a5d" class="outline-4">
-<h4 id="org0997a5d"><span class="section-number-4">1.7.1</span> 了解隐式接口和编译期多态</h4>
+<div id="outline-container-orgeb5abc3" class="outline-4">
+<h4 id="orgeb5abc3"><span class="section-number-4">1.7.1</span> 了解隐式接口和编译期多态</h4>
 <div class="outline-text-4" id="text-1-7-1">
 <ul class="org-ul">
 <li>classes 和 templates 都支持接口(interfaces) 和 多态(polymorphism)</li>
@@ -681,8 +681,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org6cb9642" class="outline-4">
-<h4 id="org6cb9642"><span class="section-number-4">1.7.2</span> 了解 <code>typename</code> 的双重意义</h4>
+<div id="outline-container-orgc9da91c" class="outline-4">
+<h4 id="orgc9da91c"><span class="section-number-4">1.7.2</span> 了解 <code>typename</code> 的双重意义</h4>
 <div class="outline-text-4" id="text-1-7-2">
 <ul class="org-ul">
 <li>声明 template 参数时，前缀关键字 <code>class</code> 和 <code>typename</code> 可互换。</li>
@@ -691,8 +691,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org31edb07" class="outline-4">
-<h4 id="org31edb07"><span class="section-number-4">1.7.3</span> 学习处理模板化基类内的名称</h4>
+<div id="outline-container-org07e5938" class="outline-4">
+<h4 id="org07e5938"><span class="section-number-4">1.7.3</span> 学习处理模板化基类内的名称</h4>
 <div class="outline-text-4" id="text-1-7-3">
 <p>
 可在 derived class templates 内通过 "this-&gt;" 指涉 base class template 内的成员名称，或藉由一个明白写出的 "base class 资格修饰符" 完成
@@ -700,8 +700,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org38d0db5" class="outline-4">
-<h4 id="org38d0db5"><span class="section-number-4">1.7.4</span> 将与参数无关的代码抽离</h4>
+<div id="outline-container-orge3a3933" class="outline-4">
+<h4 id="orge3a3933"><span class="section-number-4">1.7.4</span> 将与参数无关的代码抽离</h4>
 <div class="outline-text-4" id="text-1-7-4">
 <ul class="org-ul">
 <li>Templates 生成多个 classes 和多个函数，所以任何 template 代码都不该与某个造成膨胀的 template 参数产生相依关系。</li>
@@ -711,8 +711,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org16c8780" class="outline-4">
-<h4 id="org16c8780"><span class="section-number-4">1.7.5</span> 运用成员函数模板接受所有兼容类型</h4>
+<div id="outline-container-org07d3f7b" class="outline-4">
+<h4 id="org07d3f7b"><span class="section-number-4">1.7.5</span> 运用成员函数模板接受所有兼容类型</h4>
 <div class="outline-text-4" id="text-1-7-5">
 <ul class="org-ul">
 <li>请使用 member function templates(成员函数模板)生成"可接受所有兼容类型"的函数。</li>
@@ -721,8 +721,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org4276651" class="outline-4">
-<h4 id="org4276651"><span class="section-number-4">1.7.6</span> 需要类型转换时请为模板定义非成员函数</h4>
+<div id="outline-container-orgf61903d" class="outline-4">
+<h4 id="orgf61903d"><span class="section-number-4">1.7.6</span> 需要类型转换时请为模板定义非成员函数</h4>
 <div class="outline-text-4" id="text-1-7-6">
 <p>
 当编写一个 class template，并需要提供 "与 template 相关的" 且支持 "所有参数之隐式类型转换" 的函数时，请将那些函数定义为 "class template 内部的 <code>friend</code> 函数"
@@ -730,8 +730,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgf3498dd" class="outline-4">
-<h4 id="orgf3498dd"><span class="section-number-4">1.7.7</span> 请使用 traits classes 表现类型信息</h4>
+<div id="outline-container-orgace5c76" class="outline-4">
+<h4 id="orgace5c76"><span class="section-number-4">1.7.7</span> 请使用 traits classes 表现类型信息</h4>
 <div class="outline-text-4" id="text-1-7-7">
 <ul class="org-ul">
 <li>traits classes 使得"类型相关信息"在编译期可用。它们以 templates 和 "templates 特化"完成实现。</li>
@@ -740,8 +740,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgfc6abbc" class="outline-4">
-<h4 id="orgfc6abbc"><span class="section-number-4">1.7.8</span> 认识 template 元编程</h4>
+<div id="outline-container-org3f54eea" class="outline-4">
+<h4 id="org3f54eea"><span class="section-number-4">1.7.8</span> 认识 template 元编程</h4>
 <div class="outline-text-4" id="text-1-7-8">
 <ul class="org-ul">
 <li>Template meta programming(TMP, 模板元编程)可将工作由运行期移往编译器，因而得以实现早期错误侦测和更高的执行效率。</li>
@@ -751,12 +751,12 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org5b1e87b" class="outline-3">
-<h3 id="org5b1e87b"><span class="section-number-3">1.8</span> 定制 new 和 delete</h3>
+<div id="outline-container-orgbb53134" class="outline-3">
+<h3 id="orgbb53134"><span class="section-number-3">1.8</span> 定制 new 和 delete</h3>
 <div class="outline-text-3" id="text-1-8">
 </div>
-<div id="outline-container-orgca73124" class="outline-4">
-<h4 id="orgca73124"><span class="section-number-4">1.8.1</span> 了解 new-handler 的行为</h4>
+<div id="outline-container-org8f0b09d" class="outline-4">
+<h4 id="org8f0b09d"><span class="section-number-4">1.8.1</span> 了解 new-handler 的行为</h4>
 <div class="outline-text-4" id="text-1-8-1">
 <ul class="org-ul">
 <li><code>set_new_handler</code> 允许客户指定一个函数，在内存分配无法获得满足时被调用。</li>
@@ -765,8 +765,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org1ce1e52" class="outline-4">
-<h4 id="org1ce1e52"><span class="section-number-4">1.8.2</span> 了解 new 和 delete 的合理替换时机</h4>
+<div id="outline-container-org5cf1d4c" class="outline-4">
+<h4 id="org5cf1d4c"><span class="section-number-4">1.8.2</span> 了解 new 和 delete 的合理替换时机</h4>
 <div class="outline-text-4" id="text-1-8-2">
 <p>
 有许多理由需要写个自定的 <code>new</code> 和 <code>delete</code>, 包括改善效能、对 heap 运用错误进行调试、收集 heap 使用信息
@@ -774,8 +774,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orgcd59431" class="outline-4">
-<h4 id="orgcd59431"><span class="section-number-4">1.8.3</span> 编写 new 和 delete 时需固守常规</h4>
+<div id="outline-container-orgc46ed46" class="outline-4">
+<h4 id="orgc46ed46"><span class="section-number-4">1.8.3</span> 编写 new 和 delete 时需固守常规</h4>
 <div class="outline-text-4" id="text-1-8-3">
 <ul class="org-ul">
 <li><code>oprator new</code> 应该内含一个无穷循环，并在其中尝试分配内存，如果它无法满足内存需求，就该调用 <code>new-handler</code> 。它也应该有能力处理 0 bytes 申请。Class 专属版本则还应该处理"比正确大小更大的(错误)申请"。</li>
@@ -784,8 +784,8 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org8097daa" class="outline-4">
-<h4 id="org8097daa"><span class="section-number-4">1.8.4</span> 写了 placement new 也要写 placement delete</h4>
+<div id="outline-container-org0b46a2b" class="outline-4">
+<h4 id="org0b46a2b"><span class="section-number-4">1.8.4</span> 写了 placement new 也要写 placement delete</h4>
 <div class="outline-text-4" id="text-1-8-4">
 <ul class="org-ul">
 <li>当你写一个 placement operator new, 请确定也写出了对应的 placement operator delete。如果没有这样做，你的程序可能会发生隐微而时断时续的内存泄漏</li>
@@ -795,12 +795,12 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-org601cb0e" class="outline-3">
-<h3 id="org601cb0e"><span class="section-number-3">1.9</span> 杂项讨论</h3>
+<div id="outline-container-orgf38e699" class="outline-3">
+<h3 id="orgf38e699"><span class="section-number-3">1.9</span> 杂项讨论</h3>
 <div class="outline-text-3" id="text-1-9">
 </div>
-<div id="outline-container-orgaf84d68" class="outline-4">
-<h4 id="orgaf84d68"><span class="section-number-4">1.9.1</span> 不要轻忽编译器的警告</h4>
+<div id="outline-container-org0afc225" class="outline-4">
+<h4 id="org0afc225"><span class="section-number-4">1.9.1</span> 不要轻忽编译器的警告</h4>
 <div class="outline-text-4" id="text-1-9-1">
 <ul class="org-ul">
 <li>严肃对待编译器发出的警告信息。努力在你的编译器的最高(最严苛)警告级别下争取"无任何警告"的荣誉。</li>
@@ -809,16 +809,16 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 </div>
 
-<div id="outline-container-orga3fd9ac" class="outline-4">
-<h4 id="orga3fd9ac"><span class="section-number-4">1.9.2</span> 让自己熟悉包括 TR1 在内的标准程序库</h4>
+<div id="outline-container-orgcb74a5f" class="outline-4">
+<h4 id="orgcb74a5f"><span class="section-number-4">1.9.2</span> 让自己熟悉包括 TR1 在内的标准程序库</h4>
 </div>
-<div id="outline-container-org8684226" class="outline-4">
-<h4 id="org8684226"><span class="section-number-4">1.9.3</span> 让自己熟悉 Boost</h4>
+<div id="outline-container-org365061e" class="outline-4">
+<h4 id="org365061e"><span class="section-number-4">1.9.3</span> 让自己熟悉 Boost</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-org08730d5" class="outline-2">
-<h2 id="org08730d5"><span class="section-number-2">2</span> std c++</h2>
+<div id="outline-container-org4fb896f" class="outline-2">
+<h2 id="org4fb896f"><span class="section-number-2">2</span> std c++</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <a href="file:///home/yydcnjjw/resources/basic/books/lang/c_c++/C++std.pdf">c++ std</a>
@@ -1147,12 +1147,12 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </table>
 </div>
 </div>
-<div id="outline-container-org1fd5275" class="outline-2">
-<h2 id="org1fd5275"><span class="section-number-2">3</span> skill</h2>
+<div id="outline-container-org6af5b4d" class="outline-2">
+<h2 id="org6af5b4d"><span class="section-number-2">3</span> skill</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgec75054" class="outline-3">
-<h3 id="orgec75054"><span class="section-number-3">3.1</span> clip to range</h3>
+<div id="outline-container-orgde7caac" class="outline-3">
+<h3 id="orgde7caac"><span class="section-number-3">3.1</span> clip to range</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>, <span class="org-keyword">class</span> <span class="org-type">V</span>&gt;
@@ -1168,7 +1168,7 @@ c++ 会为带有 <code>virtual</code> 函数的类创建 <code>vtbl(virtual tabl
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-07 日 22:31</p>
+<p class="date">Created: 2019-04-08 一 21:47</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

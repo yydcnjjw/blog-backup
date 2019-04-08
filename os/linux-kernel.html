@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-07 日 22:31 -->
+<!-- 2019-04-08 一 21:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -63,183 +63,183 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd7dc818">1. Booting</a>
+<li><a href="#orgc2a58b1">1. Booting</a>
 <ul>
-<li><a href="#orged3012d">1.1. BIOS 阶段</a></li>
-<li><a href="#org3230639">1.2. 引导程序</a>
+<li><a href="#orgdc08fb6">1.1. BIOS 阶段</a></li>
+<li><a href="#org1c7a7e3">1.2. 引导程序</a>
 <ul>
-<li><a href="#org024c98b">1.2.1. GRUB</a></li>
-<li><a href="#orgb349055">1.2.2. GRUB 映像的构成</a></li>
-<li><a href="#org17b43d5">1.2.3. 加载内核和 initramfs</a></li>
+<li><a href="#org245e786">1.2.1. GRUB</a></li>
+<li><a href="#org13481b8">1.2.2. GRUB 映像的构成</a></li>
+<li><a href="#orgbe97249">1.2.3. 加载内核和 initramfs</a></li>
 </ul>
 </li>
-<li><a href="#org4b49238">1.3. 引导协议</a>
+<li><a href="#org7c4a444">1.3. 引导协议</a>
 <ul>
-<li><a href="#org3ef9f74">1.3.1. 内存布局</a></li>
-<li><a href="#orgf364b5d">1.3.2. 16 位引导协议</a></li>
-<li><a href="#org6309621">1.3.3. 32 位引导协议</a></li>
-<li><a href="#org63ba7f9">1.3.4. 64 位引导协议</a></li>
+<li><a href="#orgd5a9e3a">1.3.1. 内存布局</a></li>
+<li><a href="#org63d9426">1.3.2. 16 位引导协议</a></li>
+<li><a href="#orgfcd2877">1.3.3. 32 位引导协议</a></li>
+<li><a href="#orgdad5752">1.3.4. 64 位引导协议</a></li>
 </ul>
 </li>
-<li><a href="#org5ff7591">1.4. 内核代码的入口</a>
+<li><a href="#org04496d0">1.4. 内核代码的入口</a>
 <ul>
-<li><a href="#org8812f30">1.4.1. startup_32</a></li>
-<li><a href="#orgf1acd06">1.4.2. startup_64</a></li>
-<li><a href="#orgd6712ca">1.4.3. init_size 的计算</a></li>
-<li><a href="#orgfcba340">1.4.4. 解压缩内核</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org347bd8a">2. Initialization</a>
-<ul>
-<li><a href="#orga2c47f5">2.1. arch/x86/kernel/head_64.S:startup_64</a></li>
-<li><a href="#org4c7017f">2.2. arch/x86/kernel/head64.c:x86_64_start_kernel</a>
-<ul>
-<li><a href="#orgdd33fcd">2.2.1. 早期的中断处理</a></li>
-</ul>
-</li>
-<li><a href="#org7088c6d">2.3. init/main.c:start_kernel</a></li>
-<li><a href="#org90c37bf">2.4. x86_init_ops</a></li>
-</ul>
-</li>
-<li><a href="#org236066b">3. Memory management</a>
-<ul>
-<li><a href="#org184e72f">3.1. Paging</a>
-<ul>
-<li><a href="#orgb56b3af">3.1.1. arch x86</a></li>
-</ul>
-</li>
-<li><a href="#org5c5a8e0">3.2. Memblock</a></li>
-<li><a href="#orgf22d65f">3.3. ioremap</a></li>
-<li><a href="#org1c4d231">3.4. mm_struct</a></li>
-<li><a href="#orgbd5663f">3.5. DMA</a></li>
-<li><a href="#org6cf171a">3.6. SLAB</a>
-<ul>
-<li><a href="#org0a8c7fc">3.6.1. <code>kmem_cache</code></a></li>
-</ul>
-</li>
-<li><a href="#org6b0c32e">3.7. SLUB</a></li>
-</ul>
-</li>
-<li><a href="#org98ba58e">4. Interrupts</a>
-<ul>
-<li><a href="#org6b155a3">4.1. exception-tables</a>
-<ul>
-<li><a href="#orgdc35f59">4.1.1. <code>__ex_table</code> 结构</a></li>
-</ul>
-</li>
-<li><a href="#org0aa9f62">4.2. early interrupt handler</a></li>
-<li><a href="#orgfbb1be9">4.3. interrupt handler function</a>
-<ul>
-<li><a href="#org937c057">4.3.1. interrelated macro</a></li>
-<li><a href="#org421af98">4.3.2. <code>early_idt_handler_array</code></a></li>
-<li><a href="#orgd0c1598">4.3.3. <code>early_ignore_irq</code></a></li>
-<li><a href="#orgf9e5170">4.3.4. <code>debug</code></a></li>
-<li><a href="#org9e7e9bd">4.3.5. <code>int3</code></a></li>
-<li><a href="#org08449b3">4.3.6. <code>page_fault</code></a></li>
-</ul>
-</li>
-<li><a href="#orgf0f5ba5">4.4. external interrupts</a></li>
-</ul>
-</li>
-<li><a href="#org56dff23">5. Syscall</a>
-<ul>
-<li><a href="#orge349abb">5.1. implement</a>
-<ul>
-<li><a href="#org78882a6">5.1.1. entry_SYSCALL_64</a></li>
-</ul>
-</li>
-<li><a href="#org8101cab">5.2. initialization</a></li>
-<li><a href="#org5edf0ae">5.3. vsyscall and vDSO</a>
-<ul>
-<li><a href="#org1d900f1">5.3.1. vsyscall</a></li>
-<li><a href="#org868f692">5.3.2. vDSO</a></li>
+<li><a href="#orgd6fdeb3">1.4.1. startup_32</a></li>
+<li><a href="#org313ae90">1.4.2. startup_64</a></li>
+<li><a href="#orgd7e2dbf">1.4.3. init_size 的计算</a></li>
+<li><a href="#org836408b">1.4.4. 解压缩内核</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org7f69fc5">6. Synchronization primitives</a>
+<li><a href="#org27d8d6b">2. Initialization</a>
 <ul>
-<li><a href="#orga267532">6.1. Spinlock</a>
+<li><a href="#org043f462">2.1. arch/x86/kernel/head_64.S:startup_64</a></li>
+<li><a href="#orgba9c734">2.2. arch/x86/kernel/head64.c:x86_64_start_kernel</a>
 <ul>
-<li><a href="#org8cc3bf8">6.1.1. normal spinlock</a></li>
-<li><a href="#orgc78eca0">6.1.2. ticket spinlock</a></li>
-<li><a href="#orgb800b31">6.1.3. queue spinlock(MCS lock)</a></li>
-<li><a href="#orgc95fd91">6.1.4. related operations</a></li>
+<li><a href="#org8c54128">2.2.1. 早期的中断处理</a></li>
 </ul>
 </li>
-<li><a href="#org390ae0d">6.2. Semaphores</a></li>
-<li><a href="#orgbd91d03">6.3. Mutex</a></li>
-<li><a href="#org6e4148a">6.4. Reader/Writer semaphore</a></li>
-<li><a href="#org112d9bc">6.5. SeqLock</a></li>
-<li><a href="#orgab7631d">6.6. RCU</a></li>
-<li><a href="#orga34369a">6.7. Completions</a></li>
-<li><a href="#org9a571f7">6.8. Locking Traps</a></li>
-<li><a href="#orgf3f961b">6.9. Sleep</a>
+<li><a href="#org7f41412">2.3. init/main.c:start_kernel</a></li>
+<li><a href="#org3e6f77b">2.4. x86_init_ops</a></li>
+</ul>
+</li>
+<li><a href="#org6edaa99">3. Memory management</a>
 <ul>
-<li><a href="#orged98472">6.9.1. How a process sleeps</a></li>
+<li><a href="#org6fb9fb3">3.1. Paging</a>
+<ul>
+<li><a href="#org8cf25ec">3.1.1. arch x86</a></li>
+</ul>
+</li>
+<li><a href="#org021865d">3.2. Memblock</a></li>
+<li><a href="#orgedf61e9">3.3. ioremap</a></li>
+<li><a href="#orgf76e2db">3.4. mm_struct</a></li>
+<li><a href="#org493f7ca">3.5. DMA</a></li>
+<li><a href="#orgd6daa8a">3.6. SLAB</a>
+<ul>
+<li><a href="#org9febe6a">3.6.1. <code>kmem_cache</code></a></li>
+</ul>
+</li>
+<li><a href="#org8c1ce6f">3.7. SLUB</a></li>
+</ul>
+</li>
+<li><a href="#org19928c4">4. Interrupts</a>
+<ul>
+<li><a href="#orgc8f5b6f">4.1. exception-tables</a>
+<ul>
+<li><a href="#org610e9d1">4.1.1. <code>__ex_table</code> 结构</a></li>
+</ul>
+</li>
+<li><a href="#org42bb3be">4.2. early interrupt handler</a></li>
+<li><a href="#org245e848">4.3. interrupt handler function</a>
+<ul>
+<li><a href="#org2aa2bb7">4.3.1. interrelated macro</a></li>
+<li><a href="#org99815e0">4.3.2. <code>early_idt_handler_array</code></a></li>
+<li><a href="#orgc39393f">4.3.3. <code>early_ignore_irq</code></a></li>
+<li><a href="#orgcd191a5">4.3.4. <code>debug</code></a></li>
+<li><a href="#org24e913c">4.3.5. <code>int3</code></a></li>
+<li><a href="#orgda1b019">4.3.6. <code>page_fault</code></a></li>
+</ul>
+</li>
+<li><a href="#orgd405881">4.4. external interrupts</a></li>
+</ul>
+</li>
+<li><a href="#org4734825">5. Syscall</a>
+<ul>
+<li><a href="#org2c558ff">5.1. implement</a>
+<ul>
+<li><a href="#org8b96128">5.1.1. entry_SYSCALL_64</a></li>
+</ul>
+</li>
+<li><a href="#org9ec203e">5.2. initialization</a></li>
+<li><a href="#org77c0b33">5.3. vsyscall and vDSO</a>
+<ul>
+<li><a href="#org40fbcb1">5.3.1. vsyscall</a></li>
+<li><a href="#org8861736">5.3.2. vDSO</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org43189ee">7. SMP</a>
+<li><a href="#org64bd085">6. Synchronization primitives</a>
 <ul>
-<li><a href="#org4c329b5">7.1. cpu_dev</a></li>
-<li><a href="#org30ab669">7.2. Per-CPU</a>
+<li><a href="#org6755fde">6.1. Spinlock</a>
 <ul>
-<li><a href="#orgbb2488a">7.2.1. Create per-cpu variables</a></li>
-<li><a href="#org1cc136e">7.2.2. per-cpu operate</a></li>
-<li><a href="#orgb67039d">7.2.3. per-cpu areas initialization process</a></li>
+<li><a href="#org960035c">6.1.1. normal spinlock</a></li>
+<li><a href="#orga95b9bc">6.1.2. ticket spinlock</a></li>
+<li><a href="#orgd32f357">6.1.3. queue spinlock(MCS lock)</a></li>
+<li><a href="#orgf1b6eba">6.1.4. related operations</a></li>
 </ul>
 </li>
-<li><a href="#orgf80e759">7.3. Cpumasks</a></li>
+<li><a href="#org64c72f8">6.2. Semaphores</a></li>
+<li><a href="#org6f4b142">6.3. Mutex</a></li>
+<li><a href="#org3cd2f58">6.4. Reader/Writer semaphore</a></li>
+<li><a href="#orga80f05b">6.5. SeqLock</a></li>
+<li><a href="#org91f63ff">6.6. RCU</a></li>
+<li><a href="#org74dad6f">6.7. Completions</a></li>
+<li><a href="#org2e4dcde">6.8. Locking Traps</a></li>
+<li><a href="#org38ed217">6.9. Sleep</a>
+<ul>
+<li><a href="#org3784baa">6.9.1. How a process sleeps</a></li>
 </ul>
 </li>
-<li><a href="#org2b6b479">8. Drive</a></li>
-<li><a href="#org25a4dbf">9. Networking</a>
+</ul>
+</li>
+<li><a href="#orgf5702bb">7. SMP</a>
 <ul>
-<li><a href="#org7c6294b">9.1. Netlink Sockets</a>
+<li><a href="#orge296106">7.1. cpu_dev</a></li>
+<li><a href="#orga4a30e2">7.2. Per-CPU</a>
 <ul>
-<li><a href="#org04c32ef">9.1.1. Netlink advantages</a></li>
-<li><a href="#orgb59998f">9.1.2. Kernel Netlink Sockets</a></li>
+<li><a href="#org2c4be03">7.2.1. Create per-cpu variables</a></li>
+<li><a href="#org5453cab">7.2.2. per-cpu operate</a></li>
+<li><a href="#orga2a12fd">7.2.3. per-cpu areas initialization process</a></li>
+</ul>
+</li>
+<li><a href="#org2605544">7.3. Cpumasks</a></li>
+</ul>
+</li>
+<li><a href="#orga689557">8. Drive</a></li>
+<li><a href="#org93c6f8e">9. Networking</a>
+<ul>
+<li><a href="#org78c2ffd">9.1. Netlink Sockets</a>
+<ul>
+<li><a href="#orgc5c5649">9.1.1. Netlink advantages</a></li>
+<li><a href="#org07691e1">9.1.2. Kernel Netlink Sockets</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orga0b7511">10. Timers and time management</a>
+<li><a href="#orgf8532d1">10. Timers and time management</a>
 <ul>
-<li><a href="#org1a20f0d">10.1. jiffy</a></li>
-<li><a href="#orgd12a65e">10.2. clocksource</a>
+<li><a href="#org1269398">10.1. jiffy</a></li>
+<li><a href="#org13dc4f4">10.2. clocksource</a>
 <ul>
-<li><a href="#orgad18322">10.2.1. clocksource register</a></li>
-<li><a href="#org3ad7ec6">10.2.2. x86 clocksource</a></li>
-<li><a href="#org7f48bd4">10.2.3. clocksource_sysfs</a></li>
+<li><a href="#org307487b">10.2.1. clocksource register</a></li>
+<li><a href="#org97c5a56">10.2.2. x86 clocksource</a></li>
+<li><a href="#orga42a9b3">10.2.3. clocksource_sysfs</a></li>
 </ul>
 </li>
-<li><a href="#org63c3778">10.3. Reducing Scheduling-Clock Ticks</a>
+<li><a href="#orga3bd641">10.3. Reducing Scheduling-Clock Ticks</a>
 <ul>
-<li><a href="#org5f6a20a">10.3.1. dyntick</a></li>
+<li><a href="#org385ef0a">10.3.1. dyntick</a></li>
 </ul>
 </li>
-<li><a href="#orgae91c18">10.4. clock events device</a></li>
-<li><a href="#org8f4f8bb">10.5. tick broadcast</a></li>
-<li><a href="#orgb6f813b">10.6. Timers</a></li>
+<li><a href="#org7692ec5">10.4. clock events device</a></li>
+<li><a href="#org360690a">10.5. tick broadcast</a></li>
+<li><a href="#org5138660">10.6. Timers</a></li>
 </ul>
 </li>
-<li><a href="#org5763fc2">11. Misc</a>
+<li><a href="#org2f828af">11. Misc</a>
 <ul>
-<li><a href="#orgb757cca">11.1. linux 构建过程</a>
+<li><a href="#orgefd2804">11.1. linux 构建过程</a>
 <ul>
-<li><a href="#orgd7e3348">11.1.1. linux kernel Makefile 文件组成</a></li>
-<li><a href="#orgb096d82">11.1.2. Kbuild</a></li>
-<li><a href="#org1246178">11.1.3. 根目录 Makefile 分析</a></li>
+<li><a href="#orgf05a7d5">11.1.1. linux kernel Makefile 文件组成</a></li>
+<li><a href="#orgcbce17f">11.1.2. Kbuild</a></li>
+<li><a href="#orga9976e0">11.1.3. 根目录 Makefile 分析</a></li>
 </ul>
 </li>
-<li><a href="#orga2ad718">11.2. linux kernel rootfs</a>
+<li><a href="#orgac019a6">11.2. linux kernel rootfs</a>
 <ul>
-<li><a href="#org64c102e">11.2.1. grub</a></li>
-<li><a href="#orga23027c">11.2.2. busybox + qemu</a></li>
+<li><a href="#orgbc33b52">11.2.1. grub</a></li>
+<li><a href="#orgc581d12">11.2.2. busybox + qemu</a></li>
 </ul>
 </li>
 </ul>
@@ -247,12 +247,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd7dc818" class="outline-2">
-<h2 id="orgd7dc818"><span class="section-number-2">1</span> Booting</h2>
+<div id="outline-container-orgc2a58b1" class="outline-2">
+<h2 id="orgc2a58b1"><span class="section-number-2">1</span> Booting</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orged3012d" class="outline-3">
-<h3 id="orged3012d"><span class="section-number-3">1.1</span> BIOS 阶段</h3>
+<div id="outline-container-orgdc08fb6" class="outline-3">
+<h3 id="orgdc08fb6"><span class="section-number-3">1.1</span> BIOS 阶段</h3>
 <div class="outline-text-3" id="text-1-1">
 <ol class="org-ol">
 <li>加电启动时： CPU RESET，初始化寄存器，执行物理地址 <code>0xfffffff0</code> 处代码(BIOS，实地址模式)。(<b><b>硬件把这个地址映射到 ROM BIOS 里</b></b>)。</li>
@@ -273,16 +273,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org3230639" class="outline-3">
-<h3 id="org3230639"><span class="section-number-3">1.2</span> 引导程序</h3>
+<div id="outline-container-org1c7a7e3" class="outline-3">
+<h3 id="org1c7a7e3"><span class="section-number-3">1.2</span> 引导程序</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 引导装入程序(boot loader)是由 BIOS 用来把操作系统的内核映像装载到 RAM 中所调用的一个程序。
 </p>
 </div>
 
-<div id="outline-container-org024c98b" class="outline-4">
-<h4 id="org024c98b"><span class="section-number-4">1.2.1</span> GRUB</h4>
+<div id="outline-container-org245e786" class="outline-4">
+<h4 id="org245e786"><span class="section-number-4">1.2.1</span> GRUB</h4>
 <div class="outline-text-4" id="text-1-2-1">
 
 <div class="figure">
@@ -372,8 +372,8 @@ kernel.img 将自己复制回 <code>0x9000</code> ：因为 Linux 内核和 init
 </div>
 </div>
 
-<div id="outline-container-orgb349055" class="outline-4">
-<h4 id="orgb349055"><span class="section-number-4">1.2.2</span> GRUB 映像的构成</h4>
+<div id="outline-container-org13481b8" class="outline-4">
+<h4 id="org13481b8"><span class="section-number-4">1.2.2</span> GRUB 映像的构成</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
 <li>由于现代操作系统的复杂性，Bootloader 仅仅一个扇区已经不够了，GRUB 将除 MBR 里的部分代码"嵌入"到 MBR 和第一个分区之间的 <b>空闲区域</b> ，这相对比较安全。</li>
@@ -397,7 +397,7 @@ MBR 将映像分为三个部分：MBR 中的 boot.img、嵌入空闲扇区的 co
 </div>
 
 <ol class="org-ol">
-<li><a id="orgcd1f9b0"></a>MBR 映像 (boot.img)<br />
+<li><a id="org601d155"></a>MBR 映像 (boot.img)<br />
 <div class="outline-text-5" id="text-1-2-2-1">
 <p>
 boot.img 主要功能将 core.img 中的第一个扇区载入内存。
@@ -411,7 +411,7 @@ BIOS 将地址 <code>kernel_sector</code> 处指示的扇区号所在的扇区(�
 </div>
 </li>
 
-<li><a id="orgb6d2643"></a>GRUB 核心映像(core.img)<br />
+<li><a id="org1188486"></a>GRUB 核心映像(core.img)<br />
 <div class="outline-text-5" id="text-1-2-2-2">
 <p>
 core.img 包括多个映像和模块，以从硬盘启动为例：
@@ -473,8 +473,8 @@ diskboot.img：diskboot.img 用来加载 core.img 中除 diskboot.img 外的其�
 </ol>
 </div>
 
-<div id="outline-container-org17b43d5" class="outline-4">
-<h4 id="org17b43d5"><span class="section-number-4">1.2.3</span> 加载内核和 initramfs</h4>
+<div id="outline-container-orgbe97249" class="outline-4">
+<h4 id="orgbe97249"><span class="section-number-4">1.2.3</span> 加载内核和 initramfs</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 grub 根据下列参数确定加载位置
@@ -550,12 +550,12 @@ prot_file_size = grub_file_size (file) - real_size - GRUB_DISK_SECTOR_SIZE;
 </div>
 </div>
 
-<div id="outline-container-org4b49238" class="outline-3">
-<h3 id="org4b49238"><span class="section-number-3">1.3</span> 引导协议</h3>
+<div id="outline-container-org7c4a444" class="outline-3">
+<h3 id="org7c4a444"><span class="section-number-3">1.3</span> 引导协议</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org3ef9f74" class="outline-4">
-<h4 id="org3ef9f74"><span class="section-number-4">1.3.1</span> 内存布局</h4>
+<div id="outline-container-orgd5a9e3a" class="outline-4">
+<h4 id="orgd5a9e3a"><span class="section-number-4">1.3.1</span> 内存布局</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <pre class="example">
         ~                        ~
@@ -584,8 +584,8 @@ X       +------------------------+
 </div>
 </div>
 
-<div id="outline-container-orgf364b5d" class="outline-4">
-<h4 id="orgf364b5d"><span class="section-number-4">1.3.2</span> 16 位引导协议</h4>
+<div id="outline-container-org63d9426" class="outline-4">
+<h4 id="org63d9426"><span class="section-number-4">1.3.2</span> 16 位引导协议</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 该协议约定 Bootloader 和内核之间分享的数据存储的位置、大小以及哪些由内核提供给 Bootloader，哪些由 Bootloader 提供给内核(引导参数 <code>boot_params</code> )。
@@ -927,8 +927,8 @@ SECTIONS {
 </div>
 </div>
 
-<div id="outline-container-org6309621" class="outline-4">
-<h4 id="org6309621"><span class="section-number-4">1.3.3</span> 32 位引导协议</h4>
+<div id="outline-container-orgfcd2877" class="outline-4">
+<h4 id="orgfcd2877"><span class="section-number-4">1.3.3</span> 32 位引导协议</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <ol class="org-ol">
 <li>除了传统的引导参数(<code>struct boot_params</code>)，Bootloader 取代内核实模式部分负责收集硬件信息(<a href="https://elixir.bootlin.com/linux/v4.17.1/source/Documentation/x86/zero-page.txt">zero-page.txt</a>)</li>
@@ -952,8 +952,8 @@ SECTIONS {
 </div>
 </div>
 
-<div id="outline-container-org63ba7f9" class="outline-4">
-<h4 id="org63ba7f9"><span class="section-number-4">1.3.4</span> 64 位引导协议</h4>
+<div id="outline-container-orgdad5752" class="outline-4">
+<h4 id="orgdad5752"><span class="section-number-4">1.3.4</span> 64 位引导协议</h4>
 <div class="outline-text-4" id="text-1-3-4">
 <ol class="org-ol">
 <li>除了传统的引导参数(<code>struct boot_params</code>)，Bootloader 取代内核实模式部分负责收集硬件信息(<a href="https://elixir.bootlin.com/linux/v4.17.1/source/Documentation/x86/zero-page.txt">zero-page.txt</a>)</li>
@@ -978,12 +978,12 @@ SECTIONS {
 </div>
 </div>
 
-<div id="outline-container-org5ff7591" class="outline-3">
-<h3 id="org5ff7591"><span class="section-number-3">1.4</span> 内核代码的入口</h3>
+<div id="outline-container-org04496d0" class="outline-3">
+<h3 id="org04496d0"><span class="section-number-3">1.4</span> 内核代码的入口</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org8812f30" class="outline-4">
-<h4 id="org8812f30"><span class="section-number-4">1.4.1</span> startup_32</h4>
+<div id="outline-container-orgd6fdeb3" class="outline-4">
+<h4 id="orgd6fdeb3"><span class="section-number-4">1.4.1</span> startup_32</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 该部分代码位于 <code>arch/x86/boot/compressed/head_64.S 48</code> 。
@@ -1050,8 +1050,8 @@ SECTIONS {
 </div>
 </div>
 
-<div id="outline-container-orgf1acd06" class="outline-4">
-<h4 id="orgf1acd06"><span class="section-number-4">1.4.2</span> startup_64</h4>
+<div id="outline-container-org313ae90" class="outline-4">
+<h4 id="org313ae90"><span class="section-number-4">1.4.2</span> startup_64</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 该部分代码位于 <code>arch/x86/boot/compressed/head_64.S 253</code> 。
@@ -1147,8 +1147,8 @@ SECTIONS {
 </div>
 </div>
 
-<div id="outline-container-orgd6712ca" class="outline-4">
-<h4 id="orgd6712ca"><span class="section-number-4">1.4.3</span> init_size 的计算</h4>
+<div id="outline-container-orgd7e2dbf" class="outline-4">
+<h4 id="orgd7e2dbf"><span class="section-number-4">1.4.3</span> init_size 的计算</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <div class="org-src-container">
 <pre class="src src-asm"><span class="org-comment-delimiter">/* </span><span class="org-comment">&#20445;&#35777;&#23433;&#20840;&#30340;&#23601;&#22320;&#35299;&#21387; */</span>
@@ -1185,8 +1185,8 @@ SECTIONS {
 </div>
 </div>
 
-<div id="outline-container-orgfcba340" class="outline-4">
-<h4 id="orgfcba340"><span class="section-number-4">1.4.4</span> 解压缩内核</h4>
+<div id="outline-container-org836408b" class="outline-4">
+<h4 id="org836408b"><span class="section-number-4">1.4.4</span> 解压缩内核</h4>
 <div class="outline-text-4" id="text-1-4-4">
 <pre class="example">
                             |-----compressed kernel image------|
@@ -1256,12 +1256,12 @@ SECTIONS {
 </div>
 </div>
 
-<div id="outline-container-org347bd8a" class="outline-2">
-<h2 id="org347bd8a"><span class="section-number-2">2</span> Initialization</h2>
+<div id="outline-container-org27d8d6b" class="outline-2">
+<h2 id="org27d8d6b"><span class="section-number-2">2</span> Initialization</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orga2c47f5" class="outline-3">
-<h3 id="orga2c47f5"><span class="section-number-3">2.1</span> arch/x86/kernel/head_64.S:startup_64</h3>
+<div id="outline-container-org043f462" class="outline-3">
+<h3 id="org043f462"><span class="section-number-3">2.1</span> arch/x86/kernel/head_64.S:startup_64</h3>
 <div class="outline-text-3" id="text-2-1">
 <ol class="org-ol">
 <li>内核可能加载到与编译时不同的地址，需要修复在页表的物理地址并重新加载。
@@ -1572,8 +1572,8 @@ the <code>gs</code> register always points to the bottom of the <code>irqstack</
 </div>
 </div>
 
-<div id="outline-container-org4c7017f" class="outline-3">
-<h3 id="org4c7017f"><span class="section-number-3">2.2</span> arch/x86/kernel/head64.c:x86_64_start_kernel</h3>
+<div id="outline-container-orgba9c734" class="outline-3">
+<h3 id="orgba9c734"><span class="section-number-3">2.2</span> arch/x86/kernel/head64.c:x86_64_start_kernel</h3>
 <div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
 <li><p>
@@ -1619,7 +1619,7 @@ MAYBE_BUILD_BUG_ON(<span class="org-negation-char">!</span>(((MODULES_END - <spa
 </div></li>
 <li><b>TODO</b> 对 SME 进行早期的初始化, SME 支持可能会更新 <code>early_pmd_flags</code> 以包含内存加密掩码，因此需要在可能产生页面错误的任何内容之前调用它。</li>
 <li><b>TODO</b> <code>kasan_early_init</code></li>
-<li>use early handler process initialize idt table(0-31) <a href="#orgfa499d1">2.2.1</a></li>
+<li>use early handler process initialize idt table(0-31) <a href="#orgeb4172e">2.2.1</a></li>
 <li>copy <code>real_mode_data</code> to <code>boot_params</code>, reset some <code>boot_param</code> for keeping the specification
 <b>TODO</b>: <code>sme_unmap_bootdata</code></li>
 <li><b>TODO</b> <code>load_ucode_bsp</code></li>
@@ -1635,11 +1635,11 @@ set <code>init_top_pgt</code> kernel mapping
 </ol>
 </div>
 
-<div id="outline-container-orgdd33fcd" class="outline-4">
-<h4 id="orgdd33fcd"><span class="section-number-4">2.2.1</span> 早期的中断处理</h4>
+<div id="outline-container-org8c54128" class="outline-4">
+<h4 id="org8c54128"><span class="section-number-4">2.2.1</span> 早期的中断处理</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
-<a id="orgfa499d1"></a>
+<a id="orgeb4172e"></a>
 </p>
 <ul class="org-ul">
 <li><p>
@@ -1702,7 +1702,7 @@ set <code>init_top_pgt</code> kernel mapping
 <li><code>early_fixup_exception</code>: 针对非 fault page 异常的处理
 <ol class="org-ol">
 <li>忽略 <code>X86_TRAP_NMI</code> 异常</li>
-<li>搜索异常表 <a href="#org40e4b81">4.1</a></li>
+<li>搜索异常表 <a href="#orgde917e3">4.1</a></li>
 <li>处理 bug 异常</li>
 <li>打印相关异常信息</li>
 </ol></li>
@@ -1806,8 +1806,8 @@ set <code>init_top_pgt</code> kernel mapping
 </div>
 </div>
 
-<div id="outline-container-org7088c6d" class="outline-3">
-<h3 id="org7088c6d"><span class="section-number-3">2.3</span> init/main.c:start_kernel</h3>
+<div id="outline-container-org7f41412" class="outline-3">
+<h3 id="org7f41412"><span class="section-number-3">2.3</span> init/main.c:start_kernel</h3>
 <div class="outline-text-3" id="text-2-3">
 <ol class="org-ol">
 <li>为 <code>init_stack</code> 的结尾设置 <code>STACK_END_MAGIC</code> (For easy inspection stack overflow)</li>
@@ -1835,15 +1835,15 @@ print linux banner
 </ol></li>
 <li>print kernel info which is the command line.</li>
 <li><b>TODO</b> detects One Laptop Per Child support.</li>
-<li><code>idt_setup_early_traps</code>: initializes <a href="#orga314a9b">4.3.4</a> (<code>INTG</code>, #DB - raised when the <code>TF</code> flag of rflags is set) and <a href="#orge557b4b">4.3.5</a> (<code>SYSG</code>, #BP), allow the <code>x86_64</code> architecture to have early exception processing for the purpose of debugging via the <code>kgdb</code></li>
+<li><code>idt_setup_early_traps</code>: initializes <a href="#orga8ff8cf">4.3.4</a> (<code>INTG</code>, #DB - raised when the <code>TF</code> flag of rflags is set) and <a href="#org55c39d6">4.3.5</a> (<code>SYSG</code>, #BP), allow the <code>x86_64</code> architecture to have early exception processing for the purpose of debugging via the <code>kgdb</code></li>
 <li><code>early_cpu_init</code>: cpu init:
 <ol class="org-ol">
-<li>print kernel supported cpus with <a href="#org9238628">7.1</a></li>
+<li>print kernel supported cpus with <a href="#org7bd9194">7.1</a></li>
 <li>initialization <code>boot_cpu_data</code> what is <code>struct cpuinfo_x86</code> for doing minimum CPU detection early</li>
 </ol></li>
 <li>initialization ideal nops according to <code>cpuinfo_x86.x86_vendor</code></li>
 <li><b>TODO</b> Jump label support init</li>
-<li><code>early_ioremap_init</code>: early <a href="#orgf22d65f">3.3</a> initialization, 512 (2K) temporary boot-time mappings, used by early_ioremap(), before ioremap() is functional</li>
+<li><code>early_ioremap_init</code>: early <a href="#orgedf61e9">3.3</a> initialization, 512 (2K) temporary boot-time mappings, used by early_ioremap(), before ioremap() is functional</li>
 <li><b>TODO</b> <code>setup_olpc_ofw_pgd</code>:</li>
 <li><p>
 obtaining major and minor numbers for the root device
@@ -1869,7 +1869,7 @@ memory map setup: copy <code>e820_table</code> to <code>e820_table_kexec</code> 
 <li><code>copy_edd()</code>: copy the BIOS <code>EDD</code> information from <code>boot_params</code> into a safe place</li>
 <li>memory descriptor initialization
 <ol class="org-ol">
-<li><a href="#org0286897">3.4</a> initialization</li>
+<li><a href="#org80d4691">3.4</a> initialization</li>
 <li><code>mpx_mm_init</code>: initialization of the intel Memory Protection Extensions</li>
 <li>initialization of the code/data/bss resources</li>
 </ol></li>
@@ -1923,7 +1923,7 @@ Scan several specific locations by <code>smp_scan_config</code> that going in a 
 <li><code>trim_platform_memory_ranges()</code>: trims certain memory regions.</li>
 <li><code>trim_low_memory_range()</code>: reserves the first <code>4kb</code> page in <code>memblock</code></li>
 <li><code>init_mem_mapping()</code>: reconstructs direct memory mappng and setups the direct mapping of the physical memory at <code>PAGE_OFFSET</code></li>
-<li><code>idt_setup_early_pf()</code>: Initialize the idt table with early pagefault handler.(head64.c has Initialized ?) <a href="#org8ea2748">4.3.6</a></li>
+<li><code>idt_setup_early_pf()</code>: Initialize the idt table with early pagefault handler.(head64.c has Initialized ?) <a href="#orge91276f">4.3.6</a></li>
 <li><code>setup_log_buf(1)</code>: setup kernel early cyclic buffer.</li>
 <li><code>reserve_inintrd()</code>: relocated <code>initrd</code> ramdisk image.</li>
 <li><code>acpi_table_ugrade()</code></li>
@@ -1932,14 +1932,14 @@ Scan several specific locations by <code>smp_scan_config</code> that going in a 
 <li><code>acpi_boot_table_init()</code></li>
 <li><code>early_acpi_boot_init()</code></li>
 <li><code>initmem_init()</code></li>
-<li>Allocate are for <a href="#org8296bbc">3.5</a>: <code>dma_contiguous_reserve()</code>: allocate area for the <code>Direct memory access</code></li>
+<li>Allocate are for <a href="#orgbe4e0e4">3.5</a>: <code>dma_contiguous_reserve()</code>: allocate area for the <code>Direct memory access</code></li>
 <li><code>x86_init.paging.pagetable_init()</code>: initialize sparse memory and zone sizes.</li>
 <li><code>prefil_possible_map()</code>: calculates and writes to the <code>cpu_possible_mask</code> actual number of the CPUs</li>
 <li><code>x86_init.timers.wallclock_init()</code>: initialize the wallclock device.</li>
 <li><code>register_refined_jiffies(CLOCK_TICK_RATE)</code>: register <code>refined_jiffies</code> clocksource.</li>
 </ol></li>
 <li><code>boot_init_stack_canary()</code>: set the canary value to protect interrupt stack overflow</li>
-<li><code>mm_init_cpumask()</code>: set the <a href="#org0eccdcd">7.3</a> pointer to the memory descriptor <code>cpumask</code> (clear 0).</li>
+<li><code>mm_init_cpumask()</code>: set the <a href="#org2e6bed8">7.3</a> pointer to the memory descriptor <code>cpumask</code> (clear 0).</li>
 <li><code>setup_command_line()</code>: takes pointer to the kernel command line allocates a couple of buffers to store command line.
 <ol class="org-ol">
 <li><code>saved_command_line</code>: will contain boot command line</li>
@@ -1966,7 +1966,7 @@ Scan several specific locations by <code>smp_scan_config</code> that going in a 
 <ol class="org-ol">
 <li><code>cpu_init()</code>:
 <ol class="org-ol">
-<li><code>syscall_init()</code>: <a href="#orgaf435b7">5.2</a></li>
+<li><code>syscall_init()</code>: <a href="#org03c43df">5.2</a></li>
 </ol></li>
 </ol></li>
 <li><code>mm_init()</code>: initialization of the memory manager
@@ -1993,7 +1993,7 @@ The <code>bit_wait_table</code> is array of wait queues that will be used for wa
 <li>check IRQs state and disabling</li>
 <li><del>Initialization of the integer ID management</del></li>
 <li><code>radix_tree_init()</code>: initialize kernel implementation of the <a href="http://en.wikipedia.org/wiki/Radix_tree">Radix tree</a></li>
-<li><a href="#org0a92114">6.6</a> initialization:
+<li><a href="#orgff938de">6.6</a> initialization:
 <ol class="org-ol">
 <li><code>rcu_bootup_announce()</code>: print information about the RCU</li>
 <li><code>rcu_init_geometry()</code>: compute the node tree geometry depends on the amount of CPUs</li>
@@ -2059,8 +2059,8 @@ allocate cache for the <code>task_xstate</code> which represents <code>FPU</code
 </div>
 </div>
 
-<div id="outline-container-org90c37bf" class="outline-3">
-<h3 id="org90c37bf"><span class="section-number-3">2.4</span> x86_init_ops</h3>
+<div id="outline-container-org3e6f77b" class="outline-3">
+<h3 id="org3e6f77b"><span class="section-number-3">2.4</span> x86_init_ops</h3>
 <div class="outline-text-3" id="text-2-4">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-keyword">struct</span> <span class="org-type">x86_init_ops</span> <span class="org-type">x86_init</span> <span class="org-variable-name">__initdata</span> = {
@@ -2131,12 +2131,12 @@ allocate cache for the <code>task_xstate</code> which represents <code>FPU</code
 </div>
 </div>
 </div>
-<div id="outline-container-org236066b" class="outline-2">
-<h2 id="org236066b"><span class="section-number-2">3</span> Memory management</h2>
+<div id="outline-container-org6edaa99" class="outline-2">
+<h2 id="org6edaa99"><span class="section-number-2">3</span> Memory management</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org184e72f" class="outline-3">
-<h3 id="org184e72f"><span class="section-number-3">3.1</span> Paging</h3>
+<div id="outline-container-org6fb9fb3" class="outline-3">
+<h3 id="org6fb9fb3"><span class="section-number-3">3.1</span> Paging</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 linux 采用五级分页模型
@@ -2151,8 +2151,8 @@ linux 采用五级分页模型
 </ul>
 </div>
 
-<div id="outline-container-orgb56b3af" class="outline-4">
-<h4 id="orgb56b3af"><span class="section-number-4">3.1.1</span> arch x86</h4>
+<div id="outline-container-org8cf25ec" class="outline-4">
+<h4 id="org8cf25ec"><span class="section-number-4">3.1.1</span> arch x86</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 <b>TODO</b> PAE 分析
@@ -2355,11 +2355,11 @@ linux 采用五级分页模型
 </div>
 </div>
 </div>
-<div id="outline-container-org5c5a8e0" class="outline-3">
-<h3 id="org5c5a8e0"><span class="section-number-3">3.2</span> Memblock</h3>
+<div id="outline-container-org021865d" class="outline-3">
+<h3 id="org021865d"><span class="section-number-3">3.2</span> Memblock</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-<a id="orgcb5dd04"></a>
+<a id="orgeb702ed"></a>
 Memblock is a method of managing memory regions during the early boot period when the usual kernel memory allocators are not up and running.
 Memblock views the system memory as collections of contiguous regions. There are several types of these collections:
 </p>
@@ -2380,35 +2380,35 @@ reference:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf22d65f" class="outline-3">
-<h3 id="orgf22d65f"><span class="section-number-3">3.3</span> ioremap</h3>
+<div id="outline-container-orgedf61e9" class="outline-3">
+<h3 id="orgedf61e9"><span class="section-number-3">3.3</span> ioremap</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 ioremap used to map device memory into kernel address space.
 </p>
 </div>
 </div>
-<div id="outline-container-org1c4d231" class="outline-3">
-<h3 id="org1c4d231"><span class="section-number-3">3.4</span> mm_struct</h3>
+<div id="outline-container-orgf76e2db" class="outline-3">
+<h3 id="orgf76e2db"><span class="section-number-3">3.4</span> mm_struct</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
-<a id="org0286897"></a>
+<a id="org80d4691"></a>
 <a href="https://0xax.gitbooks.io/linux-insides/content/Initialization/linux-initialization-5.html">memory descriptor initialization</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd5663f" class="outline-3">
-<h3 id="orgbd5663f"><span class="section-number-3">3.5</span> DMA</h3>
+<div id="outline-container-org493f7ca" class="outline-3">
+<h3 id="org493f7ca"><span class="section-number-3">3.5</span> DMA</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
-<a id="org8296bbc"></a>
+<a id="orgbe4e0e4"></a>
 Direct memory access
 <a href="http://en.wikipedia.org/wiki/Direct_memory_access">http://en.wikipedia.org/wiki/Direct_memory_access</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org6cf171a" class="outline-3">
-<h3 id="org6cf171a"><span class="section-number-3">3.6</span> SLAB</h3>
+<div id="outline-container-orgd6daa8a" class="outline-3">
+<h3 id="orgd6daa8a"><span class="section-number-3">3.6</span> SLAB</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 The basic idea behind the slab allocator is to <b>have cache of commonly used object kept in an initialized state available</b> for use by the kernel. The slab allocator aims to cache the freed object so that the basic structure is preserved before uses.
@@ -2431,8 +2431,8 @@ For many structures used in the kernel, the time needed to initialize an object 
 </ol>
 </div>
 
-<div id="outline-container-org0a8c7fc" class="outline-4">
-<h4 id="org0a8c7fc"><span class="section-number-4">3.6.1</span> <code>kmem_cache</code></h4>
+<div id="outline-container-org9febe6a" class="outline-4">
+<h4 id="org9febe6a"><span class="section-number-4">3.6.1</span> <code>kmem_cache</code></h4>
 <div class="outline-text-4" id="text-3-6-1">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-keyword">struct</span> <span class="org-type">kmem_cache</span> {
@@ -2572,13 +2572,13 @@ The slab allocator consists of a variable number of caches that are linked toget
 </div>
 </div>
 </div>
-<div id="outline-container-org6b0c32e" class="outline-3">
-<h3 id="org6b0c32e"><span class="section-number-3">3.7</span> SLUB</h3>
+<div id="outline-container-org8c1ce6f" class="outline-3">
+<h3 id="org8c1ce6f"><span class="section-number-3">3.7</span> SLUB</h3>
 </div>
 </div>
 
-<div id="outline-container-org98ba58e" class="outline-2">
-<h2 id="org98ba58e"><span class="section-number-2">4</span> Interrupts</h2>
+<div id="outline-container-org19928c4" class="outline-2">
+<h2 id="org19928c4"><span class="section-number-2">4</span> Interrupts</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><a href="https://en.wikipedia.org/wiki/Advanced_Programmable_Interrupt_Controller">APIC</a></li>
@@ -2599,18 +2599,18 @@ the state of stack when an exception occurs is following:
 </pre>
 </div>
 
-<div id="outline-container-org6b155a3" class="outline-3">
-<h3 id="org6b155a3"><span class="section-number-3">4.1</span> exception-tables</h3>
+<div id="outline-container-orgc8f5b6f" class="outline-3">
+<h3 id="orgc8f5b6f"><span class="section-number-3">4.1</span> exception-tables</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-<a id="org40e4b81"></a>
+<a id="orgde917e3"></a>
 异常表位于段 <code>.__ex_table</code> 中，保存着指定代码地址的异常处理。
 There it uses the address of the instruction that caused the exception(i.e. <code>regs-&gt;eip</code>) to <b>find an address where the execution can continue(fixup) and execution customized exception handler function</b>. If this search is successful, the fault handler modifies the return address (again regs-&gt;eip) and returns. The execution will continue at the address in <code>fixup</code>.
 </p>
 </div>
 
-<div id="outline-container-orgdc35f59" class="outline-4">
-<h4 id="orgdc35f59"><span class="section-number-4">4.1.1</span> <code>__ex_table</code> 结构</h4>
+<div id="outline-container-org610e9d1" class="outline-4">
+<h4 id="org610e9d1"><span class="section-number-4">4.1.1</span> <code>__ex_table</code> 结构</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">arch/x86/include/asm/extable.h</span>
@@ -2640,19 +2640,19 @@ There it uses the address of the instruction that caused the exception(i.e. <cod
 </div>
 </div>
 
-<div id="outline-container-org0aa9f62" class="outline-3">
-<h3 id="org0aa9f62"><span class="section-number-3">4.2</span> early interrupt handler</h3>
+<div id="outline-container-org42bb3be" class="outline-3">
+<h3 id="org42bb3be"><span class="section-number-3">4.2</span> early interrupt handler</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
-<a id="org2e73625"></a>
+<a id="org84ecb1b"></a>
 </p>
 <ul class="org-ul">
 <li><p>
 设置中断: 填充 <code>idt_descr</code> 并将 idt_descr 的地址加载到 idt
 </p>
 <ul class="org-ul">
-<li>x86_64: 为前32个中断(异常)设置中断处理程序 <a href="#orgcda689c">4.3.2</a></li>
-<li>x86_32: 为所有的中断设置中断处理程序 <a href="#orge5290cf">4.3.3</a></li>
+<li>x86_64: 为前32个中断(异常)设置中断处理程序 <a href="#orgccc3106">4.3.2</a></li>
+<li>x86_32: 为所有的中断设置中断处理程序 <a href="#orgdf0f680">4.3.3</a></li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-keyword">extern</span> <span class="org-type">gate_desc</span> <span class="org-variable-name">idt_table</span>[]; <span class="org-comment-delimiter">// </span><span class="org-comment">arch/x86/include/asm/desc.h</span>
@@ -2663,12 +2663,12 @@ There it uses the address of the instruction that caused the exception(i.e. <cod
 </div>
 </div>
 
-<div id="outline-container-orgfbb1be9" class="outline-3">
-<h3 id="orgfbb1be9"><span class="section-number-3">4.3</span> interrupt handler function</h3>
+<div id="outline-container-org245e848" class="outline-3">
+<h3 id="org245e848"><span class="section-number-3">4.3</span> interrupt handler function</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-org937c057" class="outline-4">
-<h4 id="org937c057"><span class="section-number-4">4.3.1</span> interrelated macro</h4>
+<div id="outline-container-org2aa2bb7" class="outline-4">
+<h4 id="org2aa2bb7"><span class="section-number-4">4.3.1</span> interrelated macro</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <ul class="org-ul">
 <li><p>
@@ -2778,11 +2778,11 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
 </div>
 </div>
 
-<div id="outline-container-org421af98" class="outline-4">
-<h4 id="org421af98"><span class="section-number-4">4.3.2</span> <code>early_idt_handler_array</code></h4>
+<div id="outline-container-org99815e0" class="outline-4">
+<h4 id="org99815e0"><span class="section-number-4">4.3.2</span> <code>early_idt_handler_array</code></h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
-<a id="orgcda689c"></a>
+<a id="orgccc3106"></a>
 <code>early_idt_handler_array</code> 是 32 个大小为 9 字节程序的数组
 如果异常有错误代码，什么也不做。如果异常没有错误代码 将 0 压入栈(保持栈统一)。然后将中断向量号压栈并调用 <code>early_idt_handler_common</code>
 </p>
@@ -2876,7 +2876,7 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
 <li><code>early_fixup_exception</code>: 针对非 fault page 异常的处理
 <ol class="org-ol">
 <li>忽略 <code>X86_TRAP_NMI</code> 异常</li>
-<li>搜索异常表 <a href="#org40e4b81">4.1</a></li>
+<li>搜索异常表 <a href="#orgde917e3">4.1</a></li>
 <li>处理 bug 异常</li>
 <li>打印相关异常信息</li>
 </ol></li>
@@ -2885,11 +2885,11 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
 </div>
 </div>
 
-<div id="outline-container-orgd0c1598" class="outline-4">
-<h4 id="orgd0c1598"><span class="section-number-4">4.3.3</span> <code>early_ignore_irq</code></h4>
+<div id="outline-container-orgc39393f" class="outline-4">
+<h4 id="orgc39393f"><span class="section-number-4">4.3.3</span> <code>early_ignore_irq</code></h4>
 <div class="outline-text-4" id="text-4-3-3">
 <p>
-<a id="orge5290cf"></a>
+<a id="orgdf0f680"></a>
 </p>
 <div class="org-src-container">
 <pre class="src src-asm"><span class="org-comment-delimiter">/* </span><span class="org-comment">This is the default interrupt "handler" :- */</span>
@@ -2934,11 +2934,11 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
 </div>
 </div>
 
-<div id="outline-container-orgf9e5170" class="outline-4">
-<h4 id="orgf9e5170"><span class="section-number-4">4.3.4</span> <code>debug</code></h4>
+<div id="outline-container-orgcd191a5" class="outline-4">
+<h4 id="orgcd191a5"><span class="section-number-4">4.3.4</span> <code>debug</code></h4>
 <div class="outline-text-4" id="text-4-3-4">
 <p>
-<a id="orga314a9b"></a>
+<a id="orga8ff8cf"></a>
 <code>#DB</code> or <code>debug</code> exception occurs when a debug event occurs.
 <a href="https://en.wikipedia.org/wiki/X86_debug_registerx">x86 debug register</a>
 </p>
@@ -2961,21 +2961,21 @@ idtentry debug <span class="org-type">do_debug</span> <span class="org-variable-
 </div>
 </div>
 
-<div id="outline-container-org9e7e9bd" class="outline-4">
-<h4 id="org9e7e9bd"><span class="section-number-4">4.3.5</span> <code>int3</code></h4>
+<div id="outline-container-org24e913c" class="outline-4">
+<h4 id="org24e913c"><span class="section-number-4">4.3.5</span> <code>int3</code></h4>
 <div class="outline-text-4" id="text-4-3-5">
 <p>
-<a id="orge557b4b"></a>
+<a id="org55c39d6"></a>
 <code>#BP</code> or <code>breakpoint</code> exception occurs when processor executes the <code>int3</code> instruction.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org08449b3" class="outline-4">
-<h4 id="org08449b3"><span class="section-number-4">4.3.6</span> <code>page_fault</code></h4>
+<div id="outline-container-orgda1b019" class="outline-4">
+<h4 id="orgda1b019"><span class="section-number-4">4.3.6</span> <code>page_fault</code></h4>
 <div class="outline-text-4" id="text-4-3-6">
 <p>
-<a id="org8ea2748"></a>
+<a id="orge91276f"></a>
 </p>
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">arch/x86/include/asm/trap.h</span>
@@ -3005,13 +3005,13 @@ do_page_fault(<span class="org-keyword">struct</span> <span class="org-type">pt_
 </div>
 </div>
 </div>
-<div id="outline-container-orgf0f5ba5" class="outline-3">
-<h3 id="orgf0f5ba5"><span class="section-number-3">4.4</span> external interrupts</h3>
+<div id="outline-container-orgd405881" class="outline-3">
+<h3 id="orgd405881"><span class="section-number-3">4.4</span> external interrupts</h3>
 </div>
 </div>
 
-<div id="outline-container-org56dff23" class="outline-2">
-<h2 id="org56dff23"><span class="section-number-2">5</span> Syscall</h2>
+<div id="outline-container-org4734825" class="outline-2">
+<h2 id="org4734825"><span class="section-number-2">5</span> Syscall</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 A system call is just userspace request of kernel function. Userspace use <code>SYSCALL</code> instruction to invoke an OS system-call handler at privilege level 0.
@@ -3029,8 +3029,8 @@ A system call is just userspace request of kernel function. Userspace use <code>
 </ul>
 </div>
 
-<div id="outline-container-orge349abb" class="outline-3">
-<h3 id="orge349abb"><span class="section-number-3">5.1</span> implement</h3>
+<div id="outline-container-org2c558ff" class="outline-3">
+<h3 id="org2c558ff"><span class="section-number-3">5.1</span> implement</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Linux kernel provide a system calls table that is called <code>sys_call_table</code> (<code>arch/x86/entry/system_64.c</code>). System searches <code>sys_call_table</code> by when userspace invokes <code>SYSCALL</code>
@@ -3051,8 +3051,8 @@ Linux kernel provide a system calls table that is called <code>sys_call_table</c
 </ul>
 </div>
 
-<div id="outline-container-org78882a6" class="outline-4">
-<h4 id="org78882a6"><span class="section-number-4">5.1.1</span> entry_SYSCALL_64</h4>
+<div id="outline-container-org8b96128" class="outline-4">
+<h4 id="org8b96128"><span class="section-number-4">5.1.1</span> entry_SYSCALL_64</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 <b>TODO</b>
@@ -3066,12 +3066,12 @@ Linux kernel provide a system calls table that is called <code>sys_call_table</c
 </div>
 </div>
 
-<div id="outline-container-org8101cab" class="outline-3">
-<h3 id="org8101cab"><span class="section-number-3">5.2</span> initialization</h3>
+<div id="outline-container-org9ec203e" class="outline-3">
+<h3 id="org9ec203e"><span class="section-number-3">5.2</span> initialization</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 <code>arch/x86/kernel/cpu/common.c syscall_init()</code>
-<a id="orgaf435b7"></a>
+<a id="org03c43df"></a>
 </p>
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-type">void</span> <span class="org-function-name">syscall_init</span>(<span class="org-type">void</span>)
@@ -3116,8 +3116,8 @@ Linux kernel provide a system calls table that is called <code>sys_call_table</c
 </div>
 </div>
 
-<div id="outline-container-org5edf0ae" class="outline-3">
-<h3 id="org5edf0ae"><span class="section-number-3">5.3</span> vsyscall and vDSO</h3>
+<div id="outline-container-org77c0b33" class="outline-3">
+<h3 id="org77c0b33"><span class="section-number-3">5.3</span> vsyscall and vDSO</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 These two mechanisms - <code>vsyscall</code> and <code>vDSO</code> are designed to speed up this process for certain system calls.
@@ -3132,21 +3132,21 @@ principle:
 </ul>
 </div>
 
-<div id="outline-container-org1d900f1" class="outline-4">
-<h4 id="org1d900f1"><span class="section-number-4">5.3.1</span> vsyscall</h4>
+<div id="outline-container-org40fbcb1" class="outline-4">
+<h4 id="org40fbcb1"><span class="section-number-4">5.3.1</span> vsyscall</h4>
 </div>
-<div id="outline-container-org868f692" class="outline-4">
-<h4 id="org868f692"><span class="section-number-4">5.3.2</span> vDSO</h4>
+<div id="outline-container-org8861736" class="outline-4">
+<h4 id="org8861736"><span class="section-number-4">5.3.2</span> vDSO</h4>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7f69fc5" class="outline-2">
-<h2 id="org7f69fc5"><span class="section-number-2">6</span> Synchronization primitives</h2>
+<div id="outline-container-org64bd085" class="outline-2">
+<h2 id="org64bd085"><span class="section-number-2">6</span> Synchronization primitives</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orga267532" class="outline-3">
-<h3 id="orga267532"><span class="section-number-3">6.1</span> Spinlock</h3>
+<div id="outline-container-org6755fde" class="outline-3">
+<h3 id="org6755fde"><span class="section-number-3">6.1</span> Spinlock</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 a <b>spinlock</b> is a lock which causes a thread trying to acquire it to simply wait in a loop("spin") while repeatedly checking if the lock is available. Since the thread remains active but is not performing a useful task, <b>the use of such a lock is kind of busy waiting</b>.
@@ -3213,8 +3213,8 @@ Because they avoid overhead from operating system process rescheduling or contex
 </div>
 </div>
 
-<div id="outline-container-org8cc3bf8" class="outline-4">
-<h4 id="org8cc3bf8"><span class="section-number-4">6.1.1</span> normal spinlock</h4>
+<div id="outline-container-org960035c" class="outline-4">
+<h4 id="org960035c"><span class="section-number-4">6.1.1</span> normal spinlock</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <div class="org-src-container">
 <label class="org-src-name"><span class="listing-number">Listing 1: </span>pseudocode</label><pre class="src src-C"><span class="org-type">int</span> <span class="org-function-name">lock</span>(lock) {
@@ -3238,8 +3238,8 @@ The implementations is not very good for performance, because it has at least tw
 </div>
 </div>
 
-<div id="outline-container-orgc78eca0" class="outline-4">
-<h4 id="orgc78eca0"><span class="section-number-4">6.1.2</span> ticket spinlock</h4>
+<div id="outline-container-orga95b9bc" class="outline-4">
+<h4 id="orga95b9bc"><span class="section-number-4">6.1.2</span> ticket spinlock</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <p>
 <a href="https://en.wikipedia.org/wiki/Ticket_lock">Ticket spinlock</a>
@@ -3281,8 +3281,8 @@ The <code>lock value</code> splits into two field.
 </div>
 </div>
 
-<div id="outline-container-orgb800b31" class="outline-4">
-<h4 id="orgb800b31"><span class="section-number-4">6.1.3</span> queue spinlock(MCS lock)</h4>
+<div id="outline-container-orgd32f357" class="outline-4">
+<h4 id="orgd32f357"><span class="section-number-4">6.1.3</span> queue spinlock(MCS lock)</h4>
 <div class="outline-text-4" id="text-6-1-3">
 <p>
 <a href="http://www.cs.rochester.edu/~scott/papers/1991_TOCS_synch.pdf">mcs lock</a>
@@ -3337,8 +3337,8 @@ Linux kernel implement:
 </div>
 </div>
 
-<div id="outline-container-orgc95fd91" class="outline-4">
-<h4 id="orgc95fd91"><span class="section-number-4">6.1.4</span> related operations</h4>
+<div id="outline-container-orgf1b6eba" class="outline-4">
+<h4 id="orgf1b6eba"><span class="section-number-4">6.1.4</span> related operations</h4>
 <div class="outline-text-4" id="text-6-1-4">
 <p>
 <code>include/linux/spinlock.h</code>
@@ -3346,8 +3346,8 @@ Linux kernel implement:
 </div>
 </div>
 </div>
-<div id="outline-container-org390ae0d" class="outline-3">
-<h3 id="org390ae0d"><span class="section-number-3">6.2</span> Semaphores</h3>
+<div id="outline-container-org64c72f8" class="outline-3">
+<h3 id="org64c72f8"><span class="section-number-3">6.2</span> Semaphores</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li><code>semaphores</code> is a solution for locks which may be acquired for a long time.</li>
@@ -3433,8 +3433,8 @@ Lock Operations:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbd91d03" class="outline-3">
-<h3 id="orgbd91d03"><span class="section-number-3">6.3</span> Mutex</h3>
+<div id="outline-container-org6f4b142" class="outline-3">
+<h3 id="org6f4b142"><span class="section-number-3">6.3</span> Mutex</h3>
 <div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li>only one task can hold the mutex at a time</li>
@@ -3480,8 +3480,8 @@ when a process try to acquire a <code>mutex</code>, there three possible:
 </ul>
 </div>
 </div>
-<div id="outline-container-org6e4148a" class="outline-3">
-<h3 id="org6e4148a"><span class="section-number-3">6.4</span> Reader/Writer semaphore</h3>
+<div id="outline-container-org3cd2f58" class="outline-3">
+<h3 id="org3cd2f58"><span class="section-number-3">6.4</span> Reader/Writer semaphore</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 <a href="https://en.wikipedia.org/wiki/Readers%E2%80%93writer_lock">R/W lock</a>
@@ -3528,8 +3528,8 @@ Api:
 </p>
 </div>
 </div>
-<div id="outline-container-org112d9bc" class="outline-3">
-<h3 id="org112d9bc"><span class="section-number-3">6.5</span> SeqLock</h3>
+<div id="outline-container-orga80f05b" class="outline-3">
+<h3 id="orga80f05b"><span class="section-number-3">6.5</span> SeqLock</h3>
 <div class="outline-text-3" id="text-6-5">
 <div class="org-src-container">
 <label class="org-src-name"><span class="listing-number">Listing 4: </span>pseudocode</label><pre class="src src-C"><span class="org-type">int</span> <span class="org-variable-name">counter</span> = <span class="org-highlight-numbers-number">0</span>;
@@ -3570,17 +3570,17 @@ Api:
 </div>
 </div>
 
-<div id="outline-container-orgab7631d" class="outline-3">
-<h3 id="orgab7631d"><span class="section-number-3">6.6</span> RCU</h3>
+<div id="outline-container-org91f63ff" class="outline-3">
+<h3 id="org91f63ff"><span class="section-number-3">6.6</span> RCU</h3>
 <div class="outline-text-3" id="text-6-6">
 <p>
-<a id="org0a92114"></a>
+<a id="orgff938de"></a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga34369a" class="outline-3">
-<h3 id="orga34369a"><span class="section-number-3">6.7</span> Completions</h3>
+<div id="outline-container-org74dad6f" class="outline-3">
+<h3 id="org74dad6f"><span class="section-number-3">6.7</span> Completions</h3>
 <div class="outline-text-3" id="text-6-7">
 <p>
 <a href="https://elixir.bootlin.com/linux/latest/source/Documentation/scheduler/completion.txt">Completions</a>
@@ -3588,8 +3588,8 @@ Api:
 </div>
 </div>
 
-<div id="outline-container-org9a571f7" class="outline-3">
-<h3 id="org9a571f7"><span class="section-number-3">6.8</span> Locking Traps</h3>
+<div id="outline-container-org2e4dcde" class="outline-3">
+<h3 id="org2e4dcde"><span class="section-number-3">6.8</span> Locking Traps</h3>
 <div class="outline-text-3" id="text-6-8">
 <ul class="org-ul">
 <li>Ambiguous Rules
@@ -3625,12 +3625,12 @@ A couple of rules of thumb:
 </div>
 </div>
 
-<div id="outline-container-orgf3f961b" class="outline-3">
-<h3 id="orgf3f961b"><span class="section-number-3">6.9</span> Sleep</h3>
+<div id="outline-container-org38ed217" class="outline-3">
+<h3 id="org38ed217"><span class="section-number-3">6.9</span> Sleep</h3>
 <div class="outline-text-3" id="text-6-9">
 </div>
-<div id="outline-container-orged98472" class="outline-4">
-<h4 id="orged98472"><span class="section-number-4">6.9.1</span> How a process sleeps</h4>
+<div id="outline-container-org3784baa" class="outline-4">
+<h4 id="org3784baa"><span class="section-number-4">6.9.1</span> How a process sleeps</h4>
 <div class="outline-text-4" id="text-6-9-1">
 <ol class="org-ol">
 <li><p>
@@ -3648,15 +3648,15 @@ set the state of the process to mark it as being asleep
 </div>
 </div>
 
-<div id="outline-container-org43189ee" class="outline-2">
-<h2 id="org43189ee"><span class="section-number-2">7</span> SMP</h2>
+<div id="outline-container-orgf5702bb" class="outline-2">
+<h2 id="orgf5702bb"><span class="section-number-2">7</span> SMP</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org4c329b5" class="outline-3">
-<h3 id="org4c329b5"><span class="section-number-3">7.1</span> cpu_dev</h3>
+<div id="outline-container-orge296106" class="outline-3">
+<h3 id="orge296106"><span class="section-number-3">7.1</span> cpu_dev</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
-<a id="org9238628"></a>
+<a id="org7bd9194"></a>
 </p>
 
 <p>
@@ -3708,20 +3708,20 @@ cpu_dev declare variable in the <code>.x86_cpu_dev.init</code> section by <code>
 </div>
 </div>
 
-<div id="outline-container-org30ab669" class="outline-3">
-<h3 id="org30ab669"><span class="section-number-3">7.2</span> Per-CPU</h3>
+<div id="outline-container-orga4a30e2" class="outline-3">
+<h3 id="orga4a30e2"><span class="section-number-3">7.2</span> Per-CPU</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 Per-CPU variables are one of the kernel features. We can create a variable and each processor core will have its own copy of this variable.
 </p>
 </div>
 
-<div id="outline-container-orgbb2488a" class="outline-4">
-<h4 id="orgbb2488a"><span class="section-number-4">7.2.1</span> Create per-cpu variables</h4>
+<div id="outline-container-org2c4be03" class="outline-4">
+<h4 id="org2c4be03"><span class="section-number-4">7.2.1</span> Create per-cpu variables</h4>
 <div class="outline-text-4" id="text-7-2-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgfc4af40"></a>static variables declare<br />
+<li><a id="org9376f56"></a>static variables declare<br />
 <div class="outline-text-5" id="text-7-2-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> declare per-cpu variables macro <code>include/linux/percpu-defs.h</code></caption>
@@ -3784,16 +3784,16 @@ per-CPU is declared to <code>PER_CPU_BASE_SECTION + Subsection</code> according 
 </p>
 </div>
 </li>
-<li><a id="org7ee994d"></a>dynamic define<br /></li>
+<li><a id="org409f103"></a>dynamic define<br /></li>
 </ol>
 </div>
 
-<div id="outline-container-org1cc136e" class="outline-4">
-<h4 id="org1cc136e"><span class="section-number-4">7.2.2</span> per-cpu operate</h4>
+<div id="outline-container-org5453cab" class="outline-4">
+<h4 id="org5453cab"><span class="section-number-4">7.2.2</span> per-cpu operate</h4>
 </div>
 
-<div id="outline-container-orgb67039d" class="outline-4">
-<h4 id="orgb67039d"><span class="section-number-4">7.2.3</span> per-cpu areas initialization process</h4>
+<div id="outline-container-orga2a12fd" class="outline-4">
+<h4 id="orga2a12fd"><span class="section-number-4">7.2.3</span> per-cpu areas initialization process</h4>
 <div class="outline-text-4" id="text-7-2-3">
 <ol class="org-ol">
 <li><code>init/main.c setup_per_cpu_areas()</code>:
@@ -3814,21 +3814,21 @@ per-CPU is declared to <code>PER_CPU_BASE_SECTION + Subsection</code> according 
 </div>
 
 
-<div id="outline-container-orgf80e759" class="outline-3">
-<h3 id="orgf80e759"><span class="section-number-3">7.3</span> Cpumasks</h3>
+<div id="outline-container-org2605544" class="outline-3">
+<h3 id="org2605544"><span class="section-number-3">7.3</span> Cpumasks</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
-<a id="org0eccdcd"></a>
+<a id="org2e6bed8"></a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org2b6b479" class="outline-2">
-<h2 id="org2b6b479"><span class="section-number-2">8</span> Drive</h2>
+<div id="outline-container-orga689557" class="outline-2">
+<h2 id="orga689557"><span class="section-number-2">8</span> Drive</h2>
 </div>
 
-<div id="outline-container-org25a4dbf" class="outline-2">
-<h2 id="org25a4dbf"><span class="section-number-2">9</span> Networking</h2>
+<div id="outline-container-org93c6f8e" class="outline-2">
+<h2 id="org93c6f8e"><span class="section-number-2">9</span> Networking</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 The factors that determines the traversal of a packet in the network stack
@@ -3841,8 +3841,8 @@ The factors that determines the traversal of a packet in the network stack
 </ul>
 </div>
 
-<div id="outline-container-org7c6294b" class="outline-3">
-<h3 id="org7c6294b"><span class="section-number-3">9.1</span> Netlink Sockets</h3>
+<div id="outline-container-org78c2ffd" class="outline-3">
+<h3 id="org78c2ffd"><span class="section-number-3">9.1</span> Netlink Sockets</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 The netlink protocol is socket-based Inter Process Communication(IPC) mechanism, based on <a href="https://tools.ietf.org/html/rfc3549">RFC 3549</a>.
@@ -3850,8 +3850,8 @@ Netlink sockets can send asynchronous messages to userspace from the kernel. The
 </p>
 </div>
 
-<div id="outline-container-org04c32ef" class="outline-4">
-<h4 id="org04c32ef"><span class="section-number-4">9.1.1</span> Netlink advantages</h4>
+<div id="outline-container-orgc5c5649" class="outline-4">
+<h4 id="orgc5c5649"><span class="section-number-4">9.1.1</span> Netlink advantages</h4>
 <div class="outline-text-4" id="text-9-1-1">
 <ul class="org-ul">
 <li>no need for polling when working with netlink sockets.</li>
@@ -3861,8 +3861,8 @@ Netlink sockets can send asynchronous messages to userspace from the kernel. The
 </div>
 </div>
 
-<div id="outline-container-orgb59998f" class="outline-4">
-<h4 id="orgb59998f"><span class="section-number-4">9.1.2</span> Kernel Netlink Sockets</h4>
+<div id="outline-container-org07691e1" class="outline-4">
+<h4 id="org07691e1"><span class="section-number-4">9.1.2</span> Kernel Netlink Sockets</h4>
 <div class="outline-text-4" id="text-9-1-2">
 <p>
 Netlink sockets is created by <code>netlink_kernel_create()</code> in the kernel networking stack. <b>Each kernel sockets handles messages of different types</b>.
@@ -3910,12 +3910,12 @@ Netlink sockets is created by <code>netlink_kernel_create()</code> in the kernel
 </div>
 </div>
 </div>
-<div id="outline-container-orga0b7511" class="outline-2">
-<h2 id="orga0b7511"><span class="section-number-2">10</span> Timers and time management</h2>
+<div id="outline-container-orgf8532d1" class="outline-2">
+<h2 id="orgf8532d1"><span class="section-number-2">10</span> Timers and time management</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org1a20f0d" class="outline-3">
-<h3 id="org1a20f0d"><span class="section-number-3">10.1</span> jiffy</h3>
+<div id="outline-container-org1269398" class="outline-3">
+<h3 id="org1269398"><span class="section-number-3">10.1</span> jiffy</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 <code>jiffy</code>: is an informal term for any unspecified short period of time. In the Linux kernel this definition is very similar to the <code>jiffy</code>. There is global variable with the <code>jiffies</code> which holds the number of ticks(timer interrupt of times) that have occurred since the system booted.
@@ -3948,8 +3948,8 @@ jiffies_64 = jiffies;
 </div>
 </div>
 </div>
-<div id="outline-container-orgd12a65e" class="outline-3">
-<h3 id="orgd12a65e"><span class="section-number-3">10.2</span> clocksource</h3>
+<div id="outline-container-org13dc4f4" class="outline-3">
+<h3 id="org13dc4f4"><span class="section-number-3">10.2</span> clocksource</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 <code>struct clocksource</code>: hardware abstraction for a free running counter. Provides mostly state-free accessors to the underlying hardware. This is the structure used for system time.
@@ -4024,8 +4024,8 @@ To avoid rating inflation the following list should give you a guide as to how t
 </ul>
 </div>
 
-<div id="outline-container-orgad18322" class="outline-4">
-<h4 id="orgad18322"><span class="section-number-4">10.2.1</span> clocksource register</h4>
+<div id="outline-container-org307487b" class="outline-4">
+<h4 id="org307487b"><span class="section-number-4">10.2.1</span> clocksource register</h4>
 <div class="outline-text-4" id="text-10-2-1">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">include/linux/clocksource.h</span>
@@ -4054,12 +4054,12 @@ To avoid rating inflation the following list should give you a guide as to how t
 </div>
 </div>
 
-<div id="outline-container-org3ad7ec6" class="outline-4">
-<h4 id="org3ad7ec6"><span class="section-number-4">10.2.2</span> x86 clocksource</h4>
+<div id="outline-container-org97c5a56" class="outline-4">
+<h4 id="org97c5a56"><span class="section-number-4">10.2.2</span> x86 clocksource</h4>
 <div class="outline-text-4" id="text-10-2-2">
 </div>
 <ol class="org-ol">
-<li><a id="orgaad8a6f"></a>clocksource_jiffies<br />
+<li><a id="orgc85e243"></a>clocksource_jiffies<br />
 <div class="outline-text-5" id="text-10-2-2-1">
 <p>
 The standard <code>jiffies</code> based clock source is the lowest common denominator clock source which should function on all system that the same resolution as <b>timer interrupt frequency</b>.
@@ -4076,7 +4076,7 @@ The standard <code>jiffies</code> based clock source is the lowest common denomi
 </ul>
 </div>
 </li>
-<li><a id="org2653cb9"></a>refined_jiffies<br />
+<li><a id="org2b277c7"></a>refined_jiffies<br />
 <div class="outline-text-5" id="text-10-2-2-2">
 <p>
 <code>refined_jiffies</code> is based on the <code>i8253/i8254</code> <a href="https://en.wikipedia.org/wiki/Programmable_interval_timer">programmable interval timer</a> tick rate which is almost <code>1193182(CLOCK_TICK_RATE)</code> hertz.
@@ -4091,8 +4091,8 @@ The standard <code>jiffies</code> based clock source is the lowest common denomi
 </li>
 </ol>
 </div>
-<div id="outline-container-org7f48bd4" class="outline-4">
-<h4 id="org7f48bd4"><span class="section-number-4">10.2.3</span> clocksource_sysfs</h4>
+<div id="outline-container-orga42a9b3" class="outline-4">
+<h4 id="orga42a9b3"><span class="section-number-4">10.2.3</span> clocksource_sysfs</h4>
 <div class="outline-text-4" id="text-10-2-3">
 <p>
 <code>/sys/devices/system/clocksource</code>
@@ -4100,8 +4100,8 @@ The standard <code>jiffies</code> based clock source is the lowest common denomi
 </div>
 </div>
 </div>
-<div id="outline-container-org63c3778" class="outline-3">
-<h3 id="org63c3778"><span class="section-number-3">10.3</span> Reducing Scheduling-Clock Ticks</h3>
+<div id="outline-container-orga3bd641" class="outline-3">
+<h3 id="orga3bd641"><span class="section-number-3">10.3</span> Reducing Scheduling-Clock Ticks</h3>
 <div class="outline-text-3" id="text-10-3">
 <p>
 <code>Documentation/timers/NO_HZ.txt</code>
@@ -4113,15 +4113,15 @@ There are three main way of managing scheduling-clock interrupts
 <li>Omit scheduling-clock tick on CPUs that are either idle or that have only one runable task(<code>CONFIG_NO_HZ_FULL=y</code>)</li>
 </ol>
 </div>
-<div id="outline-container-org5f6a20a" class="outline-4">
-<h4 id="org5f6a20a"><span class="section-number-4">10.3.1</span> dyntick</h4>
+<div id="outline-container-org385ef0a" class="outline-4">
+<h4 id="org385ef0a"><span class="section-number-4">10.3.1</span> dyntick</h4>
 </div>
 </div>
-<div id="outline-container-orgae91c18" class="outline-3">
-<h3 id="orgae91c18"><span class="section-number-3">10.4</span> clock events device</h3>
+<div id="outline-container-org7692ec5" class="outline-3">
+<h3 id="org7692ec5"><span class="section-number-3">10.4</span> clock events device</h3>
 </div>
-<div id="outline-container-org8f4f8bb" class="outline-3">
-<h3 id="org8f4f8bb"><span class="section-number-3">10.5</span> tick broadcast</h3>
+<div id="outline-container-org360690a" class="outline-3">
+<h3 id="org360690a"><span class="section-number-3">10.5</span> tick broadcast</h3>
 <div class="outline-text-3" id="text-10-5">
 <p>
 Each processor in the system has its own local timer which is programmed updating <code>jiffies</code> and etc. These timers represented by the <code>tick_device</code> structure in the Linux kernel.
@@ -4173,21 +4173,21 @@ Related function:
 </p>
 </div>
 </div>
-<div id="outline-container-orgb6f813b" class="outline-3">
-<h3 id="orgb6f813b"><span class="section-number-3">10.6</span> Timers</h3>
+<div id="outline-container-org5138660" class="outline-3">
+<h3 id="org5138660"><span class="section-number-3">10.6</span> Timers</h3>
 </div>
 </div>
 
-<div id="outline-container-org5763fc2" class="outline-2">
-<h2 id="org5763fc2"><span class="section-number-2">11</span> Misc</h2>
+<div id="outline-container-org2f828af" class="outline-2">
+<h2 id="org2f828af"><span class="section-number-2">11</span> Misc</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-orgb757cca" class="outline-3">
-<h3 id="orgb757cca"><span class="section-number-3">11.1</span> linux 构建过程</h3>
+<div id="outline-container-orgefd2804" class="outline-3">
+<h3 id="orgefd2804"><span class="section-number-3">11.1</span> linux 构建过程</h3>
 <div class="outline-text-3" id="text-11-1">
 </div>
-<div id="outline-container-orgd7e3348" class="outline-4">
-<h4 id="orgd7e3348"><span class="section-number-4">11.1.1</span> linux kernel Makefile 文件组成</h4>
+<div id="outline-container-orgf05a7d5" class="outline-4">
+<h4 id="orgf05a7d5"><span class="section-number-4">11.1.1</span> linux kernel Makefile 文件组成</h4>
 <div class="outline-text-4" id="text-11-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -4211,7 +4211,12 @@ Related function:
 
 <tr>
 <td class="org-left">.config</td>
-<td class="org-left">配置文件，配置内核时生成。所有的Makefile文件（包括顶层目录和各级子目录）都是根据.config来决定使用哪些文件的</td>
+<td class="org-left">配置文件，配置内核时生成。所有的Makefile文件</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">（包括顶层目录和各级子目录）都是根据.config来决定使用哪些文件的</td>
 </tr>
 
 <tr>
@@ -4270,8 +4275,8 @@ Related function:
 </div>
 </div>
 
-<div id="outline-container-orgb096d82" class="outline-4">
-<h4 id="orgb096d82"><span class="section-number-4">11.1.2</span> Kbuild</h4>
+<div id="outline-container-orgcbce17f" class="outline-4">
+<h4 id="orgcbce17f"><span class="section-number-4">11.1.2</span> Kbuild</h4>
 <div class="outline-text-4" id="text-11-1-2">
 <p>
 利用 GNU Make 组织的一套复杂的构建系统。
@@ -4280,7 +4285,7 @@ Kbuild主要利用以下 Make 的功能
 </div>
 
 <ol class="org-ol">
-<li><a id="orgee2cf71"></a>Makefile的包含<br />
+<li><a id="org6e79279"></a>Makefile的包含<br />
 <div class="outline-text-5" id="text-11-1-2-1">
 <ul class="org-ul">
 <li><p>
@@ -4326,7 +4331,7 @@ Makefile.build 包含各个子目录下的 Makefile:Kbuild 将所以与编译过
 </div>
 </li>
 
-<li><a id="orgbf0e857"></a>使用指定 Makefile 的方式进行递归<br />
+<li><a id="orga316130"></a>使用指定 Makefile 的方式进行递归<br />
 <div class="outline-text-5" id="text-11-1-2-2">
 <ul class="org-ul">
 <li>kbuild 编译子目录采用绝对目录的方式执行 make</li>
@@ -4383,9 +4388,9 @@ src：始终指向需要构建的目录
 </div>
 </li>
 
-<li><a id="orgb2c59bf"></a>有用的函数<br />
+<li><a id="orgdb0b8a2"></a>有用的函数<br />
 <ol class="org-ol">
-<li><a id="org60d3cbd"></a>if_changed<br />
+<li><a id="orgd6b196d"></a>if_changed<br />
 <div class="outline-text-6" id="text-11-1-2-3-1">
 <p>
 如果 <code>any-prereq</code> 或 <code>arg-check</code> 发生改变,执行表达式 <code>$(cmd_$(1))</code> 展开的值。
@@ -4406,7 +4411,7 @@ src：始终指向需要构建的目录
 </div>
 </li>
 
-<li><a id="org40b7045"></a>cmd 脚本<br />
+<li><a id="org68d5fdb"></a>cmd 脚本<br />
 <div class="outline-text-6" id="text-11-1-2-3-2">
 <ul class="org-ul">
 <li><p>
@@ -4443,12 +4448,12 @@ src：始终指向需要构建的目录
 </ol>
 </div>
 
-<div id="outline-container-org1246178" class="outline-4">
-<h4 id="org1246178"><span class="section-number-4">11.1.3</span> 根目录 Makefile 分析</h4>
+<div id="outline-container-orga9976e0" class="outline-4">
+<h4 id="orga9976e0"><span class="section-number-4">11.1.3</span> 根目录 Makefile 分析</h4>
 <div class="outline-text-4" id="text-11-1-3">
 </div>
 <ol class="org-ol">
-<li><a id="org792a798"></a>make 的输出<br />
+<li><a id="orgcaecbf0"></a>make 的输出<br />
 <div class="outline-text-5" id="text-11-1-3-1">
 <p>
 Makefile 在执行时会回显整个命令，linux 定义了三种 make 显示方式
@@ -4492,7 +4497,7 @@ linux kernel 在 顶级 Makefile 里 定义了 <code>KBUILD_VERBOSE=、=quiet=�
 </div>
 </li>
 
-<li><a id="orgbfb538b"></a>目标 arch 的选择<br />
+<li><a id="org6351bae"></a>目标 arch 的选择<br />
 <div class="outline-text-5" id="text-11-1-3-2">
 <p>
 linux kernel 默认使用用户的 arch，通过 <code>SUBARCH</code> 确定。
@@ -4523,7 +4528,7 @@ linux kernel 默认使用用户的 arch，通过 <code>SUBARCH</code> 确定。
 </div>
 </li>
 
-<li><a id="orgef1afe3"></a>Makefile 的目标<br />
+<li><a id="org1760120"></a>Makefile 的目标<br />
 <div class="outline-text-5" id="text-11-1-3-3">
 <ul class="org-ul">
 <li>当在命令行没有指定目标时默认目标是 <code>all: vmlinux</code> 。</li>
@@ -4539,7 +4544,7 @@ linux kernel 默认使用用户的 arch，通过 <code>SUBARCH</code> 确定。
 </div>
 
 <ol class="org-ol">
-<li><a id="org44370ab"></a>目标 vmlinux<br />
+<li><a id="org114a76c"></a>目标 vmlinux<br />
 <div class="outline-text-6" id="text-11-1-3-3-1">
 <div class="org-src-container">
 <pre class="src src-makefile"><span class="org-makefile-targets">vmlinux</span>: scripts/link-vmlinux.sh autoksyms_recursive $(<span class="org-variable-name">vmlinux-deps</span>) FORCE
@@ -4587,7 +4592,7 @@ link-vmlinux 展开的值为 cmd_link-vmlinux
 </div>
 
 <ol class="org-ol">
-<li><a id="org9a67cfd"></a>依赖的目标<br />
+<li><a id="orgb877d82"></a>依赖的目标<br />
 <div class="outline-text-7" id="text-11-1-3-3-1-1">
 <ul class="org-ul">
 <li><code>$(vmlinux-deps)</code> ：vmlinux 的依赖包含下面目录的 <code>built-in.a</code> 。</li>
@@ -4690,7 +4695,7 @@ endif
 </ol>
 </li>
 
-<li><a id="orgda04d44"></a>目标 bzImage<br />
+<li><a id="orgea9abae"></a>目标 bzImage<br />
 <div class="outline-text-6" id="text-11-1-3-3-2">
 <p>
 <code>bzImage</code> 在 <code>arch/$(ARCH)/Makefile</code>
@@ -4728,7 +4733,7 @@ endif
 </div>
 
 <ol class="org-ol">
-<li><a id="org04fada8"></a>依赖的目标<br />
+<li><a id="org70b70bc"></a>依赖的目标<br />
 <div class="outline-text-7" id="text-11-1-3-3-2-1">
 <ul class="org-ul">
 <li><code>$(obj)/tools/build</code> ：从三个不同的文件构建磁盘映像(简单连接为 bzImage)，它会检查所有文件的类型是否正确，并在指定目的地写入结果，移除头和适当填充，写一些系统数据到 stdout
@@ -4932,7 +4937,7 @@ endif
 </div>
 </li>
 
-<li><a id="org8d56fad"></a>总结<br />
+<li><a id="orga18bc5a"></a>总结<br />
 <div class="outline-text-7" id="text-11-1-3-3-2-2">
 <ol class="org-ol">
 <li>将根目录的 vmlinux 复制到 arch/x86/boot/compressed/vmliux.bin，并删除 .comment elf头、符号表和重定位表。</li>
@@ -4949,7 +4954,7 @@ endif
 </ol>
 </li>
 
-<li><a id="orga8a25d2"></a>相关目标<br />
+<li><a id="org21769f6"></a>相关目标<br />
 <div class="outline-text-6" id="text-11-1-3-3-3">
 <ul class="org-ul">
 <li><p>
@@ -5031,8 +5036,8 @@ endif
 </ol>
 </div>
 </div>
-<div id="outline-container-orga2ad718" class="outline-3">
-<h3 id="orga2ad718"><span class="section-number-3">11.2</span> linux kernel rootfs</h3>
+<div id="outline-container-orgac019a6" class="outline-3">
+<h3 id="orgac019a6"><span class="section-number-3">11.2</span> linux kernel rootfs</h3>
 <div class="outline-text-3" id="text-11-2">
 <ol class="org-ol">
 <li><p>
@@ -5082,8 +5087,8 @@ endif
 </ol>
 </div>
 
-<div id="outline-container-org64c102e" class="outline-4">
-<h4 id="org64c102e"><span class="section-number-4">11.2.1</span> grub</h4>
+<div id="outline-container-orgbc33b52" class="outline-4">
+<h4 id="orgbc33b52"><span class="section-number-4">11.2.1</span> grub</h4>
 <div class="outline-text-4" id="text-11-2-1">
 <ol class="org-ol">
 <li>创建 boot 和 grub 目录： <code>mkdir -p rootfs/boot/grub</code></li>
@@ -5112,8 +5117,8 @@ menuentry 'linux' {
 </div>
 </div>
 
-<div id="outline-container-orga23027c" class="outline-4">
-<h4 id="orga23027c"><span class="section-number-4">11.2.2</span> busybox + qemu</h4>
+<div id="outline-container-orgc581d12" class="outline-4">
+<h4 id="orgc581d12"><span class="section-number-4">11.2.2</span> busybox + qemu</h4>
 <div class="outline-text-4" id="text-11-2-2">
 <ol class="org-ol">
 <li><p>
@@ -5145,7 +5150,7 @@ execute qemu
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-07 日 22:31</p>
+<p class="date">Created: 2019-04-08 一 21:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

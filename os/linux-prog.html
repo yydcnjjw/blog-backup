@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-07 日 22:30 -->
+<!-- 2019-04-08 一 21:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -63,178 +63,178 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org69de507">1. File I/O</a>
+<li><a href="#org576c25c">1. File I/O</a>
 <ul>
-<li><a href="#org03e8b18">1.1. File Descriptors</a></li>
-<li><a href="#orgeb8040e">1.2. Opening Files</a>
+<li><a href="#org394f989">1.1. File Descriptors</a></li>
+<li><a href="#org54c763a">1.2. Opening Files</a>
 <ul>
-<li><a href="#org7a191cc">1.2.1. <code>open</code> and <code>openat</code> Functions</a></li>
+<li><a href="#org6cb4366">1.2.1. <code>open</code> and <code>openat</code> Functions</a></li>
 </ul>
 </li>
-<li><a href="#org3cb835c">1.3. Reading</a></li>
-<li><a href="#orga52a85f">1.4. Writing</a></li>
-<li><a href="#org15f79cd">1.5. Synchronized I/O</a></li>
-<li><a href="#orgded984d">1.6. Direct I/O</a></li>
-<li><a href="#orgcf0ced0">1.7. Closing Files</a></li>
-<li><a href="#orgf5e81ca">1.8. Seeking</a></li>
-<li><a href="#org8a3239d">1.9. Positional Reads and Writes</a></li>
-<li><a href="#org1613718">1.10. Truncating Files</a></li>
-<li><a href="#org10d8e04">1.11. Multiplexed I/O</a></li>
+<li><a href="#orgb8861b1">1.3. Reading</a></li>
+<li><a href="#orgb290201">1.4. Writing</a></li>
+<li><a href="#orgb279dce">1.5. Synchronized I/O</a></li>
+<li><a href="#orgbb3e9c9">1.6. Direct I/O</a></li>
+<li><a href="#orgd2dc5ca">1.7. Closing Files</a></li>
+<li><a href="#orge9ab1bd">1.8. Seeking</a></li>
+<li><a href="#org189f695">1.9. Positional Reads and Writes</a></li>
+<li><a href="#orge4a6614">1.10. Truncating Files</a></li>
+<li><a href="#orgfe76ff7">1.11. Multiplexed I/O</a></li>
 </ul>
 </li>
-<li><a href="#org6296f33">2. Buffered I/O</a>
+<li><a href="#org2743e4e">2. Buffered I/O</a>
 <ul>
-<li><a href="#org0ee3c2a">2.1. Opening Files</a></li>
-<li><a href="#org6736d35">2.2. Closing Streams</a></li>
-<li><a href="#org72bcf77">2.3. Reading from a Stream</a></li>
-<li><a href="#org4aea69c">2.4. Writing to a Stream</a></li>
-<li><a href="#orgbc14c02">2.5. Seeking a Stream</a></li>
-<li><a href="#orgadcb699">2.6. Flushing a Stream</a></li>
-<li><a href="#org4bc6285">2.7. Errors and End-of-file</a></li>
-<li><a href="#org3d3dc4d">2.8. Obtaining the Associated File Descriptor</a></li>
-<li><a href="#org353ee0f">2.9. Controlling the Buffering</a></li>
-<li><a href="#org12ac33c">2.10. Thread Safety</a>
+<li><a href="#org9cdcfa2">2.1. Opening Files</a></li>
+<li><a href="#org1c3bcb3">2.2. Closing Streams</a></li>
+<li><a href="#org143ea4c">2.3. Reading from a Stream</a></li>
+<li><a href="#org3ad6aae">2.4. Writing to a Stream</a></li>
+<li><a href="#orgc4a728e">2.5. Seeking a Stream</a></li>
+<li><a href="#org2566c2d">2.6. Flushing a Stream</a></li>
+<li><a href="#orgc23818b">2.7. Errors and End-of-file</a></li>
+<li><a href="#org199e41f">2.8. Obtaining the Associated File Descriptor</a></li>
+<li><a href="#org547ecdd">2.9. Controlling the Buffering</a></li>
+<li><a href="#orgfc674f9">2.10. Thread Safety</a>
 <ul>
-<li><a href="#org3f37f51">2.10.1. Manual File Locking</a></li>
-<li><a href="#orga048db3">2.10.2. Unlocked Stream Operations</a></li>
+<li><a href="#org8a07084">2.10.1. Manual File Locking</a></li>
+<li><a href="#org3793fd7">2.10.2. Unlocked Stream Operations</a></li>
 </ul>
 </li>
-<li><a href="#org67eacaa">2.11. Critiques of Standard I/O</a></li>
+<li><a href="#org119ecf7">2.11. Critiques of Standard I/O</a></li>
 </ul>
 </li>
-<li><a href="#org6f238d1">3. Advanced File I/O</a>
+<li><a href="#orgbf0e568">3. Advanced File I/O</a>
 <ul>
-<li><a href="#org65c836d">3.1. Scatter/gather I/O</a></li>
-<li><a href="#orgee588fc">3.2. Event Poll</a>
+<li><a href="#org89dbc72">3.1. Scatter/gather I/O</a></li>
+<li><a href="#org5c13008">3.2. Event Poll</a>
 <ul>
-<li><a href="#org7f63e66">3.2.1. Creating a New Epoll Instance</a></li>
-<li><a href="#orgae6bc43">3.2.2. Controlling Epoll</a></li>
-<li><a href="#orgdfd725b">3.2.3. Waiting for Events with Epoll</a></li>
-<li><a href="#org7dfcac2">3.2.4. <span class="todo TODO">TODO</span> Edge-Versus Level-Triggered Events</a></li>
+<li><a href="#org98730b6">3.2.1. Creating a New Epoll Instance</a></li>
+<li><a href="#orgd145ab3">3.2.2. Controlling Epoll</a></li>
+<li><a href="#org90cb0c5">3.2.3. Waiting for Events with Epoll</a></li>
+<li><a href="#org2ce3e6e">3.2.4. <span class="todo TODO">TODO</span> Edge-Versus Level-Triggered Events</a></li>
 </ul>
 </li>
-<li><a href="#org41a8a27">3.3. Mapping Files info Memory</a>
+<li><a href="#orgec1d729">3.3. Mapping Files info Memory</a>
 <ul>
-<li><a href="#org497040a">3.3.1. Resizing a Mapping</a></li>
-<li><a href="#org878abf0">3.3.2. Changing the Protection of a Mapping</a></li>
-<li><a href="#orgb1119e9">3.3.3. Synchronizing a File with a Mapping</a></li>
-<li><a href="#org4ecadfd">3.3.4. Giving Advice on a Mapping</a></li>
+<li><a href="#org3f832a7">3.3.1. Resizing a Mapping</a></li>
+<li><a href="#org408e523">3.3.2. Changing the Protection of a Mapping</a></li>
+<li><a href="#org9bfed8f">3.3.3. Synchronizing a File with a Mapping</a></li>
+<li><a href="#org14eda73">3.3.4. Giving Advice on a Mapping</a></li>
 </ul>
 </li>
-<li><a href="#org0368159">3.4. Advice for Normal File I/O</a></li>
-<li><a href="#org1a51ff7">3.5. Synchronized, nonsynchronized or Synchronous, Asynchronous Operations</a>
+<li><a href="#orgf2eade9">3.4. Advice for Normal File I/O</a></li>
+<li><a href="#orgeb617d5">3.5. Synchronized, nonsynchronized or Synchronous, Asynchronous Operations</a>
 <ul>
-<li><a href="#orgb3151df">3.5.1. Asynchronous I/O</a></li>
+<li><a href="#org5c01d8e">3.5.1. Asynchronous I/O</a></li>
 </ul>
 </li>
-<li><a href="#org3d50ffb">3.6. I/O Schedulers and I/O Performance</a>
+<li><a href="#org57b9682">3.6. I/O Schedulers and I/O Performance</a>
 <ul>
-<li><a href="#org1f7719c">3.6.1. The Life of an I/O Scheduler</a></li>
-<li><a href="#org2ad5d2c">3.6.2. Helping Out Reads</a></li>
-<li><a href="#org368c235">3.6.3. Selecting and Configuring Your I/O Scheduler</a></li>
-<li><a href="#org8261ba8">3.6.4. Optimizing I/O Performance</a></li>
+<li><a href="#org1818ea8">3.6.1. The Life of an I/O Scheduler</a></li>
+<li><a href="#org0f037aa">3.6.2. Helping Out Reads</a></li>
+<li><a href="#org6bee294">3.6.3. Selecting and Configuring Your I/O Scheduler</a></li>
+<li><a href="#org34b4cbe">3.6.4. Optimizing I/O Performance</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org32b050e">4. Process Management</a>
+<li><a href="#orgb025798">4. Process Management</a>
 <ul>
-<li><a href="#org7e07351">4.1. The Process ID</a>
+<li><a href="#orgbf73e04">4.1. The Process ID</a>
 <ul>
-<li><a href="#org384c0c5">4.1.1. Process ID Allocation</a></li>
-<li><a href="#org961079d">4.1.2. Obtaining the Process ID and Parent Process ID</a></li>
+<li><a href="#orgbe73d11">4.1.1. Process ID Allocation</a></li>
+<li><a href="#org515b2e3">4.1.2. Obtaining the Process ID and Parent Process ID</a></li>
 </ul>
 </li>
-<li><a href="#org14f23b7">4.2. Running a New Process</a>
+<li><a href="#orgbe00b7d">4.2. Running a New Process</a>
 <ul>
-<li><a href="#orgb9aa8eb">4.2.1. The Exec Family of Calls</a></li>
-<li><a href="#org6e79738">4.2.2. The fork() System Call</a></li>
+<li><a href="#org1e4e98d">4.2.1. The Exec Family of Calls</a></li>
+<li><a href="#org5165e69">4.2.2. The fork() System Call</a></li>
 </ul>
 </li>
-<li><a href="#orgfd49c48">4.3. Terminalting a Process</a></li>
-<li><a href="#orgbd71c07">4.4. Waiting for Terminated Child Processes</a></li>
-<li><a href="#org1b19e00">4.5. User and Groups</a></li>
-<li><a href="#org9e64093">4.6. Session and Process Groups</a></li>
-<li><a href="#orgdce9278">4.7. Daemons</a></li>
+<li><a href="#org3df0bf6">4.3. Terminalting a Process</a></li>
+<li><a href="#orgd79eaea">4.4. Waiting for Terminated Child Processes</a></li>
+<li><a href="#org1d93745">4.5. User and Groups</a></li>
+<li><a href="#org2949d64">4.6. Session and Process Groups</a></li>
+<li><a href="#orge134819">4.7. Daemons</a></li>
 </ul>
 </li>
-<li><a href="#org8fd9971">5. Advanced Process Management</a>
+<li><a href="#orgd3d81ac">5. Advanced Process Management</a>
 <ul>
-<li><a href="#orgd77a236">5.1. Yielding the Processor</a></li>
-<li><a href="#orgff512bb">5.2. Process Priorities</a></li>
-<li><a href="#orga957507">5.3. Processor Affinity</a></li>
-<li><a href="#org5ac6fd5">5.4. Resource Limits</a></li>
+<li><a href="#orgeb49878">5.1. Yielding the Processor</a></li>
+<li><a href="#org8968c9d">5.2. Process Priorities</a></li>
+<li><a href="#org38800a0">5.3. Processor Affinity</a></li>
+<li><a href="#org5816850">5.4. Resource Limits</a></li>
 </ul>
 </li>
-<li><a href="#org0664267">6. Threading</a>
+<li><a href="#orgb940fce">6. Threading</a>
 <ul>
-<li><a href="#org966b7f6">6.1. Pthread Mutexes</a></li>
+<li><a href="#org91c4a26">6.1. Pthread Mutexes</a></li>
 </ul>
 </li>
-<li><a href="#org53a790a">7. File and Directory Management</a>
+<li><a href="#orgdd261eb">7. File and Directory Management</a>
 <ul>
-<li><a href="#org3330d31">7.1. Files and Their Metadata</a>
+<li><a href="#org19ad554">7.1. Files and Their Metadata</a>
 <ul>
-<li><a href="#orgdd097e7">7.1.1. The Stat Family</a></li>
-<li><a href="#org53c1315">7.1.2. Permissions</a></li>
-<li><a href="#orgf89e27b">7.1.3. Ownership</a></li>
-<li><a href="#org574cf4a">7.1.4. Extended Attributes</a></li>
+<li><a href="#orgd88373c">7.1.1. The Stat Family</a></li>
+<li><a href="#org06b664d">7.1.2. Permissions</a></li>
+<li><a href="#org5c13758">7.1.3. Ownership</a></li>
+<li><a href="#org05c701c">7.1.4. Extended Attributes</a></li>
 </ul>
 </li>
-<li><a href="#org43d9c96">7.2. Directories</a>
+<li><a href="#orge473cc6">7.2. Directories</a>
 <ul>
-<li><a href="#org75142de">7.2.1. current working directory</a></li>
-<li><a href="#org55c5ae4">7.2.2. Creating Directories</a></li>
-<li><a href="#orge6971d9">7.2.3. Removing Directories</a></li>
-<li><a href="#org7787cb0">7.2.4. Reading a Directory' Contents</a></li>
+<li><a href="#org33caedb">7.2.1. current working directory</a></li>
+<li><a href="#org78e0ddc">7.2.2. Creating Directories</a></li>
+<li><a href="#orgc7d4239">7.2.3. Removing Directories</a></li>
+<li><a href="#orgce3c6be">7.2.4. Reading a Directory' Contents</a></li>
 </ul>
 </li>
-<li><a href="#orgaac6a15">7.3. Links</a></li>
-<li><a href="#org027a2bd">7.4. Copying and Moving Files</a></li>
-<li><a href="#orgef0568d">7.5. Device Nodes</a>
+<li><a href="#org25f3b90">7.3. Links</a></li>
+<li><a href="#orgc596b17">7.4. Copying and Moving Files</a></li>
+<li><a href="#org5849587">7.5. Device Nodes</a>
 <ul>
-<li><a href="#org10092f8">7.5.1. Special Device Nodes</a></li>
-<li><a href="#org5a57542">7.5.2. The Random Number Generator</a></li>
+<li><a href="#org1dd15b8">7.5.1. Special Device Nodes</a></li>
+<li><a href="#orge6ed7e2">7.5.2. The Random Number Generator</a></li>
 </ul>
 </li>
-<li><a href="#orgfc57415">7.6. Out-of-Band communication</a></li>
-<li><a href="#orgfdd5040">7.7. Monitoring File Events</a></li>
+<li><a href="#org5df2dad">7.6. Out-of-Band communication</a></li>
+<li><a href="#orgbb4ea01">7.7. Monitoring File Events</a></li>
 </ul>
 </li>
-<li><a href="#orgd849707">8. Memory Management</a>
+<li><a href="#org5ee52b4">8. Memory Management</a>
 <ul>
-<li><a href="#orgb9a6c2f">8.1. allocating dynamic memory</a></li>
-<li><a href="#org0ab987f">8.2. managing the data segment</a></li>
-<li><a href="#org09b5f5d">8.3. Anonymous Memory Mappings</a></li>
-<li><a href="#orge8dae57">8.4. Advanced Memory Allocation</a></li>
-<li><a href="#org99908e6">8.5. Debugging Memory Allocations</a></li>
-<li><a href="#org8869e93">8.6. Stack-Based Allocations</a></li>
-<li><a href="#org2f44104">8.7. Choosing a Memory Allocation Mechanism</a></li>
-<li><a href="#org4604956">8.8. Manipulating Memory</a></li>
-<li><a href="#org45edbf0">8.9. Locking Memory</a></li>
+<li><a href="#org3a23967">8.1. allocating dynamic memory</a></li>
+<li><a href="#org62434dd">8.2. managing the data segment</a></li>
+<li><a href="#orgd590436">8.3. Anonymous Memory Mappings</a></li>
+<li><a href="#orgba96675">8.4. Advanced Memory Allocation</a></li>
+<li><a href="#orgc2487a8">8.5. Debugging Memory Allocations</a></li>
+<li><a href="#orga8ac57e">8.6. Stack-Based Allocations</a></li>
+<li><a href="#org1b23d2e">8.7. Choosing a Memory Allocation Mechanism</a></li>
+<li><a href="#org9cdcb22">8.8. Manipulating Memory</a></li>
+<li><a href="#org3d6ae9a">8.9. Locking Memory</a></li>
 </ul>
 </li>
-<li><a href="#org3c555ce">9. Signals</a>
+<li><a href="#orgc09b066">9. Signals</a>
 <ul>
-<li><a href="#org8eb50f9">9.1. Basic Signal Management</a>
+<li><a href="#orge69f0b3">9.1. Basic Signal Management</a>
 <ul>
-<li><a href="#orga1b121d">9.1.1. Signal Inherited</a></li>
-<li><a href="#org8169822">9.1.2. Mappping Signal Numbers to Strings</a></li>
+<li><a href="#org6f48ba1">9.1.1. Signal Inherited</a></li>
+<li><a href="#org153e0bd">9.1.2. Mappping Signal Numbers to Strings</a></li>
 </ul>
 </li>
-<li><a href="#org8904ace">9.2. Sending a Signal</a></li>
-<li><a href="#orge69da02">9.3. Reentrancy</a></li>
-<li><a href="#orgcdc4482">9.4. Signal Sets</a></li>
-<li><a href="#org11c95e5">9.5. Blocking Signals</a></li>
-<li><a href="#orgb5725d4">9.6. Advanced Signal Managemet</a></li>
+<li><a href="#orgdd66141">9.2. Sending a Signal</a></li>
+<li><a href="#org10a218a">9.3. Reentrancy</a></li>
+<li><a href="#org5a494fa">9.4. Signal Sets</a></li>
+<li><a href="#orgd319a0d">9.5. Blocking Signals</a></li>
+<li><a href="#orge1eca53">9.6. Advanced Signal Managemet</a></li>
 </ul>
 </li>
-<li><a href="#orgce50466">10. Time</a>
+<li><a href="#orgbca9f43">10. Time</a>
 <ul>
-<li><a href="#org835d7e7">10.1. time info</a></li>
-<li><a href="#orgfa066d6">10.2. tuning the system clock</a></li>
-<li><a href="#org052ca97">10.3. Sleeping and Waiting</a></li>
-<li><a href="#org4668962">10.4. Timers</a></li>
+<li><a href="#org0ede2bd">10.1. time info</a></li>
+<li><a href="#orgcfcf7eb">10.2. tuning the system clock</a></li>
+<li><a href="#org0663246">10.3. Sleeping and Waiting</a></li>
+<li><a href="#orgf025db9">10.4. Timers</a></li>
 </ul>
 </li>
 </ul>
@@ -244,12 +244,12 @@ for the JavaScript code in this tag.
 <a href="file:///home/yydcnjjw/resources/os/book/linux_program/linux_system_programming_2nd_edition.pdf">linux programming</a>
 </p>
 
-<div id="outline-container-org69de507" class="outline-2">
-<h2 id="org69de507"><span class="section-number-2">1</span> File I/O</h2>
+<div id="outline-container-org576c25c" class="outline-2">
+<h2 id="org576c25c"><span class="section-number-2">1</span> File I/O</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org03e8b18" class="outline-3">
-<h3 id="org03e8b18"><span class="section-number-3">1.1</span> File Descriptors</h3>
+<div id="outline-container-org394f989" class="outline-3">
+<h3 id="org394f989"><span class="section-number-3">1.1</span> File Descriptors</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 A file descriptor is a non-negative integer. When we want to read or write a file, we
@@ -271,15 +271,15 @@ File descriptors range from 0 through <code>OPEN_MAX - 1</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb8040e" class="outline-3">
-<h3 id="orgeb8040e"><span class="section-number-3">1.2</span> Opening Files</h3>
+<div id="outline-container-org54c763a" class="outline-3">
+<h3 id="org54c763a"><span class="section-number-3">1.2</span> Opening Files</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=open(2)&section=all">open(2)</a>
 </p>
 </div>
-<div id="outline-container-org7a191cc" class="outline-4">
-<h4 id="org7a191cc"><span class="section-number-4">1.2.1</span> <code>open</code> and <code>openat</code> Functions</h4>
+<div id="outline-container-org6cb4366" class="outline-4">
+<h4 id="org6cb4366"><span class="section-number-4">1.2.1</span> <code>open</code> and <code>openat</code> Functions</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 A file is opened or created by calling either the <code>open</code> function or the <code>openat</code> function.
@@ -314,8 +314,8 @@ A file is opened or created by calling either the <code>open</code> function or 
 </div>
 </div>
 
-<div id="outline-container-org3cb835c" class="outline-3">
-<h3 id="org3cb835c"><span class="section-number-3">1.3</span> Reading</h3>
+<div id="outline-container-orgb8861b1" class="outline-3">
+<h3 id="orgb8861b1"><span class="section-number-3">1.3</span> Reading</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=read(2)&section=all">read(2)</a>
@@ -327,8 +327,8 @@ size limits on <code>read</code>: According to POSIX.1, if count is greater than
 </div>
 </div>
 
-<div id="outline-container-orga52a85f" class="outline-3">
-<h3 id="orga52a85f"><span class="section-number-3">1.4</span> Writing</h3>
+<div id="outline-container-orgb290201" class="outline-3">
+<h3 id="orgb290201"><span class="section-number-3">1.4</span> Writing</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=write(2)&section=all">write(2)</a>
@@ -350,11 +350,11 @@ To ensure that data is written out in a timely manner, the kernel institutes a <
 </div>
 </div>
 
-<div id="outline-container-org15f79cd" class="outline-3">
-<h3 id="org15f79cd"><span class="section-number-3">1.5</span> Synchronized I/O</h3>
+<div id="outline-container-orgb279dce" class="outline-3">
+<h3 id="orgb279dce"><span class="section-number-3">1.5</span> Synchronized I/O</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
-<a id="orgcac2b5c"></a>
+<a id="org632e1be"></a>
 <a target="_blank" href="http://man.he.net/?topic=fsync(2)&section=all">fsync(2)</a>
 <code>fdatasync</code> is similar to <code>fsync</code>, but does not flush modified metadata unless that metadata is needed in order to allow a subsequent data retrieval to be  correctly handled, <b>so <code>datasync</code> is an easy performance win</b>.
 </p>
@@ -379,8 +379,8 @@ oflag:
 </div>
 </div>
 
-<div id="outline-container-orgded984d" class="outline-3">
-<h3 id="orgded984d"><span class="section-number-3">1.6</span> Direct I/O</h3>
+<div id="outline-container-orgbb3e9c9" class="outline-3">
+<h3 id="orgbb3e9c9"><span class="section-number-3">1.6</span> Direct I/O</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 Providing the <code>O_DIRECT</code> flag to <code>open()</code> instructs the kernel to minimize the presence of I/O management. When this flag is provided, I/O will initiate directly from user-space buffers to the device, bypassing the page cache. All I/O will be synchronous; operations will not return until completed.
@@ -392,8 +392,8 @@ When performing direct I/o, the request length, buffer alignment, and file offse
 </div>
 </div>
 
-<div id="outline-container-orgcf0ced0" class="outline-3">
-<h3 id="orgcf0ced0"><span class="section-number-3">1.7</span> Closing Files</h3>
+<div id="outline-container-orgd2dc5ca" class="outline-3">
+<h3 id="orgd2dc5ca"><span class="section-number-3">1.7</span> Closing Files</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=close(2)&section=all">close(2)</a>
@@ -401,13 +401,13 @@ After a program has finished working with a file descriptor, it can unmap the fi
 </p>
 
 <p>
-Note: Typically, filesystem do not flush buffers when a closed. If you need to be sure that the data is physically stored on the underlying disk, use <a href="#orgcac2b5c">1.5</a>
+Note: Typically, filesystem do not flush buffers when a closed. If you need to be sure that the data is physically stored on the underlying disk, use <a href="#org632e1be">1.5</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf5e81ca" class="outline-3">
-<h3 id="orgf5e81ca"><span class="section-number-3">1.8</span> Seeking</h3>
+<div id="outline-container-orge9ab1bd" class="outline-3">
+<h3 id="orge9ab1bd"><span class="section-number-3">1.8</span> Seeking</h3>
 <div class="outline-text-3" id="text-1-8">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=lseek(2)&section=all">lseek(2)</a>
@@ -425,8 +425,8 @@ A read request to the part of a file in a hole will return the appropriate numbe
 </div>
 </div>
 
-<div id="outline-container-org8a3239d" class="outline-3">
-<h3 id="org8a3239d"><span class="section-number-3">1.9</span> Positional Reads and Writes</h3>
+<div id="outline-container-org189f695" class="outline-3">
+<h3 id="org189f695"><span class="section-number-3">1.9</span> Positional Reads and Writes</h3>
 <div class="outline-text-3" id="text-1-9">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=pread(2)&section=all">pread(2)</a>
@@ -439,8 +439,8 @@ A read request to the part of a file in a hole will return the appropriate numbe
 </div>
 </div>
 
-<div id="outline-container-org1613718" class="outline-3">
-<h3 id="org1613718"><span class="section-number-3">1.10</span> Truncating Files</h3>
+<div id="outline-container-orge4a6614" class="outline-3">
+<h3 id="orge4a6614"><span class="section-number-3">1.10</span> Truncating Files</h3>
 <div class="outline-text-3" id="text-1-10">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=truncate(2)&section=all">truncate(2)</a>
@@ -448,8 +448,8 @@ A read request to the part of a file in a hole will return the appropriate numbe
 </div>
 </div>
 
-<div id="outline-container-org10d8e04" class="outline-3">
-<h3 id="org10d8e04"><span class="section-number-3">1.11</span> Multiplexed I/O</h3>
+<div id="outline-container-orgfe76ff7" class="outline-3">
+<h3 id="orgfe76ff7"><span class="section-number-3">1.11</span> Multiplexed I/O</h3>
 <div class="outline-text-3" id="text-1-11">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=select(2)&section=all">select(2)</a>
@@ -459,8 +459,8 @@ A read request to the part of a file in a hole will return the appropriate numbe
 </div>
 </div>
 
-<div id="outline-container-org6296f33" class="outline-2">
-<h2 id="org6296f33"><span class="section-number-2">2</span> Buffered I/O</h2>
+<div id="outline-container-org2743e4e" class="outline-2">
+<h2 id="org2743e4e"><span class="section-number-2">2</span> Buffered I/O</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>block is an abstraction representing the smallest unit of storage on a filesystem. Inside the kernel, all filesystem operations occur in terms of blocks.</li>
@@ -469,16 +469,16 @@ A read request to the part of a file in a hole will return the appropriate numbe
 </ul>
 </div>
 
-<div id="outline-container-org0ee3c2a" class="outline-3">
-<h3 id="org0ee3c2a"><span class="section-number-3">2.1</span> Opening Files</h3>
+<div id="outline-container-org9cdcfa2" class="outline-3">
+<h3 id="org9cdcfa2"><span class="section-number-3">2.1</span> Opening Files</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=fopen(3)&section=all">fopen(3)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org6736d35" class="outline-3">
-<h3 id="org6736d35"><span class="section-number-3">2.2</span> Closing Streams</h3>
+<div id="outline-container-org1c3bcb3" class="outline-3">
+<h3 id="org1c3bcb3"><span class="section-number-3">2.2</span> Closing Streams</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=fclose(3)&section=all">fclose(3)</a>
@@ -487,8 +487,8 @@ A read request to the part of a file in a hole will return the appropriate numbe
 </div>
 </div>
 
-<div id="outline-container-org72bcf77" class="outline-3">
-<h3 id="org72bcf77"><span class="section-number-3">2.3</span> Reading from a Stream</h3>
+<div id="outline-container-org143ea4c" class="outline-3">
+<h3 id="org143ea4c"><span class="section-number-3">2.3</span> Reading from a Stream</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=fgetc(3)&section=all">fgetc(3)</a>
@@ -497,8 +497,8 @@ A read request to the part of a file in a hole will return the appropriate numbe
 </div>
 </div>
 
-<div id="outline-container-org4aea69c" class="outline-3">
-<h3 id="org4aea69c"><span class="section-number-3">2.4</span> Writing to a Stream</h3>
+<div id="outline-container-org3ad6aae" class="outline-3">
+<h3 id="org3ad6aae"><span class="section-number-3">2.4</span> Writing to a Stream</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=fputc(3)&section=all">fputc(3)</a>
@@ -507,16 +507,16 @@ A read request to the part of a file in a hole will return the appropriate numbe
 </div>
 </div>
 
-<div id="outline-container-orgbc14c02" class="outline-3">
-<h3 id="orgbc14c02"><span class="section-number-3">2.5</span> Seeking a Stream</h3>
+<div id="outline-container-orgc4a728e" class="outline-3">
+<h3 id="orgc4a728e"><span class="section-number-3">2.5</span> Seeking a Stream</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=fseek(3)&section=all">fseek(3)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgadcb699" class="outline-3">
-<h3 id="orgadcb699"><span class="section-number-3">2.6</span> Flushing a Stream</h3>
+<div id="outline-container-org2566c2d" class="outline-3">
+<h3 id="org2566c2d"><span class="section-number-3">2.6</span> Flushing a Stream</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=fflush(3)&section=all">fflush(3)</a>
@@ -526,8 +526,8 @@ So, For writing user-buffered directly to the hard disk, you can call <code>fflu
 </div>
 </div>
 
-<div id="outline-container-org4bc6285" class="outline-3">
-<h3 id="org4bc6285"><span class="section-number-3">2.7</span> Errors and End-of-file</h3>
+<div id="outline-container-orgc23818b" class="outline-3">
+<h3 id="orgc23818b"><span class="section-number-3">2.7</span> Errors and End-of-file</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=ferror(3)&section=all">ferror(3)</a>
@@ -535,8 +535,8 @@ So, For writing user-buffered directly to the hard disk, you can call <code>fflu
 </div>
 </div>
 
-<div id="outline-container-org3d3dc4d" class="outline-3">
-<h3 id="org3d3dc4d"><span class="section-number-3">2.8</span> Obtaining the Associated File Descriptor</h3>
+<div id="outline-container-org199e41f" class="outline-3">
+<h3 id="org199e41f"><span class="section-number-3">2.8</span> Obtaining the Associated File Descriptor</h3>
 <div class="outline-text-3" id="text-2-8">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=fileno(3)&section=all">fileno(3)</a>
@@ -544,8 +544,8 @@ So, For writing user-buffered directly to the hard disk, you can call <code>fflu
 </div>
 </div>
 
-<div id="outline-container-org353ee0f" class="outline-3">
-<h3 id="org353ee0f"><span class="section-number-3">2.9</span> Controlling the Buffering</h3>
+<div id="outline-container-org547ecdd" class="outline-3">
+<h3 id="org547ecdd"><span class="section-number-3">2.9</span> Controlling the Buffering</h3>
 <div class="outline-text-3" id="text-2-9">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=setbuf(3)&section=all">setbuf(3)</a>
@@ -571,16 +571,16 @@ Note:
 </div>
 </div>
 
-<div id="outline-container-org12ac33c" class="outline-3">
-<h3 id="org12ac33c"><span class="section-number-3">2.10</span> Thread Safety</h3>
+<div id="outline-container-orgfc674f9" class="outline-3">
+<h3 id="orgfc674f9"><span class="section-number-3">2.10</span> Thread Safety</h3>
 <div class="outline-text-3" id="text-2-10">
 <p>
 The standard I/o functions are inherently thread-safe.
 </p>
 </div>
 
-<div id="outline-container-org3f37f51" class="outline-4">
-<h4 id="org3f37f51"><span class="section-number-4">2.10.1</span> Manual File Locking</h4>
+<div id="outline-container-org8a07084" class="outline-4">
+<h4 id="org8a07084"><span class="section-number-4">2.10.1</span> Manual File Locking</h4>
 <div class="outline-text-4" id="text-2-10-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=flockfile(3)&section=all">flockfile(3)</a>
@@ -588,8 +588,8 @@ The standard I/o functions are inherently thread-safe.
 </div>
 </div>
 
-<div id="outline-container-orga048db3" class="outline-4">
-<h4 id="orga048db3"><span class="section-number-4">2.10.2</span> Unlocked Stream Operations</h4>
+<div id="outline-container-org3793fd7" class="outline-4">
+<h4 id="org3793fd7"><span class="section-number-4">2.10.2</span> Unlocked Stream Operations</h4>
 <div class="outline-text-4" id="text-2-10-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=unlocked_stdio(3)&section=all">unlocked_stdio(3)</a>
@@ -599,16 +599,16 @@ There is a second reason or performing manual locking on streams. With the finer
 </div>
 </div>
 
-<div id="outline-container-org67eacaa" class="outline-3">
-<h3 id="org67eacaa"><span class="section-number-3">2.11</span> Critiques of Standard I/O</h3>
+<div id="outline-container-org119ecf7" class="outline-3">
+<h3 id="org119ecf7"><span class="section-number-3">2.11</span> Critiques of Standard I/O</h3>
 </div>
 </div>
-<div id="outline-container-org6f238d1" class="outline-2">
-<h2 id="org6f238d1"><span class="section-number-2">3</span> Advanced File I/O</h2>
+<div id="outline-container-orgbf0e568" class="outline-2">
+<h2 id="orgbf0e568"><span class="section-number-2">3</span> Advanced File I/O</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org65c836d" class="outline-3">
-<h3 id="org65c836d"><span class="section-number-3">3.1</span> Scatter/gather I/O</h3>
+<div id="outline-container-org89dbc72" class="outline-3">
+<h3 id="org89dbc72"><span class="section-number-3">3.1</span> Scatter/gather I/O</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Allows a single call to read from or write data to many buffers at once; useful for bunching together fields of different data structures to from one I/O transaction.
@@ -622,8 +622,8 @@ During a vectored I/O operation, the Linux kernel must allocate internal data st
 </div>
 </div>
 
-<div id="outline-container-orgee588fc" class="outline-3">
-<h3 id="orgee588fc"><span class="section-number-3">3.2</span> Event Poll</h3>
+<div id="outline-container-org5c13008" class="outline-3">
+<h3 id="org5c13008"><span class="section-number-3">3.2</span> Event Poll</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=epoll(7)&section=all">epoll(7)</a>
@@ -632,8 +632,8 @@ Epoll circumvents this problem by decoupling the monitor registration from the a
 </p>
 </div>
 
-<div id="outline-container-org7f63e66" class="outline-4">
-<h4 id="org7f63e66"><span class="section-number-4">3.2.1</span> Creating a New Epoll Instance</h4>
+<div id="outline-container-org98730b6" class="outline-4">
+<h4 id="org98730b6"><span class="section-number-4">3.2.1</span> Creating a New Epoll Instance</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=epoll_create1(2)&section=all">epoll_create1(2)</a>
@@ -649,8 +649,8 @@ epfd = epoll_create1(<span class="org-highlight-numbers-number">0</span>);
 </div>
 </div>
 
-<div id="outline-container-orgae6bc43" class="outline-4">
-<h4 id="orgae6bc43"><span class="section-number-4">3.2.2</span> Controlling Epoll</h4>
+<div id="outline-container-orgd145ab3" class="outline-4">
+<h4 id="orgd145ab3"><span class="section-number-4">3.2.2</span> Controlling Epoll</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=epoll_ctl(2)&section=all">epoll_ctl(2)</a>
@@ -658,8 +658,8 @@ epfd = epoll_create1(<span class="org-highlight-numbers-number">0</span>);
 </div>
 </div>
 
-<div id="outline-container-orgdfd725b" class="outline-4">
-<h4 id="orgdfd725b"><span class="section-number-4">3.2.3</span> Waiting for Events with Epoll</h4>
+<div id="outline-container-org90cb0c5" class="outline-4">
+<h4 id="org90cb0c5"><span class="section-number-4">3.2.3</span> Waiting for Events with Epoll</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=epoll_wait(2)&section=all">epoll_wait(2)</a>
@@ -667,13 +667,13 @@ epfd = epoll_create1(<span class="org-highlight-numbers-number">0</span>);
 </div>
 </div>
 
-<div id="outline-container-org7dfcac2" class="outline-4">
-<h4 id="org7dfcac2"><span class="section-number-4">3.2.4</span> <span class="todo TODO">TODO</span> Edge-Versus Level-Triggered Events</h4>
+<div id="outline-container-org2ce3e6e" class="outline-4">
+<h4 id="org2ce3e6e"><span class="section-number-4">3.2.4</span> <span class="todo TODO">TODO</span> Edge-Versus Level-Triggered Events</h4>
 </div>
 </div>
 
-<div id="outline-container-org41a8a27" class="outline-3">
-<h3 id="org41a8a27"><span class="section-number-3">3.3</span> Mapping Files info Memory</h3>
+<div id="outline-container-orgec1d729" class="outline-3">
+<h3 id="orgec1d729"><span class="section-number-3">3.3</span> Mapping Files info Memory</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=mmap(2)&section=all">mmap(2)</a>
@@ -681,8 +681,8 @@ The <code>mmap()</code> system call operates on pages. Both the addr and offset 
 </p>
 </div>
 
-<div id="outline-container-org497040a" class="outline-4">
-<h4 id="org497040a"><span class="section-number-4">3.3.1</span> Resizing a Mapping</h4>
+<div id="outline-container-org3f832a7" class="outline-4">
+<h4 id="org3f832a7"><span class="section-number-4">3.3.1</span> Resizing a Mapping</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=mremap(2)&section=all">mremap(2)</a>
@@ -690,8 +690,8 @@ The <code>mmap()</code> system call operates on pages. Both the addr and offset 
 </div>
 </div>
 
-<div id="outline-container-org878abf0" class="outline-4">
-<h4 id="org878abf0"><span class="section-number-4">3.3.2</span> Changing the Protection of a Mapping</h4>
+<div id="outline-container-org408e523" class="outline-4">
+<h4 id="org408e523"><span class="section-number-4">3.3.2</span> Changing the Protection of a Mapping</h4>
 <div class="outline-text-4" id="text-3-3-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=mprotect(2)&section=all">mprotect(2)</a>
@@ -699,8 +699,8 @@ The <code>mmap()</code> system call operates on pages. Both the addr and offset 
 </div>
 </div>
 
-<div id="outline-container-orgb1119e9" class="outline-4">
-<h4 id="orgb1119e9"><span class="section-number-4">3.3.3</span> Synchronizing a File with a Mapping</h4>
+<div id="outline-container-org9bfed8f" class="outline-4">
+<h4 id="org9bfed8f"><span class="section-number-4">3.3.3</span> Synchronizing a File with a Mapping</h4>
 <div class="outline-text-4" id="text-3-3-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=msync(2)&section=all">msync(2)</a>
@@ -709,8 +709,8 @@ Without invocation of <code>msync()</code>, there is no guarantee that a dirty m
 </div>
 </div>
 
-<div id="outline-container-org4ecadfd" class="outline-4">
-<h4 id="org4ecadfd"><span class="section-number-4">3.3.4</span> Giving Advice on a Mapping</h4>
+<div id="outline-container-org14eda73" class="outline-4">
+<h4 id="org14eda73"><span class="section-number-4">3.3.4</span> Giving Advice on a Mapping</h4>
 <div class="outline-text-4" id="text-3-3-4">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=madvise(2)&section=all">madvise(2)</a>
@@ -719,8 +719,8 @@ Without invocation of <code>msync()</code>, there is no guarantee that a dirty m
 </div>
 </div>
 
-<div id="outline-container-org0368159" class="outline-3">
-<h3 id="org0368159"><span class="section-number-3">3.4</span> Advice for Normal File I/O</h3>
+<div id="outline-container-orgf2eade9" class="outline-3">
+<h3 id="orgf2eade9"><span class="section-number-3">3.4</span> Advice for Normal File I/O</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=posix_fadvise(2)&section=all">posix_fadvise(2)</a>
@@ -729,8 +729,8 @@ Without invocation of <code>msync()</code>, there is no guarantee that a dirty m
 </div>
 </div>
 
-<div id="outline-container-org1a51ff7" class="outline-3">
-<h3 id="org1a51ff7"><span class="section-number-3">3.5</span> Synchronized, nonsynchronized or Synchronous, Asynchronous Operations</h3>
+<div id="outline-container-orgeb617d5" class="outline-3">
+<h3 id="orgeb617d5"><span class="section-number-3">3.5</span> Synchronized, nonsynchronized or Synchronous, Asynchronous Operations</h3>
 <div class="outline-text-3" id="text-3-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Synchronicity of write operations</caption>
@@ -833,8 +833,8 @@ Without invocation of <code>msync()</code>, there is no guarantee that a dirty m
 </table>
 </div>
 
-<div id="outline-container-orgb3151df" class="outline-4">
-<h4 id="orgb3151df"><span class="section-number-4">3.5.1</span> Asynchronous I/O</h4>
+<div id="outline-container-org5c01d8e" class="outline-4">
+<h4 id="org5c01d8e"><span class="section-number-4">3.5.1</span> Asynchronous I/O</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=aio(7)&section=all">aio(7)</a>
@@ -843,12 +843,12 @@ Without invocation of <code>msync()</code>, there is no guarantee that a dirty m
 </div>
 </div>
 
-<div id="outline-container-org3d50ffb" class="outline-3">
-<h3 id="org3d50ffb"><span class="section-number-3">3.6</span> I/O Schedulers and I/O Performance</h3>
+<div id="outline-container-org57b9682" class="outline-3">
+<h3 id="org57b9682"><span class="section-number-3">3.6</span> I/O Schedulers and I/O Performance</h3>
 <div class="outline-text-3" id="text-3-6">
 </div>
-<div id="outline-container-org1f7719c" class="outline-4">
-<h4 id="org1f7719c"><span class="section-number-4">3.6.1</span> The Life of an I/O Scheduler</h4>
+<div id="outline-container-org1818ea8" class="outline-4">
+<h4 id="org1818ea8"><span class="section-number-4">3.6.1</span> The Life of an I/O Scheduler</h4>
 <div class="outline-text-4" id="text-3-6-1">
 <p>
 I/O schedulers perform two basic operations: merging and sorting.
@@ -860,8 +860,8 @@ I/O schedulers perform two basic operations: merging and sorting.
 </div>
 </div>
 
-<div id="outline-container-org2ad5d2c" class="outline-4">
-<h4 id="org2ad5d2c"><span class="section-number-4">3.6.2</span> Helping Out Reads</h4>
+<div id="outline-container-org0f037aa" class="outline-4">
+<h4 id="org0f037aa"><span class="section-number-4">3.6.2</span> Helping Out Reads</h4>
 <div class="outline-text-4" id="text-3-6-2">
 <ul class="org-ul">
 <li><code>read latency</code> problem:</li>
@@ -870,27 +870,27 @@ I/O schedulers perform two basic operations: merging and sorting.
 </div>
 
 <ol class="org-ol">
-<li><a id="org31174df"></a>The Deadline I/O Scheduler<br /></li>
+<li><a id="org33363bb"></a>The Deadline I/O Scheduler<br /></li>
 
-<li><a id="orge4c5402"></a>The Anticipatory I/O Scheduler<br /></li>
-<li><a id="org42ba04e"></a>The CFQ I/O Scheduler<br /></li>
-<li><a id="orgc9f1e27"></a>The Noop I/O Scheduler<br /></li>
+<li><a id="orgb2ca463"></a>The Anticipatory I/O Scheduler<br /></li>
+<li><a id="orga0cd3ef"></a>The CFQ I/O Scheduler<br /></li>
+<li><a id="orgf1e9668"></a>The Noop I/O Scheduler<br /></li>
 </ol>
 </div>
-<div id="outline-container-org368c235" class="outline-4">
-<h4 id="org368c235"><span class="section-number-4">3.6.3</span> Selecting and Configuring Your I/O Scheduler</h4>
+<div id="outline-container-org6bee294" class="outline-4">
+<h4 id="org6bee294"><span class="section-number-4">3.6.3</span> Selecting and Configuring Your I/O Scheduler</h4>
 </div>
-<div id="outline-container-org8261ba8" class="outline-4">
-<h4 id="org8261ba8"><span class="section-number-4">3.6.4</span> Optimizing I/O Performance</h4>
+<div id="outline-container-org34b4cbe" class="outline-4">
+<h4 id="org34b4cbe"><span class="section-number-4">3.6.4</span> Optimizing I/O Performance</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-org32b050e" class="outline-2">
-<h2 id="org32b050e"><span class="section-number-2">4</span> Process Management</h2>
+<div id="outline-container-orgb025798" class="outline-2">
+<h2 id="orgb025798"><span class="section-number-2">4</span> Process Management</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org7e07351" class="outline-3">
-<h3 id="org7e07351"><span class="section-number-3">4.1</span> The Process ID</h3>
+<div id="outline-container-orgbf73e04" class="outline-3">
+<h3 id="orgbf73e04"><span class="section-number-3">4.1</span> The Process ID</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>The <code>idle process</code>: the kernel "runs" when there are no other runnable process, has the pid 0.</li>
@@ -912,8 +912,8 @@ The first of these process that exists is executed as the init process. If all f
 </p>
 </div>
 
-<div id="outline-container-org384c0c5" class="outline-4">
-<h4 id="org384c0c5"><span class="section-number-4">4.1.1</span> Process ID Allocation</h4>
+<div id="outline-container-orgbe73d11" class="outline-4">
+<h4 id="orgbe73d11"><span class="section-number-4">4.1.1</span> Process ID Allocation</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <ul class="org-ul">
 <li>By default, the kernel imposes a maximum process ID value of 32768.</li>
@@ -922,8 +922,8 @@ The first of these process that exists is executed as the init process. If all f
 </div>
 </div>
 
-<div id="outline-container-org961079d" class="outline-4">
-<h4 id="org961079d"><span class="section-number-4">4.1.2</span> Obtaining the Process ID and Parent Process ID</h4>
+<div id="outline-container-org515b2e3" class="outline-4">
+<h4 id="org515b2e3"><span class="section-number-4">4.1.2</span> Obtaining the Process ID and Parent Process ID</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=getpid(2)&section=all">getpid(2)</a>
@@ -933,8 +933,8 @@ The first of these process that exists is executed as the init process. If all f
 </div>
 </div>
 
-<div id="outline-container-org14f23b7" class="outline-3">
-<h3 id="org14f23b7"><span class="section-number-3">4.2</span> Running a New Process</h3>
+<div id="outline-container-orgbe00b7d" class="outline-3">
+<h3 id="orgbe00b7d"><span class="section-number-3">4.2</span> Running a New Process</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li><code>executing</code>: the act loads a binary program into memory, replacing the previous contents of the address space, and begins execution of the new program.</li>
@@ -942,8 +942,8 @@ The first of these process that exists is executed as the init process. If all f
 </ul>
 </div>
 
-<div id="outline-container-orgb9aa8eb" class="outline-4">
-<h4 id="orgb9aa8eb"><span class="section-number-4">4.2.1</span> The Exec Family of Calls</h4>
+<div id="outline-container-org1e4e98d" class="outline-4">
+<h4 id="org1e4e98d"><span class="section-number-4">4.2.1</span> The Exec Family of Calls</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=exec(3)&section=all">exec(3)</a>
@@ -961,8 +961,8 @@ A successful <code>execl()</code> call changes not only the address space and pr
 </div>
 </div>
 
-<div id="outline-container-org6e79738" class="outline-4">
-<h4 id="org6e79738"><span class="section-number-4">4.2.2</span> The fork() System Call</h4>
+<div id="outline-container-org5165e69" class="outline-4">
+<h4 id="org5165e69"><span class="section-number-4">4.2.2</span> The fork() System Call</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 The child and the parent process are identical in nearly every facet, except for a few necessary differences:
@@ -978,8 +978,8 @@ The child and the parent process are identical in nearly every facet, except for
 </div>
 </div>
 
-<div id="outline-container-orgfd49c48" class="outline-3">
-<h3 id="orgfd49c48"><span class="section-number-3">4.3</span> Terminalting a Process</h3>
+<div id="outline-container-org3df0bf6" class="outline-3">
+<h3 id="org3df0bf6"><span class="section-number-3">4.3</span> Terminalting a Process</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=exit(2)&section=all">exit(2)</a>
@@ -1006,8 +1006,8 @@ When a process exits, the kernel cleans up all of the resources that it created 
 </div>
 </div>
 
-<div id="outline-container-orgbd71c07" class="outline-3">
-<h3 id="orgbd71c07"><span class="section-number-3">4.4</span> Waiting for Terminated Child Processes</h3>
+<div id="outline-container-orgd79eaea" class="outline-3">
+<h3 id="orgd79eaea"><span class="section-number-3">4.4</span> Waiting for Terminated Child Processes</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 <code>zombie</code> state: when a child dies before its parent. Only a minimal skeleton of what was once the process&#x2014;some basic kernel data structures containing potentially useful data&#x2014;is retained. 
@@ -1028,8 +1028,8 @@ During execution of the command, <code>SIGCHLD</code> is blocked, and <code>SIGI
 </div>
 </div>
 
-<div id="outline-container-org1b19e00" class="outline-3">
-<h3 id="org1b19e00"><span class="section-number-3">4.5</span> User and Groups</h3>
+<div id="outline-container-org1d93745" class="outline-3">
+<h3 id="org1d93745"><span class="section-number-3">4.5</span> User and Groups</h3>
 <div class="outline-text-3" id="text-4-5">
 <ul class="org-ul">
 <li><code>Real user ID</code>: is the uid of the user who originally ran the process. It is set to the real user ID of the process's parent, and does not change during an exec call.</li>
@@ -1058,8 +1058,8 @@ Nonroot processes should use <code>seteuid()</code> to change their effective us
 </div>
 </div>
 
-<div id="outline-container-org9e64093" class="outline-3">
-<h3 id="org9e64093"><span class="section-number-3">4.6</span> Session and Process Groups</h3>
+<div id="outline-container-org2949d64" class="outline-3">
+<h3 id="org2949d64"><span class="section-number-3">4.6</span> Session and Process Groups</h3>
 <div class="outline-text-3" id="text-4-6">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=setsid(2)&section=all">setsid(2)</a>: creates a new session, assuming that the process is not already a process group leader. The calling process is made the session leader and sole member of the new session, which has no controlling tty.
@@ -1067,8 +1067,8 @@ Nonroot processes should use <code>seteuid()</code> to change their effective us
 </div>
 </div>
 
-<div id="outline-container-orgdce9278" class="outline-3">
-<h3 id="orgdce9278"><span class="section-number-3">4.7</span> Daemons</h3>
+<div id="outline-container-orge134819" class="outline-3">
+<h3 id="orge134819"><span class="section-number-3">4.7</span> Daemons</h3>
 <div class="outline-text-3" id="text-4-7">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=daemon(7)&section=all">daemon(7)</a>
@@ -1087,20 +1087,20 @@ In general, a program performs the following steps to become a daemon:
 </div>
 </div>
 </div>
-<div id="outline-container-org8fd9971" class="outline-2">
-<h2 id="org8fd9971"><span class="section-number-2">5</span> Advanced Process Management</h2>
+<div id="outline-container-orgd3d81ac" class="outline-2">
+<h2 id="orgd3d81ac"><span class="section-number-2">5</span> Advanced Process Management</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgd77a236" class="outline-3">
-<h3 id="orgd77a236"><span class="section-number-3">5.1</span> Yielding the Processor</h3>
+<div id="outline-container-orgeb49878" class="outline-3">
+<h3 id="orgeb49878"><span class="section-number-3">5.1</span> Yielding the Processor</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=sched_yield(2)&section=all">sched_yield(2)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgff512bb" class="outline-3">
-<h3 id="orgff512bb"><span class="section-number-3">5.2</span> Process Priorities</h3>
+<div id="outline-container-org8968c9d" class="outline-3">
+<h3 id="org8968c9d"><span class="section-number-3">5.2</span> Process Priorities</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=nice(2)&section=all">nice(2)</a>: Passing 0 for inc is an easy way to obtain the current nice value.</li>
@@ -1110,8 +1110,8 @@ In general, a program performs the following steps to become a daemon:
 </div>
 </div>
 
-<div id="outline-container-orga957507" class="outline-3">
-<h3 id="orga957507"><span class="section-number-3">5.3</span> Processor Affinity</h3>
+<div id="outline-container-org38800a0" class="outline-3">
+<h3 id="org38800a0"><span class="section-number-3">5.3</span> Processor Affinity</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=sched_getaffinity(2)&section=all">sched_getaffinity(2)</a>
@@ -1120,8 +1120,8 @@ In general, a program performs the following steps to become a daemon:
 </div>
 </div>
 
-<div id="outline-container-org5ac6fd5" class="outline-3">
-<h3 id="org5ac6fd5"><span class="section-number-3">5.4</span> Resource Limits</h3>
+<div id="outline-container-org5816850" class="outline-3">
+<h3 id="org5816850"><span class="section-number-3">5.4</span> Resource Limits</h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
 <code>resource limits</code>: place hard ceilings on the amount of kernel resources that a process can consume&#x2014;that is, the number of open files, pages of memory, pending signals, and so on.
@@ -1234,8 +1234,8 @@ In general, a program performs the following steps to become a daemon:
 </div>
 </div>
 </div>
-<div id="outline-container-org0664267" class="outline-2">
-<h2 id="org0664267"><span class="section-number-2">6</span> Threading</h2>
+<div id="outline-container-orgb940fce" class="outline-2">
+<h2 id="orgb940fce"><span class="section-number-2">6</span> Threading</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=pthread_create(3)&section=all">pthread_create(3)</a></li>
@@ -1252,8 +1252,8 @@ return success is only demonstrative of successfully processing the cancellation
 </ul>
 </div>
 
-<div id="outline-container-org966b7f6" class="outline-3">
-<h3 id="org966b7f6"><span class="section-number-3">6.1</span> Pthread Mutexes</h3>
+<div id="outline-container-org91c4a26" class="outline-3">
+<h3 id="org91c4a26"><span class="section-number-3">6.1</span> Pthread Mutexes</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li><p>
@@ -1269,44 +1269,44 @@ initializing mutexes:
 </div>
 </div>
 </div>
-<div id="outline-container-org53a790a" class="outline-2">
-<h2 id="org53a790a"><span class="section-number-2">7</span> File and Directory Management</h2>
+<div id="outline-container-orgdd261eb" class="outline-2">
+<h2 id="orgdd261eb"><span class="section-number-2">7</span> File and Directory Management</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org3330d31" class="outline-3">
-<h3 id="org3330d31"><span class="section-number-3">7.1</span> Files and Their Metadata</h3>
+<div id="outline-container-org19ad554" class="outline-3">
+<h3 id="org19ad554"><span class="section-number-3">7.1</span> Files and Their Metadata</h3>
 <div class="outline-text-3" id="text-7-1">
 </div>
-<div id="outline-container-orgdd097e7" class="outline-4">
-<h4 id="orgdd097e7"><span class="section-number-4">7.1.1</span> The Stat Family</h4>
+<div id="outline-container-orgd88373c" class="outline-4">
+<h4 id="orgd88373c"><span class="section-number-4">7.1.1</span> The Stat Family</h4>
 <div class="outline-text-4" id="text-7-1-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=stat(2)&section=all">stat(2)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org53c1315" class="outline-4">
-<h4 id="org53c1315"><span class="section-number-4">7.1.2</span> Permissions</h4>
+<div id="outline-container-org06b664d" class="outline-4">
+<h4 id="org06b664d"><span class="section-number-4">7.1.2</span> Permissions</h4>
 <div class="outline-text-4" id="text-7-1-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=chmod(2)&section=all">chmod(2)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf89e27b" class="outline-4">
-<h4 id="orgf89e27b"><span class="section-number-4">7.1.3</span> Ownership</h4>
+<div id="outline-container-org5c13758" class="outline-4">
+<h4 id="org5c13758"><span class="section-number-4">7.1.3</span> Ownership</h4>
 <div class="outline-text-4" id="text-7-1-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=chown(2)&section=all">chown(2)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org574cf4a" class="outline-4">
-<h4 id="org574cf4a"><span class="section-number-4">7.1.4</span> Extended Attributes</h4>
+<div id="outline-container-org05c701c" class="outline-4">
+<h4 id="org05c701c"><span class="section-number-4">7.1.4</span> Extended Attributes</h4>
 <div class="outline-text-4" id="text-7-1-4">
 </div>
 <ol class="org-ol">
-<li><a id="orgc91a655"></a>Extended Attributes Operations<br />
+<li><a id="org55efece"></a>Extended Attributes Operations<br />
 <div class="outline-text-5" id="text-7-1-4-1">
 <p>
 POSIX defines four operations that applications may perform on a given file's  extended attributes:
@@ -1330,12 +1330,12 @@ For each operation, POSIX provides three system calls:
 </ol>
 </div>
 </div>
-<div id="outline-container-org43d9c96" class="outline-3">
-<h3 id="org43d9c96"><span class="section-number-3">7.2</span> Directories</h3>
+<div id="outline-container-orge473cc6" class="outline-3">
+<h3 id="orge473cc6"><span class="section-number-3">7.2</span> Directories</h3>
 <div class="outline-text-3" id="text-7-2">
 </div>
-<div id="outline-container-org75142de" class="outline-4">
-<h4 id="org75142de"><span class="section-number-4">7.2.1</span> current working directory</h4>
+<div id="outline-container-org33caedb" class="outline-4">
+<h4 id="org33caedb"><span class="section-number-4">7.2.1</span> current working directory</h4>
 <div class="outline-text-4" id="text-7-2-1">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=getcwd(3)&section=all">getcwd(3)</a>: get current working directory</li>
@@ -1377,24 +1377,24 @@ ret = close (swd_fd);
 </div>
 </div>
 </div>
-<div id="outline-container-org55c5ae4" class="outline-4">
-<h4 id="org55c5ae4"><span class="section-number-4">7.2.2</span> Creating Directories</h4>
+<div id="outline-container-org78e0ddc" class="outline-4">
+<h4 id="org78e0ddc"><span class="section-number-4">7.2.2</span> Creating Directories</h4>
 <div class="outline-text-4" id="text-7-2-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=mkdir(2)&section=all">mkdir(2)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orge6971d9" class="outline-4">
-<h4 id="orge6971d9"><span class="section-number-4">7.2.3</span> Removing Directories</h4>
+<div id="outline-container-orgc7d4239" class="outline-4">
+<h4 id="orgc7d4239"><span class="section-number-4">7.2.3</span> Removing Directories</h4>
 <div class="outline-text-4" id="text-7-2-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=rmdir(2)&section=all">rmdir(2)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org7787cb0" class="outline-4">
-<h4 id="org7787cb0"><span class="section-number-4">7.2.4</span> Reading a Directory' Contents</h4>
+<div id="outline-container-orgce3c6be" class="outline-4">
+<h4 id="orgce3c6be"><span class="section-number-4">7.2.4</span> Reading a Directory' Contents</h4>
 <div class="outline-text-4" id="text-7-2-4">
 <ol class="org-ol">
 <li><a target="_blank" href="http://man.he.net/?topic=opendir(3)&section=all">opendir(3)</a>: create a directory steam
@@ -1408,8 +1408,8 @@ ret = close (swd_fd);
 </div>
 </div>
 </div>
-<div id="outline-container-orgaac6a15" class="outline-3">
-<h3 id="orgaac6a15"><span class="section-number-3">7.3</span> Links</h3>
+<div id="outline-container-org25f3b90" class="outline-3">
+<h3 id="org25f3b90"><span class="section-number-3">7.3</span> Links</h3>
 <div class="outline-text-3" id="text-7-3">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=link(2)&section=all">link(2)</a>: hard link</li>
@@ -1418,8 +1418,8 @@ ret = close (swd_fd);
 </ul>
 </div>
 </div>
-<div id="outline-container-org027a2bd" class="outline-3">
-<h3 id="org027a2bd"><span class="section-number-3">7.4</span> Copying and Moving Files</h3>
+<div id="outline-container-orgc596b17" class="outline-3">
+<h3 id="orgc596b17"><span class="section-number-3">7.4</span> Copying and Moving Files</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=rename(2)&section=all">rename(2)</a>
@@ -1522,8 +1522,8 @@ ret = close (swd_fd);
 </table>
 </div>
 </div>
-<div id="outline-container-orgef0568d" class="outline-3">
-<h3 id="orgef0568d"><span class="section-number-3">7.5</span> Device Nodes</h3>
+<div id="outline-container-org5849587" class="outline-3">
+<h3 id="org5849587"><span class="section-number-3">7.5</span> Device Nodes</h3>
 <div class="outline-text-3" id="text-7-5">
 <p>
 <code>Device nodes</code> are special files that allow applications to interface with device drivers.
@@ -1531,8 +1531,8 @@ Each device node is assigned two numerical values, called a <code>major number</
 </p>
 </div>
 
-<div id="outline-container-org10092f8" class="outline-4">
-<h4 id="org10092f8"><span class="section-number-4">7.5.1</span> Special Device Nodes</h4>
+<div id="outline-container-org1dd15b8" class="outline-4">
+<h4 id="org1dd15b8"><span class="section-number-4">7.5.1</span> Special Device Nodes</h4>
 <div class="outline-text-4" id="text-7-5-1">
 <ul class="org-ul">
 <li><code>null device</code>: major number of 1 and a minor number of 3
@@ -1545,8 +1545,8 @@ It lives at <code>/dev/full</code>. As with the zero device, read requests retur
 </div>
 </div>
 
-<div id="outline-container-org5a57542" class="outline-4">
-<h4 id="org5a57542"><span class="section-number-4">7.5.2</span> The Random Number Generator</h4>
+<div id="outline-container-orge6ed7e2" class="outline-4">
+<h4 id="orge6ed7e2"><span class="section-number-4">7.5.2</span> The Random Number Generator</h4>
 <div class="outline-text-4" id="text-7-5-2">
 <ul class="org-ul">
 <li><code>/dev/random</code>: major number of 1 and a minor number of 8</li>
@@ -1561,8 +1561,8 @@ require cryptographically strong entropy.
 </div>
 </div>
 
-<div id="outline-container-orgfc57415" class="outline-3">
-<h3 id="orgfc57415"><span class="section-number-3">7.6</span> Out-of-Band communication</h3>
+<div id="outline-container-org5df2dad" class="outline-3">
+<h3 id="org5df2dad"><span class="section-number-3">7.6</span> Out-of-Band communication</h3>
 <div class="outline-text-3" id="text-7-6">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=ioctl(2)&section=all">ioctl(2)</a>
@@ -1570,8 +1570,8 @@ require cryptographically strong entropy.
 </div>
 </div>
 
-<div id="outline-container-orgfdd5040" class="outline-3">
-<h3 id="orgfdd5040"><span class="section-number-3">7.7</span> Monitoring File Events</h3>
+<div id="outline-container-orgbb4ea01" class="outline-3">
+<h3 id="orgbb4ea01"><span class="section-number-3">7.7</span> Monitoring File Events</h3>
 <div class="outline-text-3" id="text-7-7">
 <p>
 Linux provides an interface, <code>inotify</code>, for monitoring files
@@ -1587,12 +1587,12 @@ Linux provides an interface, <code>inotify</code>, for monitoring files
 </div>
 </div>
 
-<div id="outline-container-orgd849707" class="outline-2">
-<h2 id="orgd849707"><span class="section-number-2">8</span> Memory Management</h2>
+<div id="outline-container-org5ee52b4" class="outline-2">
+<h2 id="org5ee52b4"><span class="section-number-2">8</span> Memory Management</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orgb9a6c2f" class="outline-3">
-<h3 id="orgb9a6c2f"><span class="section-number-3">8.1</span> allocating dynamic memory</h3>
+<div id="outline-container-org3a23967" class="outline-3">
+<h3 id="org3a23967"><span class="section-number-3">8.1</span> allocating dynamic memory</h3>
 <div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=malloc(3)&section=all">malloc(3)</a>: allocating dynamic memory</li>
@@ -1605,8 +1605,8 @@ Note: We can use <code>calloc</code> for defining an "allocate and zero" functio
 </div>
 </div>
 
-<div id="outline-container-org0ab987f" class="outline-3">
-<h3 id="org0ab987f"><span class="section-number-3">8.2</span> managing the data segment</h3>
+<div id="outline-container-org62434dd" class="outline-3">
+<h3 id="org62434dd"><span class="section-number-3">8.2</span> managing the data segment</h3>
 <div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=brk(2)&section=all">brk(2)</a>: set the break point(the end of the data segment) to the address specified by end</li>
@@ -1615,8 +1615,8 @@ Note: We can use <code>calloc</code> for defining an "allocate and zero" functio
 </div>
 </div>
 
-<div id="outline-container-org09b5f5d" class="outline-3">
-<h3 id="org09b5f5d"><span class="section-number-3">8.3</span> Anonymous Memory Mappings</h3>
+<div id="outline-container-orgd590436" class="outline-3">
+<h3 id="orgd590436"><span class="section-number-3">8.3</span> Anonymous Memory Mappings</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=mmap(2)&section=all">mmap(2)</a>: creating anonymous memory mappings:
@@ -1643,8 +1643,8 @@ p = mmap (<span class="org-constant">NULL</span>,                        <span c
 </div>
 </div>
 
-<div id="outline-container-orge8dae57" class="outline-3">
-<h3 id="orge8dae57"><span class="section-number-3">8.4</span> Advanced Memory Allocation</h3>
+<div id="outline-container-orgba96675" class="outline-3">
+<h3 id="orgba96675"><span class="section-number-3">8.4</span> Advanced Memory Allocation</h3>
 <div class="outline-text-3" id="text-8-4">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=mallopt(3)&section=all">mallopt(3)</a>
@@ -1761,8 +1761,8 @@ p = mmap (<span class="org-constant">NULL</span>,                        <span c
 </div>
 </div>
 
-<div id="outline-container-org99908e6" class="outline-3">
-<h3 id="org99908e6"><span class="section-number-3">8.5</span> Debugging Memory Allocations</h3>
+<div id="outline-container-orgc2487a8" class="outline-3">
+<h3 id="orgc2487a8"><span class="section-number-3">8.5</span> Debugging Memory Allocations</h3>
 <div class="outline-text-3" id="text-8-5">
 <p>
 Programs can set the environment variable <code>MALLOC_CHECK_</code> to enable enhanced debugging in the memory subsystem.
@@ -1772,8 +1772,8 @@ Programs can set the environment variable <code>MALLOC_CHECK_</code> to enable e
 </div>
 </div>
 
-<div id="outline-container-org8869e93" class="outline-3">
-<h3 id="org8869e93"><span class="section-number-3">8.6</span> Stack-Based Allocations</h3>
+<div id="outline-container-orga8ac57e" class="outline-3">
+<h3 id="orga8ac57e"><span class="section-number-3">8.6</span> Stack-Based Allocations</h3>
 <div class="outline-text-3" id="text-8-6">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=alloca(3)&section=all">alloca(3)</a>: allocate memory that is automatically freed</li>
@@ -1786,8 +1786,8 @@ Variable-Length Arrays(VLAs), which are arrays whose geometry is set at runtime,
 </div>
 </div>
 
-<div id="outline-container-org2f44104" class="outline-3">
-<h3 id="org2f44104"><span class="section-number-3">8.7</span> Choosing a Memory Allocation Mechanism</h3>
+<div id="outline-container-org1b23d2e" class="outline-3">
+<h3 id="org1b23d2e"><span class="section-number-3">8.7</span> Choosing a Memory Allocation Mechanism</h3>
 <div class="outline-text-3" id="text-8-7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 5:</span> Approaches to memory allocation in Linux</caption>
@@ -1949,8 +1949,8 @@ Variable-Length Arrays(VLAs), which are arrays whose geometry is set at runtime,
 </table>
 </div>
 </div>
-<div id="outline-container-org4604956" class="outline-3">
-<h3 id="org4604956"><span class="section-number-3">8.8</span> Manipulating Memory</h3>
+<div id="outline-container-org9cdcb22" class="outline-3">
+<h3 id="org9cdcb22"><span class="section-number-3">8.8</span> Manipulating Memory</h3>
 <div class="outline-text-3" id="text-8-8">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=memset(3)&section=all">memset(3)</a>: fill memory with a constant byte</li>
@@ -1963,8 +1963,8 @@ Variable-Length Arrays(VLAs), which are arrays whose geometry is set at runtime,
 </div>
 </div>
 
-<div id="outline-container-org45edbf0" class="outline-3">
-<h3 id="org45edbf0"><span class="section-number-3">8.9</span> Locking Memory</h3>
+<div id="outline-container-org3d6ae9a" class="outline-3">
+<h3 id="org3d6ae9a"><span class="section-number-3">8.9</span> Locking Memory</h3>
 <div class="outline-text-3" id="text-8-9">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=mlock(2)&section=all">mlock(2)</a>
@@ -1973,8 +1973,8 @@ Variable-Length Arrays(VLAs), which are arrays whose geometry is set at runtime,
 </div>
 </div>
 </div>
-<div id="outline-container-org3c555ce" class="outline-2">
-<h2 id="org3c555ce"><span class="section-number-2">9</span> Signals</h2>
+<div id="outline-container-orgc09b066" class="outline-2">
+<h2 id="orgc09b066"><span class="section-number-2">9</span> Signals</h2>
 <div class="outline-text-2" id="text-9">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 6:</span> Signals</caption>
@@ -2198,8 +2198,8 @@ Variable-Length Arrays(VLAs), which are arrays whose geometry is set at runtime,
 </table>
 </div>
 
-<div id="outline-container-org8eb50f9" class="outline-3">
-<h3 id="org8eb50f9"><span class="section-number-3">9.1</span> Basic Signal Management</h3>
+<div id="outline-container-orge69f0b3" class="outline-3">
+<h3 id="orge69f0b3"><span class="section-number-3">9.1</span> Basic Signal Management</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=signal(2)&section=all">signal(2)</a>
@@ -2217,8 +2217,8 @@ handler parameter:
 </p>
 </div>
 
-<div id="outline-container-orga1b121d" class="outline-4">
-<h4 id="orga1b121d"><span class="section-number-4">9.1.1</span> Signal Inherited</h4>
+<div id="outline-container-org6f48ba1" class="outline-4">
+<h4 id="org6f48ba1"><span class="section-number-4">9.1.1</span> Signal Inherited</h4>
 <div class="outline-text-4" id="text-9-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 7:</span> Inherited signal behavior</caption>
@@ -2285,8 +2285,8 @@ when the shell executes a process "in the background"(or when another background
 </div>
 </div>
 
-<div id="outline-container-org8169822" class="outline-4">
-<h4 id="org8169822"><span class="section-number-4">9.1.2</span> Mappping Signal Numbers to Strings</h4>
+<div id="outline-container-org153e0bd" class="outline-4">
+<h4 id="org153e0bd"><span class="section-number-4">9.1.2</span> Mappping Signal Numbers to Strings</h4>
 <div class="outline-text-4" id="text-9-1-2">
 <ul class="org-ul">
 <li>retrieve the string from a statically defined list <code>sys_siglist[]</code></li>
@@ -2296,8 +2296,8 @@ when the shell executes a process "in the background"(or when another background
 </div>
 </div>
 </div>
-<div id="outline-container-org8904ace" class="outline-3">
-<h3 id="org8904ace"><span class="section-number-3">9.2</span> Sending a Signal</h3>
+<div id="outline-container-orgdd66141" class="outline-3">
+<h3 id="orgdd66141"><span class="section-number-3">9.2</span> Sending a Signal</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=kill(2)&section=all">kill(2)</a>: send signal to a process
@@ -2310,8 +2310,8 @@ In order to send a signal to another process, the sending process needs proper p
 </div>
 </div>
 
-<div id="outline-container-orge69da02" class="outline-3">
-<h3 id="orge69da02"><span class="section-number-3">9.3</span> Reentrancy</h3>
+<div id="outline-container-org10a218a" class="outline-3">
+<h3 id="org10a218a"><span class="section-number-3">9.3</span> Reentrancy</h3>
 <div class="outline-text-3" id="text-9-3">
 <p>
 <code>reentrant function</code>: It must not manipulate static data, must manipulate only stack-allocated data or data provided to it by the caller, and must not invoke any nonreentrant function
@@ -2319,8 +2319,8 @@ In order to send a signal to another process, the sending process needs proper p
 </div>
 </div>
 
-<div id="outline-container-orgcdc4482" class="outline-3">
-<h3 id="orgcdc4482"><span class="section-number-3">9.4</span> Signal Sets</h3>
+<div id="outline-container-org5a494fa" class="outline-3">
+<h3 id="org5a494fa"><span class="section-number-3">9.4</span> Signal Sets</h3>
 <div class="outline-text-3" id="text-9-4">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=sigemptyset(3)&section=all">sigemptyset(3)</a></li>
@@ -2335,8 +2335,8 @@ In order to send a signal to another process, the sending process needs proper p
 </div>
 </div>
 
-<div id="outline-container-org11c95e5" class="outline-3">
-<h3 id="org11c95e5"><span class="section-number-3">9.5</span> Blocking Signals</h3>
+<div id="outline-container-orgd319a0d" class="outline-3">
+<h3 id="orgd319a0d"><span class="section-number-3">9.5</span> Blocking Signals</h3>
 <div class="outline-text-3" id="text-9-5">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=sigprocmask(2)&section=all">sigprocmask(2)</a>
@@ -2346,8 +2346,8 @@ In order to send a signal to another process, the sending process needs proper p
 </div>
 </div>
 
-<div id="outline-container-orgb5725d4" class="outline-3">
-<h3 id="orgb5725d4"><span class="section-number-3">9.6</span> Advanced Signal Managemet</h3>
+<div id="outline-container-orge1eca53" class="outline-3">
+<h3 id="orge1eca53"><span class="section-number-3">9.6</span> Advanced Signal Managemet</h3>
 <div class="outline-text-3" id="text-9-6">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=sigaction(2)&section=all">sigaction(2)</a>
@@ -2357,12 +2357,12 @@ In order to send a signal to another process, the sending process needs proper p
 </div>
 </div>
 
-<div id="outline-container-orgce50466" class="outline-2">
-<h2 id="orgce50466"><span class="section-number-2">10</span> Time</h2>
+<div id="outline-container-orgbca9f43" class="outline-2">
+<h2 id="orgbca9f43"><span class="section-number-2">10</span> Time</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org835d7e7" class="outline-3">
-<h3 id="org835d7e7"><span class="section-number-3">10.1</span> time info</h3>
+<div id="outline-container-org0ede2bd" class="outline-3">
+<h3 id="org0ede2bd"><span class="section-number-3">10.1</span> time info</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 get time
@@ -2401,8 +2401,8 @@ convert between broken-down time and <code>time_t</code>
 </div>
 </div>
 
-<div id="outline-container-orgfa066d6" class="outline-3">
-<h3 id="orgfa066d6"><span class="section-number-3">10.2</span> tuning the system clock</h3>
+<div id="outline-container-orgcfcf7eb" class="outline-3">
+<h3 id="orgcfcf7eb"><span class="section-number-3">10.2</span> tuning the system clock</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 <a target="_blank" href="http://man.he.net/?topic=adjtime(3)&section=all">adjtime(3)</a>: correct the time to synchronize the system clock
@@ -2410,8 +2410,8 @@ convert between broken-down time and <code>time_t</code>
 </div>
 </div>
 
-<div id="outline-container-org052ca97" class="outline-3">
-<h3 id="org052ca97"><span class="section-number-3">10.3</span> Sleeping and Waiting</h3>
+<div id="outline-container-org0663246" class="outline-3">
+<h3 id="org0663246"><span class="section-number-3">10.3</span> Sleeping and Waiting</h3>
 <div class="outline-text-3" id="text-10-3">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=sleep(3)&section=all">sleep(3)</a>: sleep for a specified number of seconds</li>
@@ -2433,8 +2433,8 @@ select(<span class="org-highlight-numbers-number">0</span>, <span class="org-con
 </div>
 </div>
 
-<div id="outline-container-org4668962" class="outline-3">
-<h3 id="org4668962"><span class="section-number-3">10.4</span> Timers</h3>
+<div id="outline-container-orgf025db9" class="outline-3">
+<h3 id="orgf025db9"><span class="section-number-3">10.4</span> Timers</h3>
 <div class="outline-text-3" id="text-10-4">
 <ul class="org-ul">
 <li><a target="_blank" href="http://man.he.net/?topic=alarm(2)&section=all">alarm(2)</a></li>
@@ -2447,7 +2447,7 @@ select(<span class="org-highlight-numbers-number">0</span>, <span class="org-con
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-07 日 22:30</p>
+<p class="date">Created: 2019-04-08 一 21:26</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

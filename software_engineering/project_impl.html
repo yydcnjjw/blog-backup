@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-07 日 22:30 -->
+<!-- 2019-04-08 一 21:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -63,43 +63,43 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org95bfed1">1. libev</a></li>
-<li><a href="#org13b64c9">2. leveldb</a>
+<li><a href="#org3898d2a">1. libev</a></li>
+<li><a href="#orgbbb7b49">2. leveldb</a>
 <ul>
-<li><a href="#orgd2933cb">2.1. leveldb file type</a></li>
-<li><a href="#orga836869">2.2. Table format</a></li>
-<li><a href="#org5eb4ba4">2.3. Log</a>
+<li><a href="#org4bea774">2.1. leveldb file type</a></li>
+<li><a href="#orgccd721d">2.2. Table format</a></li>
+<li><a href="#orgc520bae">2.3. Log</a>
 <ul>
-<li><a href="#orgc8ccc01">2.3.1. WriteBatch</a></li>
+<li><a href="#org92a6d0d">2.3.1. WriteBatch</a></li>
 </ul>
 </li>
-<li><a href="#org4b324a6">2.4. Version Control</a>
+<li><a href="#org269780b">2.4. Version Control</a>
 <ul>
-<li><a href="#org27f0f0e">2.4.1. <code>VersionSet</code></a></li>
-<li><a href="#org75fdffb">2.4.2. <code>Version</code></a></li>
+<li><a href="#orgb8df5ce">2.4.1. <code>VersionSet</code></a></li>
+<li><a href="#org580c7a9">2.4.2. <code>Version</code></a></li>
 </ul>
 </li>
-<li><a href="#org194dd36">2.5. MemTable</a></li>
-<li><a href="#orga1c5b9c">2.6. Recover</a></li>
+<li><a href="#orgd9013e9">2.5. MemTable</a></li>
+<li><a href="#orgd69047c">2.6. Recover</a></li>
 </ul>
 </li>
-<li><a href="#org55311bc">3. nginx</a>
+<li><a href="#org816ba39">3. nginx</a>
 <ul>
-<li><a href="#org110a5d9">3.1. modules</a></li>
+<li><a href="#org56db5ae">3.1. modules</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org95bfed1" class="outline-2">
-<h2 id="org95bfed1"><span class="section-number-2">1</span> libev</h2>
+<div id="outline-container-org3898d2a" class="outline-2">
+<h2 id="org3898d2a"><span class="section-number-2">1</span> libev</h2>
 </div>
-<div id="outline-container-org13b64c9" class="outline-2">
-<h2 id="org13b64c9"><span class="section-number-2">2</span> leveldb</h2>
+<div id="outline-container-orgbbb7b49" class="outline-2">
+<h2 id="orgbbb7b49"><span class="section-number-2">2</span> leveldb</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgd2933cb" class="outline-3">
-<h3 id="orgd2933cb"><span class="section-number-3">2.1</span> leveldb file type</h3>
+<div id="outline-container-org4bea774" class="outline-3">
+<h3 id="org4bea774"><span class="section-number-3">2.1</span> leveldb file type</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><code>kLogFile(0)</code>: <code>".log"</code></li>
@@ -113,8 +113,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orga836869" class="outline-3">
-<h3 id="orga836869"><span class="section-number-3">2.2</span> Table format</h3>
+<div id="outline-container-orgccd721d" class="outline-3">
+<h3 id="orgccd721d"><span class="section-number-3">2.2</span> Table format</h3>
 <div class="outline-text-3" id="text-2-2">
 <pre class="example">
 &lt;beginning_of_file&gt;
@@ -250,8 +250,8 @@ footer
 </div>
 </div>
 
-<div id="outline-container-org5eb4ba4" class="outline-3">
-<h3 id="org5eb4ba4"><span class="section-number-3">2.3</span> Log</h3>
+<div id="outline-container-orgc520bae" class="outline-3">
+<h3 id="orgc520bae"><span class="section-number-3">2.3</span> Log</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Log is an recorded of header that leveldb writes data to <code>kLogFile</code> or <code>kDescriptorFile</code>
@@ -296,8 +296,8 @@ For fragments:
 </ul>
 </div>
 
-<div id="outline-container-orgc8ccc01" class="outline-4">
-<h4 id="orgc8ccc01"><span class="section-number-4">2.3.1</span> WriteBatch</h4>
+<div id="outline-container-org92a6d0d" class="outline-4">
+<h4 id="org92a6d0d"><span class="section-number-4">2.3.1</span> WriteBatch</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 <code>WriteBatch</code> header has an 8-byte sequence number followed by a 4-byte count.
@@ -354,12 +354,12 @@ For fragments:
 </div>
 </div>
 
-<div id="outline-container-org4b324a6" class="outline-3">
-<h3 id="org4b324a6"><span class="section-number-3">2.4</span> Version Control</h3>
+<div id="outline-container-org269780b" class="outline-3">
+<h3 id="org269780b"><span class="section-number-3">2.4</span> Version Control</h3>
 <div class="outline-text-3" id="text-2-4">
 </div>
-<div id="outline-container-org27f0f0e" class="outline-4">
-<h4 id="org27f0f0e"><span class="section-number-4">2.4.1</span> <code>VersionSet</code></h4>
+<div id="outline-container-orgb8df5ce" class="outline-4">
+<h4 id="orgb8df5ce"><span class="section-number-4">2.4.1</span> <code>VersionSet</code></h4>
 <div class="outline-text-4" id="text-2-4-1">
 <p>
 <code>VersionSet</code> is a circular Doubly linked list
@@ -379,7 +379,7 @@ Per-level key at which the next compaction at that level should start. Either an
 </div>
 
 <ol class="org-ol">
-<li><a id="org7622615"></a><code>VersionSet::Recover</code><br />
+<li><a id="orgb515518"></a><code>VersionSet::Recover</code><br />
 <div class="outline-text-5" id="text-2-4-1-1">
 <p>
 Leveldb read <code>CURRENT</code> file for recovering VersionSet.
@@ -419,15 +419,15 @@ Second VersionSet of db: <code>MANIFEST-000002</code> (no custom option)
 </ol>
 </div>
 
-<div id="outline-container-org75fdffb" class="outline-4">
-<h4 id="org75fdffb"><span class="section-number-4">2.4.2</span> <code>Version</code></h4>
+<div id="outline-container-org580c7a9" class="outline-4">
+<h4 id="org580c7a9"><span class="section-number-4">2.4.2</span> <code>Version</code></h4>
 <div class="outline-text-4" id="text-2-4-2">
 <p>
 Version control different type of file.
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="orga0f3ec9"></a><code>FileMetaData</code><br />
+<li><a id="orgb2a342c"></a><code>FileMetaData</code><br />
 <div class="outline-text-5" id="text-2-4-2-1">
 <div class="org-src-container">
 <pre class="src src-C++"><span class="org-keyword">struct</span> <span class="org-type">FileMetaData</span> {
@@ -448,8 +448,8 @@ Version control different type of file.
 </div>
 </div>
 
-<div id="outline-container-org194dd36" class="outline-3">
-<h3 id="org194dd36"><span class="section-number-3">2.5</span> MemTable</h3>
+<div id="outline-container-orgd9013e9" class="outline-3">
+<h3 id="orgd9013e9"><span class="section-number-3">2.5</span> MemTable</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 MemTable add format:
@@ -483,8 +483,8 @@ MemTable add format:
 </table>
 </div>
 </div>
-<div id="outline-container-orga1c5b9c" class="outline-3">
-<h3 id="orga1c5b9c"><span class="section-number-3">2.6</span> Recover</h3>
+<div id="outline-container-orgd69047c" class="outline-3">
+<h3 id="orgd69047c"><span class="section-number-3">2.6</span> Recover</h3>
 <div class="outline-text-3" id="text-2-6">
 <ol class="org-ol">
 <li>check option and sanitize options
@@ -502,16 +502,16 @@ MemTable add format:
 </div>
 </div>
 
-<div id="outline-container-org55311bc" class="outline-2">
-<h2 id="org55311bc"><span class="section-number-2">3</span> nginx</h2>
+<div id="outline-container-org816ba39" class="outline-2">
+<h2 id="org816ba39"><span class="section-number-2">3</span> nginx</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <a href="http://aosabook.org/images/nginx/architecture.png">nginx architecture</a>
 <a href="http://aosabook.org/en/nginx.html">http://aosabook.org/en/nginx.html</a>
 </p>
 </div>
-<div id="outline-container-org110a5d9" class="outline-3">
-<h3 id="org110a5d9"><span class="section-number-3">3.1</span> modules</h3>
+<div id="outline-container-org56db5ae" class="outline-3">
+<h3 id="org56db5ae"><span class="section-number-3">3.1</span> modules</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">src/core/ngx_module.h</span>
@@ -552,7 +552,7 @@ MemTable add format:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-07 日 22:30</p>
+<p class="date">Created: 2019-04-08 一 21:25</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
