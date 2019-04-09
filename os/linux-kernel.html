@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-08 一 21:40 -->
+<!-- 2019-04-09 二 13:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Linux Kernel</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yydcnjjw" />
 <link rel="stylesheet" href="https://yydcnjjw.github.io/style/style.css" type="text/css">
@@ -59,6 +59,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
+<h1 class="title">Linux Kernel</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -247,6 +248,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
+
 <div id="outline-container-orgc2a58b1" class="outline-2">
 <h2 id="orgc2a58b1"><span class="section-number-2">1</span> Booting</h2>
 <div class="outline-text-2" id="text-1">
@@ -1619,7 +1621,7 @@ MAYBE_BUILD_BUG_ON(<span class="org-negation-char">!</span>(((MODULES_END - <spa
 </div></li>
 <li><b>TODO</b> 对 SME 进行早期的初始化, SME 支持可能会更新 <code>early_pmd_flags</code> 以包含内存加密掩码，因此需要在可能产生页面错误的任何内容之前调用它。</li>
 <li><b>TODO</b> <code>kasan_early_init</code></li>
-<li>use early handler process initialize idt table(0-31) <a href="#orgeb4172e">2.2.1</a></li>
+<li>use early handler process initialize idt table(0-31) <a href="#orga24aff9">2.2.1</a></li>
 <li>copy <code>real_mode_data</code> to <code>boot_params</code>, reset some <code>boot_param</code> for keeping the specification
 <b>TODO</b>: <code>sme_unmap_bootdata</code></li>
 <li><b>TODO</b> <code>load_ucode_bsp</code></li>
@@ -1639,7 +1641,7 @@ set <code>init_top_pgt</code> kernel mapping
 <h4 id="org8c54128"><span class="section-number-4">2.2.1</span> 早期的中断处理</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
-<a id="orgeb4172e"></a>
+<a id="orga24aff9"></a>
 </p>
 <ul class="org-ul">
 <li><p>
@@ -2559,6 +2561,22 @@ Basic Structure:
 The slab allocator consists of a variable number of caches that are linked together on a doubly linked circular list called a <code>cache chain</code>.
 </p>
 
+<div class="org-src-container">
+<pre class="src src-dot">digraph slab_structure {
+  rankdir=TB
+  size=8
+  {
+    rank=same;
+    edge [minlen=6]
+    cache_prev -&gt; cache -&gt; cache_next;
+  }
+  cache -&gt; slabs_full -&gt; slabs_0 -&gt; pages_0 -&gt; {object_0, object_1};
+  cache -&gt; slabs_partial -&gt; slabs_1 -&gt; pages_1 -&gt; {object_2, object_3};
+  cache -&gt; slabs_free -&gt; slabs_2 -&gt; pages_2 -&gt; {object_4, object_5};
+}
+</pre>
+</div>
+
 
 <div class="figure">
 <p><img src="image/slab_structure.png" alt="slab_structure.png" />
@@ -2644,7 +2662,7 @@ There it uses the address of the instruction that caused the exception(i.e. <cod
 <h3 id="org42bb3be"><span class="section-number-3">4.2</span> early interrupt handler</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
-<a id="org84ecb1b"></a>
+<a id="orgf562694"></a>
 </p>
 <ul class="org-ul">
 <li><p>
@@ -4505,7 +4523,7 @@ linux kernel 默认使用用户的 arch，通过 <code>SUBARCH</code> 确定。
 
 <div class="org-src-container">
 <pre class="src src-makefile"><span class="org-variable-name">SUBARCH</span> := $(<span class="org-variable-name">shell</span> uname -m | sed -e s/i.<span class="org-highlight-numbers-number">86/x86/</span> -e s/x86_64/x86/
-                <span class="org-type">-</span><span class="org-makefile-shell">e s/sun4u/sparc64/ \</span>
+                -e s/sun4u/sparc64/ \
                 -e s/arm.*/arm/ -e s/sa110/arm/ \
                 -e s/s390x/s390/ -e s/parisc64/parisc/ \
                 -e s/ppc.*/powerpc/ -e s/mips.*/mips/ \
@@ -4592,7 +4610,7 @@ link-vmlinux 展开的值为 cmd_link-vmlinux
 </div>
 
 <ol class="org-ol">
-<li><a id="orgb877d82"></a>依赖的目标<br />
+<li><a id="org4f48981"></a>依赖的目标<br />
 <div class="outline-text-7" id="text-11-1-3-3-1-1">
 <ul class="org-ul">
 <li><code>$(vmlinux-deps)</code> ：vmlinux 的依赖包含下面目录的 <code>built-in.a</code> 。</li>
@@ -4727,13 +4745,13 @@ endif
 ...
 <span class="org-makefile-targets">$(</span><span class="org-variable-name"><span class="org-makefile-targets">obj</span></span><span class="org-makefile-targets">)/bzImage</span>: $(<span class="org-variable-name">obj</span>)/setup.bin $(<span class="org-variable-name">obj</span>)/vmlinux.bin $(<span class="org-variable-name">obj</span>)/tools/build FORCE
         $(<span class="org-variable-name">call</span> if_changed,image)
-        <span class="org-type">@</span><span class="org-makefile-shell">$(</span><span class="org-makefile-shell"><span class="org-variable-name">kecho</span></span><span class="org-makefile-shell">) </span><span class="org-string"><span class="org-makefile-shell">'Kernel: </span></span><span class="org-makefile-targets"><span class="org-string"><span class="org-makefile-shell">$</span></span></span><span class="org-makefile-targets"><span class="org-string"><span class="org-makefile-shell"><span class="org-constant">@</span></span></span></span><span class="org-string"><span class="org-makefile-shell"> is ready'</span></span><span class="org-makefile-shell"> </span><span class="org-string"><span class="org-makefile-shell">' (#'`cat .version`')'</span></span>
+        @$(<span class="org-variable-name">kecho</span>) <span class="org-string">'Kernel: </span><span class="org-makefile-targets"><span class="org-string">$</span></span><span class="org-makefile-targets"><span class="org-string"><span class="org-constant">@</span></span></span><span class="org-string"> is ready'</span> <span class="org-string">' (#'`cat .version`')'</span>
 </pre>
 </div>
 </div>
 
 <ol class="org-ol">
-<li><a id="org70b70bc"></a>依赖的目标<br />
+<li><a id="org11c2188"></a>依赖的目标<br />
 <div class="outline-text-7" id="text-11-1-3-3-2-1">
 <ul class="org-ul">
 <li><code>$(obj)/tools/build</code> ：从三个不同的文件构建磁盘映像(简单连接为 bzImage)，它会检查所有文件的类型是否正确，并在指定目的地写入结果，移除头和适当填充，写一些系统数据到 stdout
@@ -4997,7 +5015,7 @@ prepare：在构建内核之前的一些准备工作
 <span class="org-comment-delimiter"># </span><span class="org-comment">prepare3 &#34987;&#29992;&#26469;&#26597;&#30475;&#26159;&#21542;&#22312;&#19968;&#20010;&#21333;&#29420;&#30340;&#36755;&#20986;&#30446;&#24405;&#26500;&#24314;</span>
 <span class="org-makefile-targets">prepare3</span>: include/config/kernel.release
 ifneq ($(<span class="org-variable-name">KBUILD_SRC</span>),)
-        <span class="org-type">@</span><span class="org-makefile-shell">$(</span><span class="org-makefile-shell"><span class="org-variable-name">kecho</span></span><span class="org-makefile-shell">) </span><span class="org-string"><span class="org-makefile-shell">'  Using $(</span></span><span class="org-string"><span class="org-makefile-shell"><span class="org-variable-name">srctree</span></span></span><span class="org-string"><span class="org-makefile-shell">) as source for kernel'</span></span>
+        @$(<span class="org-variable-name">kecho</span>) <span class="org-string">'  Using $(</span><span class="org-string"><span class="org-variable-name">srctree</span></span><span class="org-string">) as source for kernel'</span>
         $(<span class="org-variable-name">Q</span>)if [ -f $(<span class="org-variable-name">srctree</span>)/.config -o -d $(<span class="org-variable-name">srctree</span>)/include/config ]; then \
                 echo &gt;&amp;2 <span class="org-string">"  $(</span><span class="org-string"><span class="org-variable-name">srctree</span></span><span class="org-string">) is not clean, please run 'make mrproper'"</span>; \
                 echo &gt;&amp;2 <span class="org-string">"  in the '$(</span><span class="org-string"><span class="org-variable-name">srctree</span></span><span class="org-string">)' directory."</span>;\
@@ -5010,7 +5028,7 @@ endif
 <span class="org-makefile-targets">prepare2</span>: prepare3 prepare-compiler-check outputmakefile asm-generic
 
 <span class="org-makefile-targets">prepare1</span>: prepare2 $(<span class="org-variable-name">version_h</span>) $(<span class="org-variable-name">autoksyms_h</span>) include/generated/utsrelease.h \
-                        include/config/auto.conf
+                        <span class="org-keyword">include</span><span class="org-variable-name">/config/auto.conf</span>
         $(<span class="org-variable-name">cmd_crmodverdir</span>)
 <span class="org-makefile-targets">archprepare</span>: archheaders archscripts prepare1 scripts_basic
 
@@ -5150,7 +5168,7 @@ execute qemu
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-08 一 21:40</p>
+<p class="date">Created: 2019-04-09 二 13:10</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
