@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-10 三 08:54 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yydcnjjw" />
+<link rel="stylesheet" href="https://yydcnjjw.github.io/style/style.css" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3a9619b">1. system configure</a></li>
+<li><a href="#org32f06ed">2. developer env</a>
+<ul>
+<li><a href="#org280907b">2.1. flutter</a></li>
+<li><a href="#orgc731112">2.2. maven repository</a></li>
+</ul>
+</li>
+<li><a href="#org7ec0cb1">3. Test</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3a9619b" class="outline-2">
+<h2 id="org3a9619b"><span class="section-number-2">1</span> system configure</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>idea conf:
+<ul class="org-ul">
+<li>configure <code>/etc/profile</code>
+<code>export IDEA_PROPERTIES=/home/yydcnjjw/.IntelliJIdea/idea.properties</code></li>
+</ul></li>
+<li>docker conf:
+<ul class="org-ul">
+<li><p>
+install
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">yaourt -S docker nvidia-docker
+</pre>
+</div></li>
+<li>configure <code>/etc/systemd/system/docker.service.d/docker-storage.conf</code>
+modify docker file dir</li>
+</ul></li>
+<li>wifi conf
+<code>netctl</code>
+<code>wife-menu</code></li>
+<li><p>
+sound conf
+</p>
+<pre class="example">
+/etc/modprobe.d/modprobe.conf
+options snd_hda_intel power_save=0
+$HOME/.asoundrc
+defaults.pcm.rate_converter "samplerate_best"
+</pre></li>
+<li><p>
+imagemagick
+</p>
+<pre class="example">
+/etc/ImageMagick-7/policy.xml
+comment
+&lt;policy domain="coder" rights="none" pattern="{PS,PS2,PS3,EPS,PDF,XPS}" /&gt;
+</pre></li>
+<li>ca
+<a href="https://deepzz.com/post/based-on-openssl-privateCA-issuer-cert.html">https://deepzz.com/post/based-on-openssl-privateCA-issuer-cert.html</a></li>
+<li>proxy
+<ul class="org-ul">
+<li><code>dnsmasq</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org32f06ed" class="outline-2">
+<h2 id="org32f06ed"><span class="section-number-2">2</span> developer env</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org280907b" class="outline-3">
+<h3 id="org280907b"><span class="section-number-3">2.1</span> flutter</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>configure cn repository</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc731112" class="outline-3">
+<h3 id="orgc731112"><span class="section-number-3">2.2</span> maven repository</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>maven: <code>$HOME/.m2/settings.xml</code></li>
+<li><p>
+gradle
+</p>
+<div class="org-src-container">
+<pre class="src src-kotlin">allprojects {
+    repositories {
+        maven(url="https://maven.aliyun.com/repository/public/")
+        mavenLocal()
+        jcenter()
+    }
+}
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ec0cb1" class="outline-2">
+<h2 id="org7ec0cb1"><span class="section-number-2">3</span> Test</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: yydcnjjw</p>
+<p class="date">Created: 2019-04-10 三 08:54</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

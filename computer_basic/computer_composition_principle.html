@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-08 一 21:45 -->
+<!-- 2019-04-10 三 08:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -87,12 +87,12 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org976dbd3">1. 第一章</a>
 <ul>
-<li><a href="#org2974e1b">1.1. 习题</a></li>
+<li><a href="#orga107f15">1.1. 习题</a></li>
 </ul>
 </li>
 <li><a href="#org479f1c6">2. 第二章</a>
 <ul>
-<li><a href="#orga107f15">2.1. 习题</a></li>
+<li><a href="#org8b4ad17">2.1. 习题</a></li>
 </ul>
 </li>
 <li><a href="#org8097da1">3. 第三章</a></li>
@@ -109,8 +109,8 @@ for the JavaScript code in this tag.
 <h2 id="org976dbd3"><span class="section-number-2">1</span> 第一章</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org2974e1b" class="outline-3">
-<h3 id="org2974e1b"><span class="section-number-3">1.1</span> 习题</h3>
+<div id="outline-container-orga107f15" class="outline-3">
+<h3 id="orga107f15"><span class="section-number-3">1.1</span> 习题</h3>
 <div class="outline-text-3" id="text-1-1">
 <ol class="org-ol">
 <li>什么是存储容量? 什么是单元地址? 什么是数据字? 什么是指令字?
@@ -161,8 +161,8 @@ for the JavaScript code in this tag.
 <h2 id="org479f1c6"><span class="section-number-2">2</span> 第二章</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orga107f15" class="outline-3">
-<h3 id="orga107f15"><span class="section-number-3">2.1</span> 习题</h3>
+<div id="outline-container-org8b4ad17" class="outline-3">
+<h3 id="org8b4ad17"><span class="section-number-3">2.1</span> 习题</h3>
 <div class="outline-text-3" id="text-2-1">
 <ol class="org-ol">
 <li>有一个字长为 32 位的浮点数, 符号位 1 位; 阶码 8 位, 用移码表示; 尾数 23 位, 用补码表示; 基数为 2。请写出:
@@ -319,8 +319,15 @@ A23-A0 完成内存条內存储单元寻址, A25-A24 通过 2:4 译码器进行�
 <li>数据寄存器多少位? 16 位</li>
 <li>地址寄存器多少位? 系统地址 \(128K=2^{17}\), 所以地址寄存器 17 位</li>
 <li>共需多少个 E<sup>2</sup>PROM 芯片? 8 片</li>
-<li>画出此存储器组成框图。
-<img src="image/screenshot_2018-10-31_09-52-15.png" alt="screenshot_2018-10-31_09-52-15.png" /></li>
+<li><p>
+画出此存储器组成框图。
+</p>
+
+
+<div class="figure">
+<p><img src="image/screenshot_2018-10-31_09-52-15.png" alt="screenshot_2018-10-31_09-52-15.png" />
+</p>
+</div></li>
 </ol></li>
 <li><p>
 设存储器容量为 64M, 字长为 64 位, 模块数 m=8, 分别用顺序和交叉方式进行组织。存储周期 T=100ns, 数据总线宽度位 64 位, 总线传送周期 \(\tau=50ns\) 。求: 顺序存储器和交叉存储器的带宽是多少?
@@ -333,6 +340,7 @@ A23-A0 完成内存条內存储单元寻址, A25-A24 通过 2:4 译码器进行�
 <p>
 顺序存储器和交叉存储器连续读出 8 个字所需的时间分别是:
 </p>
+
 \begin{align}
   t_{1}&=mT=8\times{100ns}=8\times{10^{-7}}s\\
   t_{2}&=T+(m-1)\tau=100ns+7\times{50ns}-450ns=4.5*10^{-7}ns
@@ -364,7 +372,7 @@ cache/主存系统效率 \(e\) 为:
 </p>
 
 \begin{equation}
-  e=\frac{1}{r+(1-r)H}\times{100\percent}=\frac{1}{6+(1-6)\times{0.968}}\times{100\percent}=86.2\percent
+  e=\frac{1}{r+(1-r)H}\times{100}=\frac{1}{6+(1-6)\times{0.968}}\times{100}=86.2
 \end{equation}
 
 <p>
@@ -380,7 +388,7 @@ cache/主存系统效率 \(e\) 为:
 
 \begin{align}
   h\times{t_{c}}+(1-h)\times{t_{m}}&=t_{a}\\
-  h=\frac{t_{a}-t_{m}}{t_{c}-t_{m}}=\frac{50-200}{40-200}=93.75\percent
+  h=\frac{t_{a}-t_{m}}{t_{c}-t_{m}}=\frac{50-200}{40-200}=93.75
 \end{align}</li>
 </ol>
 </div>
@@ -540,6 +548,7 @@ I6 MUL R6, R7 ; (R6)x(R7)-&gt;R6
 <p>
 依次处理设备 A, D, G 的时间 \(T\) 为:
 </p>
+
 \begin{align}
   T_{1}&=t_{1}+t_{2}+t_{3}+t_{4}+t_{A}\\
   T_{2}&=t_{1}+t_{2}+t_{3}+t_{4}+t_{D}\\
@@ -637,7 +646,7 @@ I6 MUL R6, R7 ; (R6)x(R7)-&gt;R6
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-08 一 21:45</p>
+<p class="date">Created: 2019-04-10 三 08:54</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
