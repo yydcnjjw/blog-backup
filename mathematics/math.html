@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-08 一 21:25 -->
+<!-- 2019-04-26 五 16:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -168,15 +168,16 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgb4f1bf3">3. Information theory</a>
 <ul>
-<li><a href="#org6af93bb">3.1. 信息量</a></li>
-<li><a href="#org9d1c5e2">3.2. 香农熵和微分熵</a></li>
-<li><a href="#org2b21d2f">3.3. KL 散度(Kullback-Leibler(KL) divergence)</a>
+<li><a href="#org5fa0c55">3.1. 信息量</a></li>
+<li><a href="#orgc49d641">3.2. 香农熵和微分熵</a></li>
+<li><a href="#orgbce67a1">3.3. KL 散度(Kullback-Leibler(KL) divergence)</a>
 <ul>
 <li><a href="#org14a445f">3.3.1. KL 散度比</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#org832403d">4. Information Retrieval</a></li>
 </ul>
 </div>
 </div>
@@ -1405,7 +1406,7 @@ J(W,b;x,y)=\frac{1}{2}\Vert h_{W,b}(x)-y \Vert^{2}
 </div>
 </li>
 
-<li><a id="org20f7266"></a>信息量<br />
+<li><a id="org6af93bb"></a>信息量<br />
 <div class="outline-text-6" id="text-2-1-3-2-3">
 <ul class="org-ul">
 <li>非常可能发生的事件信息量要比较少, 并且极端情况下, 确保能够发生的事件应该没有信息量。</li>
@@ -1427,7 +1428,7 @@ J(W,b;x,y)=\frac{1}{2}\Vert h_{W,b}(x)-y \Vert^{2}
 </div>
 </li>
 
-<li><a id="org7dd067e"></a>香农熵和微分熵<br />
+<li><a id="org9d1c5e2"></a>香农熵和微分熵<br />
 <div class="outline-text-6" id="text-2-1-3-2-4">
 <p>
 香农熵是指对整个概率分布中的不确定性总量进行量化。
@@ -1455,7 +1456,7 @@ J(W,b;x,y)=\frac{1}{2}\Vert h_{W,b}(x)-y \Vert^{2}
 </div>
 </li>
 
-<li><a id="org44af55d"></a>KL 散度(Kullback-Leibler(KL) divergence)<br />
+<li><a id="org2b21d2f"></a>KL 散度(Kullback-Leibler(KL) divergence)<br />
 <div class="outline-text-6" id="text-2-1-3-2-5">
 <p>
 如果我们对于同一个随机变量 \(x\) 有两个单独的概率分布 \(P(x)\) 和 \(Q(x)\) , 我们可以使用 \(KL\) 散度来衡量这两个分布的差异, \(KL\) 距离是两个随机分布间距离的度量,度量当真实分布为 \(p\) 时,假设分布 \(q\) 的无效性:
@@ -3091,8 +3092,8 @@ LSTM 有通过精心设计的称作为"门"的结构来去除或者增加信息�
 </p>
 </div>
 
-<div id="outline-container-org6af93bb" class="outline-3">
-<h3 id="org6af93bb"><span class="section-number-3">3.1</span> 信息量</h3>
+<div id="outline-container-org5fa0c55" class="outline-3">
+<h3 id="org5fa0c55"><span class="section-number-3">3.1</span> 信息量</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>非常可能发生的事件信息量要比较少, 并且极端情况下, 确保能够发生的事件应该没有信息量。</li>
@@ -3115,8 +3116,8 @@ LSTM 有通过精心设计的称作为"门"的结构来去除或者增加信息�
 </div>
 </div>
 
-<div id="outline-container-org9d1c5e2" class="outline-3">
-<h3 id="org9d1c5e2"><span class="section-number-3">3.2</span> 香农熵和微分熵</h3>
+<div id="outline-container-orgc49d641" class="outline-3">
+<h3 id="orgc49d641"><span class="section-number-3">3.2</span> 香农熵和微分熵</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 香农熵是指对整个概率分布中的不确定性总量进行量化。
@@ -3144,8 +3145,8 @@ LSTM 有通过精心设计的称作为"门"的结构来去除或者增加信息�
 </div>
 </div>
 
-<div id="outline-container-org2b21d2f" class="outline-3">
-<h3 id="org2b21d2f"><span class="section-number-3">3.3</span> KL 散度(Kullback-Leibler(KL) divergence)</h3>
+<div id="outline-container-orgbce67a1" class="outline-3">
+<h3 id="orgbce67a1"><span class="section-number-3">3.3</span> KL 散度(Kullback-Leibler(KL) divergence)</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 <a id="orgec8c111"></a>
@@ -3199,10 +3200,13 @@ KL 散度得大小是想对于训练数据集而言的，并没有绝对意义�
 </div>
 </div>
 </div>
+<div id="outline-container-org832403d" class="outline-2">
+<h2 id="org832403d"><span class="section-number-2">4</span> Information Retrieval</h2>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-08 一 21:25</p>
+<p class="date">Created: 2019-04-26 五 16:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
