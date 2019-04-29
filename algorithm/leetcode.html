@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-28 日 19:06 -->
+<!-- 2019-04-29 一 20:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -90,6 +90,9 @@ for the JavaScript code in this tag.
 <li><a href="#org6292857">1.1. Valid Parentheses</a></li>
 <li><a href="#org0286032">1.2. Remove Outermost Parentheses</a></li>
 <li><a href="#org8e790c3">1.3. Baseball Game</a></li>
+<li><a href="#org52fd0f6">1.4. Implement Stacks using Queue</a></li>
+<li><a href="#org10fd839">1.5. Implement Queue using Stacks</a></li>
+<li><a href="#org0285f62">1.6. Next Greater Element I</a></li>
 </ul>
 </li>
 <li><a href="#org735c0cb">2. algorithms</a>
@@ -225,7 +228,156 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
+<div id="outline-container-org52fd0f6" class="outline-3">
+<h3 id="org52fd0f6"><span class="section-number-3">1.4</span> Implement Stacks using Queue</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+<a href="https://leetcode-cn.com/problems/implement-stack-using-queues/">Implement Stacks using Queue</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">MyQueue</span> {
+  <span class="org-keyword">public</span>:
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Initialize your data structure here. */</span>
+    <span class="org-function-name">MyQueue</span>() {}
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Push element x to the back of queue. */</span>
+    <span class="org-type">void</span> <span class="org-function-name">push</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) { in_s.push(x); }
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Removes the element from in front of queue and returns that element. */</span>
+    <span class="org-type">int</span> <span class="org-function-name">pop</span>() {
+        <span class="org-keyword">if</span> (out_s.empty()) {
+            move_reverse(in_s, out_s);
+        }
+        <span class="org-keyword">auto</span> <span class="org-variable-name">top</span> = out_s.top();
+        out_s.pop();
+        <span class="org-keyword">return</span> top;
+    }
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Get the front element. */</span>
+    <span class="org-type">int</span> <span class="org-function-name">peek</span>() {
+        <span class="org-keyword">if</span> (out_s.empty()) {
+            move_reverse(in_s, out_s);
+        }
+        <span class="org-keyword">return</span> out_s.top();;
+    }
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Returns whether the queue is empty. */</span>
+    <span class="org-type">bool</span> <span class="org-function-name">empty</span>() { <span class="org-keyword">return</span> in_s.empty() &amp;&amp; out_s.empty(); }
+
+    <span class="org-type">void</span> <span class="org-function-name">move_reverse</span>(<span class="org-type">stack</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">s</span>, <span class="org-type">stack</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">t</span>) {
+        <span class="org-keyword">auto</span> <span class="org-variable-name">size</span> = s.size();
+        <span class="org-keyword">while</span> (size) {
+            t.push(s.top());
+            s.pop();
+            size--;
+        }
+    }
+
+  <span class="org-keyword">private</span>:
+    <span class="org-type">stack</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">in_s</span>;
+    <span class="org-type">stack</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">out_s</span>;
+};
+</pre>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org10fd839" class="outline-3">
+<h3 id="org10fd839"><span class="section-number-3">1.5</span> Implement Queue using Stacks</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+<a href="https://leetcode-cn.com/problems/implement-queue-using-stacks/">Implement Queue using Stacks</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">MyStack</span> {
+  <span class="org-keyword">public</span>:
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Initialize your data structure here. */</span>
+    <span class="org-function-name">MyStack</span>() {}
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Push element x onto stack. */</span>
+    <span class="org-type">void</span> <span class="org-function-name">push</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) { in_q.push(x); }
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Removes the element on top of the stack and returns that element. */</span>
+    <span class="org-type">int</span> <span class="org-function-name">pop</span>() {
+        <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">tmp_q</span>;
+        move(in_q, tmp_q, in_q.size() - <span class="org-highlight-numbers-number">1</span>);
+        <span class="org-keyword">auto</span> <span class="org-variable-name">top</span> = in_q.front();
+        in_q.pop();
+        move(tmp_q, in_q, tmp_q.size());
+        <span class="org-keyword">return</span> top;
+    }
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Get the top element. */</span>
+    <span class="org-type">int</span> <span class="org-function-name">top</span>() {
+        <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">tmp_q</span>;
+        move(in_q, tmp_q, in_q.size() - <span class="org-highlight-numbers-number">1</span>);
+        <span class="org-keyword">auto</span> <span class="org-variable-name">top</span> = in_q.front();
+        tmp_q.push(top);
+        in_q.pop();
+        move(tmp_q, in_q, tmp_q.size());
+        <span class="org-keyword">return</span> top;
+    }
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">Returns whether the stack is empty. */</span>
+    <span class="org-type">bool</span> <span class="org-function-name">empty</span>() { <span class="org-keyword">return</span> in_q.empty(); }
+
+    <span class="org-type">void</span> <span class="org-function-name">move</span>(<span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">s</span>, <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">t</span>, <span class="org-type">size_t</span> <span class="org-variable-name">size</span>) {
+        <span class="org-keyword">while</span> (size) {
+            t.push(s.front());
+            s.pop();
+            size--;
+        }
+    }
+
+  <span class="org-keyword">private</span>:
+    <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">in_q</span>;
+};
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0285f62" class="outline-3">
+<h3 id="org0285f62"><span class="section-number-3">1.6</span> Next Greater Element I</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+<a href="https://leetcode-cn.com/problems/next-greater-element-i/">Next Greater Element I</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-function-name">nextGreaterElement</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">nums1</span>, <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">nums2</span>) {
+    <span class="org-type">stack</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">s</span>;
+    <span class="org-type">map</span>&lt;<span class="org-type">int</span>, <span class="org-type">int</span>&gt; <span class="org-variable-name">hash</span>;
+    <span class="org-keyword">auto</span> <span class="org-variable-name">nums2_size</span> = nums2.size();
+    <span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>;
+    <span class="org-keyword">while</span> (i &lt; nums2_size) {
+      <span class="org-keyword">auto</span> <span class="org-variable-name">num2</span> = nums2[i];
+      <span class="org-keyword">if</span> (s.empty() || num2 &lt; s.top()) {
+        s.push(num2);
+        i++;
+      } <span class="org-keyword">else</span> {
+        <span class="org-type">hash</span>[s.top()] = num2;
+        s.pop();
+      }
+    }
+
+    <span class="org-keyword">auto</span> <span class="org-variable-name">nums1_size</span> = nums1.size();
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; nums1_size; ++i) {
+      <span class="org-keyword">auto</span> <span class="org-variable-name">v</span> = hash.find(<span class="org-type">nums1</span>[i]);
+      nums1[i] = v != hash.end() ? v-&gt;second : -<span class="org-highlight-numbers-number">1</span>;
+    }
+    <span class="org-keyword">return</span> nums1;
+  }
+};
+</pre>
+</div>
+</div>
+</div>
+</div>
+
 
 <div id="outline-container-org735c0cb" class="outline-2">
 <h2 id="org735c0cb"><span class="section-number-2">2</span> algorithms</h2>
@@ -906,7 +1058,7 @@ MMCCLIX
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-28 日 19:06</p>
+<p class="date">Created: 2019-04-29 一 20:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
