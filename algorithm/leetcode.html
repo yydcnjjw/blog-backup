@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-05 日 19:29 -->
+<!-- 2019-05-07 二 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -102,18 +102,19 @@ for the JavaScript code in this tag.
 <li><a href="#orgff2a234">15. Score of Parentheses</a></li>
 <li><a href="#org7dd2a55">16. Check If Word Is Valid After Substitutions</a></li>
 <li><a href="#orgbbcfe53">17. Validate Stack Sequences</a></li>
-<li><a href="#org97e3c31">18. Two Sum</a></li>
-<li><a href="#org2164f43">19. 两数相加</a></li>
-<li><a href="#org00405f4">20. 无重复字串的最长子串</a></li>
-<li><a href="#org2fe20bd">21. 两个排序数组的中位数</a></li>
-<li><a href="#org3dad7ac">22. 最长回文子串</a></li>
-<li><a href="#orgbd8f371">23. Z 字形变换</a></li>
-<li><a href="#org3a0a93b">24. 反转整数</a></li>
-<li><a href="#org2881f55">25. 字符串转整数(atoi)</a></li>
-<li><a href="#orgba44621">26. 回文数</a></li>
-<li><a href="#org3df144a">27. 正则表达式匹配</a></li>
-<li><a href="#org9f0d458">28. container-with-most-water</a></li>
-<li><a href="#org841128a">29. integer to roman</a></li>
+<li><a href="#org4afeff0">18. Binary Tree Zigzag Level Order Traversal</a></li>
+<li><a href="#org97e3c31">19. Two Sum</a></li>
+<li><a href="#org2164f43">20. 两数相加</a></li>
+<li><a href="#org00405f4">21. 无重复字串的最长子串</a></li>
+<li><a href="#org2fe20bd">22. 两个排序数组的中位数</a></li>
+<li><a href="#org3dad7ac">23. 最长回文子串</a></li>
+<li><a href="#orgbd8f371">24. Z 字形变换</a></li>
+<li><a href="#org3a0a93b">25. 反转整数</a></li>
+<li><a href="#org2881f55">26. 字符串转整数(atoi)</a></li>
+<li><a href="#orgba44621">27. 回文数</a></li>
+<li><a href="#org3df144a">28. 正则表达式匹配</a></li>
+<li><a href="#org9f0d458">29. container-with-most-water</a></li>
+<li><a href="#org841128a">30. integer to roman</a></li>
 </ul>
 </div>
 </div>
@@ -527,7 +528,40 @@ for the JavaScript code in this tag.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C++">
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">BSTIterator</span> {
+  <span class="org-keyword">public</span>:
+    <span class="org-function-name">BSTIterator</span>(<span class="org-type">TreeNode</span> *<span class="org-variable-name">root</span>) { traversal(root); }
+    <span class="org-comment-delimiter">// </span><span class="org-comment">in order traversal</span>
+    <span class="org-type">void</span> <span class="org-function-name">traversal</span>(<span class="org-type">TreeNode</span> *<span class="org-variable-name">root</span>) {
+        <span class="org-type">stack</span>&lt;<span class="org-type">TreeNode</span> *&gt; <span class="org-variable-name">stack</span>;
+        <span class="org-type">TreeNode</span> *<span class="org-variable-name">node</span> = root;
+
+        <span class="org-keyword">while</span> (node != <span class="org-constant">nullptr</span> || <span class="org-negation-char">!</span>stack.empty()) {
+            <span class="org-keyword">if</span> (node != <span class="org-constant">nullptr</span>) {
+                stack.push(node);
+                node = node-&gt;left;
+            } <span class="org-keyword">else</span> {
+                node = stack.top();
+                stack.pop();
+                mins_.push(node-&gt;val);
+                node = node-&gt;right;
+            }
+        }
+    }
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">@return the next smallest number */</span>
+    <span class="org-type">int</span> <span class="org-function-name">next</span>() {
+        <span class="org-keyword">auto</span> <span class="org-variable-name">front</span> = mins_.front();
+        mins_.pop();
+        <span class="org-keyword">return</span> front;
+    }
+
+    <span class="org-comment-delimiter">/** </span><span class="org-comment">@return whether we have a next smallest number */</span>
+    <span class="org-type">bool</span> <span class="org-function-name">hasNext</span>() { <span class="org-keyword">return</span> <span class="org-negation-char">!</span>mins_.empty(); }
+
+  <span class="org-keyword">private</span>:
+    <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">mins_</span>;
+};
 </pre>
 </div>
 </div>
@@ -737,16 +771,50 @@ for the JavaScript code in this tag.
 <a href="https://leetcode-cn.com/problems/validate-stack-sequences/">Validate Stack Sequences</a>
 </p>
 
+<p>
+用栈进行模拟
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+  <span class="org-keyword">public</span>:
+    <span class="org-type">bool</span> <span class="org-function-name">validateStackSequences</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">pushed</span>, <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">popped</span>) {
+        <span class="org-type">stack</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">stack</span>;
+        <span class="org-type">int</span> <span class="org-variable-name">index</span> = <span class="org-highlight-numbers-number">0</span>;
+        <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">value</span> : pushed) {
+            stack.push(value);
+            <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>stack.empty()) {
+                <span class="org-keyword">if</span> (stack.top() != popped[index]) {
+                    <span class="org-keyword">break</span>;
+                }
+                index++;
+                stack.pop();
+            }
+        }
+        <span class="org-keyword">return</span> stack.empty();
+    }
+};
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4afeff0" class="outline-2">
+<h2 id="org4afeff0"><span class="section-number-2">18</span> Binary Tree Zigzag Level Order Traversal</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+<a href="https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/">Binary Tree Zigzag Level Order Traversal</a>
+</p>
+
 <div class="org-src-container">
 <pre class="src src-C++">
 </pre>
 </div>
 </div>
 </div>
-
 <div id="outline-container-org97e3c31" class="outline-2">
-<h2 id="org97e3c31"><span class="section-number-2">18</span> Two Sum</h2>
-<div class="outline-text-2" id="text-18">
+<h2 id="org97e3c31"><span class="section-number-2">19</span> Two Sum</h2>
+<div class="outline-text-2" id="text-19">
 <p>
 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
 你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。
@@ -809,8 +877,8 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-org2164f43" class="outline-2">
-<h2 id="org2164f43"><span class="section-number-2">19</span> 两数相加</h2>
-<div class="outline-text-2" id="text-19">
+<h2 id="org2164f43"><span class="section-number-2">20</span> 两数相加</h2>
+<div class="outline-text-2" id="text-20">
 <p>
 给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。
 你可以假设除了数字 0 之外，这两个数字都不会以零开头。
@@ -911,8 +979,8 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-org00405f4" class="outline-2">
-<h2 id="org00405f4"><span class="section-number-2">20</span> 无重复字串的最长子串</h2>
-<div class="outline-text-2" id="text-20">
+<h2 id="org00405f4"><span class="section-number-2">21</span> 无重复字串的最长子串</h2>
+<div class="outline-text-2" id="text-21">
 <p>
 给定一个字符串，找出不含有重复字符的最长子串的长度。
 </p>
@@ -962,8 +1030,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="outline-container-org2fe20bd" class="outline-2">
-<h2 id="org2fe20bd"><span class="section-number-2">21</span> 两个排序数组的中位数</h2>
-<div class="outline-text-2" id="text-21">
+<h2 id="org2fe20bd"><span class="section-number-2">22</span> 两个排序数组的中位数</h2>
+<div class="outline-text-2" id="text-22">
 <p>
 给定两个大小为 m 和 n 的有序数组 nums1 和 nums2 。
 请找出这两个有序数组的中位数。要求算法的时间复杂度为 O(log (m+n)) 。
@@ -1045,8 +1113,8 @@ nums2 = [3, 4]
 </div>
 </div>
 <div id="outline-container-org3dad7ac" class="outline-2">
-<h2 id="org3dad7ac"><span class="section-number-2">22</span> 最长回文子串</h2>
-<div class="outline-text-2" id="text-22">
+<h2 id="org3dad7ac"><span class="section-number-2">23</span> 最长回文子串</h2>
+<div class="outline-text-2" id="text-23">
 <p>
 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。
 </p>
@@ -1131,8 +1199,8 @@ bab
 </div>
 </div>
 <div id="outline-container-orgbd8f371" class="outline-2">
-<h2 id="orgbd8f371"><span class="section-number-2">23</span> Z 字形变换</h2>
-<div class="outline-text-2" id="text-23">
+<h2 id="orgbd8f371"><span class="section-number-2">24</span> Z 字形变换</h2>
+<div class="outline-text-2" id="text-24">
 <p>
 将字符串 "PAYPALISHIRING" 以Z字形排列成给定的行数：
 </p>
@@ -1208,8 +1276,8 @@ PINALSIGYAHRPI
 </div>
 </div>
 <div id="outline-container-org3a0a93b" class="outline-2">
-<h2 id="org3a0a93b"><span class="section-number-2">24</span> 反转整数</h2>
-<div class="outline-text-2" id="text-24">
+<h2 id="org3a0a93b"><span class="section-number-2">25</span> 反转整数</h2>
+<div class="outline-text-2" id="text-25">
 <p>
 给定一个 32 位有符号整数，将整数中的数字进行反转。
 </p>
@@ -1260,8 +1328,8 @@ PINALSIGYAHRPI
 </div>
 </div>
 <div id="outline-container-org2881f55" class="outline-2">
-<h2 id="org2881f55"><span class="section-number-2">25</span> 字符串转整数(atoi)</h2>
-<div class="outline-text-2" id="text-25">
+<h2 id="org2881f55"><span class="section-number-2">26</span> 字符串转整数(atoi)</h2>
+<div class="outline-text-2" id="text-26">
 <div class="org-src-container">
 <pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;ctype.h&gt;</span>
 <span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -1303,8 +1371,8 @@ PINALSIGYAHRPI
 </div>
 
 <div id="outline-container-orgba44621" class="outline-2">
-<h2 id="orgba44621"><span class="section-number-2">26</span> 回文数</h2>
-<div class="outline-text-2" id="text-26">
+<h2 id="orgba44621"><span class="section-number-2">27</span> 回文数</h2>
+<div class="outline-text-2" id="text-27">
 <p>
 判断一个整数是否是回文数。回文数是指正序 (从左向右) 和倒序 (从右向左) 读都是一样的整数。
 </p>
@@ -1336,11 +1404,11 @@ PINALSIGYAHRPI
 </div>
 </div>
 <div id="outline-container-org3df144a" class="outline-2">
-<h2 id="org3df144a"><span class="section-number-2">27</span> 正则表达式匹配</h2>
+<h2 id="org3df144a"><span class="section-number-2">28</span> 正则表达式匹配</h2>
 </div>
 <div id="outline-container-org9f0d458" class="outline-2">
-<h2 id="org9f0d458"><span class="section-number-2">28</span> container-with-most-water</h2>
-<div class="outline-text-2" id="text-28">
+<h2 id="org9f0d458"><span class="section-number-2">29</span> container-with-most-water</h2>
+<div class="outline-text-2" id="text-29">
 <p>
 Given n non-negative integers a1, a2, &#x2026;, an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
 </p>
@@ -1382,8 +1450,8 @@ Output: 49
 </div>
 </div>
 <div id="outline-container-org841128a" class="outline-2">
-<h2 id="org841128a"><span class="section-number-2">29</span> integer to roman</h2>
-<div class="outline-text-2" id="text-29">
+<h2 id="org841128a"><span class="section-number-2">30</span> integer to roman</h2>
+<div class="outline-text-2" id="text-30">
 <p>
 <a href="https://leetcode-cn.com/problems/integer-to-roman/">integer_to_roman</a>
 </p>
@@ -1421,7 +1489,7 @@ MMCCLIX
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-05-05 日 19:29</p>
+<p class="date">Created: 2019-05-07 二 16:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
