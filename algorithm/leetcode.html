@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-09 四 09:49 -->
+<!-- 2019-05-09 四 22:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -861,8 +861,41 @@ for the JavaScript code in this tag.
 <a href="https://leetcode-cn.com/problems/next-greater-element-ii/">Next Greater Element II</a>
 </p>
 
+<ul class="org-ul">
+<li>单调栈</li>
+<li>两次循环: 第一次需要入栈, 第二次不需要</li>
+</ul>
+
 <div class="org-src-container">
-<pre class="src src-C++">
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">Solution</span> {
+  <span class="org-keyword">public</span>:
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-function-name">nextGreaterElements</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">nums</span>) {
+        <span class="org-type">int</span> <span class="org-variable-name">len</span> = nums.size();
+
+        <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">result</span>;
+        result.assign(len, -<span class="org-highlight-numbers-number">1</span>);
+
+        <span class="org-type">stack</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">stack</span>;
+        <span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>;
+
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; len; i++) {
+            <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>stack.empty() &amp;&amp; nums[stack.top()] &lt; nums[i]) {
+                result[stack.top()] = nums[i];
+                stack.pop();
+            }
+            stack.push(i);
+        }
+
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-highlight-numbers-number">0</span>; i &lt; len; i++) {
+            <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>stack.empty() &amp;&amp; nums[stack.top()] &lt; nums[i]) {
+                result[stack.top()] = nums[i];
+                stack.pop();
+            }
+        }
+
+        <span class="org-keyword">return</span> result;
+    }
+};
 </pre>
 </div>
 </div>
@@ -1548,7 +1581,7 @@ MMCCLIX
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-05-09 四 09:49</p>
+<p class="date">Created: 2019-05-09 四 22:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
