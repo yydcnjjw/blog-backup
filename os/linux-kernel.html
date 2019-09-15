@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-09 二 13:10 -->
+<!-- 2019-09-15 日 16:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux Kernel</title>
@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -330,7 +330,7 @@ kernel.img 将自己复制回 <code>0x9000</code> ：因为 Linux 内核和 init
 <span class="org-function-name">movsb</span>
         <span class="org-comment-delimiter">// </span><span class="org-comment">...</span>
         <span class="org-keyword">movl</span>    $LOCAL (cont), <span class="org-variable-name">%esi</span>
-        <span class="org-keyword">jmp</span>     *<span class="org-variable-name">%esi</span>
+        <span class="org-keyword">jmp</span> *<span class="org-variable-name">%esi</span>
         <span class="org-keyword">LOCAL</span>(cont):
         <span class="org-keyword">subl</span>    <span class="org-variable-name">%edi</span>, <span class="org-variable-name">%ecx</span>
 
@@ -600,23 +600,23 @@ X       +------------------------+
 <div class="org-src-container">
 <pre class="src src-asm">        <span class="org-keyword">.section</span> <span class="org-string">".header"</span>, <span class="org-string">"a"</span>
         <span class="org-keyword">.globl</span>  sentinel
-<span class="org-function-name">sentinel</span>:       .byte <span class="org-highlight-numbers-number">0xff</span>, <span class="org-highlight-numbers-number">0xff</span>        <span class="org-comment-delimiter">/* </span><span class="org-comment">Used to detect broken loaders */</span>
+<span class="org-function-name">sentinel</span>:   .byte <span class="org-highlight-numbers-number">0xff</span>, <span class="org-highlight-numbers-number">0xff</span>        <span class="org-comment-delimiter">/* </span><span class="org-comment">Used to detect broken loaders */</span>
 
         <span class="org-keyword">.globl</span>  hdr
 <span class="org-function-name">hdr</span>:
-<span class="org-function-name">setup_sects</span>:    .byte <span class="org-highlight-numbers-number">0</span>                 <span class="org-comment-delimiter">/* </span><span class="org-comment">Filled in by build.c */</span>
-<span class="org-function-name">root_flags</span>:     .word ROOT_RDONLY
-<span class="org-function-name">syssize</span>:        .long <span class="org-highlight-numbers-number">0</span>                 <span class="org-comment-delimiter">/* </span><span class="org-comment">Filled in by build.c */</span>
-<span class="org-function-name">ram_size</span>:       .word <span class="org-highlight-numbers-number">0</span>                 <span class="org-comment-delimiter">/* </span><span class="org-comment">Obsolete */</span>
-<span class="org-function-name">vid_mode</span>:       .word SVGA_MODE
-<span class="org-function-name">root_dev</span>:       .word <span class="org-highlight-numbers-number">0</span>                 <span class="org-comment-delimiter">/* </span><span class="org-comment">Filled in by build.c */</span>
-<span class="org-function-name">boot_flag</span>:      .word <span class="org-highlight-numbers-number">0xAA55</span>
+<span class="org-function-name">setup_sects</span>:    .byte <span class="org-highlight-numbers-number">0</span>         <span class="org-comment-delimiter">/* </span><span class="org-comment">Filled in by build.c */</span>
+<span class="org-function-name">root_flags</span>: .word ROOT_RDONLY
+<span class="org-function-name">syssize</span>:    .long <span class="org-highlight-numbers-number">0</span>         <span class="org-comment-delimiter">/* </span><span class="org-comment">Filled in by build.c */</span>
+<span class="org-function-name">ram_size</span>:   .word <span class="org-highlight-numbers-number">0</span>         <span class="org-comment-delimiter">/* </span><span class="org-comment">Obsolete */</span>
+<span class="org-function-name">vid_mode</span>:   .word SVGA_MODE
+<span class="org-function-name">root_dev</span>:   .word <span class="org-highlight-numbers-number">0</span>         <span class="org-comment-delimiter">/* </span><span class="org-comment">Filled in by build.c */</span>
+<span class="org-function-name">boot_flag</span>:  .word <span class="org-highlight-numbers-number">0xAA55</span>
 
         # offset <span class="org-highlight-numbers-number">512</span>, entry point
 
-            <span class="org-keyword">.globl</span>      _start
+            <span class="org-keyword">.globl</span>  _start
 <span class="org-function-name">_start</span>:
-                <span class="org-keyword">.byte</span>   <span class="org-highlight-numbers-number">0xeb</span>            # short (<span class="org-highlight-numbers-number">2-byte</span>) jump
+                <span class="org-keyword">.byte</span>   <span class="org-highlight-numbers-number">0xeb</span>        # short (<span class="org-highlight-numbers-number">2-byte</span>) jump
                 <span class="org-keyword">.byte</span>   start_of_setup-1f
 <span class="org-highlight-numbers-number">1</span>:
 </pre>
@@ -1028,11 +1028,11 @@ SECTIONS {
         <span class="org-keyword">.word</span>   gdt_end - gdt
         <span class="org-keyword">.long</span>   gdt
         <span class="org-keyword">.word</span>   <span class="org-highlight-numbers-number">0</span>
-        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x00cf9a000000ffff</span>      <span class="org-comment-delimiter">/* </span><span class="org-comment">__KERNEL32_CS */</span>
-        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x00af9a000000ffff</span>      <span class="org-comment-delimiter">/* </span><span class="org-comment">__KERNEL_CS */</span>
-        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x00cf92000000ffff</span>      <span class="org-comment-delimiter">/* </span><span class="org-comment">__KERNEL_DS */</span>
-        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x0080890000000000</span>      <span class="org-comment-delimiter">/* </span><span class="org-comment">TS descriptor */</span>
-        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x0000000000000000</span>      <span class="org-comment-delimiter">/* </span><span class="org-comment">TS continued */</span>
+        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x00cf9a000000ffff</span>  <span class="org-comment-delimiter">/* </span><span class="org-comment">__KERNEL32_CS */</span>
+        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x00af9a000000ffff</span>  <span class="org-comment-delimiter">/* </span><span class="org-comment">__KERNEL_CS */</span>
+        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x00cf92000000ffff</span>  <span class="org-comment-delimiter">/* </span><span class="org-comment">__KERNEL_DS */</span>
+        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x0080890000000000</span>  <span class="org-comment-delimiter">/* </span><span class="org-comment">TS descriptor */</span>
+        <span class="org-keyword">.quad</span>   <span class="org-highlight-numbers-number">0x0000000000000000</span>  <span class="org-comment-delimiter">/* </span><span class="org-comment">TS continued */</span>
 <span class="org-function-name">gdt_end</span>:
 </pre>
 </div></li>
@@ -1156,7 +1156,7 @@ SECTIONS {
 <pre class="src src-asm"><span class="org-comment-delimiter">/* </span><span class="org-comment">&#20445;&#35777;&#23433;&#20840;&#30340;&#23601;&#22320;&#35299;&#21387; */</span>
 <span class="org-comment-delimiter">/* </span><span class="org-comment">For more information, please refer to RFC 1951 and RFC 1952. */</span>
 
-<span class="org-preprocessor">#define</span> <span class="org-variable-name">ZO_z_extra_bytes</span>        ((ZO_z_output_len &gt;&gt; <span class="org-highlight-numbers-number">8</span>) + <span class="org-highlight-numbers-number">65536</span>)
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">ZO_z_extra_bytes</span>    ((ZO_z_output_len &gt;&gt; <span class="org-highlight-numbers-number">8</span>) + <span class="org-highlight-numbers-number">65536</span>)
 <span class="org-preprocessor">#if</span> <span class="org-variable-name">ZO_z_output_len</span> &gt; ZO_z_input_len
 <span class="org-preprocessor"># define</span> <span class="org-variable-name">ZO_z_extract_offset</span>    (ZO_z_output_len + ZO_z_extra_bytes -
                    <span class="org-keyword">ZO_z_input_len</span>)
@@ -1180,7 +1180,7 @@ SECTIONS {
 <span class="org-preprocessor"># define</span> <span class="org-variable-name">INIT_SIZE</span> VO_INIT_SIZE
 <span class="org-preprocessor">#endif</span>
 
-<span class="org-function-name">init_size</span>:              .long INIT_SIZE         # kernel initialization size
+<span class="org-function-name">init_size</span>:      .long INIT_SIZE     # kernel initialization size
 
 </pre>
 </div>
@@ -1288,11 +1288,11 @@ SECTIONS {
 <div class="org-src-container">
 <pre class="src src-asm"><span class="org-comment-delimiter">/* </span><span class="org-comment">arch/x86/kernel/head_64.S 370 */</span>
 <span class="org-comment-delimiter">/* </span><span class="org-comment">Automate the creation of 1 to 1 mapping pmd entries */</span>
-<span class="org-preprocessor">#define</span> <span class="org-function-name">PMDS</span>(<span class="org-variable-name">START</span>, <span class="org-variable-name">PERM</span>, <span class="org-variable-name">COUNT</span>)                        \
-        <span class="org-keyword">i</span> = <span class="org-highlight-numbers-number">0</span> <span class="org-comment-delimiter">;                                         </span><span class="org-comment">\</span>
-        <span class="org-keyword">.rept</span> (COUNT) <span class="org-comment-delimiter">;                                 </span><span class="org-comment">\</span>
+<span class="org-preprocessor">#define</span> <span class="org-function-name">PMDS</span>(<span class="org-variable-name">START</span>, <span class="org-variable-name">PERM</span>, <span class="org-variable-name">COUNT</span>)            \
+        <span class="org-keyword">i</span> = <span class="org-highlight-numbers-number">0</span> <span class="org-comment-delimiter">;                     </span><span class="org-comment">\</span>
+        <span class="org-keyword">.rept</span> (COUNT) <span class="org-comment-delimiter">;                 </span><span class="org-comment">\</span>
         <span class="org-keyword">.quad</span>   (START) + (i &lt;&lt; PMD_SHIFT) + (PERM) <span class="org-comment-delimiter">;   </span><span class="org-comment">\</span>
-        <span class="org-keyword">i</span> = i + <span class="org-highlight-numbers-number">1</span> <span class="org-comment-delimiter">;                                     </span><span class="org-comment">\</span>
+        <span class="org-keyword">i</span> = i + <span class="org-highlight-numbers-number">1</span> <span class="org-comment-delimiter">;                 </span><span class="org-comment">\</span>
         <span class="org-keyword">.endr</span>
 
         <span class="org-keyword">__INITDATA</span>
@@ -1369,7 +1369,7 @@ SECTIONS {
 <div class="org-src-container">
 <pre class="src src-asm"><span class="org-function-name">movq</span>    <span class="org-keyword">$1f</span>, <span class="org-variable-name">%rax</span>
 <span class="org-function-name">ANNOTATE_RETPOLINE_SAFE</span>
-<span class="org-function-name">jmp</span>     *<span class="org-variable-name">%rax</span>
+<span class="org-function-name">jmp</span> *<span class="org-variable-name">%rax</span>
 </pre>
 </div></li>
 </ol></li>
@@ -1378,7 +1378,7 @@ SECTIONS {
 setup cr0:
 </p>
 <div class="org-src-container">
-<pre class="src src-C"><span class="org-preprocessor">#define</span> <span class="org-variable-name">CR0_STATE</span>       (X86_CR0_PE | X86_CR0_MP | X86_CR0_ET | \
+<pre class="src src-C"><span class="org-preprocessor">#define</span> <span class="org-variable-name">CR0_STATE</span>   (X86_CR0_PE | X86_CR0_MP | X86_CR0_ET | \
                          X86_CR0_NE | X86_CR0_WP | X86_CR0_AM | \
                          X86_CR0_PG)
 </pre>
@@ -1405,7 +1405,7 @@ setup cr0:
 <span class="org-preprocessor">#else</span>
 <span class="org-preprocessor">#define</span> <span class="org-variable-name">KASAN_STACK_ORDER</span> <span class="org-highlight-numbers-number">0</span>
 <span class="org-preprocessor">#endif</span>
-<span class="org-preprocessor">#define</span> <span class="org-variable-name">THREAD_SIZE_ORDER</span>       (<span class="org-highlight-numbers-number">2</span> + KASAN_STACK_ORDER)
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">THREAD_SIZE_ORDER</span>   (<span class="org-highlight-numbers-number">2</span> + KASAN_STACK_ORDER)
 <span class="org-preprocessor">#define</span> <span class="org-variable-name">THREAD_SIZE</span>  (PAGE_SIZE &lt;&lt; THREAD_SIZE_ORDER)#ifdef CONFIG_KASAN
 </pre>
 </div></li>
@@ -1424,14 +1424,14 @@ setup cr0:
         <span class="org-type">unsigned</span> <span class="org-type">long</span> <span class="org-variable-name">stack</span>[THREAD_SIZE/<span class="org-keyword">sizeof</span>(<span class="org-type">long</span>)];
 };
 <span class="org-comment-delimiter">// </span><span class="org-comment">include/asm-generic/vmlinux.lds.h</span>
-<span class="org-preprocessor">#define</span> <span class="org-function-name">INIT_TASK_DATA</span>(<span class="org-variable-name">align</span>)                                           \
-        . = ALIGN(align);                                               \
-        __start_init_task = .;                                          \
-        init_thread_union = .;                                          \
-        init_stack = .;                                                 \
-        KEEP(*(.data..init_task))                                       \
-        KEEP(*(.data..init_thread_info))                                \
-        . = __start_init_task + THREAD_SIZE;                            \
+<span class="org-preprocessor">#define</span> <span class="org-function-name">INIT_TASK_DATA</span>(<span class="org-variable-name">align</span>)                       \
+        . = ALIGN(align);                       \
+        __start_init_task = .;                      \
+        init_thread_union = .;                      \
+        init_stack = .;                         \
+        KEEP(*(.data..init_task))                   \
+        KEEP(*(.data..init_thread_info))                \
+        . = __start_init_task + THREAD_SIZE;                \
         __end_init_task = .;
 <span class="org-comment-delimiter">// </span><span class="org-comment">init/init_task.h</span>
 <span class="org-preprocessor">#ifdef</span> CONFIG_ARCH_TASK_STRUCT_ON_STACK
@@ -1476,12 +1476,12 @@ setup cr0:
 
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">include/linux/percpu-defs.h</span>
-<span class="org-preprocessor">#define</span> <span class="org-function-name">DECLARE_PER_CPU_PAGE_ALIGNED</span>(<span class="org-variable-name">type</span>, <span class="org-variable-name">name</span>)                        \
-        DECLARE_PER_CPU_SECTION(type, name, <span class="org-string">"..page_aligned"</span>)           \
+<span class="org-preprocessor">#define</span> <span class="org-function-name">DECLARE_PER_CPU_PAGE_ALIGNED</span>(<span class="org-variable-name">type</span>, <span class="org-variable-name">name</span>)            \
+        DECLARE_PER_CPU_SECTION(type, name, <span class="org-string">"..page_aligned"</span>)       \
         __aligned(PAGE_SIZE)
 
-<span class="org-preprocessor">#define</span> <span class="org-function-name">DEFINE_PER_CPU_PAGE_ALIGNED</span>(<span class="org-variable-name">type</span>, <span class="org-variable-name">name</span>)                         \
-        DEFINE_PER_CPU_SECTION(type, name, <span class="org-string">"..page_aligned"</span>)            \
+<span class="org-preprocessor">#define</span> <span class="org-function-name">DEFINE_PER_CPU_PAGE_ALIGNED</span>(<span class="org-variable-name">type</span>, <span class="org-variable-name">name</span>)             \
+        DEFINE_PER_CPU_SECTION(type, name, <span class="org-string">"..page_aligned"</span>)        \
         __aligned(PAGE_SIZE)
 </pre>
 </div>
@@ -1501,45 +1501,45 @@ setup cr0:
 <span class="org-comment">         * TLS descriptors are currently at a different place compared to i386.</span>
 <span class="org-comment">         * Hopefully nobody expects them at a fixed place (Wine?)</span>
 <span class="org-comment">         </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_KERNEL32_CS]         = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc09b</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
-        [GDT_ENTRY_KERNEL_CS]           = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xa09b</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
-        [GDT_ENTRY_KERNEL_DS]           = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc093</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_KERNEL32_CS]     = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc09b</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_KERNEL_CS]       = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xa09b</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_KERNEL_DS]       = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc093</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
         [GDT_ENTRY_DEFAULT_USER32_CS]   = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc0fb</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
-        [GDT_ENTRY_DEFAULT_USER_DS]     = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc0f3</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
-        [GDT_ENTRY_DEFAULT_USER_CS]     = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xa0fb</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_DEFAULT_USER_DS] = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc0f3</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_DEFAULT_USER_CS] = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xa0fb</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
 <span class="org-preprocessor">#else</span>
-        [GDT_ENTRY_KERNEL_CS]           = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc09a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
-        [GDT_ENTRY_KERNEL_DS]           = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
-        [GDT_ENTRY_DEFAULT_USER_CS]     = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc0fa</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
-        [GDT_ENTRY_DEFAULT_USER_DS]     = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc0f2</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_KERNEL_CS]       = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc09a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_KERNEL_DS]       = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_DEFAULT_USER_CS] = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc0fa</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_DEFAULT_USER_DS] = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc0f2</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
         <span class="org-comment-delimiter">/*</span>
 <span class="org-comment">         * Segments used for calling PnP BIOS have byte granularity.</span>
 <span class="org-comment">         * They code segments and data segments have fixed 64k limits,</span>
 <span class="org-comment">         * the transfer segment sizes are set at run time.</span>
 <span class="org-comment">         </span><span class="org-comment-delimiter">*/</span>
         <span class="org-comment-delimiter">/* </span><span class="org-comment">32-bit code </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_PNPBIOS_CS32]        = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x409a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
+        [GDT_ENTRY_PNPBIOS_CS32]    = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x409a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
         <span class="org-comment-delimiter">/* </span><span class="org-comment">16-bit code </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_PNPBIOS_CS16]        = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x009a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
+        [GDT_ENTRY_PNPBIOS_CS16]    = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x009a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
         <span class="org-comment-delimiter">/* </span><span class="org-comment">16-bit data </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_PNPBIOS_DS]          = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x0092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
+        [GDT_ENTRY_PNPBIOS_DS]      = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x0092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
         <span class="org-comment-delimiter">/* </span><span class="org-comment">16-bit data </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_PNPBIOS_TS1]         = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x0092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0</span>),
+        [GDT_ENTRY_PNPBIOS_TS1]     = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x0092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0</span>),
         <span class="org-comment-delimiter">/* </span><span class="org-comment">16-bit data </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_PNPBIOS_TS2]         = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x0092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0</span>),
+        [GDT_ENTRY_PNPBIOS_TS2]     = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x0092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0</span>),
         <span class="org-comment-delimiter">/*</span>
 <span class="org-comment">         * The APM segments have byte granularity and their bases</span>
 <span class="org-comment">         * are set at run time.  All have 64k limits.</span>
 <span class="org-comment">         </span><span class="org-comment-delimiter">*/</span>
         <span class="org-comment-delimiter">/* </span><span class="org-comment">32-bit code </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_APMBIOS_BASE]        = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x409a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
+        [GDT_ENTRY_APMBIOS_BASE]    = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x409a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
         <span class="org-comment-delimiter">/* </span><span class="org-comment">16-bit code </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_APMBIOS_BASE+<span class="org-highlight-numbers-number">1</span>]      = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x009a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
+        [GDT_ENTRY_APMBIOS_BASE+<span class="org-highlight-numbers-number">1</span>]  = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x009a</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
         <span class="org-comment-delimiter">/* </span><span class="org-comment">data </span><span class="org-comment-delimiter">*/</span>
-        [GDT_ENTRY_APMBIOS_BASE+<span class="org-highlight-numbers-number">2</span>]      = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x4092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
+        [GDT_ENTRY_APMBIOS_BASE+<span class="org-highlight-numbers-number">2</span>]  = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0x4092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xffff</span>),
 
-        [GDT_ENTRY_ESPFIX_SS]           = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
-        [GDT_ENTRY_PERCPU]              = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_ESPFIX_SS]       = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
+        [GDT_ENTRY_PERCPU]      = GDT_ENTRY_INIT(<span class="org-highlight-numbers-number">0xc092</span>, <span class="org-highlight-numbers-number">0</span>, <span class="org-highlight-numbers-number">0xfffff</span>),
         GDT_STACK_CANARY_INIT
 <span class="org-preprocessor">#endif</span>
 } };
@@ -1621,7 +1621,7 @@ MAYBE_BUILD_BUG_ON(<span class="org-negation-char">!</span>(((MODULES_END - <spa
 </div></li>
 <li><b>TODO</b> 对 SME 进行早期的初始化, SME 支持可能会更新 <code>early_pmd_flags</code> 以包含内存加密掩码，因此需要在可能产生页面错误的任何内容之前调用它。</li>
 <li><b>TODO</b> <code>kasan_early_init</code></li>
-<li>use early handler process initialize idt table(0-31) <a href="#orga24aff9">2.2.1</a></li>
+<li>use early handler process initialize idt table(0-31) <a href="#orgf562694">2.2.1</a></li>
 <li>copy <code>real_mode_data</code> to <code>boot_params</code>, reset some <code>boot_param</code> for keeping the specification
 <b>TODO</b>: <code>sme_unmap_bootdata</code></li>
 <li><b>TODO</b> <code>load_ucode_bsp</code></li>
@@ -1641,7 +1641,7 @@ set <code>init_top_pgt</code> kernel mapping
 <h4 id="org8c54128"><span class="section-number-4">2.2.1</span> 早期的中断处理</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
-<a id="orga24aff9"></a>
+<a id="orgf562694"></a>
 </p>
 <ul class="org-ul">
 <li><p>
@@ -1674,11 +1674,11 @@ set <code>init_top_pgt</code> kernel mapping
         <span class="org-keyword">.rept</span> NUM_EXCEPTION_VECTORS
         <span class="org-keyword">.if</span> ((EXCEPTION_ERRCODE_MASK &gt;&gt; i) &amp; <span class="org-highlight-numbers-number">1</span>) == <span class="org-highlight-numbers-number">0</span>
                 <span class="org-keyword">UNWIND_HINT_IRET_REGS</span>
-                <span class="org-keyword">pushq</span> $0        # Dummy error code, to make stack frame uniform
+                <span class="org-keyword">pushq</span> $0    # Dummy error code, to make stack frame uniform
         <span class="org-keyword">.else</span>
                 <span class="org-keyword">UNWIND_HINT_IRET_REGS</span> offset=8
         <span class="org-keyword">.endif</span>
-        <span class="org-keyword">pushq</span> $i                # <span class="org-highlight-numbers-number">72</span>(<span class="org-variable-name">%rsp</span>) Vector number
+        <span class="org-keyword">pushq</span> $i        # <span class="org-highlight-numbers-number">72</span>(<span class="org-variable-name">%rsp</span>) Vector number
         <span class="org-keyword">jmp</span> early_idt_handler_common
         <span class="org-keyword">UNWIND_HINT_IRET_REGS</span>
         <span class="org-keyword">i</span> = i + <span class="org-highlight-numbers-number">1</span>
@@ -1723,33 +1723,33 @@ set <code>init_top_pgt</code> kernel mapping
         <span class="org-keyword">incl</span> early_recursion_flag(<span class="org-variable-name">%rip</span>)
 
         <span class="org-comment-delimiter">/* </span><span class="org-comment">The vector number is currently in the pt_regs-&gt;di slot. */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rsi</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;si */</span>
-        <span class="org-keyword">movq</span> <span class="org-highlight-numbers-number">8</span>(<span class="org-variable-name">%rsp</span>), <span class="org-variable-name">%rsi</span>                      <span class="org-comment-delimiter">/* </span><span class="org-comment">RSI = vector number */</span>
-        <span class="org-keyword">movq</span> <span class="org-variable-name">%rdi</span>, <span class="org-highlight-numbers-number">8</span>(<span class="org-variable-name">%rsp</span>)                      <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;di = RDI */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rdx</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;dx */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rcx</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;cx */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rax</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;ax */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r8</span>                               <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r8 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r9</span>                               <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r9 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r10</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r10 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r11</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r11 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rbx</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;bx */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rbp</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;bp */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r12</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r12 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r13</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r13 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r14</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r14 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r15</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r15 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rsi</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;si */</span>
+        <span class="org-keyword">movq</span> <span class="org-highlight-numbers-number">8</span>(<span class="org-variable-name">%rsp</span>), <span class="org-variable-name">%rsi</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">RSI = vector number */</span>
+        <span class="org-keyword">movq</span> <span class="org-variable-name">%rdi</span>, <span class="org-highlight-numbers-number">8</span>(<span class="org-variable-name">%rsp</span>)          <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;di = RDI */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rdx</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;dx */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rcx</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;cx */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rax</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;ax */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r8</span>               <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r8 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r9</span>               <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r9 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r10</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r10 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r11</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r11 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rbx</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;bx */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rbp</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;bp */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r12</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r12 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r13</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r13 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r14</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r14 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r15</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r15 */</span>
         <span class="org-keyword">UNWIND_HINT_REGS</span>
 
-        <span class="org-keyword">cmpq</span> $14,<span class="org-variable-name">%rsi</span>           <span class="org-comment-delimiter">/* </span><span class="org-comment">Page fault? */</span>
+        <span class="org-keyword">cmpq</span> $14,<span class="org-variable-name">%rsi</span>       <span class="org-comment-delimiter">/* </span><span class="org-comment">Page fault? */</span>
         <span class="org-keyword">jnz</span> <span class="org-highlight-numbers-number">10f</span>
-        <span class="org-keyword">GET_CR2_INTO</span>(<span class="org-variable-name">%rdi</span>)      <span class="org-comment-delimiter">/* </span><span class="org-comment">Can clobber any volatile register if pv */</span>
+        <span class="org-keyword">GET_CR2_INTO</span>(<span class="org-variable-name">%rdi</span>)  <span class="org-comment-delimiter">/* </span><span class="org-comment">Can clobber any volatile register if pv */</span>
         <span class="org-keyword">call</span> early_make_pgtable
         <span class="org-keyword">andl</span> <span class="org-variable-name">%eax</span>,<span class="org-variable-name">%eax</span>
-        <span class="org-keyword">jz</span> <span class="org-highlight-numbers-number">20f</span>                  <span class="org-comment-delimiter">/* </span><span class="org-comment">All good */</span>
+        <span class="org-keyword">jz</span> <span class="org-highlight-numbers-number">20f</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">All good */</span>
 
 <span class="org-highlight-numbers-number">10</span>:
-        <span class="org-keyword">movq</span> <span class="org-variable-name">%rsp</span>,<span class="org-variable-name">%rdi</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">RDI = pt_regs; RSI is already trapnr */</span>
+        <span class="org-keyword">movq</span> <span class="org-variable-name">%rsp</span>,<span class="org-variable-name">%rdi</span>      <span class="org-comment-delimiter">/* </span><span class="org-comment">RDI = pt_regs; RSI is already trapnr */</span>
         <span class="org-keyword">call</span> early_fixup_exception
 
 <span class="org-highlight-numbers-number">20</span>:
@@ -2068,63 +2068,63 @@ allocate cache for the <code>task_xstate</code> which represents <code>FPU</code
 <pre class="src src-C"><span class="org-keyword">struct</span> <span class="org-type">x86_init_ops</span> <span class="org-type">x86_init</span> <span class="org-variable-name">__initdata</span> = {
 
         .resources = {
-                .probe_roms             = probe_roms,
-                .reserve_resources      = reserve_standard_io_resources,
-                .memory_setup           = e820__memory_setup_default,
+                .probe_roms     = probe_roms,
+                .reserve_resources  = reserve_standard_io_resources,
+                .memory_setup       = e820__memory_setup_default,
         },
 
         .mpparse = {
-                .mpc_record             = x86_init_uint_noop,
-                .setup_ioapic_ids       = x86_init_noop,
-                .mpc_apic_id            = default_mpc_apic_id,
-                .smp_read_mpc_oem       = default_smp_read_mpc_oem,
-                .mpc_oem_bus_info       = default_mpc_oem_bus_info,
-                .find_smp_config        = default_find_smp_config,
-                .get_smp_config         = default_get_smp_config,
+                .mpc_record     = x86_init_uint_noop,
+                .setup_ioapic_ids   = x86_init_noop,
+                .mpc_apic_id        = default_mpc_apic_id,
+                .smp_read_mpc_oem   = default_smp_read_mpc_oem,
+                .mpc_oem_bus_info   = default_mpc_oem_bus_info,
+                .find_smp_config    = default_find_smp_config,
+                .get_smp_config     = default_get_smp_config,
         },
 
         .irqs = {
-                .pre_vector_init        = init_ISA_irqs,
-                .intr_init              = native_init_IRQ,
-                .trap_init              = x86_init_noop,
-                .intr_mode_init         = apic_intr_mode_init
+                .pre_vector_init    = init_ISA_irqs,
+                .intr_init      = native_init_IRQ,
+                .trap_init      = x86_init_noop,
+                .intr_mode_init     = apic_intr_mode_init
         },
 
         .oem = {
-                .arch_setup             = x86_init_noop,
-                .banner                 = default_banner,
+                .arch_setup     = x86_init_noop,
+                .banner         = default_banner,
         },
 
         .paging = {
-                .pagetable_init         = native_pagetable_init,
+                .pagetable_init     = native_pagetable_init,
         },
 
         .timers = {
                 .setup_percpu_clockev   = setup_boot_APIC_clock,
-                .timer_init             = hpet_time_init,
-                .wallclock_init         = x86_init_noop,
+                .timer_init     = hpet_time_init,
+                .wallclock_init     = x86_init_noop,
         },
 
         .iommu = {
-                .iommu_init             = iommu_init_noop,
+                .iommu_init     = iommu_init_noop,
         },
 
         .pci = {
-                .init                   = x86_default_pci_init,
-                .init_irq               = x86_default_pci_init_irq,
-                .fixup_irqs             = x86_default_pci_fixup_irqs,
+                .init           = x86_default_pci_init,
+                .init_irq       = x86_default_pci_init_irq,
+                .fixup_irqs     = x86_default_pci_fixup_irqs,
         },
 
         .hyper = {
-                .init_platform          = x86_init_noop,
-                .guest_late_init        = x86_init_noop,
-                .x2apic_available       = bool_x86_init_noop,
-                .init_mem_mapping       = x86_init_noop,
-                .init_after_bootmem     = x86_init_noop,
+                .init_platform      = x86_init_noop,
+                .guest_late_init    = x86_init_noop,
+                .x2apic_available   = bool_x86_init_noop,
+                .init_mem_mapping   = x86_init_noop,
+                .init_after_bootmem = x86_init_noop,
         },
 
         .acpi = {
-                .get_root_pointer       = x86_default_get_root_pointer,
+                .get_root_pointer   = x86_default_get_root_pointer,
                 .reduced_hw_early_init  = acpi_generic_reduced_hw_init,
         },
 };
@@ -2449,8 +2449,8 @@ For many structures used in the kernel, the time needed to initialize an object 
         <span class="org-keyword">struct</span> <span class="org-type">reciprocal_value</span> <span class="org-variable-name">reciprocal_buffer_size</span>;
 <span class="org-comment-delimiter">/* </span><span class="org-comment">2) touched by every alloc &amp; free from the backend </span><span class="org-comment-delimiter">*/</span>
 
-        <span class="org-type">slab_flags_t</span> <span class="org-variable-name">flags</span>;             <span class="org-comment-delimiter">/* </span><span class="org-comment">constant flags </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">num</span>;               <span class="org-comment-delimiter">/* </span><span class="org-comment"># of objs per slab </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">slab_flags_t</span> <span class="org-variable-name">flags</span>;     <span class="org-comment-delimiter">/* </span><span class="org-comment">constant flags </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">num</span>;       <span class="org-comment-delimiter">/* </span><span class="org-comment"># of objs per slab </span><span class="org-comment-delimiter">*/</span>
 
 <span class="org-comment-delimiter">/* </span><span class="org-comment">3) cache_grow/shrink </span><span class="org-comment-delimiter">*/</span>
         <span class="org-comment-delimiter">/* </span><span class="org-comment">order of pgs per slab (2^n) </span><span class="org-comment-delimiter">*/</span>
@@ -2459,8 +2459,8 @@ For many structures used in the kernel, the time needed to initialize an object 
         <span class="org-comment-delimiter">/* </span><span class="org-comment">force GFP flags, e.g. GFP_DMA </span><span class="org-comment-delimiter">*/</span>
         <span class="org-type">gfp_t</span> <span class="org-variable-name">allocflags</span>;
 
-        <span class="org-type">size_t</span> <span class="org-variable-name">colour</span>;                  <span class="org-comment-delimiter">/* </span><span class="org-comment">cache colouring range </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">colour_off</span>;        <span class="org-comment-delimiter">/* </span><span class="org-comment">colour offset </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">size_t</span> <span class="org-variable-name">colour</span>;          <span class="org-comment-delimiter">/* </span><span class="org-comment">cache colouring range </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">colour_off</span>;    <span class="org-comment-delimiter">/* </span><span class="org-comment">colour offset </span><span class="org-comment-delimiter">*/</span>
         <span class="org-keyword">struct</span> <span class="org-type">kmem_cache</span> *<span class="org-variable-name">freelist_cache</span>;
         <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">freelist_size</span>;
 
@@ -2515,8 +2515,8 @@ For many structures used in the kernel, the time needed to initialize an object 
         <span class="org-type">unsigned</span> <span class="org-type">int</span> *<span class="org-variable-name">random_seq</span>;
 <span class="org-preprocessor">#endif</span>
 
-        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">useroffset</span>;        <span class="org-comment-delimiter">/* </span><span class="org-comment">Usercopy region offset </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">usersize</span>;          <span class="org-comment-delimiter">/* </span><span class="org-comment">Usercopy region size </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">useroffset</span>;    <span class="org-comment-delimiter">/* </span><span class="org-comment">Usercopy region offset </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">usersize</span>;      <span class="org-comment-delimiter">/* </span><span class="org-comment">Usercopy region size </span><span class="org-comment-delimiter">*/</span>
 
         <span class="org-keyword">struct</span> <span class="org-type">kmem_cache_node</span> *<span class="org-variable-name">node</span>[MAX_NUMNODES];
 };
@@ -2531,15 +2531,15 @@ For many structures used in the kernel, the time needed to initialize an object 
         <span class="org-keyword">struct</span> <span class="org-type">list_head</span> <span class="org-variable-name">slabs_partial</span>; <span class="org-comment-delimiter">/* </span><span class="org-comment">partial list first, better asm code </span><span class="org-comment-delimiter">*/</span>
         <span class="org-keyword">struct</span> <span class="org-type">list_head</span> <span class="org-variable-name">slabs_full</span>;
         <span class="org-keyword">struct</span> <span class="org-type">list_head</span> <span class="org-variable-name">slabs_free</span>;
-        <span class="org-type">unsigned</span> <span class="org-type">long</span> <span class="org-variable-name">total_slabs</span>;      <span class="org-comment-delimiter">/* </span><span class="org-comment">length of all slab lists </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-type">unsigned</span> <span class="org-type">long</span> <span class="org-variable-name">free_slabs</span>;       <span class="org-comment-delimiter">/* </span><span class="org-comment">length of free slab list only </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">unsigned</span> <span class="org-type">long</span> <span class="org-variable-name">total_slabs</span>;  <span class="org-comment-delimiter">/* </span><span class="org-comment">length of all slab lists </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">unsigned</span> <span class="org-type">long</span> <span class="org-variable-name">free_slabs</span>;   <span class="org-comment-delimiter">/* </span><span class="org-comment">length of free slab list only </span><span class="org-comment-delimiter">*/</span>
         <span class="org-type">unsigned</span> <span class="org-type">long</span> <span class="org-variable-name">free_objects</span>;
         <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">free_limit</span>;
-        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">colour_next</span>;       <span class="org-comment-delimiter">/* </span><span class="org-comment">Per-node cache coloring </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-keyword">struct</span> <span class="org-type">array_cache</span> *<span class="org-variable-name">shared</span>;     <span class="org-comment-delimiter">/* </span><span class="org-comment">shared per node </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-keyword">struct</span> <span class="org-type">alien_cache</span> **<span class="org-variable-name">alien</span>;     <span class="org-comment-delimiter">/* </span><span class="org-comment">on other nodes </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-type">unsigned</span> <span class="org-type">long</span> <span class="org-variable-name">next_reap</span>;        <span class="org-comment-delimiter">/* </span><span class="org-comment">updated without locking </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-type">int</span> <span class="org-variable-name">free_touched</span>;               <span class="org-comment-delimiter">/* </span><span class="org-comment">updated without locking </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">colour_next</span>;   <span class="org-comment-delimiter">/* </span><span class="org-comment">Per-node cache coloring </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-keyword">struct</span> <span class="org-type">array_cache</span> *<span class="org-variable-name">shared</span>; <span class="org-comment-delimiter">/* </span><span class="org-comment">shared per node </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-keyword">struct</span> <span class="org-type">alien_cache</span> **<span class="org-variable-name">alien</span>; <span class="org-comment-delimiter">/* </span><span class="org-comment">on other nodes </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">unsigned</span> <span class="org-type">long</span> <span class="org-variable-name">next_reap</span>;    <span class="org-comment-delimiter">/* </span><span class="org-comment">updated without locking </span><span class="org-comment-delimiter">*/</span>
+        <span class="org-type">int</span> <span class="org-variable-name">free_touched</span>;       <span class="org-comment-delimiter">/* </span><span class="org-comment">updated without locking </span><span class="org-comment-delimiter">*/</span>
 <span class="org-preprocessor">#endif</span>
 
 <span class="org-preprocessor">#ifdef</span> CONFIG_SLUB
@@ -2633,7 +2633,7 @@ There it uses the address of the instruction that caused the exception(i.e. <cod
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">arch/x86/include/asm/extable.h</span>
 <span class="org-keyword">struct</span> <span class="org-type">exception_table_entry</span> {
-        <span class="org-type">int</span> <span class="org-variable-name">insn</span>, <span class="org-variable-name">fixup</span>, <span class="org-variable-name">handler</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">insn</span>, <span class="org-variable-name">fixup</span>, <span class="org-variable-name">handler</span>;
 };
 </pre>
 </div>
@@ -2662,7 +2662,7 @@ There it uses the address of the instruction that caused the exception(i.e. <cod
 <h3 id="org42bb3be"><span class="section-number-3">4.2</span> early interrupt handler</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
-<a id="orgf562694"></a>
+<a id="org5d3ee0d"></a>
 </p>
 <ul class="org-ul">
 <li><p>
@@ -2716,12 +2716,12 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
         <span class="org-keyword">ASM_CLAC</span>
 
         <span class="org-keyword">.if</span> \has_error_code == <span class="org-highlight-numbers-number">0</span>
-        <span class="org-keyword">pushq</span>   $-1                             <span class="org-comment-delimiter">/* </span><span class="org-comment">ORIG_RAX: no syscall to restart */</span>
+        <span class="org-keyword">pushq</span>   $-1             <span class="org-comment-delimiter">/* </span><span class="org-comment">ORIG_RAX: no syscall to restart */</span>
         <span class="org-keyword">.endif</span>
 
         <span class="org-keyword">.if</span> \paranoid == <span class="org-highlight-numbers-number">1</span>
-        <span class="org-keyword">testb</span>   $3, CS-ORIG_RAX(<span class="org-variable-name">%rsp</span>)           <span class="org-comment-delimiter">/* </span><span class="org-comment">If coming from userspace, switch stacks */</span>
-        <span class="org-keyword">jnz</span>     .Lfrom_usermode_switch_stack_\@
+        <span class="org-keyword">testb</span>   $3, CS-ORIG_RAX(<span class="org-variable-name">%rsp</span>)       <span class="org-comment-delimiter">/* </span><span class="org-comment">If coming from userspace, switch stacks */</span>
+        <span class="org-keyword">jnz</span> .Lfrom_usermode_switch_stack_\@
         <span class="org-keyword">.endif</span>
 
         <span class="org-keyword">.if</span> \paranoid
@@ -2734,19 +2734,19 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
 
         <span class="org-keyword">.if</span> \paranoid
         <span class="org-keyword">.if</span> \shift_ist != -1
-        <span class="org-keyword">TRACE_IRQS_OFF_DEBUG</span>                    <span class="org-comment-delimiter">/* </span><span class="org-comment">reload IDT in case of recursion */</span>
+        <span class="org-keyword">TRACE_IRQS_OFF_DEBUG</span>            <span class="org-comment-delimiter">/* </span><span class="org-comment">reload IDT in case of recursion */</span>
         <span class="org-keyword">.else</span>
         <span class="org-keyword">TRACE_IRQS_OFF</span>
         <span class="org-keyword">.endif</span>
         <span class="org-keyword">.endif</span>
 
-        <span class="org-keyword">movq</span>    <span class="org-variable-name">%rsp</span>, <span class="org-variable-name">%rdi</span>                      <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs pointer */</span>
+        <span class="org-keyword">movq</span>    <span class="org-variable-name">%rsp</span>, <span class="org-variable-name">%rdi</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs pointer */</span>
 
         <span class="org-keyword">.if</span> \has_error_code
-        <span class="org-keyword">movq</span>    ORIG_RAX(<span class="org-variable-name">%rsp</span>), <span class="org-variable-name">%rsi</span>            <span class="org-comment-delimiter">/* </span><span class="org-comment">get error code */</span>
-        <span class="org-keyword">movq</span>    $-1, ORIG_RAX(<span class="org-variable-name">%rsp</span>)             <span class="org-comment-delimiter">/* </span><span class="org-comment">no syscall to restart */</span>
+        <span class="org-keyword">movq</span>    ORIG_RAX(<span class="org-variable-name">%rsp</span>), <span class="org-variable-name">%rsi</span>        <span class="org-comment-delimiter">/* </span><span class="org-comment">get error code */</span>
+        <span class="org-keyword">movq</span>    $-1, ORIG_RAX(<span class="org-variable-name">%rsp</span>)     <span class="org-comment-delimiter">/* </span><span class="org-comment">no syscall to restart */</span>
         <span class="org-keyword">.else</span>
-        <span class="org-keyword">xorl</span>    <span class="org-variable-name">%esi</span>, <span class="org-variable-name">%esi</span>                      <span class="org-comment-delimiter">/* </span><span class="org-comment">no error code */</span>
+        <span class="org-keyword">xorl</span>    <span class="org-variable-name">%esi</span>, <span class="org-variable-name">%esi</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">no error code */</span>
         <span class="org-keyword">.endif</span>
 
         <span class="org-keyword">.if</span> \shift_ist != -1
@@ -2761,9 +2761,9 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
 
         <span class="org-comment-delimiter">/* </span><span class="org-comment">these procedures expect "no swapgs" flag in ebx */</span>
         <span class="org-keyword">.if</span> \paranoid
-        <span class="org-keyword">jmp</span>     paranoid_exit
+        <span class="org-keyword">jmp</span> paranoid_exit
         <span class="org-keyword">.else</span>
-        <span class="org-keyword">jmp</span>     error_exit
+        <span class="org-keyword">jmp</span> error_exit
         <span class="org-keyword">.endif</span>
 
         <span class="org-keyword">.if</span> \paranoid == <span class="org-highlight-numbers-number">1</span>
@@ -2775,18 +2775,18 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
 <span class="org-keyword">.Lfrom_usermode_switch_stack</span>_\@:
         <span class="org-keyword">call</span>    error_entry
 
-        <span class="org-keyword">movq</span>    <span class="org-variable-name">%rsp</span>, <span class="org-variable-name">%rdi</span>                      <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs pointer */</span>
+        <span class="org-keyword">movq</span>    <span class="org-variable-name">%rsp</span>, <span class="org-variable-name">%rdi</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs pointer */</span>
 
         <span class="org-keyword">.if</span> \has_error_code
-        <span class="org-keyword">movq</span>    ORIG_RAX(<span class="org-variable-name">%rsp</span>), <span class="org-variable-name">%rsi</span>            <span class="org-comment-delimiter">/* </span><span class="org-comment">get error code */</span>
-        <span class="org-keyword">movq</span>    $-1, ORIG_RAX(<span class="org-variable-name">%rsp</span>)             <span class="org-comment-delimiter">/* </span><span class="org-comment">no syscall to restart */</span>
+        <span class="org-keyword">movq</span>    ORIG_RAX(<span class="org-variable-name">%rsp</span>), <span class="org-variable-name">%rsi</span>        <span class="org-comment-delimiter">/* </span><span class="org-comment">get error code */</span>
+        <span class="org-keyword">movq</span>    $-1, ORIG_RAX(<span class="org-variable-name">%rsp</span>)     <span class="org-comment-delimiter">/* </span><span class="org-comment">no syscall to restart */</span>
         <span class="org-keyword">.else</span>
-        <span class="org-keyword">xorl</span>    <span class="org-variable-name">%esi</span>, <span class="org-variable-name">%esi</span>                      <span class="org-comment-delimiter">/* </span><span class="org-comment">no error code */</span>
+        <span class="org-keyword">xorl</span>    <span class="org-variable-name">%esi</span>, <span class="org-variable-name">%esi</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">no error code */</span>
         <span class="org-keyword">.endif</span>
 
         <span class="org-keyword">call</span>    \do_sym
 
-        <span class="org-keyword">jmp</span>     error_exit
+        <span class="org-keyword">jmp</span> error_exit
         <span class="org-keyword">.endif</span>
 <span class="org-function-name">END</span>(\sym)
 <span class="org-keyword">.endm</span>
@@ -2816,11 +2816,11 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
         <span class="org-keyword">.rept</span> NUM_EXCEPTION_VECTORS
         <span class="org-keyword">.if</span> ((EXCEPTION_ERRCODE_MASK &gt;&gt; i) &amp; <span class="org-highlight-numbers-number">1</span>) == <span class="org-highlight-numbers-number">0</span>
                 <span class="org-keyword">UNWIND_HINT_IRET_REGS</span>
-                <span class="org-keyword">pushq</span> $0        # Dummy error code, to make stack frame uniform
+                <span class="org-keyword">pushq</span> $0    # Dummy error code, to make stack frame uniform
         <span class="org-keyword">.else</span>
                 <span class="org-keyword">UNWIND_HINT_IRET_REGS</span> offset=8
         <span class="org-keyword">.endif</span>
-        <span class="org-keyword">pushq</span> $i                # <span class="org-highlight-numbers-number">72</span>(<span class="org-variable-name">%rsp</span>) Vector number
+        <span class="org-keyword">pushq</span> $i        # <span class="org-highlight-numbers-number">72</span>(<span class="org-variable-name">%rsp</span>) Vector number
         <span class="org-keyword">jmp</span> early_idt_handler_common
         <span class="org-keyword">UNWIND_HINT_IRET_REGS</span>
         <span class="org-keyword">i</span> = i + <span class="org-highlight-numbers-number">1</span>
@@ -2843,33 +2843,33 @@ Interrupt Stack Table: This feature allows to switch to a new stack for designat
         <span class="org-keyword">incl</span> early_recursion_flag(<span class="org-variable-name">%rip</span>)
 
         <span class="org-comment-delimiter">/* </span><span class="org-comment">The vector number is currently in the pt_regs-&gt;di slot. */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rsi</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;si */</span>
-        <span class="org-keyword">movq</span> <span class="org-highlight-numbers-number">8</span>(<span class="org-variable-name">%rsp</span>), <span class="org-variable-name">%rsi</span>                      <span class="org-comment-delimiter">/* </span><span class="org-comment">RSI = vector number */</span>
-        <span class="org-keyword">movq</span> <span class="org-variable-name">%rdi</span>, <span class="org-highlight-numbers-number">8</span>(<span class="org-variable-name">%rsp</span>)                      <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;di = RDI */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rdx</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;dx */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rcx</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;cx */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rax</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;ax */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r8</span>                               <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r8 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r9</span>                               <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r9 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r10</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r10 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r11</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r11 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rbx</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;bx */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rbp</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;bp */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r12</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r12 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r13</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r13 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r14</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r14 */</span>
-        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r15</span>                              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r15 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rsi</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;si */</span>
+        <span class="org-keyword">movq</span> <span class="org-highlight-numbers-number">8</span>(<span class="org-variable-name">%rsp</span>), <span class="org-variable-name">%rsi</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">RSI = vector number */</span>
+        <span class="org-keyword">movq</span> <span class="org-variable-name">%rdi</span>, <span class="org-highlight-numbers-number">8</span>(<span class="org-variable-name">%rsp</span>)          <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;di = RDI */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rdx</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;dx */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rcx</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;cx */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rax</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;ax */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r8</span>               <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r8 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r9</span>               <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r9 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r10</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r10 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r11</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r11 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rbx</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;bx */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%rbp</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;bp */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r12</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r12 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r13</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r13 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r14</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r14 */</span>
+        <span class="org-keyword">pushq</span> <span class="org-variable-name">%r15</span>              <span class="org-comment-delimiter">/* </span><span class="org-comment">pt_regs-&gt;r15 */</span>
         <span class="org-keyword">UNWIND_HINT_REGS</span>
 
-        <span class="org-keyword">cmpq</span> $14,<span class="org-variable-name">%rsi</span>           <span class="org-comment-delimiter">/* </span><span class="org-comment">Page fault? */</span>
+        <span class="org-keyword">cmpq</span> $14,<span class="org-variable-name">%rsi</span>       <span class="org-comment-delimiter">/* </span><span class="org-comment">Page fault? */</span>
         <span class="org-keyword">jnz</span> <span class="org-highlight-numbers-number">10f</span>
-        <span class="org-keyword">GET_CR2_INTO</span>(<span class="org-variable-name">%rdi</span>)      <span class="org-comment-delimiter">/* </span><span class="org-comment">Can clobber any volatile register if pv */</span>
+        <span class="org-keyword">GET_CR2_INTO</span>(<span class="org-variable-name">%rdi</span>)  <span class="org-comment-delimiter">/* </span><span class="org-comment">Can clobber any volatile register if pv */</span>
         <span class="org-keyword">call</span> early_make_pgtable
         <span class="org-keyword">andl</span> <span class="org-variable-name">%eax</span>,<span class="org-variable-name">%eax</span>
-        <span class="org-keyword">jz</span> <span class="org-highlight-numbers-number">20f</span>                  <span class="org-comment-delimiter">/* </span><span class="org-comment">All good */</span>
+        <span class="org-keyword">jz</span> <span class="org-highlight-numbers-number">20f</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">All good */</span>
 
 <span class="org-highlight-numbers-number">10</span>:
-        <span class="org-keyword">movq</span> <span class="org-variable-name">%rsp</span>,<span class="org-variable-name">%rdi</span>          <span class="org-comment-delimiter">/* </span><span class="org-comment">RDI = pt_regs; RSI is already trapnr */</span>
+        <span class="org-keyword">movq</span> <span class="org-variable-name">%rsp</span>,<span class="org-variable-name">%rdi</span>      <span class="org-comment-delimiter">/* </span><span class="org-comment">RDI = pt_regs; RSI is already trapnr */</span>
         <span class="org-keyword">call</span> early_fixup_exception
 
 <span class="org-highlight-numbers-number">20</span>:
@@ -2999,7 +2999,7 @@ idtentry debug <span class="org-type">do_debug</span> <span class="org-variable-
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">arch/x86/include/asm/trap.h</span>
 asmlinkage <span class="org-type">void</span> <span class="org-function-name">page_fault</span>(<span class="org-type">void</span>);
 <span class="org-comment-delimiter">// </span><span class="org-comment">arch/x86/entry/entry_64.S</span>
-idtentry page_fault             <span class="org-type">do_page_fault</span>           <span class="org-variable-name">has_error_code</span>=<span class="org-highlight-numbers-number">1</span>
+idtentry page_fault     <span class="org-type">do_page_fault</span>       <span class="org-variable-name">has_error_code</span>=<span class="org-highlight-numbers-number">1</span>
 </pre>
 </div>
 
@@ -3181,22 +3181,22 @@ Because they avoid overhead from operating system process rescheduling or contex
                 <span class="org-type">atomic_t</span> <span class="org-variable-name">val</span>;
 <span class="org-preprocessor">#ifdef</span> __LITTLE_ENDIAN
                 <span class="org-keyword">struct</span> {
-                        <span class="org-type">u8</span>      <span class="org-variable-name">locked</span>;
-                        <span class="org-type">u8</span>      <span class="org-variable-name">pending</span>;
+                        <span class="org-type">u8</span>  <span class="org-variable-name">locked</span>;
+                        <span class="org-type">u8</span>  <span class="org-variable-name">pending</span>;
                 };
                 <span class="org-keyword">struct</span> {
-                        <span class="org-type">u16</span>     <span class="org-variable-name">locked_pending</span>;
-                        <span class="org-type">u16</span>     <span class="org-variable-name">tail</span>;
+                        <span class="org-type">u16</span> <span class="org-variable-name">locked_pending</span>;
+                        <span class="org-type">u16</span> <span class="org-variable-name">tail</span>;
                 };
 <span class="org-preprocessor">#else</span>
                 <span class="org-keyword">struct</span> {
-                        <span class="org-type">u16</span>     <span class="org-variable-name">tail</span>;
-                        <span class="org-type">u16</span>     <span class="org-variable-name">locked_pending</span>;
+                        <span class="org-type">u16</span> <span class="org-variable-name">tail</span>;
+                        <span class="org-type">u16</span> <span class="org-variable-name">locked_pending</span>;
                 };
                 <span class="org-keyword">struct</span> {
-                        <span class="org-type">u8</span>      <span class="org-variable-name">reserved</span>[<span class="org-highlight-numbers-number">2</span>];
-                        <span class="org-type">u8</span>      <span class="org-variable-name">pending</span>;
-                        <span class="org-type">u8</span>      <span class="org-variable-name">locked</span>;
+                        <span class="org-type">u8</span>  <span class="org-variable-name">reserved</span>[<span class="org-highlight-numbers-number">2</span>];
+                        <span class="org-type">u8</span>  <span class="org-variable-name">pending</span>;
+                        <span class="org-type">u8</span>  <span class="org-variable-name">locked</span>;
                 };
 <span class="org-preprocessor">#endif</span>
         };
@@ -3383,9 +3383,9 @@ Semaphore Structure:
 </p>
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-keyword">struct</span> <span class="org-type">semaphore</span> {
-        <span class="org-type">raw_spinlock_t</span>          <span class="org-variable-name">lock</span>;
-        <span class="org-type">unsigned</span> <span class="org-type">int</span>            <span class="org-variable-name">count</span>;
-        <span class="org-keyword">struct</span> <span class="org-type">list_head</span>        <span class="org-variable-name">wait_list</span>;
+        <span class="org-type">raw_spinlock_t</span>      <span class="org-variable-name">lock</span>;
+        <span class="org-type">unsigned</span> <span class="org-type">int</span>        <span class="org-variable-name">count</span>;
+        <span class="org-keyword">struct</span> <span class="org-type">list_head</span>    <span class="org-variable-name">wait_list</span>;
 };
 </pre>
 </div>
@@ -3399,11 +3399,11 @@ Semaphore Structure:
 Initialize a <code>semaphore</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-C"><span class="org-preprocessor">#define</span> <span class="org-function-name">__SEMAPHORE_INITIALIZER</span>(<span class="org-variable-name">name</span>, <span class="org-variable-name">n</span>)                                \
-{                                                                       \
-        .lock           = __RAW_SPIN_LOCK_UNLOCKED((name).lock),        \ <span class="org-comment-delimiter">// </span><span class="org-comment">0</span>
-        .count          = n,                                            \
-        .wait_list      = LIST_HEAD_INIT((name).wait_list),             \
+<pre class="src src-C"><span class="org-preprocessor">#define</span> <span class="org-function-name">__SEMAPHORE_INITIALIZER</span>(<span class="org-variable-name">name</span>, <span class="org-variable-name">n</span>)                \
+{                                   \
+        .lock       = __RAW_SPIN_LOCK_UNLOCKED((name).lock),    \ <span class="org-comment-delimiter">// </span><span class="org-comment">0</span>
+        .count      = n,                        \
+        .wait_list  = LIST_HEAD_INIT((name).wait_list),     \
 }
 </pre>
 </div>
@@ -3469,17 +3469,17 @@ Lock Operations:
 
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-keyword">struct</span> <span class="org-type">mutex</span> {
-        <span class="org-type">atomic_long_t</span>           <span class="org-variable-name">owner</span>;
-        <span class="org-type">spinlock_t</span>              <span class="org-variable-name">wait_lock</span>;
+        <span class="org-type">atomic_long_t</span>       <span class="org-variable-name">owner</span>;
+        <span class="org-type">spinlock_t</span>      <span class="org-variable-name">wait_lock</span>;
 <span class="org-preprocessor">#ifdef</span> CONFIG_MUTEX_SPIN_ON_OWNER
         <span class="org-keyword">struct</span> <span class="org-type">optimistic_spin_queue</span> <span class="org-variable-name">osq</span>; <span class="org-comment-delimiter">/* </span><span class="org-comment">Spinner MCS lock </span><span class="org-comment-delimiter">*/</span>
 <span class="org-preprocessor">#endif</span>
-        <span class="org-keyword">struct</span> <span class="org-type">list_head</span>        <span class="org-variable-name">wait_list</span>;
+        <span class="org-keyword">struct</span> <span class="org-type">list_head</span>    <span class="org-variable-name">wait_list</span>;
 <span class="org-preprocessor">#ifdef</span> CONFIG_DEBUG_MUTEXES
-        <span class="org-type">void</span>                    *<span class="org-variable-name">magic</span>;
+        <span class="org-type">void</span>            *<span class="org-variable-name">magic</span>;
 <span class="org-preprocessor">#endif</span>
 <span class="org-preprocessor">#ifdef</span> CONFIG_DEBUG_LOCK_ALLOC
-        <span class="org-keyword">struct</span> <span class="org-type">lockdep_map</span>      <span class="org-variable-name">dep_map</span>;
+        <span class="org-keyword">struct</span> <span class="org-type">lockdep_map</span>  <span class="org-variable-name">dep_map</span>;
 <span class="org-preprocessor">#endif</span>
 };
 </pre>
@@ -3523,7 +3523,7 @@ When a process which wants to write something into data, all other writer and re
         <span class="org-keyword">struct</span> <span class="org-type">task_struct</span> *<span class="org-variable-name">owner</span>;
 <span class="org-preprocessor">#endif</span>
 <span class="org-preprocessor">#ifdef</span> CONFIG_DEBUG_LOCK_ALLOC
-        <span class="org-keyword">struct</span> <span class="org-type">lockdep_map</span>      <span class="org-variable-name">dep_map</span>;
+        <span class="org-keyword">struct</span> <span class="org-type">lockdep_map</span>  <span class="org-variable-name">dep_map</span>;
 <span class="org-preprocessor">#endif</span>
 };
 </pre>
@@ -3685,18 +3685,18 @@ cpu_dev definition information which kernel support CPU types.
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">arch/x86/kernel/cpu/cpu.h</span>
 <span class="org-comment-delimiter">/* </span><span class="org-comment">attempt to consolidate cpu attributes </span><span class="org-comment-delimiter">*/</span>
 <span class="org-keyword">struct</span> <span class="org-type">cpu_dev</span> {
-        <span class="org-keyword">const</span> <span class="org-type">char</span>      *<span class="org-variable-name">c_vendor</span>;
+        <span class="org-keyword">const</span> <span class="org-type">char</span>  *<span class="org-variable-name">c_vendor</span>;
 
         <span class="org-comment-delimiter">/* </span><span class="org-comment">some have two possibilities for cpuid string </span><span class="org-comment-delimiter">*/</span>
-        <span class="org-keyword">const</span> <span class="org-type">char</span>      *<span class="org-variable-name">c_ident</span>[<span class="org-highlight-numbers-number">2</span>];
+        <span class="org-keyword">const</span> <span class="org-type">char</span>  *<span class="org-variable-name">c_ident</span>[<span class="org-highlight-numbers-number">2</span>];
 
         <span class="org-type">void</span>            (*c_early_init)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
-        <span class="org-type">void</span>            (*c_bsp_init)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
-        <span class="org-type">void</span>            (*c_init)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
-        <span class="org-type">void</span>            (*c_identify)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
-        <span class="org-type">void</span>            (*c_detect_tlb)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
-        <span class="org-type">void</span>            (*c_bsp_resume)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
-        <span class="org-type">int</span>             <span class="org-variable-name">c_x86_vendor</span>;
+        <span class="org-type">void</span>        (*c_bsp_init)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
+        <span class="org-type">void</span>        (*c_init)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
+        <span class="org-type">void</span>        (*c_identify)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
+        <span class="org-type">void</span>        (*c_detect_tlb)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
+        <span class="org-type">void</span>        (*c_bsp_resume)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *);
+        <span class="org-type">int</span>     <span class="org-variable-name">c_x86_vendor</span>;
 <span class="org-preprocessor">#ifdef</span> CONFIG_X86_32
         <span class="org-comment-delimiter">/* </span><span class="org-comment">Optional vendor specific routine to obtain the cache size. </span><span class="org-comment-delimiter">*/</span>
         <span class="org-type">unsigned</span> <span class="org-type">int</span>    (*legacy_cache_size)(<span class="org-keyword">struct</span> <span class="org-type">cpuinfo_x86</span> *,
@@ -3704,9 +3704,9 @@ cpu_dev definition information which kernel support CPU types.
 
         <span class="org-comment-delimiter">/* </span><span class="org-comment">Family/stepping-based lookup table for model names. </span><span class="org-comment-delimiter">*/</span>
         <span class="org-keyword">struct</span> <span class="org-type">legacy_cpu_model_info</span> {
-                <span class="org-type">int</span>             <span class="org-variable-name">family</span>;
-                <span class="org-keyword">const</span> <span class="org-type">char</span>      *<span class="org-variable-name">model_names</span>[<span class="org-highlight-numbers-number">16</span>];
-        }               <span class="org-variable-name">legacy_models</span>[<span class="org-highlight-numbers-number">5</span>];
+                <span class="org-type">int</span>     <span class="org-variable-name">family</span>;
+                <span class="org-keyword">const</span> <span class="org-type">char</span>  *<span class="org-variable-name">model_names</span>[<span class="org-highlight-numbers-number">16</span>];
+        }       <span class="org-variable-name">legacy_models</span>[<span class="org-highlight-numbers-number">5</span>];
 <span class="org-preprocessor">#endif</span>
 };
 </pre>
@@ -3905,11 +3905,11 @@ Netlink sockets is created by <code>netlink_kernel_create()</code> in the kernel
 <span class="org-keyword">struct</span> <span class="org-type">netlink_kernel_cfg</span> {
         <span class="org-type">unsigned</span> <span class="org-type">int</span>    <span class="org-variable-name">groups</span>;
         <span class="org-type">unsigned</span> <span class="org-type">int</span>    <span class="org-variable-name">flags</span>;
-        <span class="org-type">void</span>            (*input)(<span class="org-keyword">struct</span> <span class="org-type">sk_buff</span> *<span class="org-variable-name">skb</span>);
+        <span class="org-type">void</span>        (*input)(<span class="org-keyword">struct</span> <span class="org-type">sk_buff</span> *<span class="org-variable-name">skb</span>);
         <span class="org-keyword">struct</span> <span class="org-type">mutex</span>    *<span class="org-variable-name">cb_mutex</span>;
-        <span class="org-type">int</span>             (*bind)(<span class="org-keyword">struct</span> <span class="org-type">net</span> *<span class="org-variable-name">net</span>, <span class="org-type">int</span> <span class="org-variable-name">group</span>);
-        <span class="org-type">void</span>            (*unbind)(<span class="org-keyword">struct</span> <span class="org-type">net</span> *<span class="org-variable-name">net</span>, <span class="org-type">int</span> <span class="org-variable-name">group</span>);
-        bool            (*compare)(<span class="org-keyword">struct</span> <span class="org-type">net</span> *<span class="org-variable-name">net</span>, <span class="org-keyword">struct</span> <span class="org-type">sock</span> *<span class="org-variable-name">sk</span>);
+        <span class="org-type">int</span>     (*bind)(<span class="org-keyword">struct</span> <span class="org-type">net</span> *<span class="org-variable-name">net</span>, <span class="org-type">int</span> <span class="org-variable-name">group</span>);
+        <span class="org-type">void</span>        (*unbind)(<span class="org-keyword">struct</span> <span class="org-type">net</span> *<span class="org-variable-name">net</span>, <span class="org-type">int</span> <span class="org-variable-name">group</span>);
+        bool        (*compare)(<span class="org-keyword">struct</span> <span class="org-type">net</span> *<span class="org-variable-name">net</span>, <span class="org-keyword">struct</span> <span class="org-type">sock</span> *<span class="org-variable-name">sk</span>);
 };
 </pre>
 </div>
@@ -4325,7 +4325,7 @@ Makefile.build 包含各个子目录下的 Makefile:Kbuild 将所以与编译过
 </p>
 
 <div class="org-src-container">
-<pre class="src src-makefile"><span class="org-variable-name">obj-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_DNOTIFY</span></span><span class="org-variable-name">)</span>           += dnotify.o
+<pre class="src src-makefile"><span class="org-variable-name">obj-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_DNOTIFY</span></span><span class="org-variable-name">)</span>       += dnotify.o
 </pre>
 </div>
 
@@ -4537,7 +4537,7 @@ linux kernel 默认使用用户的 arch，通过 <code>SUBARCH</code> 确定。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-makefile"><span class="org-variable-name">ARCH</span>            ?= $(<span class="org-variable-name">SUBARCH</span>) <span class="org-comment-delimiter"># </span><span class="org-comment">&#36873;&#25321; arch/ &#19979;&#30340;&#24179;&#21488;</span>
+<pre class="src src-makefile"><span class="org-variable-name">ARCH</span>        ?= $(<span class="org-variable-name">SUBARCH</span>) <span class="org-comment-delimiter"># </span><span class="org-comment">&#36873;&#25321; arch/ &#19979;&#30340;&#24179;&#21488;</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">&#25351;&#23450;&#25152;&#26377;&#20132;&#21449;&#32534;&#35793;&#30456;&#20851;&#21487;&#25191;&#34892;&#25991;&#20214;&#30340;&#21069;&#32512;</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">&#22914; ia64-linux-</span>
 <span class="org-variable-name">CROSS_COMPILE</span>   ?= $(<span class="org-variable-name">CONFIG_CROSS_COMPILE</span>:<span class="org-string">"%"</span>=%)
@@ -4610,7 +4610,7 @@ link-vmlinux 展开的值为 cmd_link-vmlinux
 </div>
 
 <ol class="org-ol">
-<li><a id="org4f48981"></a>依赖的目标<br />
+<li><a id="org11c2188"></a>依赖的目标<br />
 <div class="outline-text-7" id="text-11-1-3-3-1-1">
 <ul class="org-ul">
 <li><code>$(vmlinux-deps)</code> ：vmlinux 的依赖包含下面目录的 <code>built-in.a</code> 。</li>
@@ -4641,31 +4641,31 @@ link-vmlinux 展开的值为 cmd_link-vmlinux
 <span class="org-variable-name">drivers-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_FB</span></span><span class="org-variable-name">)</span> += arch/x86/video/
 ...
 <span class="org-comment-delimiter"># </span><span class="org-comment">575 &#34892;</span>
-<span class="org-variable-name">init-y</span>          := init/
-<span class="org-variable-name">drivers-y</span>       := drivers/ sound/ firmware/
-<span class="org-variable-name">net-y</span>           := net/
-<span class="org-variable-name">libs-y</span>          := lib/
-<span class="org-variable-name">core-y</span>          := usr/
-<span class="org-variable-name">virt-y</span>          := virt/
+<span class="org-variable-name">init-y</span>      := init/
+<span class="org-variable-name">drivers-y</span>   := drivers/ sound/ firmware/
+<span class="org-variable-name">net-y</span>       := net/
+<span class="org-variable-name">libs-y</span>      := lib/
+<span class="org-variable-name">core-y</span>      := usr/
+<span class="org-variable-name">virt-y</span>      := virt/
 ...
 <span class="org-comment-delimiter"># </span><span class="org-comment">981 &#34892;</span>
-<span class="org-variable-name">core-y</span>          += kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/
+<span class="org-variable-name">core-y</span>      += kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/
 ...
 <span class="org-comment-delimiter"># </span><span class="org-comment">990 &#34892;</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">init/built-in.a</span>
-<span class="org-variable-name">init-y</span>          := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">init-y</span>))
+<span class="org-variable-name">init-y</span>      := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">init-y</span>))
 <span class="org-comment-delimiter"># </span><span class="org-comment">usr/built-in.a ...</span>
-<span class="org-variable-name">core-y</span>          := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">core-y</span>))
+<span class="org-variable-name">core-y</span>      := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">core-y</span>))
 <span class="org-comment-delimiter"># </span><span class="org-comment">drivers/built-in.a sound/built-in.a firmware/built-in.a</span>
-<span class="org-variable-name">drivers-y</span>       := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">drivers-y</span>))
+<span class="org-variable-name">drivers-y</span>   := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">drivers-y</span>))
 <span class="org-comment-delimiter"># </span><span class="org-comment">net/built-in.a</span>
-<span class="org-variable-name">net-y</span>           := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">net-y</span>))
+<span class="org-variable-name">net-y</span>       := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">net-y</span>))
 <span class="org-comment-delimiter"># </span><span class="org-comment">lib/lib.a</span>
-<span class="org-variable-name">libs-y1</span>         := $(<span class="org-variable-name">patsubst</span> %/, %/lib.a, $(<span class="org-variable-name">libs-y</span>))
+<span class="org-variable-name">libs-y1</span>     := $(<span class="org-variable-name">patsubst</span> %/, %/lib.a, $(<span class="org-variable-name">libs-y</span>))
 <span class="org-comment-delimiter"># </span><span class="org-comment">lib/built-in.a</span>
-<span class="org-variable-name">libs-y2</span>         := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">filter-out</span> %.a, $(<span class="org-variable-name">libs-y</span>)))
+<span class="org-variable-name">libs-y2</span>     := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">filter-out</span> %.a, $(<span class="org-variable-name">libs-y</span>)))
 <span class="org-comment-delimiter"># </span><span class="org-comment">virt/built-in.a</span>
-<span class="org-variable-name">virt-y</span>          := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">virt-y</span>))
+<span class="org-variable-name">virt-y</span>      := $(<span class="org-variable-name">patsubst</span> %/, %/built-in.a, $(<span class="org-variable-name">virt-y</span>))
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">&#32473; link-vmlinux.sh &#20351;&#29992;</span>
 export <span class="org-variable-name">KBUILD_VMLINUX_INIT</span> := $(<span class="org-variable-name">head-y</span>) $(<span class="org-variable-name">init-y</span>)
@@ -4702,8 +4702,8 @@ export <span class="org-variable-name">KBUILD_LDS</span>          := arch/$(<spa
 <div class="org-src-container">
 <pre class="src src-makefile"><span class="org-makefile-targets">autoksyms_recursive</span>: $(<span class="org-variable-name">vmlinux-deps</span>)
 ifdef CONFIG_TRIM_UNUSED_KSYMS
-    $(<span class="org-variable-name">Q</span>)$(<span class="org-variable-name">CONFIG_SHELL</span>) $(<span class="org-variable-name">srctree</span>)/scripts/adjust_autoksyms.sh \
-      <span class="org-string">"$(</span><span class="org-string"><span class="org-variable-name">MAKE</span></span><span class="org-string">) -f $(</span><span class="org-string"><span class="org-variable-name">srctree</span></span><span class="org-string">)/Makefile vmlinux"</span>
+$(<span class="org-variable-name">Q</span>)$(<span class="org-variable-name">CONFIG_SHELL</span>) $(<span class="org-variable-name">srctree</span>)/scripts/adjust_autoksyms.sh \
+  <span class="org-string">"$(</span><span class="org-string"><span class="org-variable-name">MAKE</span></span><span class="org-string">) -f $(</span><span class="org-string"><span class="org-variable-name">srctree</span></span><span class="org-string">)/Makefile vmlinux"</span>
 endif
 </pre>
 </div></li>
@@ -4751,7 +4751,7 @@ endif
 </div>
 
 <ol class="org-ol">
-<li><a id="org11c2188"></a>依赖的目标<br />
+<li><a id="orgf7d442b"></a>依赖的目标<br />
 <div class="outline-text-7" id="text-11-1-3-3-2-1">
 <ul class="org-ul">
 <li><code>$(obj)/tools/build</code> ：从三个不同的文件构建磁盘映像(简单连接为 bzImage)，它会检查所有文件的类型是否正确，并在指定目的地写入结果，移除头和适当填充，写一些系统数据到 stdout
@@ -4843,7 +4843,7 @@ endif
 <pre class="src src-makefile"><span class="org-variable-name">suffix-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_KERNEL_GZIP</span></span><span class="org-variable-name">)</span>    := gz
 <span class="org-variable-name">suffix-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_KERNEL_BZIP2</span></span><span class="org-variable-name">)</span>   := bz2
 <span class="org-variable-name">suffix-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_KERNEL_LZMA</span></span><span class="org-variable-name">)</span>    := lzma
-<span class="org-variable-name">suffix-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_KERNEL_XZ</span></span><span class="org-variable-name">)</span>      := xz
+<span class="org-variable-name">suffix-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_KERNEL_XZ</span></span><span class="org-variable-name">)</span>  := xz
 <span class="org-variable-name">suffix-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_KERNEL_LZO</span></span><span class="org-variable-name">)</span>     := lzo
 <span class="org-variable-name">suffix-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_KERNEL_LZ4</span></span><span class="org-variable-name">)</span>     := lz4
 </pre>
@@ -4899,19 +4899,19 @@ endif
 </p>
 
 <div class="org-src-container">
-<pre class="src src-makefile"><span class="org-variable-name">setup-y</span>         += a20.o bioscall.o cmdline.o copy.o cpu.o cpuflags.o cpucheck.o
-<span class="org-variable-name">setup-y</span>         += early_serial_console.o edd.o header.o main.o memory.o
-<span class="org-variable-name">setup-y</span>         += pm.o pmjump.o printf.o regs.o string.o tty.o video.o
-<span class="org-variable-name">setup-y</span>         += video-mode.o version.o
+<pre class="src src-makefile"><span class="org-variable-name">setup-y</span>     += a20.o bioscall.o cmdline.o copy.o cpu.o cpuflags.o cpucheck.o
+<span class="org-variable-name">setup-y</span>     += early_serial_console.o edd.o header.o main.o memory.o
+<span class="org-variable-name">setup-y</span>     += pm.o pmjump.o printf.o regs.o string.o tty.o video.o
+<span class="org-variable-name">setup-y</span>     += video-mode.o version.o
 <span class="org-variable-name">setup-$(</span><span class="org-variable-name"><span class="org-variable-name">CONFIG_X86_APM_BOOT</span></span><span class="org-variable-name">)</span> += apm.o
 
-<span class="org-variable-name">setup-y</span>         += video-vga.o
-<span class="org-variable-name">setup-y</span>         += video-vesa.o
-<span class="org-variable-name">setup-y</span>         += video-bios.o
+<span class="org-variable-name">setup-y</span>     += video-vga.o
+<span class="org-variable-name">setup-y</span>     += video-vesa.o
+<span class="org-variable-name">setup-y</span>     += video-bios.o
 ...
 <span class="org-variable-name">SETUP_OBJS</span> = $(<span class="org-variable-name">addprefix</span> $(<span class="org-variable-name">obj</span>)/,$(<span class="org-variable-name">setup-y</span>))
 ...
-<span class="org-variable-name">LDFLAGS_setup.elf</span>       := -T
+<span class="org-variable-name">LDFLAGS_setup.elf</span>   := -T
 <span class="org-makefile-targets">$(</span><span class="org-variable-name"><span class="org-makefile-targets">obj</span></span><span class="org-makefile-targets">)/setup.elf</span>: $(<span class="org-variable-name">src</span>)/setup.ld $(<span class="org-variable-name">SETUP_OBJS</span>) FORCE
         $(<span class="org-variable-name">call</span> if_changed,ld)
 
@@ -5168,7 +5168,7 @@ execute qemu
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-09 二 13:10</p>
+<p class="date">Created: 2019-09-15 日 16:45</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
