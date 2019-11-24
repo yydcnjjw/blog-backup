@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-09 二 13:14 -->
+<!-- 2019-11-24 日 21:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -181,15 +181,15 @@ Log Transform
 \end{equation}
 
 <div class="org-src-container">
-<pre class="src src-ipython"><span class="org-variable-name">x</span> = np.arange(<span class="org-highlight-numbers-number">0</span>.<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">10</span>, <span class="org-highlight-numbers-number">0</span>.<span class="org-highlight-numbers-number">1</span>)
-<span class="org-variable-name">y</span> = np.exp(x)
-plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">1</span>)
+<pre class="src src-ipython">x = np.arange(0.1, 10, 0.1)
+y = np.exp(x)
+plt.subplot(1, 2, 1)
 plt.plot(x, y)
 
-<span class="org-variable-name">y</span> = np.log(y)
-plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">2</span>)
+y = np.log(y)
+plt.subplot(1, 2, 2)
 plt.plot(x, y)
-<span class="org-keyword">pass</span>
+pass
 </pre>
 </div>
 
@@ -219,14 +219,14 @@ squeezes all feature values to be within the range of \([0,1]\)
 \end{equation}
 
 <div class="org-src-container">
-<pre class="src src-ipython"><span class="org-keyword">def</span> <span class="org-function-name">min_max_scaling</span>(x):
-    <span class="org-keyword">return</span> (x - np.<span class="org-builtin">min</span>(x)) / np.<span class="org-builtin">max</span>(x) - np.<span class="org-builtin">min</span>(x)
+<pre class="src src-ipython">def min_max_scaling(x):
+    return (x - np.min(x)) / np.max(x) - np.min(x)
 
-<span class="org-variable-name">x</span> = np.log10(np.arange(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">1000</span>))
-<span class="org-variable-name">y</span> = min_max_scaling(x)
+x = np.log10(np.arange(1, 1000))
+y = min_max_scaling(x)
 
 plt.plot(y)
-<span class="org-keyword">pass</span>
+pass
 </pre>
 </div>
 
@@ -244,18 +244,18 @@ scale feature to that has a mean of 0 and a variance of 1
 \end{equation}
 
 <div class="org-src-container">
-<pre class="src src-ipython"><span class="org-keyword">def</span> <span class="org-function-name">standardization</span>(x):
-    <span class="org-keyword">return</span> (x - np.mean(x)) / np.std(x)
+<pre class="src src-ipython">def standardization(x):
+    return (x - np.mean(x)) / np.std(x)
 
-<span class="org-variable-name">x</span> = np.random.normal(loc=<span class="org-highlight-numbers-number">10</span>.<span class="org-highlight-numbers-number">0</span>, scale=<span class="org-highlight-numbers-number">100</span>.<span class="org-highlight-numbers-number">0</span>, size=(<span class="org-highlight-numbers-number">10000</span>, <span class="org-highlight-numbers-number">2</span>))
-<span class="org-variable-name">y</span> = standardization(x)
-plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">1</span>)
-plt.title(<span class="org-string">'mean=%.3f, std=%.3f'</span> % (np.mean(x), np.std(x)))
-plt.hist2d(x[:, <span class="org-highlight-numbers-number">0</span>], x[:, <span class="org-highlight-numbers-number">1</span>], bins=<span class="org-highlight-numbers-number">100</span>)
-plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">2</span>)
-plt.title(<span class="org-string">'mean=%.3f, std=%.3f'</span> % (np.mean(y), np.std(y)))
-plt.hist2d(y[:, <span class="org-highlight-numbers-number">0</span>], y[:, <span class="org-highlight-numbers-number">1</span>], bins=<span class="org-highlight-numbers-number">100</span>)
-<span class="org-keyword">pass</span>
+x = np.random.normal(loc=10.0, scale=100.0, size=(10000, 2))
+y = standardization(x)
+plt.subplot(1, 2, 1)
+plt.title('mean=%.3f, std=%.3f' % (np.mean(x), np.std(x)))
+plt.hist2d(x[:, 0], x[:, 1], bins=100)
+plt.subplot(1, 2, 2)
+plt.title('mean=%.3f, std=%.3f' % (np.mean(y), np.std(y)))
+plt.hist2d(y[:, 0], y[:, 1], bins=100)
+pass
 </pre>
 </div>
 
@@ -281,18 +281,18 @@ normalize(divides) the original feature value by what's known as the \(l^{2}\) n
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-ipython"><span class="org-keyword">def</span> <span class="org-function-name">l2_normalization</span>(x):
-    <span class="org-keyword">return</span> x / np.sqrt(np.<span class="org-builtin">sum</span>(<span class="org-builtin">pow</span>(x, <span class="org-highlight-numbers-number">2</span>)))
+<pre class="src src-ipython">def l2_normalization(x):
+    return x / np.sqrt(np.sum(pow(x, 2)))
 
-<span class="org-variable-name">x</span> = np.random.normal(loc=<span class="org-highlight-numbers-number">10</span>.<span class="org-highlight-numbers-number">0</span>, scale=<span class="org-highlight-numbers-number">100</span>.<span class="org-highlight-numbers-number">0</span>, size=(<span class="org-highlight-numbers-number">100</span>, <span class="org-highlight-numbers-number">2</span>))
-<span class="org-variable-name">y</span> = l2_normalization(x)
+x = np.random.normal(loc=10.0, scale=100.0, size=(100, 2))
+y = l2_normalization(x)
 
-plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">1</span>)
-plt.hist2d(x[:, <span class="org-highlight-numbers-number">0</span>], x[:, <span class="org-highlight-numbers-number">1</span>], bins=<span class="org-highlight-numbers-number">100</span>)
-plt.subplot(<span class="org-highlight-numbers-number">1</span>, <span class="org-highlight-numbers-number">2</span>, <span class="org-highlight-numbers-number">2</span>)
-plt.hist2d(y[:, <span class="org-highlight-numbers-number">0</span>], y[:, <span class="org-highlight-numbers-number">1</span>], bins=<span class="org-highlight-numbers-number">100</span>)
+plt.subplot(1, 2, 1)
+plt.hist2d(x[:, 0], x[:, 1], bins=100)
+plt.subplot(1, 2, 2)
+plt.hist2d(y[:, 0], y[:, 1], bins=100)
 plt.tight_layout()
-<span class="org-keyword">pass</span>
+pass
 </pre>
 </div>
 
@@ -330,11 +330,11 @@ Tf-Idf
 One-Hot Encoding
 </p>
 <div class="org-src-container">
-<pre class="src src-ipython"><span class="org-keyword">from</span> sklearn.preprocessing <span class="org-keyword">import</span> OneHotEncoder
-<span class="org-keyword">import</span> pandas <span class="org-keyword">as</span> pd
+<pre class="src src-ipython">from sklearn.preprocessing import OneHotEncoder
+import pandas as pd
 
-<span class="org-variable-name">df</span> = pd.DataFrame([[<span class="org-string">'a'</span>], [<span class="org-string">'b'</span>], [<span class="org-string">'c'</span>]])
-<span class="org-variable-name">one_hot</span> = pd.get_dummies(df)
+df = pd.DataFrame([['a'], ['b'], ['c']])
+one_hot = pd.get_dummies(df)
 one_hot
 </pre>
 </div>
@@ -349,7 +349,7 @@ one_hot
 Dummy Coding
 </p>
 <div class="org-src-container">
-<pre class="src src-ipython"><span class="org-variable-name">dummy_df</span> = pd.get_dummies(df, drop_first=<span class="org-constant">True</span>)
+<pre class="src src-ipython">dummy_df = pd.get_dummies(df, drop_first=True)
 dummy_df
 </pre>
 </div>
@@ -396,23 +396,22 @@ dummy_df
 <h4 id="org2039ae4"><span class="section-number-4">1.3.2</span> Feature hashing</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <div class="org-src-container">
-<pre class="src src-ipython"><span class="org-comment-delimiter"># </span><span class="org-comment">m represent fixed word size</span>
-<span class="org-keyword">def</span> <span class="org-function-name">hash_features</span>(word_list, m):
-    <span class="org-variable-name">output</span> = [<span class="org-highlight-numbers-number">0</span>] * m
-    <span class="org-keyword">for</span> word <span class="org-keyword">in</span> word_list:
-        <span class="org-variable-name">index</span> = <span class="org-builtin">hash</span>(word) % m
-        <span class="org-variable-name">output</span>[index] += <span class="org-highlight-numbers-number">1</span>
-    <span class="org-keyword">return</span> output
+<pre class="src src-ipython"># m represent fixed word size
+def hash_features(word_list, m):
+    output = [0] * m
+    for word in word_list:
+        index = hash(word) % m
+        output[index] += 1
+    return output
 
 
-<span class="org-variable-name">word_list</span> = [<span class="org-string">'a'</span>, <span class="org-string">'b'</span>, <span class="org-string">'c'</span>, <span class="org-string">'d'</span>, <span class="org-string">'e'</span>, <span class="org-string">'a'</span>, <span class="org-string">'b'</span>]
-hash_features(word_list, <span class="org-highlight-numbers-number">5</span>)
+word_list = ['a', 'b', 'c', 'd', 'e', 'a', 'b']
+hash_features(word_list, 5)
 </pre>
 </div>
 
 <pre class="example">
 [2, 0, 1, 3, 1]
-
 </pre>
 
 <p>
@@ -527,13 +526,13 @@ Feature selection techniques fail into three classes:
 <div class="org-src-container">
 <pre class="src src-ipython" id="org2900560">%matplotlib inline
 
-<span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
-<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+import numpy as np
+import matplotlib.pyplot as plt
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-ipython" id="orgd8f4ac7"><span class="org-variable-name">plt.rcParams</span>[<span class="org-string">'figure.facecolor'</span>] = <span class="org-string">'white'</span>
+<pre class="src src-ipython" id="orgd8f4ac7">plt.rcParams['figure.facecolor'] = 'white'
 </pre>
 </div>
 
@@ -560,7 +559,7 @@ Feature selection techniques fail into three classes:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: yydcnjjw</p>
-<p class="date">Created: 2019-04-09 二 13:14</p>
+<p class="date">Created: 2019-11-24 日 21:43</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
